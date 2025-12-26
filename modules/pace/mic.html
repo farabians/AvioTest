@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIC (Joystick Module) - PACE Tutorial - AvioTest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="module-detail-page">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="../../pace-exam-structure.html" class="back-link">← Back to Exam Structure</a>
+            </div>
+
+            <section class="module-hero">
+                <h1 class="section-title">MIC (Joystick Module)</h1>
+                <p class="subtitle">This test measures psychomotor coordination and multitasking ability using a joystick and touchscreen.</p>
+            </section>
+
+            <section class="module-content">
+                <div class="content-card">
+                    <h2>What is the MIC Module?</h2>
+                    <p>In this test, you will see several instruments on the screen that are similar to those found in a Cessna cockpit. Your task is to monitor these instruments and make the required inputs at the correct time. This test is not a flight simulator; it is designed to measure psychomotor coordination and multitasking ability. No previous flight experience is required.</p>
+                    
+                    <div class="visual-demo">
+                        <div class="demo-item">
+                            <p class="demo-label">Cockpit Instruments</p>
+                            <div class="demo-placeholder">
+                                <div class="placeholder-text">GIF: Cessna-style instruments (Heading, Altimeter, Airspeed)</div>
+                            </div>
+                        </div>
+                        <div class="demo-item">
+                            <p class="demo-label">Controls</p>
+                            <div class="demo-placeholder">
+                                <div class="placeholder-text">GIF: Joystick for Heading/Altitude, Touchscreen for Speed/Audio</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Heading Indicator</h3>
+                        <p>Controlled using the <strong>joystick (left/right)</strong> with your right hand.</p>
+                        <ul>
+                            <li>A green dot marks the target heading.</li>
+                            <li>Turning right increases the heading value (compass moves left).</li>
+                            <li>Turning left decreases the heading value (compass moves right).</li>
+                            <li>Stronger/longer inputs cause faster changes.</li>
+                        </ul>
+                    </div>
+                    <div class="content-card">
+                        <h3>Altimeter (Altitude)</h3>
+                        <p>Controlled using the <strong>joystick (forward/back)</strong>.</p>
+                        <ul>
+                            <li><strong>Pull back:</strong> Climb (indicator turns clockwise).</li>
+                            <li><strong>Push forward:</strong> Descend (indicator turns counterclockwise).</li>
+                            <li>Large needle = 1,000 ft, Small needle = 100 ft.</li>
+                            <li>Return joystick to neutral to maintain a climb/descent rate.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Airspeed</h3>
+                        <p>Controlled using <strong>+ / − buttons</strong> on the touchscreen.</p>
+                        <ul>
+                            <li><strong>+ button:</strong> Increase power/speed.</li>
+                            <li><strong>− button:</strong> Decrease power/speed.</li>
+                            <li><strong>Pitch effect:</strong> Climbing reduces speed; descending increases speed.</li>
+                            <li>Adjust power to maintain constant speed during altitude changes.</li>
+                        </ul>
+                    </div>
+                    <div class="content-card">
+                        <h3>Auditory Task</h3>
+                        <p>Listen to aviation alphabet letters (e.g., Alfa, Bravo) through headphones.</p>
+                        <ul>
+                            <li><strong>White Button:</strong> Press after 3 consecutive <strong>vowels</strong> (A, E, I, O, U).</li>
+                            <li><strong>Red Button:</strong> Press after 3 consecutive <strong>consonants</strong>.</li>
+                            <li>Response must be given immediately after the third letter.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- MIC Script Section -->
+                <div class="content-card">
+                    <h3>MIC Script</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Click to view the full test script</span>
+                                <span class="icon">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>The video transcript provides a detailed breakdown of the AvioTest, focusing on its purpose, controls, required visual scans, and the critical auditory challenge.</p>
+                                <p><strong>Purpose and Core Skills</strong><br>
+                                The AvioTest was developed to measure core pilot skills, specifically deep instinctual coordination and the ability to multitask, before a candidate flies a real plane. A crucial point emphasized multiple times is that the AvioTest is not a flight simulator; it does not test knowledge about flying, and absolutely no prior flight experience is required. The test's fundamental objective is to measure your psycho motor coordination and how well you can multitask.</p>
+                                <p><strong>Controls and Interaction</strong><br>
+                                The interaction during the test is split between two main components: the joystick and the touchscreen.</p>
+                                <ul>
+                                    <li><strong>Joystick (Right Hand):</strong> This controls directional movement and altitude. Moving the joystick left and right controls your heading (direction). Pushing the joystick forward or pulling it back controls your altitude.</li>
+                                    <li><strong>Touchscreen (Other Hand):</strong> This is used for adjusting your airspeed (power) and managing the auditory task.</li>
+                                </ul>
+                                <p><strong>Decoding the Flight Instruments (The Scan)</strong><br>
+                                The test requires a constant instrument scan, focusing on three visual instruments:</p>
+                                <ul>
+                                    <li><strong>Heading Indicator:</strong> This instrument shows which direction you are flying. Your primary goal is to keep it lined up with a target (a small green dot). Move the joystick left to decrease the heading value or right to increase it. Key Insight: The movement can feel backwards; for instance, when you turn right, the numbers on the compass move to the left. Movements must be smooth and deliberate, avoiding jerky inputs.</li>
+                                    <li><strong>Altimeter:</strong> This measures your altitude in feet. It has two needles: the big needle shows thousands of feet, and the little needle shows hundreds. You must read both together to determine the actual altitude. Pull the joystick toward you to climb, and push it forward to descend. Pro Tip: To hold a desired climb or descent rate, you must return the joystick to the neutral (middle) position. To level off completely, you need to nudge the stick in the opposite direction.</li>
+                                    <li><strong>Air Speed Indicator:</strong> This shows your speed in knots. This instrument is controlled differently from the others because it is managed via power. Use the touchscreen to manage power. Press the plus button to add power and speed up, or the minus button to cut power and slow down. Connection to Pitch: Speed is linked to pitch (climbing or descending), similar to riding a bike; if you start climbing, you slow down, and if you go downhill, you speed up.</li>
+                                </ul>
+                                <p><strong>The Auditory Challenge (Multitasking)</strong><br>
+                                The test adds an auditory layer to challenge your multitasking ability. While managing the flight instruments, you will hear a stream of words from the aviation alphabet (e.g., Yankee, foxtrot, Oscar). Task: Listen for specific patterns and hit the correct button right after hearing the third letter in a sequence.</p>
+                                <ul>
+                                    <li><strong>Rules:</strong> If you hear three vowels in a row, hit the white button. If you hear three consonants in a row, hit the red button.</li>
+                                    <li><strong>Vowel Cheat Sheet:</strong> The only words representing vowels you need to track are alpha, echo, india, oscar, and uniform; everything else is considered a consonant.</li>
+                                </ul>
+                                <p><strong>Summary of the Mission</strong><br>
+                                The entire test requires participants to combine all elements simultaneously: flying the plane (joystick for heading and altitude), using the touchscreen to maintain the correct airspeed, and constantly listening to the audio stream to quickly react to the three-vowel or three-consonant sequences. This unified mission is designed to be a massive test of how well you can split your focus. While no flight experience is necessary, practice is highly recommended to get comfortable keeping your eyes on everything at once.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="module-cta-section">
+                <button class="cta-button large">Start Practice Test</button>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
+
