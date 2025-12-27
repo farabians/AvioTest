@@ -28,7 +28,7 @@ async function loadComponents() {
                 let adjustedContent = content;
                 if (isSubPage) {
                     // Replace all .html links that don't already have a path prefix or protocol
-                    adjustedContent = adjustedContent.replace(/href="(?!http|#|\.\.\/)([^"]+\.html)"/g, `href="${prefix}$1"`);
+                    adjustedContent = adjustedContent.replace(/href="(?!http|#|\.\.\/)([^"]+\.html(?:#[^"]*)?)"/g, `href="${prefix}$1"`);
                     // Replace all image sources that point to the images folder
                     adjustedContent = adjustedContent.replace(/src="images\//g, `src="${prefix}images/`);
                 }
@@ -259,7 +259,6 @@ animate();
 // Hamburger Menu Logic
 function initializeMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
-    const menuClose = document.querySelector('.menu-close');
     const nav = document.querySelector('.nav');
     const logoLink = document.querySelector('.logo a');
 
@@ -275,10 +274,6 @@ function initializeMenu() {
             nav.classList.toggle('active');
             document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
         });
-
-        if (menuClose) {
-            menuClose.addEventListener('click', closeMenu);
-        }
 
         // Close menu when clicking a link
         document.querySelectorAll('.nav-link').forEach(link => {
