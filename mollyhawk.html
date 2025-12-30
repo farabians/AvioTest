@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mollyhawk Pilot Assessment Preparation - AvioTest®</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- 1. Hero Section -->
+    <section class="hero mollyhawk-hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="images/SunExpress_Logo.png" alt="SunExpress Logo" class="hero-logo mollyhawk-logo">
+                <h1 class="hero-title">Mollyhawk Pilot Assessment Preparation</h1>
+                <p class="hero-description">Comprehensive training modules designed specifically for the SunExpress Mollyhawk selection process.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Status Section -->
+    <section class="status-section">
+        <div class="container">
+            <div class="status-card-premium mollyhawk-theme">
+                <img src="images/airlines_logo_type/SunExpress-Logo.png" alt="" class="card-logo-bg mollyhawk-bg">
+                <div class="status-info-side">
+                    <div class="status-badge-premium">
+                        <span class="pulse-dot"></span>
+                        Applications Open
+                    </div>
+                    <h2 class="status-title-premium">SunExpress Pilot Program</h2>
+                    <p class="status-dates-premium">Application Period: <strong>01 January – 24 March</strong></p>
+                </div>
+                <div class="status-action-side">
+                    <a href="mollyhawk-conditions.html" class="requirements-btn-premium">Application Requirements</a>
+                    <button class="apply-btn-premium">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mollyhawk Tutorial Section -->
+    <section class="tutorial-section">
+        <div class="container">
+            <div class="tutorial-card">
+                <div class="tutorial-content">
+                    <h2 class="content-title">Mollyhawk Exam Structure</h2>
+                    <p class="diagram-note">The Mollyhawk exam structure is currently being updated. Please check back soon for detailed information.</p>
+                </div>
+
+                <!-- Placeholder for Exam Structure -->
+                <section class="phases-explanation">
+                    <div class="note-box highlight">
+                        <p><strong>Note:</strong> Detailed module information and exam patterns will be available shortly.</p>
+                    </div>
+                </section>
+
+                <!-- Tutorials Section -->
+                <section id="tutorials" class="tutorials-overview">
+                    <div class="tutorials-header">
+                        <h2 class="content-title">Tutorials</h2>
+                        <p class="diagram-note">Tutorials for Mollyhawk Modules</p>
+                    </div>
+                    <div class="modules-grid">
+                        <div class="module-card">
+                            <div class="module-image no-image"></div>
+                            <div class="module-info">
+                                <h3>Time Sharing</h3>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="module-image no-image"></div>
+                            <div class="module-info">
+                                <h3>Working Memory</h3>
+                            </div>
+                        </div>
+                        <div class="module-card">
+                            <div class="module-image no-image"></div>
+                            <div class="module-info">
+                                <h3>Spatial Orientation</h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Application Closed State -->
+    <section class="application-closed">
+        <div class="container">
+            <div class="status-card-premium closed">
+                <img src="images/airlines_logo_type/SunExpress-Logo.png" alt="" class="card-logo-bg faded mollyhawk-bg">
+                <div class="status-info-side">
+                    <div class="status-badge-premium closed">
+                        <span class="pulse-dot closed"></span>
+                        Applications Closed
+                    </div>
+                    <h2 class="status-title-premium">SunExpress Pilot Program</h2>
+                    <p class="status-dates-premium">Next application period expected soon.</p>
+                </div>
+            </div>
+
+            <div class="notification-area">
+                <div class="notify-btn-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bell-icon">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <button id="notify-btn" class="cta-button notify-pill">Notify me when applications open</button>
+                </div>
+                <div id="notification-form" class="hidden">
+                    <form onsubmit="handleNotify(event)">
+                        <input type="email" id="notify-email" placeholder="Enter your email" required>
+                        <button type="submit" class="cta-button">Subscribe</button>
+                    </form>
+                    <p id="notify-error" class="error-text hidden">Please enter a valid email address.</p>
+                    <p id="notify-success" class="success-text hidden">You will be notified!</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Previous Application Periods</h2>
+            <div class="table-responsive">
+                <table class="periods-table">
+                    <thead>
+                        <tr>
+                            <th>Airline</th>
+                            <th>Program</th>
+                            <th>Application Open</th>
+                            <th>Application Close</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SunExpress</td>
+                            <td>MPL Pilot Training / Cadet-style</td>
+                            <td>Not publicly standardized</td>
+                            <td>Not publicly standardized</td>
+                            <td>No official open/close dates available — must monitor live postings. (LinkedIn)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

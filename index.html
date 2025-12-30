@@ -54,6 +54,132 @@
         </div>
     </section>
 
+    <!-- App Preview / Modules Section -->
+    <section class="app-preview">
+        <div class="container">
+            <h2>Explore Our Training Modules</h2>
+            
+            <div class="app-mockup">
+                <div class="app-header">
+                    <div class="app-logo">
+                        <img src="images/logo.svg" alt="AvioTest">
+                    </div>
+                    <div class="app-header-actions">
+                        <div class="exam-selector" id="app-exam-selector">
+                            <span id="current-exam-label">PACE</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                            
+                            <!-- Exam Dropdown -->
+                            <div class="app-dropdown" id="app-exam-dropdown">
+                                <div class="app-dropdown-item" data-exam="pace-grid">PACE</div>
+                                <div class="app-dropdown-item" data-exam="pegasus-grid">Pegasus</div>
+                                <div class="app-dropdown-item" data-exam="mollyhawk-grid">Mollyhawk</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-content">
+                    <div class="app-tabs">
+                        <div class="app-tab active" data-target="pace-grid">PACE</div>
+                        <div class="app-tab" data-target="pegasus-grid">Pegasus</div>
+                        <div class="app-tab" data-target="mollyhawk-grid">Mollyhawk</div>
+                    </div>
+
+                    <!-- PACE Grid -->
+                    <div id="pace-grid" class="app-grid active">
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/mathematics.png" alt="Mathematics"></div>
+                            <div class="app-module-footer">Mathematics</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Physics.png" alt="Physics"></div>
+                            <div class="app-module-footer">Physics</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Audio_visual_memory.png" alt="Audio Visual Memory"></div>
+                            <div class="app-module-footer">Audio Visual Memory</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Digit_span.png" alt="Digit Span"></div>
+                            <div class="app-module-footer">Digit Span</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Agility.png" alt="Agility"></div>
+                            <div class="app-module-footer">Agility</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Sustained_attention.png" alt="Sustained Attention"></div>
+                            <div class="app-module-footer">Sustained Attention</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Spatial_orientation.png" alt="Spatial Orientation"></div>
+                            <div class="app-module-footer">Spatial Orientation</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Joystick_flight_test.png" alt="Joystick Flight Test"></div>
+                            <div class="app-module-footer">Joystick Flight Test</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/3Dimesional_spatial_perception.png" alt="3D Spatial Perception"></div>
+                            <div class="app-module-footer">3D Spatial Perception</div>
+                        </div>
+                    </div>
+
+                    <!-- Pegasus Grid -->
+                    <div id="pegasus-grid" class="app-grid">
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Spatial_orientation_2D.png" alt="Spatial Orientation 2D"></div>
+                            <div class="app-module-footer">Spatial Orientation 2D</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Spatial_orientation_3D.png" alt="Spatial Orientation 3D"></div>
+                            <div class="app-module-footer">Spatial Orientation 3D</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Vigilance1.png" alt="Vigilance 1"></div>
+                            <div class="app-module-footer">Vigilance 1</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Vigilance2.png" alt="Vigilance 2"></div>
+                            <div class="app-module-footer">Vigilance 2</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Ipp_test.png" alt="IPP"></div>
+                            <div class="app-module-footer">IPP</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Capacity_test.png" alt="Capacity"></div>
+                            <div class="app-module-footer">Capacity</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image"><img src="images/modules_img/Flight_capacity_test.png" alt="Flight Capacity"></div>
+                            <div class="app-module-footer">Flight Capacity</div>
+                        </div>
+                    </div>
+
+                    <!-- Mollyhawk Grid -->
+                    <div id="mollyhawk-grid" class="app-grid">
+                        <div class="app-module-card">
+                            <div class="app-module-image no-image"></div>
+                            <div class="app-module-footer">Time Sharing</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image no-image"></div>
+                            <div class="app-module-footer">Working Memory</div>
+                        </div>
+                        <div class="app-module-card">
+                            <div class="app-module-image no-image"></div>
+                            <div class="app-module-footer">Spatial Orientation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="download.html" class="train-now-btn">Train Now</a>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="features">
         <div class="container">
@@ -108,7 +234,7 @@
                         <span class="learn-more">Learn More →</span>
                     </div>
                 </a>
-                <a href="#" class="exam-card sunexpress">
+                <a href="mollyhawk.html" class="exam-card sunexpress">
                     <div class="exam-header sunexpress-header">
                         <img src="images/SunExpress_Logo.png" alt="SunExpress Logo" class="exam-logo">
                     </div>

@@ -1190,7 +1190,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 /* Pegasus Page Styles */
-.pegasus-hero, .pace-hero {
+.pegasus-hero, .pace-hero, .mollyhawk-hero {
     padding-bottom: 60px;
 }
 
@@ -1256,6 +1256,12 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     height: 180%;
     right: -80px;
     top: -80px;
+}
+
+.card-logo-bg.mollyhawk-bg {
+    height: 150%;
+    right: -60px;
+    top: -40px;
 }
 
 .status-info-side, .status-action-side {
@@ -1355,6 +1361,31 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .status-card-premium.pace-theme .apply-btn-premium:hover {
     background: #cc0000;
     box-shadow: 0 15px 30px rgba(255, 0, 0, 0.3);
+}
+
+/* Mollyhawk Theme for Status Card */
+.status-card-premium.mollyhawk-theme {
+    border-color: rgba(0, 123, 255, 0.2);
+}
+
+.status-card-premium.mollyhawk-theme::before {
+    background: #007bff;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+}
+
+.status-card-premium.mollyhawk-theme .status-dates-premium strong {
+    color: #007bff;
+}
+
+.status-card-premium.mollyhawk-theme .apply-btn-premium {
+    background: #007bff;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+}
+
+.status-card-premium.mollyhawk-theme .apply-btn-premium:hover {
+    background: #0056b3;
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.3);
 }
 
 /* Closed State for Premium Card */
@@ -1540,7 +1571,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .module-image {
     height: 180px;
-    background: rgba(255, 255, 255, 0.03);
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2095,19 +2126,51 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .module-image {
     height: 160px;
-    background: #000;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: relative;
+}
+
+.module-image.no-image {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.module-image.no-image::before {
+    content: 'NO IMAGE';
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    opacity: 0.15;
+    color: white;
 }
 
 .module-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     opacity: 0.8;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* Module Detail Hero Image */
+.module-hero-image {
+    margin: 30px auto;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.module-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .module-card:hover .module-image img {
@@ -2502,13 +2565,27 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .tutorial-card .module-card {
-    background: rgba(0, 0, 0, 0.3);
+    background: #252525;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.tutorial-card .module-card .module-image {
+    background: transparent;
+}
+
+.tutorial-card .module-card h3 {
+    color: #fff;
+}
+
+.tutorial-card .module-card .module-placeholder-text {
+    color: rgba(255, 255, 255, 0.1);
 }
 
 .tutorial-card .module-card:hover {
-    background: rgba(255, 0, 0, 0.05);
+    background: #2a2a2a;
     border-color: #ff0000;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .tutorial-card::before {
@@ -2569,6 +2646,333 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     color: var(--primary-red);
     font-weight: 900;
     font-size: 1.2rem;
+}
+
+/* App Preview Section */
+.app-preview {
+    padding: 100px 0;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.05) 0%, transparent 70%);
+    text-align: center;
+}
+
+.app-preview h2 {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    font-weight: 900;
+}
+
+.app-mockup {
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    background: #121212;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 
+        0 50px 100px -20px rgba(0, 0, 0, 0.7),
+        0 30px 60px -30px rgba(0, 0, 0, 0.5);
+    border: 12px solid #1a1a1a;
+    position: relative;
+}
+
+.app-header {
+    background: #000;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.theme-pace .app-header {
+    border-bottom-color: var(--primary-red);
+}
+
+.theme-pegasus .app-header {
+    border-bottom-color: #ffcc00;
+}
+
+.theme-mollyhawk .app-header {
+    border-bottom-color: #0066cc;
+}
+
+.app-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.app-logo img {
+    height: 28px;
+}
+
+.app-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.exam-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.exam-selector:hover {
+    color: #fff;
+}
+
+.app-dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 160px;
+    padding: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 100;
+    animation: fadeInDown 0.2s ease-out;
+}
+
+.app-dropdown.active {
+    display: block;
+}
+
+.app-dropdown-item {
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #aaa;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.app-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.app-content {
+    padding: 40px;
+    background: #1a1a1a;
+}
+
+.app-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.app-tab {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-tab.active {
+    color: white;
+}
+
+.theme-pace .app-tab.active {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.theme-pegasus .app-tab.active {
+    background: #ffcc00;
+    border-color: #ffcc00;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+}
+
+.theme-mollyhawk .app-tab.active {
+    background: #0066cc;
+    border-color: #0066cc;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+}
+
+.app-tab:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.app-grid {
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.app-grid.active {
+    display: grid;
+}
+
+.coming-soon-container {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 24px;
+    border: 2px dashed rgba(255, 255, 255, 0.05);
+}
+
+.coming-soon-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    filter: grayscale(1);
+    opacity: 0.3;
+}
+
+.coming-soon-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 800;
+}
+
+.coming-soon-container p {
+    color: #666;
+    max-width: 450px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.app-module-card {
+    background: #222222;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.app-module-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.theme-pace .app-module-card:hover {
+    border-color: var(--primary-red);
+}
+
+.theme-pegasus .app-module-card:hover {
+    border-color: #ffcc00;
+}
+
+.theme-mollyhawk .app-module-card:hover {
+    border-color: #0066cc;
+}
+
+.app-module-image {
+    height: 160px;
+    background: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+}
+
+.app-module-image.no-image {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.app-module-image.no-image::before {
+    content: 'NO IMAGE';
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    opacity: 0.15;
+    color: white;
+}
+
+.app-module-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.2));
+}
+
+.app-module-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+.app-module-footer {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 18px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-transform: uppercase;
+}
+
+.train-now-btn {
+    background: var(--primary-red);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+}
+
+.train-now-btn:hover {
+    transform: scale(1.05);
+    background: var(--primary-dark-red);
+    box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .app-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .app-module-image {
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Tutorial Modules Grid */

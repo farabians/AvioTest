@@ -53,6 +53,7 @@ function setActiveNavLink() {
     const currentPage = path.split('/').pop() || 'index.html';
     const isPegasusSection = currentPage.startsWith('pegasus') || path.includes('/modules/pegasus/');
     const isPaceSection = currentPage.startsWith('pace') || path.includes('/modules/pace/');
+    const isMollyhawkSection = currentPage.startsWith('mollyhawk') || path.includes('/modules/mollyhawk/');
 
     document.querySelectorAll('.nav-link').forEach(link => {
         const href = link.getAttribute('href');
@@ -64,6 +65,8 @@ function setActiveNavLink() {
         if (linkPage === 'pegasus.html' && isPegasusSection) {
             link.classList.add('active');
         } else if (linkPage === 'pace.html' && isPaceSection) {
+            link.classList.add('active');
+        } else if (linkPage === 'mollyhawk.html' && isMollyhawkSection) {
             link.classList.add('active');
         } else if (linkPage === currentPage && currentPage !== 'index.html') {
             link.classList.add('active');
@@ -119,6 +122,75 @@ function initializeNavLinks() {
     });
 }
 
+// Initialize App Preview Tabs and Menus
+function initializeAppTabs() {
+    const tabs = document.querySelectorAll('.app-tab');
+    const grids = document.querySelectorAll('.app-grid');
+    const label = document.getElementById('current-exam-label');
+    const mockup = document.querySelector('.app-mockup');
+    const examSelector = document.getElementById('app-exam-selector');
+    const examDropdown = document.getElementById('app-exam-dropdown');
+    const dropdownItems = document.querySelectorAll('.app-dropdown-item');
+
+    // Tab switching
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-target');
+            updateAppExam(target, tab.textContent);
+        });
+    });
+
+    // Dropdown switching
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const target = item.getAttribute('data-exam');
+            updateAppExam(target, item.textContent);
+            examDropdown.classList.remove('active');
+        });
+    });
+
+    function updateAppExam(targetId, text) {
+        // Update tabs
+        tabs.forEach(t => {
+            t.classList.remove('active');
+            if (t.textContent === text) t.classList.add('active');
+        });
+        
+        // Update grids
+        grids.forEach(grid => grid.classList.remove('active'));
+        const targetGrid = document.getElementById(targetId);
+        if (targetGrid) targetGrid.classList.add('active');
+
+        // Update header label
+        if (label) label.textContent = text;
+
+        // Update theme
+        if (mockup) {
+            mockup.classList.remove('theme-pace', 'theme-pegasus', 'theme-mollyhawk');
+            mockup.classList.add(`theme-${text.toLowerCase()}`);
+        }
+    }
+
+    // Set initial theme
+    if (label && mockup) {
+        mockup.classList.add(`theme-${label.textContent.toLowerCase()}`);
+    }
+
+    // Toggle Dropdown
+    if (examSelector && examDropdown) {
+        examSelector.addEventListener('click', (e) => {
+            e.stopPropagation();
+            examDropdown.classList.toggle('active');
+        });
+    }
+
+    // Close menus on outside click
+    document.addEventListener('click', () => {
+        if (examDropdown) examDropdown.classList.remove('active');
+    });
+}
+
 // Add animation on scroll
 const observerOptions = {
     threshold: 0.1,
@@ -148,6 +220,7 @@ function initializeAnimations() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadComponents();
     initializeAnimations();
+    initializeAppTabs();
     
     // Header scroll effect
     const handleScroll = () => {
