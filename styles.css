@@ -493,6 +493,73 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     object-fit: contain;
 }
 
+.feature-card.full-image {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card.full-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.4s ease;
+}
+
+.feature-card.full-image:hover::after {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.feature-card.full-image .feature-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    z-index: 0;
+}
+
+.feature-card.full-image .feature-img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.feature-card.full-image:hover .feature-img {
+    transform: scale(1.1);
+}
+
+.feature-card.full-image .feature-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 30px;
+    background: linear-gradient(to top, 
+        rgba(0, 0, 0, 0.95) 0%, 
+        rgba(0, 0, 0, 0.8) 30%, 
+        rgba(0, 0, 0, 0.4) 60%, 
+        transparent 100%);
+    width: 100%;
+    text-align: left;
+    transition: all 0.4s ease;
+}
+
+.feature-card.full-image:hover .feature-content {
+    padding-bottom: 45px;
+}
+
 .feature-card h3 {
     font-size: 1.8rem;
     margin-bottom: 15px;
@@ -1560,10 +1627,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     overflow: hidden;
     text-decoration: none;
     color: white;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    will-change: transform;
-    backface-visibility: hidden;
 }
 
 .module-card:hover {
@@ -1924,6 +1989,13 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .breadcrumb {
     margin-bottom: 30px;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .breadcrumb {
+        display: none;
+    }
 }
 
 .structure-header {
@@ -2872,6 +2944,9 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .app-module-card:hover {
@@ -2943,6 +3018,12 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     text-transform: uppercase;
 }
 
+.app-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
 .train-now-btn {
     background: var(--primary-red);
     color: white;
@@ -2956,10 +3037,31 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
 }
 
+.theme-pegasus .train-now-btn {
+    background: #ffcc00;
+    color: #000;
+    box-shadow: 0 10px 20px rgba(255, 204, 0, 0.3);
+}
+
+.theme-mollyhawk .train-now-btn {
+    background: #0066cc;
+    box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
+}
+
 .train-now-btn:hover {
     transform: scale(1.05);
     background: var(--primary-dark-red);
     box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
+}
+
+.theme-pegasus .train-now-btn:hover {
+    background: #e6b800;
+    box-shadow: 0 15px 30px rgba(255, 204, 0, 0.4);
+}
+
+.theme-mollyhawk .train-now-btn:hover {
+    background: #0052a3;
+    box-shadow: 0 15px 30px rgba(0, 102, 204, 0.4);
 }
 
 @media (max-width: 768px) {

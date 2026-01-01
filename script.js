@@ -191,6 +191,39 @@ function initializeAppTabs() {
     });
 }
 
+// Initialize Back Links based on source
+function initializeBackLinks() {
+    const backLink = document.querySelector('.back-link');
+    if (backLink) {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('from') === 'home') {
+            const path = window.location.pathname;
+            const isSubPage = path.includes('/modules/');
+            
+            let prefix = '';
+            if (isSubPage) {
+                const modulesIndex = path.indexOf('/modules/');
+                const subPath = path.substring(modulesIndex + '/modules/'.length);
+                const slashCount = (subPath.match(/\//g) || []).length;
+                prefix = '../'.repeat(slashCount + 1);
+            }
+            
+            backLink.href = `${prefix}index.html`;
+            
+            // Update text if it contains "PACE", "Pegasus", or "Mollyhawk"
+            if (backLink.textContent.includes('PACE') || 
+                backLink.textContent.includes('Pegasus') || 
+                backLink.textContent.includes('Mollyhawk')) {
+                
+                const svg = backLink.querySelector('svg');
+                backLink.innerHTML = '';
+                if (svg) backLink.appendChild(svg);
+                backLink.appendChild(document.createTextNode(' Back to Home'));
+            }
+        }
+    }
+}
+
 // Add animation on scroll
 const observerOptions = {
     threshold: 0.1,
@@ -221,6 +254,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadComponents();
     initializeAnimations();
     initializeAppTabs();
+    initializeBackLinks();
     
     // Header scroll effect
     const handleScroll = () => {
