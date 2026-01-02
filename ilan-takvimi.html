@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment Calendar - AvioTest®</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main class="calendar-page">
+        <section class="calendar-hero">
+            <div class="container">
+                <h1 class="hero-title">General Recruitment Calendar</h1>
+                <p class="hero-subtitle">When did recruitment open and close in previous years? You can track application periods here.</p>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <div class="container">
+                <div class="timeline-controls">
+                    <button class="year-btn active" data-year="2024">2024</button>
+                    <button class="year-btn" data-year="2025">2025</button>
+                    <button class="year-btn" data-year="2026">2026</button>
+                </div>
+
+                <div class="vertical-timeline-wrapper">
+                    <div id="timeline-content" class="vertical-timeline">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+
+                <div class="timeline-legend">
+                    <div class="legend-item"><span class="dot thy"></span> THY</div>
+                    <div class="legend-item"><span class="dot sun"></span> SunExpress</div>
+                    <div class="legend-item"><span class="dot pegasus"></span> Pegasus</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>How to Use?</h3>
+                        <p>The colored dots and cards represent recruitment periods. You can click on the cards to go to the preparation page for the respective exam.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Current Information</h3>
+                        <p>Our calendar will be updated instantly when the 2026 recruitment opens. Since SunExpress recruitment can often remain open year-round, it is recommended to follow official announcements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

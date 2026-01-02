@@ -1,4 +1,4 @@
-// Function to load HTML components
+﻿// Function to load HTML components
 async function loadComponents() {
     const path = window.location.pathname;
     const isSubPage = path.includes('/modules/');
@@ -45,6 +45,7 @@ async function loadComponents() {
     initializeNavLinks();
     initializeInteractiveElements();
     setActiveNavLink();
+    initializeTimeline();
 }
 
 // Set active class on nav links based on current page
@@ -326,13 +327,20 @@ function handleNotify(event) {
 }
 
 // Custom Cursor and Trail Logic
-const cursor = document.createElement('div');
-cursor.className = 'custom-cursor';
-document.body.appendChild(cursor);
+let cursor = document.querySelector('.custom-cursor');
+let trail = document.querySelector('.cursor-trail');
 
-const trail = document.createElement('div');
-trail.className = 'cursor-trail';
-document.body.appendChild(trail);
+// If they don't exist in HTML, create them
+if (!cursor) {
+    cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+}
+if (!trail) {
+    trail = document.createElement('div');
+    trail.className = 'cursor-trail';
+    document.body.appendChild(trail);
+}
 
 let mouseX = 0;
 let mouseY = 0;
@@ -340,10 +348,17 @@ let cursorX = 0;
 let cursorY = 0;
 let trailX = 0;
 let trailY = 0;
+let hasMoved = false;
 
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    
+    if (!hasMoved) {
+        hasMoved = true;
+        cursor.style.opacity = '1';
+        trail.style.opacity = '1';
+    }
 });
 
 function animate() {
@@ -424,4 +439,130 @@ function initializeInteractiveElements() {
             if (cursor) cursor.classList.remove('white');
         });
     });
+}
+
+// İlan Takvimi Logic
+function initializeTimeline() {
+    const timelineContent = document.getElementById("timeline-content");
+    const yearButtons = document.querySelectorAll(".year-btn");
+    
+    if (!timelineContent) return;
+
+    const timelineData = {
+        "2024": [
+            { airline: "THY", class: "thy", start: "2024-06-13", end: "2024-09-09", label: "13 Jun - 9 Sep", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Standard mid-year intake (airlinehaber.com)" },
+            { airline: "THY", class: "thy", start: "2024-10-07", end: "2024-10-25", label: "7 Oct - 25 Oct", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Fall intake (ATPL TV Careers)" },
+            { airline: "Pegasus", class: "pegasus", start: "2024-05-10", end: "2024-06-24", label: "10 May - 24 Jun", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program / Cadet-style", notes: "Official listing for 2024. (ATPL TV Careers)" },
+            { airline: "SunExpress", class: "sun", start: "2024-01-01", end: "2024-12-31", label: "All Year", link: "mollyhawk.html", conditionsLink: "mollyhawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available — must monitor live postings. (LinkedIn)" }
+        ],
+        "2025": [
+            { airline: "THY", class: "thy", start: "2025-01-02", end: "2025-04-04", label: "2 Jan - 4 Apr", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Winter/Spring intake (ATPL TV Careers)" },
+            { airline: "THY", class: "thy", start: "2025-05-27", end: "2025-07-11", label: "27 May - 11 Jul", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Early Summer intake (ATPL TV Careers)" },
+            { airline: "THY", class: "thy", start: "2025-09-01", end: "2025-10-17", label: "Sep - 17 Oct", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Reported fall intake close date (orkam.yildiz.edu.tr)" },
+            { airline: "Pegasus", class: "pegasus", start: "2025-03-17", end: "2025-04-01", label: "17 Mar - 1 Apr", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program / Cadet-style", notes: "Official listing for early 2025. (ATPL TV Careers)" },
+            { airline: "Pegasus", class: "pegasus", start: "2025-07-15", end: "2025-09-01", label: "Jul - 1 Sep", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "PC-2026 Pilot Program", notes: "Another intake for PC-2026 program. (Facebook)" },
+            { airline: "SunExpress", class: "sun", start: "2025-01-01", end: "2025-12-31", label: "All Year", link: "mollyhawk.html", conditionsLink: "mollyhawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available — must monitor live postings. (LinkedIn)" }
+        ],
+        "2026": [
+            { airline: "Pegasus", class: "pegasus", start: "2026-01-02", end: "2026-03-15", label: "2 Jan - 15 Mar", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program / Cadet-style", notes: "Active recruitment for 2026 winter intake.", isActive: true },
+            { airline: "SunExpress", class: "sun", start: "2026-01-01", end: "2026-12-31", label: "All Year", link: "mollyhawk.html", conditionsLink: "mollyhawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available — must monitor live postings. (LinkedIn)" }
+        ]
+    };
+
+    function renderYear(year) {
+        const data = timelineData[year] || [];
+        
+        // Sort data by start date, then by end date
+        const sortedData = [...data].sort((a, b) => {
+            const startA = new Date(a.start).getTime();
+            const startB = new Date(b.start).getTime();
+            if (startA !== startB) {
+                return startA - startB;
+            }
+            return new Date(a.end).getTime() - new Date(b.end).getTime();
+        });
+        
+        timelineContent.innerHTML = "";
+
+        if (sortedData.length === 0) {
+            timelineContent.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-gray);">No recruitment information available for this year yet.</div>`;
+            return;
+        }
+
+        sortedData.forEach(item => {
+            const timelineItem = document.createElement("div");
+            timelineItem.className = `timeline-item ${item.class} ${item.isActive ? 'active-recruitment' : ''}`;
+            
+            const dot = document.createElement("div");
+            dot.className = "timeline-dot";
+
+            const dateBox = document.createElement("div");
+            dateBox.className = "timeline-date-box";
+            
+            if (item.isActive) {
+                const pulse = document.createElement("span");
+                pulse.className = "pulse-dot";
+                dateBox.appendChild(pulse);
+                dateBox.appendChild(document.createTextNode(" LIVE: " + item.label));
+            } else {
+                dateBox.textContent = item.label;
+            }
+            
+            const card = document.createElement("div");
+            card.className = "timeline-content-card";
+            
+            const airline = document.createElement("span");
+            airline.className = "timeline-airline";
+            airline.textContent = item.airline;
+
+            const program = document.createElement("span");
+            program.className = "timeline-program";
+            program.textContent = item.program;
+            
+            const notes = document.createElement("span");
+            notes.className = "timeline-notes";
+            notes.textContent = item.notes;
+
+            const actions = document.createElement("div");
+            actions.className = "timeline-actions";
+
+            const prepBtn = document.createElement("a");
+            prepBtn.href = item.link;
+            prepBtn.className = "timeline-btn prep-btn";
+            prepBtn.textContent = "Preparation Page";
+
+            const condBtn = document.createElement("a");
+            condBtn.href = item.conditionsLink;
+            condBtn.className = "timeline-btn cond-btn";
+            condBtn.textContent = "Application Conditions";
+
+            actions.appendChild(prepBtn);
+            actions.appendChild(condBtn);
+
+            card.appendChild(airline);
+            card.appendChild(program);
+            card.appendChild(notes);
+            card.appendChild(actions);
+            
+            timelineItem.appendChild(dot);
+            timelineItem.appendChild(dateBox);
+            timelineItem.appendChild(card);
+            
+            timelineContent.appendChild(timelineItem);
+        });
+
+        // Re-initialize interactive elements for the new cards
+        initializeInteractiveElements();
+    }
+
+    yearButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            yearButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderYear(btn.dataset.year);
+        });
+    });
+
+    // Initial render
+    renderYear("2024");
 }
