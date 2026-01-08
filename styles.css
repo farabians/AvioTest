@@ -2369,6 +2369,43 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-weight: 700;
 }
 
+/* Compact version of phases diagram for module detail pages */
+.phases-diagram-section.compact {
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.phases-diagram-section.compact .content-title {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.phases-diagram-section.compact .diagram-note {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.phases-diagram-section.compact .phase-box {
+    padding: 12px 20px;
+    min-width: 120px;
+    border-radius: 12px;
+}
+
+.phases-diagram-section.compact .phase-label {
+    font-size: 1rem;
+}
+
+.phases-diagram-section.compact .phase-arrow {
+    font-size: 1.2rem;
+}
+
+.phases-diagram-section.compact .module-name-placeholder {
+    font-size: 0.65rem;
+    margin-bottom: 4px;
+}
+
 .phases-explanation {
     margin-bottom: 80px;
 }
