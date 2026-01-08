@@ -36,40 +36,58 @@
                 <div class="content-card">
                     <h2>What is Spatial Orientation?</h2>
                     <p>In this test, you control a ball inside a maze. The maze has four entrances and different symmetry layouts. A ball starts from one entrance and moves based on your inputs. Your task is to guide the ball to the empty center area as fast as possible.</p>
-                    
-                    <div class="visual-demo">
-                        <div class="demo-item">
-                            <p class="demo-label">1. Maze Layout</p>
+                </div>
+
+                <div class="instruction-flow">
+                    <!-- Step 1 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>1. Maze Layout</h3>
+                        </div>
+                        <div class="step-description">
+                            <ul>
+                                <li>Each maze has 4 possible entrances and a target in the center.</li>
+                                <li>The ball starts at one of the entrances.</li>
+                            </ul>
+                        </div>
+                        <div class="step-media">
                             <div class="demo-placeholder">
                                 <div class="placeholder-text">GIF: Maze with 4 entrances and a ball</div>
                             </div>
                         </div>
-                        <div class="demo-item">
-                            <p class="demo-label">2. Symmetry Movement</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>2. The Golden Rule: Symmetry</h3>
+                        </div>
+                        <div class="step-description">
+                            <ul>
+                                <li>When you move the ball in your maze, another ball in a second maze moves simultaneously.</li>
+                                <li>This second ball mirrors your movements based on a specific symmetry.</li>
+                                <li>Your goal is to guide both balls to the center at the same time.</li>
+                            </ul>
+                        </div>
+                        <div class="step-media">
                             <div class="demo-placeholder">
                                 <div class="placeholder-text">GIF: Two mazes moving simultaneously with symmetry</div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>How it Works</h3>
-                        <ul>
-                            <li>When you move the ball in one maze, the ball moves at the same time in another maze with the same symmetry.</li>
-                            <li>You must guide the ball to the center in each maze.</li>
-                            <li>All mazes follow the same symmetry rule.</li>
-                        </ul>
-                    </div>
-                    <div class="content-card">
-                        <h3>Important Points</h3>
-                        <ul>
-                            <li>Each maze has a time limit shown before it starts.</li>
-                            <li>You must finish the maze within the given time.</li>
-                            <li>Speed and accuracy are both important.</li>
-                            <li>The goal is to understand the symmetry and apply the same movement logic.</li>
-                        </ul>
+                    <!-- Step 3 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>3. Speed and Accuracy</h3>
+                        </div>
+                        <div class="step-description">
+                            <ul>
+                                <li>Every maze has a strict time limit shown before it starts.</li>
+                                <li>Moving too quickly and making a mistake costs more time than brief planning.</li>
+                                <li>Understand the symmetry pattern first, then execute the movement.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -107,4 +125,5 @@
     <script src="../../script.js"></script>
 </body>
 </html>
+
 

@@ -34,52 +34,69 @@
 
             <section class="module-content">
                 <div class="content-card">
-                    <h2>How it works</h2>
-                    <p>You will see a sequence of numbers shown one by one on the screen. Numbers range from 1 to 9. Your task is to remember only certain numbers based on a simple rule:</p>
-                    <ul>
-                        <li>Numbers appear one after another.</li>
-                        <li>You compare each new number with the previous number.</li>
-                        <li>If the new number is <strong>higher</strong>, you keep it in mind.</li>
-                        <li>If the new number is <strong>lower</strong>, you ignore it.</li>
-                    </ul>
-                    
-                    <div class="note-box" style="margin: 20px 0;">
-                        <h4>Example:</h4>
-                        <p>7 → 6 → <strong>ignore 6</strong></p>
-                        <p>6 → 7 → <strong>keep 7</strong></p>
-                        <p>7 → 6 → <strong>ignore 6</strong></p>
-                        <p>6 → 8 → <strong>keep 8</strong></p>
-                        <p style="margin-top: 10px;">At the end, you are asked to enter the numbers you kept, in the correct order.</p>
-                    </div>
+                    <h2>Test Description</h2>
+                    <p>In this test, a sequence of numbers is shown one by one on the screen. Numbers range from 1 to 9. You must remember only specific numbers based on a higher/lower rule.</p>
+                </div>
 
-                    <div class="visual-demo">
-                        <div class="demo-item">
-                            <p class="demo-label">1. Number Sequence</p>
+                <div class="instruction-flow">
+                    <!-- Step 1 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>1. The Higher/Lower Rule</h3>
+                        </div>
+                        <div class="step-description">
+                            <ul>
+                                <li>Numbers appear one after another.</li>
+                                <li>You compare each new number with the previous number.</li>
+                                <li>If the new number is <strong>higher</strong>, you keep it in mind.</li>
+                                <li>If the new number is <strong>lower</strong>, you ignore it.</li>
+                            </ul>
+                            <div class="note-box" style="margin: 15px 0;">
+                                <h4>Example:</h4>
+                                <p>7 → 6 → <strong>ignore 6</strong></p>
+                                <p>6 → 7 → <strong>keep 7</strong></p>
+                                <p>7 → 6 → <strong>ignore 6</strong></p>
+                                <p>6 → 8 → <strong>keep 8</strong></p>
+                            </div>
+                        </div>
+                        <div class="step-media">
                             <div class="demo-placeholder">
                                 <div class="placeholder-text">Numbers appearing one by one (1-9)</div>
                             </div>
                         </div>
-                        <div class="demo-item">
-                            <p class="demo-label">2. Input Phase</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>2. Input Phase</h3>
+                        </div>
+                        <div class="step-description">
+                            <p>At the end, you are asked to enter the numbers you kept, in the correct order using the on-screen keypad.</p>
+                        </div>
+                        <div class="step-media">
                             <div class="demo-placeholder">
                                 <div class="placeholder-text">Enter the "kept" numbers in order</div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>Questions</h3>
-                        <ul>
-                            <li>The test includes 8 questions.</li>
-                            <li>The sequence length increases gradually as the test goes on.</li>
-                            <li>Each question becomes more challenging than the previous one.</li>
-                        </ul>
+                    <!-- Step 3 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>3. Difficulty</h3>
+                        </div>
+                        <div class="step-description">
+                            <ul>
+                                <li>The test includes 8 questions.</li>
+                                <li>The sequence length increases gradually as the test goes on.</li>
+                                <li>Each question becomes more challenging than the previous one.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="content-card" style="margin-top: 30px;">
+                <div class="content-card" style="margin-top: 40px;">
                     <h3>Phases</h3>
                     <div class="table-responsive">
                         <table class="module-phases-table">
@@ -142,4 +159,7 @@
     <script src="../../script.js"></script>
 </body>
 </html>
+
+
+
 

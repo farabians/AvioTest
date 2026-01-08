@@ -37,59 +37,72 @@
             <section class="module-content">
                 <div class="content-card">
                     <h2>Test Description</h2>
-                    <p>At the start of each question, you will see several corridors on the screen.</p>
-                    <ul>
-                        <li>Two corridors are marked in red</li>
-                        <li>Red corridors are occupied and cannot be used</li>
-                    </ul>
-                    <p>Then, you will hear audio commands.</p>
-                    <p>Each command includes:</p>
-                    <ul>
-                        <li>A city name</li>
-                        <li>A corridor number</li>
-                    </ul>
-                    <p>If a corridor mentioned in the audio command was not red at the start, that corridor is valid.</p>
-                    <p>This means the city connected to that corridor is a valid city.</p>
-                    <p>If the corridor is red, it is occupied and cannot be used.</p>
+                    <p>This test measures your ability to remember visual information and follow audio instructions at the same time. At the start of each question, you will see several corridors on the screen.</p>
+                </div>
 
-                    <div class="visual-demo">
-                        <div class="demo-item">
-                            <p class="demo-label">1. Visual Start</p>
+                <div class="instruction-flow">
+                    <!-- Step 1 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>1. Visual Start</h3>
+                        </div>
+                        <div class="step-description">
+                            <ul>
+                                <li>Two corridors are marked in red.</li>
+                                <li>Red corridors are occupied and cannot be used.</li>
+                            </ul>
+                        </div>
+                        <div class="step-media">
                             <div class="demo-placeholder">
                                 <div class="placeholder-text">GIF: Corridors appearing on screen (2 Red)</div>
                             </div>
                         </div>
-                        <div class="demo-item">
-                            <p class="demo-label">2. Audio Phase</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>2. Audio Commands</h3>
+                        </div>
+                        <div class="step-description">
+                            <p>You will hear audio commands including a <strong>City Name</strong> and a <strong>Corridor Number</strong>. If a corridor mentioned in the audio command was NOT red at the start, that corridor is valid.</p>
+                        </div>
+                        <div class="step-media">
                             <div class="demo-placeholder">
                                 <div class="placeholder-text">Screen with city selection based on audio</div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Step 3 -->
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>3. Your Task</h3>
+                        </div>
+                        <div class="step-description">
+                            <ul>
+                                <li>Remember which corridors were free.</li>
+                                <li>Select the cities that match the valid corridors on the next screen.</li>
+                                <li>Only select cities connected to free corridors.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="instruction-step">
+                        <div class="step-header">
+                            <h3>Important Notes</h3>
+                        </div>
+                        <div class="step-description">
+                            <ul>
+                                <li>There are always 2 occupied (red) corridors.</li>
+                                <li>In one question, there can be up to 6 audio commands.</li>
+                                <li>This means up to 6 valid cities.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>Your Task</h3>
-                        <ul>
-                            <li>Listen carefully to the audio commands</li>
-                            <li>Remember which corridors were free</li>
-                            <li>On the next screen, select the cities that use valid corridors</li>
-                            <li>Only cities connected to free corridors should be selected.</li>
-                        </ul>
-                    </div>
-                    <div class="content-card">
-                        <h3>Important Notes</h3>
-                        <ul>
-                            <li>There are always 2 occupied (red) corridors</li>
-                            <li>In one question, there can be up to 6 audio commands</li>
-                            <li>This means up to 6 valid cities</li>
-                            <li>You will never need to select more than 6 cities</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="content-card" style="margin-top: 30px;">
+                <div class="content-card" style="margin-top: 40px;">
                     <h3>Phases</h3>
                     <p>This test has 2 parts:</p>
                     <div class="table-responsive">
@@ -155,4 +168,7 @@
     <script src="../../script.js"></script>
 </body>
 </html>
+
+
+
 

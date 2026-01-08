@@ -37,7 +37,7 @@ body {
     color: var(--text-white);
     line-height: 1.6;
     overflow-x: hidden;
-    padding-top: 80px;
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -256,14 +256,14 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 /* Hero Section */
 .hero {
     text-align: center;
-    padding: 60px 0 0; /* Reduced bottom padding */
+    padding: 40px 0 0; /* Reduced top padding */
     position: relative;
 }
 
 .hero-content {
     position: relative;
     z-index: 1;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .hero-logo {
@@ -1535,7 +1535,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .status-section {
     padding: 20px 0 40px;
-    margin-top: -40px;
+    margin-top: 30px;
     position: relative;
     z-index: 15;
 }
@@ -2273,14 +2273,30 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .breadcrumb {
-    margin-bottom: 20px;
-    text-align: left;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
 }
 
-@media (max-width: 768px) {
-    .breadcrumb {
-        display: none;
-    }
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--primary-red);
+    transform: translateX(-5px);
+}
+
+.back-link svg {
+    width: 20px;
+    height: 20px;
 }
 
 .structure-header {
@@ -2300,6 +2316,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     padding: 60px 40px;
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 40px;
     margin-bottom: 40px;
     text-align: center;
 }
@@ -2692,7 +2709,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .content-card {
     background: var(--card-bg);
-    padding: 25px;
+    padding: 30px;
     border-radius: 16px;
     border: 1px solid var(--border-color);
     margin-bottom: 20px;
@@ -2735,12 +2752,14 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .content-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 30px;
+    margin-bottom: 30px;
 }
 
 .module-cta-section {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 50px;
+    padding-bottom: 60px;
 }
 
 .cta-button.large {
@@ -2817,6 +2836,118 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-size: 0.8rem;
     text-align: center;
     padding: 20px;
+}
+
+/* Vertical Instruction Flow */
+.instruction-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 40px 0;
+}
+
+.instruction-step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 35px;
+    transition: all 0.3s ease;
+}
+
+.instruction-step:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-red);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-red);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.95rem;
+    font-weight: 900;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+.step-header h3 {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+}
+
+.step-header h3 {
+    font-size: 1.3rem;
+    color: var(--accent-gold) !important;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-description {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.step-description ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.step-description li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.step-description li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-red);
+}
+
+.step-media {
+    width: 100%;
+    max-width: 320px;
+    margin: 50px auto 0;
+}
+
+.step-media .demo-placeholder {
+    height: auto;
+    min-height: 180px;
+    max-width: 100%;
+}
+
+.step-media img {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px) {
+    .instruction-step {
+        padding: 15px;
+    }
+    
+    .step-header h3 {
+        font-size: 1.1rem;
+    }
 }
 
 /* Phase Details Grid */
@@ -2942,23 +3073,22 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 /* --- Pegasus Tutorial Section --- */
 .tutorial-section {
-    padding: 0 0 30px;
-    margin-top: -30px;
+    padding: 30px 0;
     position: relative;
-    z-index: 5; /* Lowered to stay behind status section */
+    z-index: 5;
 }
 
 .status-section + .tutorial-section {
-    margin-top: -20px; /* Slight overlap for better visual flow */
+    margin-top: 30px;
 }
 
 .tutorial-card {
     background: linear-gradient(135deg, var(--card-bg) 0%, #2a2a2a 100%);
     border-radius: 20px;
-    padding: 25px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 40px;
     color: white;
     overflow: hidden;
     position: relative;
