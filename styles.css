@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --primary-red: #ff0000;
     --primary-dark-red: #cc0000;
     --bg-color: #191919;
@@ -2220,7 +2220,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .accordion-content li::before {
-    content: 'â€¢';
+    content: '•';
     color: var(--primary-red);
     position: absolute;
     left: 0;
@@ -2618,7 +2618,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .content-card li::before {
-    content: 'â†’';
+    content: '→';
     position: absolute;
     left: 0;
     color: var(--primary-red);
@@ -3672,7 +3672,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     }
 }
 
-/* Ä°lan Takvimi Page */
+/* İlan Takvimi Page */
 .calendar-page {
     padding-bottom: 40px;
 }
@@ -4225,7 +4225,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .timeline-list li::before {
-    content: 'â†’';
+    content: '→';
     color: #ff0000;
     font-weight: 900;
 }
@@ -5249,4 +5249,5 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         width: calc(100% + 50px);
     }
 }
+
 
