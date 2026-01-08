@@ -2852,11 +2852,18 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     border-radius: 20px;
     padding: 35px;
     transition: all 0.3s ease;
+    display: flex;
+    gap: 40px;
+    align-items: center;
 }
 
 .instruction-step:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: var(--primary-red);
+}
+
+.step-content {
+    flex: 1;
 }
 
 .step-header {
@@ -2920,9 +2927,9 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .step-media {
-    width: 100%;
-    max-width: 320px;
-    margin: 50px auto 0;
+    width: 320px;
+    flex-shrink: 0;
+    margin: 0;
 }
 
 .step-media .demo-placeholder {
@@ -2940,6 +2947,21 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
+@media (max-width: 1024px) {
+    .instruction-step {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 30px;
+        padding: 25px;
+    }
+    
+    .step-media {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 768px) {
     .instruction-step {
         padding: 15px;
@@ -2948,6 +2970,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .step-header h3 {
         font-size: 1.1rem;
     }
+}
 }
 
 /* Phase Details Grid */
