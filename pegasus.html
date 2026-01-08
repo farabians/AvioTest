@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Add this at the beginning of your styles to ensure padding doesn't increase width */
+        .pegasus-exam-timeline, .pegasus-exam-timeline * {
+            box-sizing: border-box;
+        }
+
         /* Pegasus Exam Timeline Styles - Replicated from PACE */
         .pegasus-exam-timeline {
             margin: 40px 0 30px;
@@ -154,8 +159,8 @@
 
         @media (max-width: 900px) {
             .pegasus-exam-timeline {
-                overflow-y: visible;
-                padding: 30px 25px;
+                overflow-x: hidden; /* Prevent horizontal scroll */
+                padding: 30px 15px; /* Reduced horizontal padding */
             }
 
             .timeline-sections-header {
@@ -166,13 +171,14 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 25px;
-                padding-left: 15px;
+                padding-left: 10px;
+                width: 100%; /* Ensure it takes full width of parent */
             }
 
             .timeline-main-row::before {
                 top: 10px;
                 bottom: 10px;
-                left: 27px;
+                left: 21px; /* Adjusted to match 24px circle (10px padding + 12px radius - offset) */
                 width: 1px;
                 height: auto;
                 right: auto;
