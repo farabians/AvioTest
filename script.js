@@ -1,13 +1,14 @@
-﻿// Function to load HTML components
+// Function to load HTML components
 async function loadComponents() {
     const path = window.location.pathname;
-    const isSubPage = path.includes('/modules/');
+    const isSubPage = path.includes('/modules/') || path.includes('/blog/');
     
     // Calculate prefix based on nesting level
     let prefix = '';
     if (isSubPage) {
-        const modulesIndex = path.indexOf('/modules/');
-        const subPath = path.substring(modulesIndex + '/modules/'.length);
+        const subPathStart = path.includes('/modules/') ? '/modules/' : '/blog/';
+        const modulesIndex = path.indexOf(subPathStart);
+        const subPath = path.substring(modulesIndex + subPathStart.length);
         const slashCount = (subPath.match(/\//g) || []).length;
         prefix = '../'.repeat(slashCount + 1);
     }
@@ -54,7 +55,8 @@ function setActiveNavLink() {
     const currentPage = path.split('/').pop() || 'index.html';
     const isPegasusSection = currentPage.startsWith('pegasus') || path.includes('/modules/pegasus/');
     const isPaceSection = currentPage.startsWith('pace') || path.includes('/modules/pace/');
-    const isMollyhawkSection = currentPage.startsWith('mollyhawk') || path.includes('/modules/mollyhawk/');
+    const isMollymawkSection = currentPage.startsWith('mollymawk') || path.includes('/modules/mollymawk/');
+    const isBlogSection = currentPage.startsWith('blog') || path.includes('/blog/');
 
     document.querySelectorAll('.nav-link').forEach(link => {
         const href = link.getAttribute('href');
@@ -67,7 +69,9 @@ function setActiveNavLink() {
             link.classList.add('active');
         } else if (linkPage === 'pace.html' && isPaceSection) {
             link.classList.add('active');
-        } else if (linkPage === 'mollyhawk.html' && isMollyhawkSection) {
+        } else if (linkPage === 'mollymawk.html' && isMollymawkSection) {
+            link.classList.add('active');
+        } else if (linkPage === 'blog.html' && isBlogSection) {
             link.classList.add('active');
         } else if (linkPage === currentPage && currentPage !== 'index.html') {
             link.classList.add('active');
@@ -168,7 +172,7 @@ function initializeAppTabs() {
 
         // Update theme
         if (mockup) {
-            mockup.classList.remove('theme-pace', 'theme-pegasus', 'theme-mollyhawk');
+            mockup.classList.remove('theme-pace', 'theme-pegasus', 'theme-mollymawk');
             mockup.classList.add(`theme-${text.toLowerCase()}`);
         }
     }
@@ -211,10 +215,10 @@ function initializeBackLinks() {
             
             backLink.href = `${prefix}index.html`;
             
-            // Update text if it contains "PACE", "Pegasus", or "Mollyhawk"
+            // Update text if it contains "PACE", "Pegasus", or "mollymawk"
             if (backLink.textContent.includes('PACE') || 
                 backLink.textContent.includes('Pegasus') || 
-                backLink.textContent.includes('Mollyhawk')) {
+                backLink.textContent.includes('mollymawk')) {
                 
                 const svg = backLink.querySelector('svg');
                 backLink.innerHTML = '';
@@ -250,12 +254,40 @@ function initializeAnimations() {
     });
 }
 
+// Blog Background Animation
+function initBlogAnimation() {
+    const container = document.getElementById('news-bg-animation');
+    if (!container) return;
+
+    const newsWords = ['NEWS', 'BREAKING', 'AVIATION', 'PILOT', 'RECRUITMENT', 'THY', 'PEGASUS', 'AIRLINES', 'SUCCESS', 'EXAM', 'CAPTAIN', 'COCKPIT'];
+    const icons = ['✈', '📡', '📑', '🗞', '💡', '✅'];
+    
+    for (let i = 0; i < 30; i++) {
+        const el = document.createElement('div');
+        el.className = 'news-icon-float';
+        
+        const content = Math.random() > 0.5 
+            ? newsWords[Math.floor(Math.random() * newsWords.length)]
+            : icons[Math.floor(Math.random() * icons.length)];
+            
+        el.innerText = content;
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.animationDuration = (Math.random() * 20 + 20) + 's';
+        el.style.animationDelay = (Math.random() * -40) + 's';
+        el.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+        el.style.opacity = (Math.random() * 0.2 + 0.05).toString();
+        
+        container.appendChild(el);
+    }
+}
+
 // Handle Pegasus Notification Form
 document.addEventListener('DOMContentLoaded', async () => {
     await loadComponents();
     initializeAnimations();
     initializeAppTabs();
     initializeBackLinks();
+    initBlogAnimation();
     
     // Header scroll effect
     const handleScroll = () => {
@@ -441,7 +473,7 @@ function initializeInteractiveElements() {
     });
 }
 
-// İlan Takvimi Logic
+// �lan Takvimi Logic
 function initializeTimeline() {
     const timelineContent = document.getElementById("timeline-content");
     const yearButtons = document.querySelectorAll(".year-btn");
@@ -453,7 +485,7 @@ function initializeTimeline() {
             { airline: "THY", class: "thy", start: "2024-06-13", end: "2024-09-09", label: "13 Jun - 9 Sep", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Standard mid-year intake (airlinehaber.com)" },
             { airline: "THY", class: "thy", start: "2024-10-07", end: "2024-10-25", label: "7 Oct - 25 Oct", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Fall intake (ATPL TV Careers)" },
             { airline: "Pegasus", class: "pegasus", start: "2024-05-10", end: "2024-06-24", label: "10 May - 24 Jun", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program / Cadet-style", notes: "Official listing for 2024. (ATPL TV Careers)" },
-            { airline: "SunExpress", class: "sun", start: "2024-01-01", end: "2024-12-31", label: "All Year", link: "mollyhawk.html", conditionsLink: "mollyhawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available — must monitor live postings. (LinkedIn)" }
+            { airline: "SunExpress", class: "sun", start: "2024-01-01", end: "2024-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available � must monitor live postings. (LinkedIn)" }
         ],
         "2025": [
             { airline: "THY", class: "thy", start: "2025-01-02", end: "2025-04-04", label: "2 Jan - 4 Apr", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Winter/Spring intake (ATPL TV Careers)" },
@@ -461,11 +493,11 @@ function initializeTimeline() {
             { airline: "THY", class: "thy", start: "2025-09-01", end: "2025-10-17", label: "Sep - 17 Oct", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Reported fall intake close date (orkam.yildiz.edu.tr)" },
             { airline: "Pegasus", class: "pegasus", start: "2025-03-17", end: "2025-04-01", label: "17 Mar - 1 Apr", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program / Cadet-style", notes: "Official listing for early 2025. (ATPL TV Careers)" },
             { airline: "Pegasus", class: "pegasus", start: "2025-07-15", end: "2025-09-01", label: "Jul - 1 Sep", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "PC-2026 Pilot Program", notes: "Another intake for PC-2026 program. (Facebook)" },
-            { airline: "SunExpress", class: "sun", start: "2025-01-01", end: "2025-12-31", label: "All Year", link: "mollyhawk.html", conditionsLink: "mollyhawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available — must monitor live postings. (LinkedIn)" }
+            { airline: "SunExpress", class: "sun", start: "2025-01-01", end: "2025-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available � must monitor live postings. (LinkedIn)" }
         ],
         "2026": [
             { airline: "Pegasus", class: "pegasus", start: "2026-01-02", end: "2026-03-15", label: "2 Jan - 15 Mar", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program / Cadet-style", notes: "Active recruitment for 2026 winter intake.", isActive: true },
-            { airline: "SunExpress", class: "sun", start: "2026-01-01", end: "2026-12-31", label: "All Year", link: "mollyhawk.html", conditionsLink: "mollyhawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available — must monitor live postings. (LinkedIn)" }
+            { airline: "SunExpress", class: "sun", start: "2026-01-01", end: "2026-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available � must monitor live postings. (LinkedIn)" }
         ]
     };
 
