@@ -254,40 +254,12 @@ function initializeAnimations() {
     });
 }
 
-// Blog Background Animation
-function initBlogAnimation() {
-    const container = document.getElementById('news-bg-animation');
-    if (!container) return;
-
-    const newsWords = ['NEWS', 'BREAKING', 'AVIATION', 'PILOT', 'RECRUITMENT', 'THY', 'PEGASUS', 'AIRLINES', 'SUCCESS', 'EXAM', 'CAPTAIN', 'COCKPIT'];
-    const icons = ['✈', '📡', '📑', '🗞', '💡', '✅'];
-    
-    for (let i = 0; i < 30; i++) {
-        const el = document.createElement('div');
-        el.className = 'news-icon-float';
-        
-        const content = Math.random() > 0.5 
-            ? newsWords[Math.floor(Math.random() * newsWords.length)]
-            : icons[Math.floor(Math.random() * icons.length)];
-            
-        el.innerText = content;
-        el.style.left = Math.random() * 100 + 'vw';
-        el.style.animationDuration = (Math.random() * 20 + 20) + 's';
-        el.style.animationDelay = (Math.random() * -40) + 's';
-        el.style.fontSize = (Math.random() * 2 + 1) + 'rem';
-        el.style.opacity = (Math.random() * 0.2 + 0.05).toString();
-        
-        container.appendChild(el);
-    }
-}
-
 // Handle Pegasus Notification Form
 document.addEventListener('DOMContentLoaded', async () => {
     await loadComponents();
     initializeAnimations();
     initializeAppTabs();
     initializeBackLinks();
-    initBlogAnimation();
     
     // Header scroll effect
     const handleScroll = () => {
