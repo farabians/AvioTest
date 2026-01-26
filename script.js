@@ -570,3 +570,46 @@ function initializeTimeline() {
     // Initial render
     renderYear("2024");
 }
+
+/* Pace Handbook Toggle Function */
+function toggleHandbook() {
+    const card = document.getElementById('pace-handbook');
+    if (card) {
+        card.classList.toggle('active');
+        
+        // Dynamic scroll adjustment when opened
+        if (card.classList.contains('active')) {
+            setTimeout(() => {
+                const headerOffset = 150;
+                const elementPosition = card.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }, 500);
+        }
+    }
+}
+
+/* Pegasus Handbook Toggle Function */
+function togglePegasusHandbook() {
+    const card = document.getElementById('pegasus-handbook');
+    if (card) {
+        card.classList.toggle('active');
+        
+        if (card.classList.contains('active')) {
+            setTimeout(() => {
+                const headerOffset = 150;
+                const elementPosition = card.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }, 500);
+        }
+    }
+}
