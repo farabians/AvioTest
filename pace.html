@@ -531,6 +531,9 @@
         }
 
         .module-item-compact {
+            display: flex;
+            align-items: center;
+            gap: 16px;
             padding: 12px 16px;
             border-radius: 16px;
             background: rgba(255, 255, 255, 0.02);
@@ -538,6 +541,30 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+        }
+
+        .m-image {
+            flex-shrink: 0;
+            width: 80px;
+            height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .m-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .m-info {
+            flex: 1;
         }
 
         .module-item-compact::before {
@@ -694,32 +721,67 @@
                             <p class="pane-subtext">Değerlendirme sürecinde yer alan başlıca modüller şunlardır:</p>
                             <div class="module-list-compact">
                                 <div class="module-item-compact">
-                                    <span class="m-name">Audio Visual Memory (Görsel-İşitsel Bellek) </span>
-                                    <span class="m-desc">Görsel ve işitsel bilgilerin eş zamanlı olarak algılanması ve hatırlanma kapasitesini ölçer.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Audio_visual_memory.png" alt="Audio Visual Memory">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Audio Visual Memory (Görsel-İşitsel Bellek) </span>
+                                        <span class="m-desc">Görsel ve işitsel bilgilerin eş zamanlı olarak algılanması ve hatırlanma kapasitesini ölçer.</span>
+                                    </div>
                                 </div>
                                 <div class="module-item-compact">
-                                    <span class="m-name">Verbal Memory – Digit Span (Sözel Bellek) </span>
-                                    <span class="m-desc">Sayısal bilgilerin kısa süreli bellekte tutulması ve doğru şekilde geri çağrılmasını değerlendirir.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Digit_span.png" alt="Verbal Memory – Digit Span">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Verbal Memory – Digit Span (Sözel Bellek) </span>
+                                        <span class="m-desc">Sayısal bilgilerin kısa süreli bellekte tutulması ve doğru şekilde geri çağrılmasını değerlendirir.</span>
+                                    </div>
                                 </div>
                                 <div class="module-item-compact">
-                                    <span class="m-name">3D Spatial Perception (Üç Boyutlu Uzamsal Algı) </span>
-                                    <span class="m-desc">Nesnelerin üç boyutlu uzayda algılanması ve konum ilişkilerinin yorumlanmasını ölçer.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/3Dimesional_spatial_perception.png" alt="3D Spatial Perception">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">3D Spatial Perception (Üç Boyutlu Uzamsal Algı) </span>
+                                        <span class="m-desc">Nesnelerin üç boyutlu uzayda algılanması ve konum ilişkilerinin yorumlanmasını ölçer.</span>
+                                    </div>
                                 </div>
                                 <div class="module-item-compact">
-                                    <span class="m-name">Spatial Orientation (Uzamsal Oryantasyon) </span>
-                                    <span class="m-desc">Yön, konum ve hareket ilişkilerini doğru analiz edebilme becerisini değerlendirir.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Spatial_orientation.png" alt="Spatial Orientation">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Spatial Orientation (Uzamsal Oryantasyon) </span>
+                                        <span class="m-desc">Yön, konum ve hareket ilişkilerini doğru analiz edebilme becerisini değerlendirir.</span>
+                                    </div>
                                 </div>
                                 <div class="module-item-compact">
-                                    <span class="m-name">Sustained Attention (Sürdürülebilir Dikkat) </span>
-                                    <span class="m-desc">Uzun süre boyunca dikkat seviyesinin korunabilme yeteneğini ölçer.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Sustained_attention.png" alt="Sustained Attention">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Sustained Attention (Sürdürülebilir Dikkat) </span>
+                                        <span class="m-desc">Uzun süre boyunca dikkat seviyesinin korunabilme yeteneğini ölçer.</span>
+                                    </div>
                                 </div>
                                 <div class="module-item-compact">
-                                    <span class="m-name">Cognitive Agility (Bilişsel Çeviklik) </span>
-                                    <span class="m-desc">Değişen durumlara hızlı uyum sağlama ve zihinsel geçişleri etkin biçimde gerçekleştirme becerisini değerlendirir.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Agility.png" alt="Cognitive Agility">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Cognitive Agility (Bilişsel Çeviklik) </span>
+                                        <span class="m-desc">Değişen durumlara hızlı uyum sağlama ve zihinsel geçişleri etkin biçimde gerçekleştirme becerisini değerlendirir.</span>
+                                    </div>
                                 </div>
                                 <div class="module-item-compact">
-                                    <span class="m-name">Psychomotor Coordination (Psikomotor Koordinasyon ve Çoklu İşlem Becerisi) </span>
-                                    <span class="m-desc">El-göz koordinasyonu ile aynı anda birden fazla görevin yönetebilme kapasitesini ölçer.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Joystick_flight_test.png" alt="Psychomotor Coordination">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Psychomotor Coordination (Psikomotor Koordinasyon ve Çoklu İşlem Becerisi) </span>
+                                        <span class="m-desc">El-göz koordinasyonu ile aynı anda birden fazla görevin yönetebilme kapasitesini ölçer.</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -734,12 +796,22 @@
                             <p class="pane-subtext">Değerlendirme sürecinde yer alan başlıca modüller şunlardır:</p>
                             <div class="module-list-compact">
                                 <div class="module-item-compact">
-                                    <span class="m-name">Mathematics (Matematik) </span>
-                                    <span class="m-desc">Analitik düşünme yeteneği, temel matematiksel işlemler ve havacılık odaklı problem çözme becerileri.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/mathematics.png" alt="Mathematics">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Mathematics (Matematik) </span>
+                                        <span class="m-desc">Analitik düşünme yeteneği, temel matematiksel işlemler ve havacılık odaklı problem çözme becerileri.</span>
+                                    </div>
                                 </div>
                                 <div class="module-item-compact">
-                                    <span class="m-name">Physics (Fizik) </span>
-                                    <span class="m-desc">Mekanik, termodinamik ve temel fizik prensiplerinin teorik ve pratik uygulama seviyesini ölçer.</span>
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Physics.png" alt="Physics">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Physics (Fizik) </span>
+                                        <span class="m-desc">Mekanik, termodinamik ve temel fizik prensiplerinin teorik ve pratik uygulama seviyesini ölçer.</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
