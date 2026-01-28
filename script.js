@@ -137,35 +137,78 @@ function initializeAppTabs() {
     const examDropdown = document.getElementById('app-exam-dropdown');
     const dropdownItems = document.querySelectorAll('.app-dropdown-item');
 
+    let currentIndex = 0;
+    let autoSwitchTimer = null;
+    const intervalTime = 3000;
+
     // Tab switching
-    tabs.forEach(tab => {
+    tabs.forEach((tab, index) => {
         tab.addEventListener('click', () => {
+            currentIndex = index;
             const target = tab.getAttribute('data-target');
             updateAppExam(target, tab.textContent);
+            resetTimer();
         });
     });
 
     // Dropdown switching
-    dropdownItems.forEach(item => {
+    dropdownItems.forEach((item, index) => {
         item.addEventListener('click', (e) => {
             e.stopPropagation();
+            currentIndex = index;
             const target = item.getAttribute('data-exam');
             updateAppExam(target, item.textContent);
             examDropdown.classList.remove('active');
+            resetTimer();
         });
     });
 
     function updateAppExam(targetId, text) {
+        const container = document.querySelector('.app-grids-container');
+        const targetGrid = document.getElementById(targetId);
+        
         // Update tabs
         tabs.forEach(t => {
             t.classList.remove('active');
             if (t.textContent === text) t.classList.add('active');
         });
         
-        // Update grids
-        grids.forEach(grid => grid.classList.remove('active'));
-        const targetGrid = document.getElementById(targetId);
-        if (targetGrid) targetGrid.classList.add('active');
+        if (container && targetGrid) {
+            // If the grid is already active, don't re-animate height
+            if (targetGrid.classList.contains('active')) return;
+
+            // Set current height explicitly before change to allow transition
+            container.style.height = container.offsetHeight + 'px';
+            container.classList.add('is-transitioning');
+
+            // Switch active grid
+            grids.forEach(grid => grid.classList.remove('active'));
+            targetGrid.classList.add('active');
+
+            // Calculate new height
+            requestAnimationFrame(() => {
+                const newHeight = targetGrid.offsetHeight;
+                container.style.height = newHeight + 'px';
+            });
+
+            // Remove transitioning class and reset height after transition finishes
+            const finalizeTransition = () => {
+                container.classList.remove('is-transitioning');
+                container.style.height = 'auto';
+            };
+
+            const onTransitionEnd = (e) => {
+                if (e.propertyName === 'height') {
+                    finalizeTransition();
+                    container.removeEventListener('transitionend', onTransitionEnd);
+                }
+            };
+            
+            container.addEventListener('transitionend', onTransitionEnd);
+            
+            // Fallback for safety
+            setTimeout(finalizeTransition, 600);
+        }
 
         // Update header label
         if (label) label.textContent = text;
@@ -176,6 +219,61 @@ function initializeAppTabs() {
             mockup.classList.add(`theme-${text.toLowerCase()}`);
         }
     }
+
+    function startTimer() {
+        if (!autoSwitchTimer) {
+            autoSwitchTimer = setInterval(() => {
+                currentIndex = (currentIndex + 1) % tabs.length;
+                const nextTab = tabs[currentIndex];
+                const target = nextTab.getAttribute('data-target');
+                updateAppExam(target, nextTab.textContent);
+            }, intervalTime);
+        }
+    }
+
+    function stopTimer() {
+        if (autoSwitchTimer) {
+            clearInterval(autoSwitchTimer);
+            autoSwitchTimer = null;
+        }
+    }
+
+    function resetTimer() {
+        stopTimer();
+        startTimer();
+    }
+
+    // Auto-switch based on mouse interaction
+    if (mockup) {
+        mockup.addEventListener('mouseenter', stopTimer);
+        mockup.addEventListener('mouseleave', startTimer);
+        
+        // Add event listeners for module cards to prevent switching while hovering them
+        const moduleCards = mockup.querySelectorAll('.app-module-card');
+        moduleCards.forEach(card => {
+            card.addEventListener('mouseenter', stopTimer);
+            card.addEventListener('mouseleave', startTimer);
+        });
+        
+        // Touch events for mobile
+        mockup.addEventListener('touchstart', stopTimer, {passive: true});
+        mockup.addEventListener('touchend', () => {
+            // Restart after a small delay on touch
+            setTimeout(startTimer, 1000);
+        }, {passive: true});
+    }
+
+    // Start initial timer
+    startTimer();
+
+    // Set initial height for smooth transition
+    window.addEventListener('load', () => {
+        const container = document.querySelector('.app-grids-container');
+        const activeGrid = document.querySelector('.app-grid.active');
+        if (container && activeGrid) {
+            container.style.height = activeGrid.offsetHeight + 'px';
+        }
+    });
 
     // Set initial theme
     if (label && mockup) {
@@ -254,8 +352,51 @@ function initializeAnimations() {
     });
 }
 
+// Typewriter animation for hero title
+function initializeTypewriter() {
+    const element = document.getElementById('typewriter');
+    if (!element) return;
+
+    const phrases = [
+        "Training Tool for\nCadet Psychometric Exams",
+        "Prepare with Realistic\nExam Simulations"
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let speed = 100;
+
+    function type() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            charIndex--;
+            speed = 50;
+        } else {
+            charIndex++;
+            speed = 100;
+        }
+
+        element.innerHTML = currentPhrase.substring(0, charIndex).replace(/\n/g, '<br>');
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            speed = 2000; // Wait at the end of phrase
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            speed = 500; // Wait before starting next phrase
+        }
+
+        setTimeout(type, speed);
+    }
+
+    type();
+}
+
 // Handle Pegasus Notification Form
 document.addEventListener('DOMContentLoaded', async () => {
+    initializeTypewriter();
     await loadComponents();
     initializeAnimations();
     initializeAppTabs();
@@ -569,47 +710,4 @@ function initializeTimeline() {
 
     // Initial render
     renderYear("2024");
-}
-
-/* Pace Handbook Toggle Function */
-function toggleHandbook() {
-    const card = document.getElementById('pace-handbook');
-    if (card) {
-        card.classList.toggle('active');
-        
-        // Dynamic scroll adjustment when opened
-        if (card.classList.contains('active')) {
-            setTimeout(() => {
-                const headerOffset = 150;
-                const elementPosition = card.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }, 500);
-        }
-    }
-}
-
-/* Pegasus Handbook Toggle Function */
-function togglePegasusHandbook() {
-    const card = document.getElementById('pegasus-handbook');
-    if (card) {
-        card.classList.toggle('active');
-        
-        if (card.classList.contains('active')) {
-            setTimeout(() => {
-                const headerOffset = 150;
-                const elementPosition = card.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }, 500);
-        }
-    }
 }

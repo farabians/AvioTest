@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --primary-red: #ff0000;
     --primary-dark-red: #cc0000;
     --bg-color: #191919;
@@ -292,6 +292,27 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-weight: bold;
     margin-bottom: 15px;
     line-height: 1.2;
+}
+
+.hero-title.has-typewriter {
+    min-height: 5.3rem; /* Height for 2 lines to prevent jumping */
+}
+
+@media (max-width: 768px) {
+    .hero-title.has-typewriter {
+        min-height: 4rem; /* Adjusted for mobile */
+    }
+}
+
+.typewriter-cursor {
+    animation: blink 0.7s infinite;
+    font-weight: normal;
+    color: var(--primary-red);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .hero-cta-button {
@@ -2379,7 +2400,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .accordion-content li::before {
-    content: 'â€¢';
+    content: 'Ã¢â‚¬Â¢';
     color: var(--primary-red);
     position: absolute;
     left: 0;
@@ -2899,7 +2920,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .content-card li::before {
-    content: 'â†’';
+    content: 'Ã¢â€ â€™';
     position: absolute;
     left: 0;
     color: var(--primary-red);
@@ -3077,7 +3098,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .step-description li::before {
-    content: "â†’";
+    content: "Ã¢â€ â€™";
     position: absolute;
     left: 0;
     color: var(--primary-red);
@@ -3604,7 +3625,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     margin: 0 auto 40px;
     background: #121212;
     border-radius: 24px;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to allow hover animations to pop out */
     box-shadow: 
         0 50px 100px -20px rgba(0, 0, 0, 0.7),
         0 30px 60px -30px rgba(0, 0, 0, 0.5);
@@ -3620,7 +3641,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     align-items: center;
     color: white;
     border-bottom: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px 16px 0 0; /* Maintain rounded corners after removing overflow:hidden */
 }
 
 .theme-pace .app-header {
@@ -3725,7 +3747,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-size: 0.8rem;
     color: #888;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -3757,14 +3779,40 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     color: #fff;
 }
 
+.app-grids-container {
+    position: relative;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible; /* Changed from hidden to allow hover animations */
+}
+
+.app-grids-container.is-transitioning {
+    overflow: hidden;
+}
+
 .app-grid {
     display: none;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
+    padding: 15px 5px; /* Added padding to allow hover transformations without clipping */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .app-grid.active {
     display: grid;
+    animation: fadeInSlideUp 0.5s ease forwards;
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .coming-soon-container {
@@ -3898,7 +3946,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-weight: 900;
     text-decoration: none;
     display: inline-block;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
 }
 
@@ -4118,7 +4166,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     }
 }
 
-/* Ä°lan Takvimi Page */
+/* Ã„Â°lan Takvimi Page */
 .calendar-page {
     padding-bottom: 40px;
 }
@@ -5384,103 +5432,6 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 
- / *   A n i m a t e d   P l a n e   H e r o   * / 
- . h e r o - p l a n e - c o n t a i n e r   { 
-         p o s i t i o n :   a b s o l u t e ; 
-         t o p :   - 4 0 p x ; 
-         r i g h t :   0 % ; 
-         w i d t h :   2 8 0 p x ; 
-         z - i n d e x :   0 ; 
-         p o i n t e r - e v e n t s :   n o n e ; 
-         u s e r - s e l e c t :   n o n e ; 
-         o p a c i t y :   0 . 9 ; 
- } 
- 
- . h e r o - p l a n e   { 
-         w i d t h :   1 0 0 % ; 
-         f i l t e r :   d r o p - s h a d o w ( 0   2 0 p x   4 0 p x   r g b a ( 0 , 0 , 0 , 0 . 5 ) ) ; 
-         a n i m a t i o n :   f l o a t - p l a n e   1 0 s   e a s e - i n - o u t   i n f i n i t e ; 
- } 
- 
- @ k e y f r a m e s   f l o a t - p l a n e   { 
-         0 % ,   1 0 0 %   { 
-                 t r a n s f o r m :   t r a n s l a t e Y ( 0 )   t r a n s l a t e X ( 0 )   r o t a t e ( 3 d e g )   s c a l e ( 1 ) ; 
-         } 
-         3 3 %   { 
-                 t r a n s f o r m :   t r a n s l a t e Y ( - 3 0 p x )   t r a n s l a t e X ( 2 0 p x )   r o t a t e ( - 2 d e g )   s c a l e ( 1 . 0 2 ) ; 
-         } 
-         6 6 %   { 
-                 t r a n s f o r m :   t r a n s l a t e Y ( 1 5 p x )   t r a n s l a t e X ( - 1 5 p x )   r o t a t e ( 5 d e g )   s c a l e ( 0 . 9 8 ) ; 
-         } 
- } 
- 
- @ m e d i a   ( m a x - w i d t h :   1 1 0 0 p x )   { 
-         . h e r o - p l a n e - c o n t a i n e r   { 
-                 w i d t h :   2 0 0 p x ; 
-                 t o p :   - 6 0 p x ; 
-                 r i g h t :   - 5 % ; 
-         } 
- } 
- 
- @ m e d i a   ( m a x - w i d t h :   7 6 8 p x )   { 
-         . h e r o - p l a n e - c o n t a i n e r   { 
-                 w i d t h :   1 4 0 p x ; 
-                 t o p :   - 8 0 p x ; 
-                 r i g h t :   0 ; 
-                 o p a c i t y :   0 . 7 ; 
-         } 
- } 
- 
- 
 
-/* Creative Side Plane Scout */
-.side-plane-scout {
-    position: fixed;
-    left: 20px;
-    top: 60%;
-    width: 120px;
-    z-index: 9999;
-    pointer-events: none;
-    user-select: none;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
-}
 
-.side-plane-scout img {
-    width: 100%;
-    animation: plane-scout-bob 6s ease-in-out infinite;
-}
 
-@keyframes plane-scout-bob {
-    0%, 100% { transform: translateY(0) rotate(5deg) scale(1.0); }
-    50% { transform: translateY(-35px) rotate(-5deg) scale(1.05); }
-}
-
-/* Engine vibration */
-.side-plane-scout::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    top: 0;
-    left: 0;
-    animation: plane-vibe 0.1s linear infinite alternate;
-}
-
-@keyframes plane-vibe {
-    from { transform: translate(0, 0); }
-    to { transform: translate(1px, 1px); }
-}
-
-@media (max-width: 1200px) {
-    .side-plane-scout {
-        width: 90px;
-        left: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .side-plane-scout {
-        display: none;
-    }
-}
