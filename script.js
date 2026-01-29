@@ -294,6 +294,30 @@ function initializeAppTabs() {
     });
 }
 
+// Initialize Discovery Toggle (Accordion)
+function initializeDiscoveryToggle() {
+    const discoveryCards = document.querySelectorAll('.discovery-toggle-card');
+    discoveryCards.forEach(card => {
+        const header = card.querySelector('.discovery-header');
+        if (header) {
+            header.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Toggle active class on the card
+                card.classList.toggle('active');
+                
+                // Optional: Close others when one opens
+                discoveryCards.forEach(otherCard => {
+                    if (otherCard !== card) {
+                        otherCard.classList.remove('active');
+                    }
+                });
+            });
+        }
+    });
+}
+
 // Initialize Back Links based on source
 function initializeBackLinks() {
     const backLink = document.querySelector('.back-link');
@@ -401,6 +425,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeAnimations();
     initializeAppTabs();
     initializeBackLinks();
+    initializeDiscoveryToggle();
     
     // Header scroll effect
     const handleScroll = () => {

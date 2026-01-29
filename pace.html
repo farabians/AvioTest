@@ -370,15 +370,22 @@
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             backdrop-filter: blur(25px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            text-decoration: none; /* Added for link support */
-            display: block; /* Added for link support */
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
         }
 
-        .discovery-toggle-card:hover { /* Changed from .active to :hover for link behavior */
+        .discovery-toggle-card:hover {
             border-color: rgba(255, 0, 0, 0.25);
             background: rgba(22, 22, 22, 0.9);
             box-shadow: 0 40px 80px -15px rgba(255, 0, 0, 0.15);
             transform: translateY(-5px);
+        }
+
+        .discovery-toggle-card.active {
+            border-color: rgba(255, 0, 0, 0.3);
+            background: rgba(20, 20, 20, 0.95);
+            transform: translateY(0);
         }
 
         .discovery-header {
@@ -386,8 +393,6 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            cursor: pointer;
-            user-select: none;
             background: linear-gradient(90deg, rgba(255, 0, 0, 0.03) 0%, transparent 100%);
             transition: background 0.3s ease;
         }
@@ -454,103 +459,151 @@
         }
 
         .discovery-toggle-card:hover .toggle-arrow {
-            transform: translateX(5px);
             background: #ff0000;
             color: #fff;
             border-color: #ff0000;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
         }
 
-        /* Removed discovery-content styles */
+        .discovery-toggle-card.active .toggle-arrow {
+            transform: rotate(180deg);
+            background: #ff0000;
+            color: #fff;
+        }
+
+        .discovery-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 32px;
+            opacity: 0;
+        }
+
+        .discovery-toggle-card.active .discovery-content {
+            max-height: 5000px;
+            padding: 0 32px 40px;
+            opacity: 1;
+        }
+
+        /* Details Content Styling */
+        .details-header {
+            margin-top: 20px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .header-main-img {
+            width: 100%;
+            height: clamp(200px, 30vh, 350px);
+            object-fit: cover;
+            border-radius: 32px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .details-header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff;
+            letter-spacing: -1px;
+        }
 
         .info-intro-text {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 40px;
             border-left: 4px solid #ff3e3e;
         }
 
         .info-intro-text p {
-            color: #e0e0e0;
+            color: #ccc;
             line-height: 1.8;
-            font-size: 0.95rem;
-            font-weight: 400;
+            font-size: 1.1rem;
         }
 
         .info-grid-modern {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            gap: 30px;
         }
 
         .category-pane {
-            background: rgba(255, 255, 255, 0.015);
-            border-radius: 24px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 28px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .pane-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding-bottom: 12px;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .pane-header svg {
             color: #ff3e3e;
-            filter: drop-shadow(0 0 8px rgba(255, 62, 62, 0.3));
         }
 
         .pane-header h4 {
-            color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+        }
+
+        .pane-subtext {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
         .module-list-compact {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
+            margin-top: 25px;
         }
 
         .module-item-compact {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 12px 16px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .module-item-compact:hover {
+            background: rgba(255, 0, 0, 0.05);
+            border-color: rgba(255, 0, 0, 0.2);
+            transform: translateX(10px);
         }
 
         .m-image {
+            width: 60px;
+            height: 60px;
             flex-shrink: 0;
-            width: 80px;
-            height: 50px;
-            border-radius: 10px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
         }
 
         .m-image img {
-            width: 100%;
-            height: 100%;
+            width: 80%;
+            height: 80%;
             object-fit: contain;
         }
 
@@ -558,48 +611,19 @@
             flex: 1;
         }
 
-        .module-item-compact::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3px;
-            height: 0;
-            background: #ff3e3e;
-            transition: height 0.3s ease;
-        }
-
-        .module-item-compact:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.08);
-            transform: translateX(8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .module-item-compact:hover::before {
-            height: 60%;
-        }
-
         .m-name {
             display: block;
             color: #fff;
             font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 3px;
-            transition: color 0.3s ease;
-        }
-
-        .module-item-compact:hover .m-name {
-            color: #ff3e3e;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
         }
 
         .m-desc {
             display: block;
-            color: #a0a0a0;
-            font-size: 0.8rem;
-            line-height: 1.5;
-            font-weight: 400;
+            color: #777;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         .pane-subtext {
@@ -677,10 +701,10 @@
         </div>
     </section>
 
-    <!-- Pace Discovery Hub (Link Section) -->
+    <!-- Pace Discovery Hub (Toggle Section) -->
     <section class="pace-discovery-hub">
         <div class="container">
-            <a href="pace-details.html" class="discovery-toggle-card" id="pace-handbook" style="text-decoration: none; display: block;">
+            <div class="discovery-toggle-card" id="pace-handbook">
                 <div class="discovery-header">
                     <div class="discovery-title-group">
                         <div class="discovery-icon-box">
@@ -692,10 +716,126 @@
                         </div>
                     </div>
                     <div class="toggle-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
                 </div>
-            </a>
+                <div class="discovery-content">
+                    <div class="details-header">
+                        <img src="images/airlines_logo_type/airline/thy_airline.jpg" alt="Turkish Airlines" class="header-main-img">
+                        <h1>Pace Testi Nedir?</h1>
+                    </div>
+                    <div class="info-intro-text">
+                        <p>Geçtiğimiz yıllarda uygulanmaya başlayan psikometrik değerlendirme sistemi <strong>PACE</strong> adıyla uygulanmaktadır. Bu test, adayların teknik yeterliliklerini ölçmeyi amaçlamakta olup <strong>THY Uçuş Eğitim Başkanlığı</strong> bünyesinde gerçekleştirilmektedir. Uygulama süresi ortalama 5–6 saat sürmektedir. Bu test 2 bilgi ve 7 yetenek modülünden oluşmaktadır.</p>
+                    </div>
+        
+                    <div class="info-grid-modern">
+                        <!-- Yetenek Modülleri -->
+                        <div class="category-pane">
+                            <div class="pane-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>
+                                <h4>Yetenek Modülleri</h4>
+                            </div>
+                            <p class="pane-subtext">Yetenek modülleri, bir pilotta bulunması gereken temel bilişsel ve psikomotor becerileri değerlendirmeye yöneliktir. Bu kapsamda uzamsal algı, bellek, psikomotor ve dikkat koordinasyon gibi kritik yetkinlikler ölçülmektedir.</p>
+                            <p class="pane-subtext">Değerlendirme sürecinde yer alan başlıca modüller şunlardır:</p>
+                            <div class="module-list-compact">
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Audio_visual_memory.png" alt="Audio Visual Memory">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Audio Visual Memory (Görsel-İşitsel Bellek) </span>
+                                        <span class="m-desc">Görsel ve işitsel bilgilerin eş zamanlı olarak algılanması ve hatırlanma kapasitesini ölçer.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Digit_span.png" alt="Verbal Memory – Digit Span">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Verbal Memory – Digit Span (Sözel Bellek) </span>
+                                        <span class="m-desc">Sayısal bilgilerin kısa süreli bellekte tutulması ve doğru şekilde geri çağrılmasını değerlendirir.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/3Dimesional_spatial_perception.png" alt="3D Spatial Perception">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">3D Spatial Perception (Üç Boyutlu Uzamsal Algı) </span>
+                                        <span class="m-desc">Nesnelerin üç boyutlu uzayda algılanması ve konum ilişkilerinin yorumlanmasını ölçer.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Spatial_orientation.png" alt="Spatial Orientation">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Spatial Orientation (Uzamsal Oryantasyon) </span>
+                                        <span class="m-desc">Yön, konum ve hareket ilişkilerini doğru analiz edebilme becerisini değerlendirir.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Sustained_attention.png" alt="Sustained Attention">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Sustained Attention (Sürdürülebilir Dikkat) </span>
+                                        <span class="m-desc">Uzun süre boyunca dikkat seviyesinin korunabilme yeteneğini ölçer.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Agility.png" alt="Cognitive Agility">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Cognitive Agility (Bilişsel Çeviklik) </span>
+                                        <span class="m-desc">Değişen durumlara hızlı uyum sağlama ve zihinsel geçişleri etkin biçimde gerçekleştirme becerisini değerlendirir.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Joystick_flight_test.png" alt="Psychomotor Coordination">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Psychomotor Coordination (Psikomotor Koordinasyon ve Çoklu İşlem Becerisi) </span>
+                                        <span class="m-desc">El-göz koordinasyonu ile aynı anda birden fazla görevin yönetebilme kapasitesini ölçer.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Bilgi Modülleri -->
+                        <div class="category-pane">
+                            <div class="pane-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                <h4>Bilgi Modülleri</h4>
+                            </div>
+                            <p class="pane-subtext">Bilgi modülleri, adayların temel Matematik ve Fizik düzeylerini değerlendirmek amacıyla uygulanmaktadır. Bu modüller, analitik düşünme becerisi ile temel bilimsel bilgilerin anlaşılma seviyesini ölçmeye yöneliktir.</p>
+                            <p class="pane-subtext">Değerlendirme sürecinde yer alan başlıca modüller şunlardır:</p>
+                            <div class="module-list-compact">
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/mathematics.png" alt="Mathematics">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Mathematics (Matematik) </span>
+                                        <span class="m-desc">Analitik düşünme yeteneği, temel matematiksel işlemler ve havacılık odaklı problem çözme becerileri.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-image">
+                                        <img src="images/modules_img/Physics.png" alt="Physics">
+                                    </div>
+                                    <div class="m-info">
+                                        <span class="m-name">Physics (Fizik) </span>
+                                        <span class="m-desc">Mekanik, termodinamik ve temel fizik prensiplerinin teorik ve pratik uygulama seviyesini ölçer.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
