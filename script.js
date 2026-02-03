@@ -47,6 +47,7 @@ async function loadComponents() {
     initializeInteractiveElements();
     setActiveNavLink();
     initializeTimeline();
+    initializePaceCarousel();
 }
 
 // Set active class on nav links based on current page
@@ -741,4 +742,122 @@ function initializeTimeline() {
 
     // Initial render
     renderYear("2024");
+}
+
+function initializePaceCarousel() {
+    const carousel = document.getElementById('paceCarousel');
+    if (!carousel) return;
+
+    const items = carousel.querySelectorAll('.carousel-item');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('carouselDots');
+    
+    if (!items.length) return;
+
+    let currentIndex = 0;
+    const totalItems = items.length;
+    let autoRotateInterval;
+
+    // Clear and Create dots
+    dotsContainer.innerHTML = '';
+    items.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.className = `dot ${index === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.dot');
+
+    function updateCarousel() {
+        items.forEach((item, index) => {
+            item.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
+            
+            // Calculate distance for cyclic array
+            let diff = index - currentIndex;
+            
+            // Handle wrap around for distance calculation
+            if (diff > totalItems / 2) diff -= totalItems;
+            if (diff < -totalItems / 2) diff += totalItems;
+
+            if (diff === 0) {
+                item.classList.add('active');
+            } else if (diff === -1) {
+                item.classList.add('prev');
+            } else if (diff === 1) {
+                item.classList.add('next');
+            } else if (diff < -1) {
+                item.classList.add('far-prev');
+            } else if (diff > 1) {
+                item.classList.add('far-next');
+            }
+        });
+
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        currentIndex = (index + totalItems) % totalItems;
+        updateCarousel();
+        resetAutoRotate();
+    }
+
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    function startAutoRotate() {
+        if (autoRotateInterval) clearInterval(autoRotateInterval);
+        autoRotateInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoRotate() {
+        startAutoRotate();
+    }
+
+    // Event listeners
+    if (prevBtn) prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevSlide();
+    });
+    
+    if (nextBtn) nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextSlide();
+    });
+
+    items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            if (index !== currentIndex) {
+                goToSlide(index);
+            }
+        });
+    });
+
+    // Touch support for mobile
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', e => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+        }
+    }, { passive: true });
+
+    // Initial setup
+    updateCarousel();
+    startAutoRotate();
 }
