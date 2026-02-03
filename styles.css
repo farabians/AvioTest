@@ -251,7 +251,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-.exam-item {
+.dropdown-bold {
     font-weight: 800;
     text-align: center;
     text-transform: uppercase;
@@ -4345,7 +4345,6 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .calendar-hero {
     padding: 40px 0 15px;
     text-align: center;
-    background: linear-gradient(180deg, rgba(255,0,0,0.05) 0%, rgba(25,25,25,0) 100%);
 }
 
 .hero-subtitle {
@@ -5885,6 +5884,28 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     background: #e0e0e0;
 }
 
+.pricing-footer-info {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pricing-footer-info a {
+    color: var(--primary-red);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.pricing-footer-info a:hover {
+    color: var(--primary-dark-red);
+    text-decoration: underline;
+}
 
 /* Pricing Background Elements */
 .pricing-bg-elements {
