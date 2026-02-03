@@ -169,7 +169,6 @@ function initializeAppTabs() {
     });
 
     function updateAppExam(targetId, text) {
-        const container = document.querySelector('.app-grids-container');
         const targetGrid = document.getElementById(targetId);
         
         // Update tabs
@@ -178,41 +177,13 @@ function initializeAppTabs() {
             if (t.textContent === text) t.classList.add('active');
         });
         
-        if (container && targetGrid) {
-            // If the grid is already active, don't re-animate height
+        if (targetGrid) {
+            // If the grid is already active, don't re-animate
             if (targetGrid.classList.contains('active')) return;
-
-            // Set current height explicitly before change to allow transition
-            container.style.height = container.offsetHeight + 'px';
-            container.classList.add('is-transitioning');
 
             // Switch active grid
             grids.forEach(grid => grid.classList.remove('active'));
             targetGrid.classList.add('active');
-
-            // Calculate new height
-            requestAnimationFrame(() => {
-                const newHeight = targetGrid.offsetHeight;
-                container.style.height = newHeight + 'px';
-            });
-
-            // Remove transitioning class and reset height after transition finishes
-            const finalizeTransition = () => {
-                container.classList.remove('is-transitioning');
-                container.style.height = 'auto';
-            };
-
-            const onTransitionEnd = (e) => {
-                if (e.propertyName === 'height') {
-                    finalizeTransition();
-                    container.removeEventListener('transitionend', onTransitionEnd);
-                }
-            };
-            
-            container.addEventListener('transitionend', onTransitionEnd);
-            
-            // Fallback for safety
-            setTimeout(finalizeTransition, 600);
         }
 
         // Update header label
@@ -270,15 +241,6 @@ function initializeAppTabs() {
 
     // Start initial timer
     startTimer();
-
-    // Set initial height for smooth transition
-    window.addEventListener('load', () => {
-        const container = document.querySelector('.app-grids-container');
-        const activeGrid = document.querySelector('.app-grid.active');
-        if (container && activeGrid) {
-            container.style.height = activeGrid.offsetHeight + 'px';
-        }
-    });
 
     // Set initial theme
     if (label && mockup) {
@@ -422,6 +384,25 @@ function initializeTypewriter() {
     type();
 }
 
+// Initialize Features "More" button
+function initializeFeaturesMore() {
+    const moreBtn = document.getElementById('featuresMoreBtn');
+    const moreContent = document.getElementById('featuresMoreContent');
+    
+    if (moreBtn && moreContent) {
+        moreBtn.addEventListener('click', () => {
+            const isShowing = moreContent.classList.contains('show');
+            if (isShowing) {
+                moreContent.classList.remove('show');
+                moreBtn.textContent = 'More';
+            } else {
+                moreContent.classList.add('show');
+                moreBtn.textContent = 'Less';
+            }
+        });
+    }
+}
+
 // Handle Pegasus Notification Form
 document.addEventListener('DOMContentLoaded', async () => {
     initializeTypewriter();
@@ -430,6 +411,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeAppTabs();
     initializeBackLinks();
     initializeDiscoveryToggle();
+    initializeFeaturesMore();
     
     // Header scroll effect
     const handleScroll = () => {
