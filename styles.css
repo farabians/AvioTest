@@ -1630,46 +1630,108 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 @media (max-width: 768px) {
     /* Header & Hamburger Menu */
+    .header {
+        padding: 12px 0;
+        z-index: 2000;
+    }
+
+    .logo {
+        position: relative;
+        z-index: 2101;
+    }
+
+    .logo-img {
+        height: 32px;
+    }
+
     .menu-toggle {
         display: flex;
+        position: relative;
+        z-index: 2101;
     }
 
     .nav {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
+        width: 100%;
         height: 100vh;
-        background-color: #191919;
+        background-color: #111111;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 30px;
+        gap: 25px;
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        z-index: 2100;
+        padding: 80px 20px;
+        overflow-y: auto;
     }
 
     .nav.active {
         right: 0;
     }
 
+    .dropdown-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+        font-size: 1.5rem !important; /* Fixed large font size */
+        padding: 5px 0 !important;
+        text-align: center !important;
+        border: none !important;
+        background: none !important;
+        color: #ffffff !important;
+    }
+
+    .nav-link {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        padding: 5px 0 !important;
+        font-size: 1.5rem !important; /* Fixed large font size for Pricing and others */
+        color: #ffffff !important;
+    }
+
     .nav-item.dropdown {
-        width: 100%;
-        text-align: center;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 !important;
     }
 
     .dropdown-menu {
-        position: static;
-        transform: none;
-        opacity: 1;
-        visibility: visible;
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
         display: none;
-        background: rgba(255, 255, 255, 0.03);
-        border: none;
-        box-shadow: none;
-        width: 100%;
-        margin-top: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        border: none !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        max-width: 250px !important; /* Slightly narrower to prevent edge-touching */
+        margin: 15px 0 !important;
+        padding: 5px 0 !important;
+        border-radius: 12px !important;
+    }
+
+    .dropdown-item {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 1.1rem !important;
+        color: #fff !important;
     }
 
     .nav-item.dropdown.open .dropdown-menu {
@@ -1701,11 +1763,19 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         flex-direction: column;
         gap: 15px;
         margin-top: 20px;
+        width: 100%;
+        align-items: center;
     }
 
     .mobile-cta {
         display: block;
-        margin-top: 0;
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+        padding: 14px 20px;
+        border-radius: 100px;
+        font-weight: 700;
+        margin: 0 auto;
     }
 
     /* Footer Responsive */
@@ -5808,23 +5878,6 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     background: #e0e0e0;
 }
 
-@media (max-width: 1100px) {
-    .pricing-layout {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 768px) {
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    .pricing-card.featured {
-        transform: scale(1);
-    }
-}
-
 
 /* Pricing Background Elements */
 .pricing-bg-elements {
@@ -5849,95 +5902,87 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 
 /* Pricing Page Resizing & No-Scroll */
-.pricing-page {
-    overflow: hidden; /* Prevent scrolling */
-    height: 100vh;
-}
+@media (min-width: 1024px) {
+    .pricing-page {
+        overflow: hidden; /* Prevent scrolling on desktop */
+        height: 100vh;
+    }
 
-.pricing-main {
-    padding: 0;
-    height: calc(100vh - 80px); /* Adjust for header height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .pricing-main {
+        padding: 0;
+        height: calc(100vh - 80px); /* Adjust for header height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.pricing-container {
-    max-width: 1250px;
-    padding: 0 40px;
-    transform: scale(0.9);
-    transform-origin: center;
-}
-
-.pricing-layout {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.pro-card {
-    padding: 30px;
-    border-radius: 30px;
-}
-
-.pro-image-container {
-    margin: 10px 0;
-    height: 350px; /* Increased from 220px */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pro-image {
-    max-width: 150%; /* Increased from 130% */
-    max-height: 120%; /* Increased to allow it to overflow container slightly if needed */
-    object-fit: contain;
-    filter: drop-shadow(0 40px 60px rgba(0,0,0,0.6));
-}
-
-.pricing-title {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-}
-
-.pricing-grid {
-    gap: 15px;
-}
-
-.pricing-card {
-    padding: 20px;
-    border-radius: 20px;
-}
-
-.price .amount {
-    font-size: 2.8rem;
-}
-
-.price .currency {
-    font-size: 1.2rem;
-}
-
-.features-list {
-    margin-bottom: 20px;
-}
-
-.features-list li {
-    margin-bottom: 10px;
-    font-size: 0.8rem;
-}
-
-.features-list li span {
-    font-size: 0.7rem;
-}
-
-.pricing-btn {
-    padding: 12px;
-    font-size: 0.9rem;
-}
-
-@media (max-height: 800px) {
     .pricing-container {
-        transform: scale(0.75);
+        max-width: 1250px;
+        padding: 0 40px;
+        transform: scale(0.9);
+        transform-origin: center;
+    }
+
+    .pricing-layout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-height: 800px) {
+        .pricing-container {
+            transform: scale(0.75);
+        }
+    }
+}
+
+/* Responsive Pricing for Tablets and Mobile */
+@media (max-width: 1023px) {
+    .pricing-page {
+        overflow: visible;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .pricing-main {
+        padding: 40px 0 80px;
+        height: auto;
+        display: block;
+    }
+
+    .pricing-container {
+        transform: none;
+        padding: 0 20px;
+    }
+
+    .pricing-title {
+        font-size: 2.2rem;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .pricing-card {
+        padding: 25px;
+        transform: none !important;
+    }
+
+    .pricing-card.featured {
+        order: -1; /* Recommended plan first on mobile */
+    }
+
+    .price .amount {
+        font-size: 3rem;
+    }
+
+    .features-list li {
+        font-size: 0.95rem;
     }
 }
 
