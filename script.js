@@ -56,25 +56,30 @@ function setActiveNavLink() {
     const isPegasusSection = currentPage.startsWith('pegasus') || path.includes('/modules/pegasus/');
     const isPaceSection = currentPage.startsWith('pace') || path.includes('/modules/pace/');
     const isMollymawkSection = currentPage.startsWith('mollymawk') || path.includes('/modules/mollymawk/');
-    const isBlogSection = currentPage.startsWith('blog') || path.includes('/blog/');
 
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const href = link.getAttribute('href');
-        const linkPage = href ? href.split('/').pop() : '';
-        
-        // Reset active class
+    // Helper to check if a link matches the current section
+    const isMatch = (href) => {
+        if (!href || href === "#" || href === "") return false;
+        const linkPage = href.split('/').pop();
+        if (linkPage === 'pegasus.html' && isPegasusSection) return true;
+        if (linkPage === 'pace.html' && isPaceSection) return true;
+        if (linkPage === 'mollymawk.html' && isMollymawkSection) return true;
+        if (linkPage === currentPage && currentPage !== 'index.html') return true;
+        return false;
+    };
+
+    // Update nav links and dropdown items
+    document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
         link.classList.remove('active');
-
-        if (linkPage === 'pegasus.html' && isPegasusSection) {
+        if (isMatch(link.getAttribute('href'))) {
             link.classList.add('active');
-        } else if (linkPage === 'pace.html' && isPaceSection) {
-            link.classList.add('active');
-        } else if (linkPage === 'mollymawk.html' && isMollymawkSection) {
-            link.classList.add('active');
-        } else if (linkPage === 'blog.html' && isBlogSection) {
-            link.classList.add('active');
-        } else if (linkPage === currentPage && currentPage !== 'index.html') {
-            link.classList.add('active');
+            
+            // If it's a dropdown item, also highlight the parent toggle
+            const dropdown = link.closest('.dropdown');
+            if (dropdown) {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                if (toggle) toggle.classList.add('active');
+            }
         }
     });
 }
@@ -382,8 +387,7 @@ function initializeTypewriter() {
     if (!element) return;
 
     const phrases = [
-        "Training Tool for\nCadet Psychometric Exams",
-        "Prepare with Realistic\nExam Simulations"
+        "Preparation software for\nTurkish Cadet Candidate Exams"
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -558,6 +562,8 @@ function initializeMenu() {
         if (menuToggle) menuToggle.classList.remove('active');
         if (nav) nav.classList.remove('active');
         document.body.style.overflow = 'auto';
+        // Close all dropdowns
+        document.querySelectorAll('.nav-item.dropdown').forEach(d => d.classList.remove('open'));
     };
 
     if (menuToggle && nav) {
@@ -567,8 +573,26 @@ function initializeMenu() {
             document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
         });
 
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const parent = toggle.closest('.nav-item.dropdown');
+                    
+                    // Close other dropdowns
+                    document.querySelectorAll('.nav-item.dropdown').forEach(d => {
+                        if (d !== parent) d.classList.remove('open');
+                    });
+                    
+                    parent.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close menu when clicking a link (not a dropdown toggle)
+        document.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item, .mobile-cta').forEach(link => {
             link.addEventListener('click', closeMenu);
         });
 
