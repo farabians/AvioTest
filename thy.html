@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Türk Hava Yolları Pilot Recruitment - AvioTest®</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .thy-info-hub {
+            padding: 80px 0;
+            background: transparent;
+        }
+
+        .discovery-toggle-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            margin-bottom: 24px;
+        }
+
+        .discovery-toggle-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .discovery-toggle-card.active {
+            border-color: rgba(255, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(0);
+        }
+
+        .discovery-header {
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .discovery-title-group {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .discovery-icon-box {
+            min-width: 56px;
+            width: auto;
+            padding: 0 10px;
+            height: 56px;
+            background: transparent;
+            border: 2px solid #ff3e3e;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff3e3e;
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            box-shadow: inset 0 0 15px rgba(255, 62, 62, 0.1), 0 0 20px rgba(255, 62, 62, 0.1);
+            white-space: nowrap;
+        }
+
+        .discovery-text h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: #fff;
+            letter-spacing: -0.3px;
+        }
+
+        .discovery-text p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        .toggle-arrow {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .discovery-toggle-card:hover .toggle-arrow {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .discovery-toggle-card.active .toggle-arrow {
+            transform: rotate(180deg);
+            background: #ff3e3e;
+            color: #fff;
+            border-color: #ff3e3e;
+        }
+
+        .discovery-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 40px;
+            opacity: 0;
+        }
+
+        .discovery-toggle-card.active .discovery-content {
+            max-height: 5000px;
+            padding: 0 40px 48px;
+            opacity: 1;
+        }
+
+        .details-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            margin-top: 20px;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .info-intro-text {
+            background: rgba(255, 62, 62, 0.03);
+            border: 1px solid rgba(255, 62, 62, 0.1);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .info-intro-text p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .info-intro-text strong {
+            color: #ff3e3e;
+            font-weight: 700;
+        }
+
+        .info-grid-modern {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .category-pane {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pane-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pane-header h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pane-subtext {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .module-list-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .module-item-compact {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.3s ease;
+        }
+
+        .module-item-compact:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .m-image {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .m-image img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .m-info {
+            flex: 1;
+        }
+
+        .m-name {
+            display: block;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .m-desc {
+            display: block;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 950px) {
+            .info-grid-modern {
+                grid-template-columns: 1fr;
+            }
+            .discovery-header {
+                padding: 24px;
+            }
+            .discovery-content {
+                padding: 0 24px;
+            }
+            .discovery-toggle-card.active .discovery-content {
+                padding: 0 24px 32px;
+            }
+        }
+
+        /* Exam Flow Grid Styles */
+        .exam-flow-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 15px 0;
+        }
+
+        .exam-flow-step {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .step-label {
+            background: #ff3e3e;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.65rem;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .flow-module-item {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            line-height: 1.3;
+            transition: background 0.3s ease;
+        }
+
+        .flow-module-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .flow-break {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-top: 4px;
+        }
+
+        .flow-break span {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main class="thy-main">
+        <!-- Hero Section -->
+        <section class="hero thy-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <img src="images/Turkish_Airlines_logo.png" alt="Turkish Airlines Logo" class="hero-logo pace-logo" style="max-width: 280px; margin-bottom: 2rem;">
+                    <h1 class="hero-title">Türk Hava Yolları Pilot Recruitment</h1>
+                    <p class="hero-description">THY pilot alım süreçleri, sınavlar ve tüm bilgilendirici detaylar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information Sections (Accordion) -->
+        <section class="thy-info-hub">
+            <div class="container">
+                <!-- General Introduction -->
+                <div class="discovery-toggle-card" id="general-intro">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                INFO
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Genel Tanıtım</h3>
+                                <p>THY pilot eğitim programı, süresi, eğitim okulları ve maliyet detayları.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Genel Tanıtım</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Türk Hava Yolları, her yıl “Yetiştirilmek Üzere II. Pilot Aday Adayı” ilanı yayımlar. Değerlendirme sürecini başarıyla tamamlayan adaylar ise şirketin <strong>Yetiştirilmek Üzere Pilot Programına</strong> katılmaya hak kazanır.</p>
+                        </div>
+            
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Program kapsamında her yıl yaklaşık <strong>500 800</strong> aday istihdam edilerek eğitim süreci başlatılır. Eğitimler temel olarak <strong>Aydın’da bulunan Turkish Airlines Flight Academy (TAFA)</strong> bünyesinde yürütülür. TAFA’nın kapasitesinin yetersiz kaldığı dönemlerde ise adaylar, eğitimlerini tamamlamaları için <strong>AYJET, AFA, ERAH ve THK</strong> gibi anlaşmalı uçuş okullarına yönlendirilebilir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <p>Entegre ATPL programı kapsamında <strong>en az 750 saat teorik eğitim</strong> ve <strong>200 saatlik uçuş eğitimi</strong> verilmektedir. Bu eğitim süreci ortalama <strong>15–16 ay</strong> sürmektedir. Adaylar, uçuş okulundaki eğitimlerini tamamladıklarında geçerli bir <strong>pilot lisansı</strong> almaya hak kazanırlar.</p>
+                            <p style="margin-top: 15px;">Mezuniyetin ardından adaylar, Airbus yada Boeing uçak tiplerinden biri için tip eğitimine alınır. Bu eğitim çoğunlukla <strong>dar gövdeli Airbus A320 ya da Boeing 737</strong> uçakları üzerinde gerçekleştirilir. Yaklaşık <strong>6 ay</strong> süren tip eğitimi, genellikle <strong>THY Uçuş Eğitim Başkanlığı</strong> bünyesinde verilir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 62, 62, 0.03); border: 1px solid rgba(255, 62, 62, 0.1);">
+                            <p>Toplamda yaklaşık <strong>2 yıl</strong> süren temel eğitim ve tip eğitiminin maliyeti, seçilen sözleşme türüne bağlı olarak <strong>120.000 veya 170.000 Euro</strong> arasında değişmektedir. Bu tutar, adayların <strong>II. Pilot olarak uçuşlara başlamasının ardından</strong>, yaklaşık <strong>10 yıllık bir süre içinde</strong> maaşlarından yapılan kesintilerle geri ödenir. Aylık kesinti oranı ise maaşın <strong>%25’ini geçmeyecek</strong> şekilde düzenlenir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THY Cadet All Process -->
+                <div class="discovery-toggle-card" id="cadet-process">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                STEPS
+                            </div>
+                            <div class="discovery-text">
+                                <h3>THY Cadet - Tüm Süreç</h3>
+                                <p>Başvurudan sağlık kontrolüne pilot aday adaylığı süreci.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>THY Cadet - Tüm Süreç</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Yetiştirilmek üzere pilot aday adaylığı süreci, Türk Hava Yolları bünyesinde titizlikle yürütülen beş temel aşamadan oluşmaktadır.</p>
+                        </div>
+                        <div class="category-pane" style="width: 100%;">
+                            <div class="module-list-compact">
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">İngilizce Sınavı</span>
+                                        <span class="m-desc">Başvuru sırasında geçerli bir dil belgesi sunmamış adaylar için uygulanan değerlendirme.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">PACE</span>
+                                        <span class="m-desc">Güncellenmiş psikometrik test süreci.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">Yetkinlik Değerlendirmesi (CRM)</span>
+                                        <span class="m-desc">Davranışsal yetkinlikler ve ekip uyumunun ölçüldüğü aşama.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">İK ve Teknik Mülakat</span>
+                                        <span class="m-desc">İnsan kaynakları ve ilgili birim tarafından yapılan görüşmeler ile birlikte evrak incelemesi ve boy–kilo ölçümü.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">Sağlık Kontrolü</span>
+                                        <span class="m-desc">Uçuşa elverişlilik açısından gerçekleştirilen sağlık değerlendirmesi.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recruitment Process -->
+                <div class="discovery-toggle-card" id="recruitment-process">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                RECRUIT
+                            </div>
+                            <div class="discovery-text">
+                                <h3>İşe Alım Süreci</h3>
+                                <p>Başvurudan uçuşa elverişlilik kontrolüne kadar tüm değerlendirme adımları.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>İşe Alım Süreci</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Değerlendirme süreci aşağıdaki adımlardan oluşmaktadır:</p>
+                        </div>
+
+                        <div class="category-pane" style="width: 100%; margin-bottom: 32px;">
+                            <div class="module-list-compact">
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">İngilizce Sınavı</span>
+                                        <span class="m-desc">Başvuru sırasında geçerli bir dil belgesi sunmayan adaylar bu aşamaya dahil edilmektedir.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">PACE Testi</span>
+                                        <span class="m-desc">Güncel psikometrik değerlendirme aşamasıdır.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">Yetkinlik Değerlendirmesi (CRM)</span>
+                                        <span class="m-desc">Adayların davranışsal ve ekip içi becerileri ölçülmektedir.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">İK ve Teknik Mülakat</span>
+                                        <span class="m-desc">İnsan Kaynakları ve ilgili iş birimi tarafından yapılan görüşmelerle birlikte evrak incelemesi ve boy–kilo ölçümü gerçekleştirilmektedir.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div class="m-info">
+                                        <span class="m-name">Sağlık Kontrolü</span>
+                                        <span class="m-desc">Adayın uçuşa elverişlilik durumunun değerlendirilmesi amaçlanmaktadır.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 62, 62, 0.1);">
+                            <p style="margin-bottom: 15px;">Bu beş aşama, bir pilot adayında aranması gereken temel yetkinlikleri de ortaya koymaktadır:</p>
+                            <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px;">
+                                <li style="color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                                    <span style="color: #ff3e3e; font-weight: 800;">•</span> İngilizce dil yeterliliği
+                                </li>
+                                <li style="color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                                    <span style="color: #ff3e3e; font-weight: 800;">•</span> Teknik yetkinlikler (PACE değerlendirmesi)
+                                </li>
+                                <li style="color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                                    <span style="color: #ff3e3e; font-weight: 800;">•</span> Teknik dışı beceriler (CRM)
+                                </li>
+                                <li style="color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                                    <span style="color: #ff3e3e; font-weight: 800;">•</span> Mesleki motivasyon ve uygunluk (İK ve teknik mülakatlar)
+                                </li>
+                                <li style="color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 10px; font-size: 0.95rem;">
+                                    <span style="color: #ff3e3e; font-weight: 800;">•</span> Uçuşa elverişlilik durumu (sağlık değerlendirmesi)
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: 20px;">
+                            <p>Aşamalar arasındaki bekleme süreleri, başvuru yapan aday sayısına ve planlamaya göre farklılık gösterebilmektedir. Çoğu dönemde adımlar arasında yaklaşık birkaç haftalık aralıklar oluşurken, yoğunluğun arttığı dönemlerde bu süreler biraz daha uzayabilmektedir. Filo ataması ve sözleşme imza tarihinin planlanması da sürece eklendiğinde, başvurunun ilk gününden nihai aşamaya kadar geçen toplam sürenin ortalama birkaç ayı bulabilmektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 62, 62, 0.03); border: 1px solid rgba(255, 62, 62, 0.1); margin-top: 20px;">
+                            <p>Adayın değerlendirme süreci, başvuru yaptığı andan itibaren başlamaktadır. Tüm sınav ve mülakat aşamaları, <strong>Türk Hava Yolları Uçuş Eğitim Başkanlığı</strong> bünyesinde gerçekleştirilmektedir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Exam Info -->
+                <div class="discovery-toggle-card" id="english-exam-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                LANG
+                            </div>
+                            <div class="discovery-text">
+                                <h3>İngilizce Sınavı</h3>
+                                <p>Çevrimiçi sınav prosedürleri, içerik ve başarı kriterleri.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>İngilizce Sınavı</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>Başvuru aşamasında geçerli bir İngilizce dil belgesi ibraz eden adaylar, İngilizce sınavına girmekten muaf tutulmakta ve değerlendirme sürecine doğrudan <strong>PACE aşamasından</strong> devam etmektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Başvuru sırasında ya da sonrasında geçerli bir dil belgesi ibraz edemeyen adaylar, <strong>çevrimiçi olarak gerçekleştirilen</strong> İngilizce sınavına katılmaktadır. Sınavı başarıyla tamamlayan adaylar sürece PACE Testi ile devam eder. Ancak bu sınav yalnızca <strong>Reading ve Listening</strong> bölümlerini kapsadığından, Writing ve Speaking becerilerini içermemekte ve bu nedenle resmi bir dil belgesi yerine geçmemektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 62, 62, 0.03); border: 1px solid rgba(255, 62, 62, 0.1);">
+                            <p>Sınavda başarılı olamayan adaylara, sınav tarihinden itibaren <strong>iki aylık süreç içerisinde</strong> belgesi sunmaları istenir. Belgenin belirtilen süre içinde iletilmesi hâlinde süreç PACE aşamasıyla devam eder; aksi durumda başvuru sonlandırılır ve adayın bir sonraki ilan dönemine yeniden başvurması gerekir.</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- Sınav İçeriği -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                    <h4>Sınav İçeriği</h4>
+                                </div>
+                                <p class="pane-subtext">Sınav toplam <strong>32 çoktan seçmeli sorudan</strong> oluşur ve yaklaşık <strong>40 dakika</strong> sürer. İçerik başlıkları şu şekildedir:</p>
+                                <div class="module-list-compact">
+                                    <div class="module-item-compact">Dil bilgisi (Grammar)</div>
+                                    <div class="module-item-compact">Kelime bilgisi (Vocabulary)</div>
+                                    <div class="module-item-compact">Okuduğunu anlama (Reading)</div>
+                                    <div class="module-item-compact">Dinlediğini anlama (Listening)</div>
+                                </div>
+                            </div>
+
+                            <!-- Soru Türleri -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                    <h4>Adayların Karşılaştığı Soru Türleri</h4>
+                                </div>
+                                <div class="module-list-compact" style="gap: 8px;">
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Metnin ana düşüncesi nedir?</div>
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Paragrafa göre hangi ifade doğru değildir?</div>
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Metinde hangi konuya değinilmemiştir?</div>
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Yazarın vermek istediği mesaj nedir?</div>
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Cümlede vurgulanan düşünce hangisidir?</div>
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Boş bırakılan ifadeyi tamamlayınız.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pace General Info -->
+                <div class="discovery-toggle-card" id="pace-process-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                PACE
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Pace | Yeni Psikometrik Sınav</h3>
+                                <p>Hazırlık süreci, sınav bağlantısı ve değerlendirme sonuçları hakkında genel bilgiler.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Pace | Yeni Psikometrik Sınav</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>İngilizce sınavını başarıyla tamamlayan veya geçerli bir dil belgesi ibraz eden adaylara, <strong>PACE testine hazırlık yapabilmeleri için</strong> pratik amaçlı bağlantı gönderilmektedir. Gönderilen çalışma bağlantısı ile gerçek sınav tarihi arasında <strong>en az üç haftalık bir hazırlık süresi</strong> bulunmaktadır.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>PACE değerlendirmesinde başarılı olan adaylar, sürece <strong>Yetkinlik Değerlendirmesi (CRM)</strong> aşamasıyla devam etmektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 62, 62, 0.03); border: 1px solid rgba(255, 62, 62, 0.1);">
+                            <p>Testten yeterli başarıyı sağlayamayan adaylar ise ilgili ilan kapsamındaki sürece devam edemez ve bir sonraki başvuru dönemini beklemek durumunda kalır. Başarısız olunan modüllere göre adaylar <strong>3 veya 6 ay</strong> arasında değişen re-test sürecini beklemelidirler. Tüm başvuru şartlarının sağlanması hâlinde, adayların yeni ilan döneminde <strong>tekrar başvuru yapma hakkı</strong> bulunmaktadır.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PACE Discovery Hub Structure applied here -->
+                <div class="discovery-toggle-card" id="pace-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                PACE
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Pace Testi Nedir?</h3>
+                                <p>Test detayları ve tüm modül içerikleri için rehberi inceleyin.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Pace Testi Nedir?</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Geçtiğimiz yıllarda uygulanmaya başlayan psikometrik değerlendirme sistemi <strong>PACE</strong> adıyla uygulanmaktadır. Bu test, adayların teknik yeterliliklerini ölçmeyi amaçlamakta olup <strong>THY Uçuş Eğitim Başkanlığı</strong> bünyesinde gerçekleştirilmektedir. Uygulama süresi ortalama <strong>5–6 saat</strong> sürmektedir. Bu test <strong>2 bilgi</strong> ve <strong>7 yetenek modülünden</strong> oluşmaktadır.</p>
+                        </div>
+            
+                        <div class="info-grid-modern">
+                            <!-- Yetenek Modülleri -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>
+                                    <h4>Yetenek Modülleri</h4>
+                                </div>
+                                <p class="pane-subtext">Yetenek modülleri, bir pilotta bulunması gereken temel bilişsel ve psikomotor becerileri değerlendirmeye yöneliktir. Bu kapsamda uzamsal algı, bellek, psikomotor ve dikkat koordinasyon gibi kritik yetkinlikler ölçülmektedir.</p>
+                                <p class="pane-subtext">Değerlendirme sürecinde yer alan başlıca modüller şunlardır:</p>
+                                <div class="module-list-compact">
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/Audio_visual_memory.png" alt="Audio Visual Memory">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">Audio Visual Memory (Görsel-İşitsel Bellek) </span>
+                                            <span class="m-desc">Görsel ve işitsel bilgilerin eş zamanlı olarak algılanması ve hatırlanma kapasitesini ölçer.</span>
+                                        </div>
+                                    </div>
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/Digit_span.png" alt="Verbal Memory – Digit Span">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">Verbal Memory – Digit Span (Sözel Bellek) </span>
+                                            <span class="m-desc">Sayısal bilgilerin kısa süreli bellekte tutulması ve doğru şekilde geri çağrılmasını değerlendirir.</span>
+                                        </div>
+                                    </div>
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/3Dimesional_spatial_perception.png" alt="3D Spatial Perception">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">3D Spatial Perception (Üç Boyutlu Uzamsal Algı) </span>
+                                            <span class="m-desc">Nesnelerin üç boyutlu uzayda algılanması ve konum ilişkilerinin yorumlanmasını ölçer.</span>
+                                        </div>
+                                    </div>
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/Spatial_orientation.png" alt="Spatial Orientation">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">Spatial Orientation (Uzamsal Oryantasyon) </span>
+                                            <span class="m-desc">Yön, konum ve hareket ilişkilerini doğru analiz edebilme becerisini değerlendirir.</span>
+                                        </div>
+                                    </div>
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/Sustained_attention.png" alt="Sustained Attention">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">Sustained Attention (Sürdürülebilir Dikkat) </span>
+                                            <span class="m-desc">Uzun süre boyunca dikkat seviyesinin korunabilme yeteneğini ölçer.</span>
+                                        </div>
+                                    </div>
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/Agility.png" alt="Cognitive Agility">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">Cognitive Agility (Bilişsel Çeviklik) </span>
+                                            <span class="m-desc">Değişen durumlara hızlı uyum sağlama ve zihinsel geçişleri etkin biçimde gerçekleştirme becerisini değerlendirir.</span>
+                                        </div>
+                                    </div>
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/Joystick_flight_test.png" alt="Psychomotor Coordination">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">Psychomotor Coordination (Psikomotor Koordinasyon ve Çoklu İşlem Becerisi) </span>
+                                            <span class="m-desc">El-göz koordinasyonu ile aynı anda birden fazla görevin yönetebilme kapasitesini ölçer.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- Bilgi Modülleri -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                    <h4>Bilgi Modülleri</h4>
+                                </div>
+                                <p class="pane-subtext">Bilgi modülleri, adayların temel Matematik ve Fizik düzeylerini değerlendirmek amacıyla uygulanmaktadır. Bu modüller, analitik düşünme becerisi ile temel bilimsel bilgilerin anlaşılma seviyesini ölçmeye yöneliktir.</p>
+                                <p class="pane-subtext">Değerlendirme sürecinde yer alan başlıca modüller şunlardır:</p>
+                                <div class="module-list-compact">
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/mathematics.png" alt="Mathematics">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">Mathematics (Matematik) </span>
+                                            <span class="m-desc">Analitik düşünme yeteneği, temel matematiksel işlemler ve havacılık odaklı problem çözme becerileri.</span>
+                                        </div>
+                                    </div>
+                                    <div class="module-item-compact">
+                                        <div class="m-image">
+                                            <img src="images/modules_img/Physics.png" alt="Physics">
+                                        </div>
+                                        <div class="m-info">
+                                            <span class="m-name">Physics (Fizik) </span>
+                                            <span class="m-desc">Mekanik, termodinamik ve temel fizik prensiplerinin teorik ve pratik uygulama seviyesini ölçer.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mathematics Module -->
+                <div class="discovery-toggle-card" id="math-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                MATH
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Mathematics (M)</h3>
+                                <p>Temel matematik bilgi düzeyi ve konu başlıkları hakkında detaylı bilgi.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Mathematics (M)</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Bu modül, adayların temel <strong>Matematik</strong> bilgi düzeylerini ölçmek amacıyla uygulanmaktadır. Uygulama kapsamında <strong>30 sorudan</strong> oluşan bir değerlendirme yer almakta olup, sınav süresi <strong>30 dakika</strong> olarak belirlenmiştir. Değerlendirme, temel matematiksel işlemler, <strong>sayısal düşünme</strong> ve <strong>problem çözme</strong> becerilerini kapsayacak şekilde yapılandırılmıştır.</p>
+                        </div>
+            
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Sorular <strong>çoktan seçmeli</strong> formatta hazırlanmakta olup, her soru <strong>dört seçenekten</strong> oluşmaktadır. PACE Matematik modülü, <strong>DLR Matematik</strong> ile karşılaştırıldığında; konu kapsamı ve soru türleri bakımından genel olarak benzer bir yapıya sahiptir. Bununla birlikte, PACE Matematik değerlendirmesi bazı konularda kapsam açısından <strong>daha geniş</strong> bir içeriğe sahiptir.</p>
+                        </div>
+
+                        <div class="category-pane" style="width: 100%; margin-top: 20px;">
+                            <div class="pane-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                <h4>Konu Başlıkları</h4>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px;">
+                                <div class="module-item-compact">Hız ve hareket</div>
+                                <div class="module-item-compact">Yüzde ve karışım hesaplamaları</div>
+                                <div class="module-item-compact">Sayılar ve kesirler</div>
+                                <div class="module-item-compact">İş ve işçi problemleri</div>
+                                <div class="module-item-compact">Yaş problemleri</div>
+                                <div class="module-item-compact">Oran ve orantı</div>
+                                <div class="module-item-compact">Denklem çözümü</div>
+                                <div class="module-item-compact">Diziler ve seriler</div>
+                                <div class="module-item-compact">Geometri</div>
+                                <div class="module-item-compact">Trigonometri</div>
+                                <div class="module-item-compact">İşlem yeteneği</div>
+                                <div class="module-item-compact">Basit eşitsizlikler</div>
+                                <div class="module-item-compact">Üslü ve köklü sayılar</div>
+                                <div class="module-item-compact">Katı cisimler</div>
+                            </div>
+                            <p class="pane-subtext" style="margin-top: 30px; font-style: italic;">Konu başlıkları, adayların temel matematiksel bilgi ve problem çözme becerilerini ölçmeye yönelik olarak yapılandırılmıştır.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physics Module -->
+                <div class="discovery-toggle-card" id="physics-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                PHYS
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Physics (F)</h3>
+                                <p>Temel fizik bilgi düzeyi ve konu alanları hakkında detaylı bilgi.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Physics (F)</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Bu modül, adayların temel <strong>Fizik</strong> bilgi düzeylerini ölçmek amacıyla uygulanmaktadır. Değerlendirme, <strong>30 sorudan</strong> oluşmakta olup sınav süresi <strong>30 dakika</strong> olarak belirlenmiştir. Sorular <strong>çoktan seçmeli</strong> formatta hazırlanmakta ve her soru <strong>dört seçenek</strong> içermektedir.</p>
+                        </div>
+
+                        <div class="category-pane" style="width: 100%; margin-top: 20px;">
+                            <div class="pane-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                <h4>Konu Başlıkları</h4>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px;">
+                                <div class="module-item-compact">Hareket</div>
+                                <div class="module-item-compact">Newton yasaları</div>
+                                <div class="module-item-compact">İş, güç ve enerji</div>
+                                <div class="module-item-compact">Basınç, kütle ve yoğunluk</div>
+                                <div class="module-item-compact">Bernoulli prensibi</div>
+                                <div class="module-item-compact">Isı ve sıcaklık</div>
+                                <div class="module-item-compact">Vektörler, basit makineler ve kaldıraçlar</div>
+                                <div class="module-item-compact">Manyetizma</div>
+                                <div class="module-item-compact">Elektrik ve elektrostatik kuvvet</div>
+                                <div class="module-item-compact">Ohm yasası</div>
+                                <div class="module-item-compact">Dalgalar</div>
+                                <div class="module-item-compact">Optik</div>
+                                <div class="module-item-compact">Uluslararası temel birimler (SI Units)</div>
+                            </div>
+                            <p class="pane-subtext" style="margin-top: 30px; font-style: italic;">Bu konu başlıkları, adayların temel fizik bilgisi ve kavramsal yeterliliklerini ölçmeye yönelik olarak yapılandırılmıştır.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exam Day & Sequence Combined -->
+                <div class="discovery-toggle-card" id="exam-day-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                DAY
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Sınav Günü</h3>
+                                <p>Sınav prosedürleri, giriş işlemleri ve modül sıralaması.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Sınav Günü</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Sınav öncesinde, <strong>Türk Hava Yolları</strong> tarafından gönderilen bilgilendirme e-postasında uygulamaya ilişkin gerekli bilgiler paylaşılmaktadır. Psikometrik test için kıyafet konusunda <strong>belirli bir zorunluluk</strong> bulunmamaktadır.</p>
+                        </div>
+            
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <p>Sınavın gerçekleştirildiği binaya girişte güvenlik görevlilerine bir <strong>kimlik belgesi</strong> sunulmaktadır. Testin yapıldığı alana geçiş sırasında ise sınav yetkilisi tarafından tekrar kimlik kontrolü yapılmaktadır. </p>
+                        </div>
+
+                        <div class="category-pane" style="width: 100%;">
+                            <div class="pane-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><line x1="10" y1="6" x2="21" y2="6"></line><line x1="10" y1="12" x2="21" y2="12"></line><line x1="10" y1="18" x2="21" y2="18"></line><path d="M4 6h1v4"></path><path d="M4 10h2"></path><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg>
+                                <h4>Modül Sıralaması ve Sınav Akışı</h4>
+                            </div>
+                            
+                            <div class="exam-flow-container">
+                                <!-- Section 1 -->
+                                <div class="exam-flow-step">
+                                    <div class="step-label">1. BÖLÜM</div>
+                                    <div class="flow-module-item">Sustained Attention (D1)</div>
+                                    <div class="flow-module-item">Audio Visual Memory (B1)</div>
+                                    <div class="flow-module-item">3D Spatial Perception (U1)</div>
+                                    <div class="flow-break">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff3e3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                        <span>5 dk Ara</span>
+                                    </div>
+                                </div>
+
+                                <!-- Section 2 -->
+                                <div class="exam-flow-step">
+                                    <div class="step-label">2. BÖLÜM</div>
+                                    <div class="flow-module-item">Physics (F)</div>
+                                    <div class="flow-module-item">Mathematics (M)</div>
+                                    <div class="flow-break">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff3e3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                        <span>5 dk Ara</span>
+                                    </div>
+                                </div>
+
+                                <!-- Section 3 -->
+                                <div class="exam-flow-step">
+                                    <div class="step-label">3. BÖLÜM</div>
+                                    <div class="flow-module-item">Cognitive Agility (D2)</div>
+                                    <div class="flow-module-item">Verbal Memory (B2)</div>
+                                    <div class="flow-module-item">Spatial Orientation (U2)</div>
+                                    <div class="flow-break">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff3e3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                        <span>15 dk Ara</span>
+                                    </div>
+                                </div>
+
+                                <!-- Section 4 -->
+                                <div class="exam-flow-step">
+                                    <div class="step-label">4. BÖLÜM</div>
+                                    <div class="flow-module-item">Psychomotor Coordination and Multitasking (P)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equivalent Modules -->
+                <div class="discovery-toggle-card" id="equivalents-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                SYNC
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Eşlenik Modüller</h3>
+                                <p>Modül eşleşmeleri, kodlar ve performans dengesi hakkında detaylar.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Eşlenik Modüller</h1>
+                        </div>
+                        
+                        <div class="info-grid-modern" style="margin-bottom: 40px;">
+                            <div class="category-pane" style="grid-column: span 2;">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                                    <h4>Yeterlilik Eşleşmeleri</h4>
+                                </div>
+                                <div class="module-list-compact" style="display: block;">
+                                    <div class="module-item-compact" style="margin-bottom: 10px; justify-content: space-between;">
+                                        <span style="color: #fff; font-weight: 600;">Matematik</span>
+                                        <span style="color: rgba(255, 255, 255, 0.6); font-weight: 600;">Mathematics (M)</span>
+                                    </div>
+                                    <div class="module-item-compact" style="margin-bottom: 10px; justify-content: space-between;">
+                                        <span style="color: #fff; font-weight: 600;">Fizik</span>
+                                        <span style="color: rgba(255, 255, 255, 0.6); font-weight: 600;">Physics (F)</span>
+                                    </div>
+                                    <div class="module-item-compact" style="margin-bottom: 10px; justify-content: space-between;">
+                                        <span style="color: #fff; font-weight: 600;">Bellek</span>
+                                        <span style="color: rgba(255, 255, 255, 0.6); font-weight: 600; text-align: right;">Audio Visual Memory (B1) &<br>Verbal Memory: Digit Span (B2)</span>
+                                    </div>
+                                    <div class="module-item-compact" style="margin-bottom: 10px; justify-content: space-between;">
+                                        <span style="color: #fff; font-weight: 600;">Uzamsal Algı</span>
+                                        <span style="color: rgba(255, 255, 255, 0.6); font-weight: 600; text-align: right;">3D Spatial Perception (U1) &<br>Spatial Orientation (U2)</span>
+                                    </div>
+                                    <div class="module-item-compact" style="margin-bottom: 10px; justify-content: space-between;">
+                                        <span style="color: #fff; font-weight: 600;">Dikkat</span>
+                                        <span style="color: rgba(255, 255, 255, 0.6); font-weight: 600; text-align: right;">Sustained Attention (D1) &<br>Cognitive Agility (D2)</span>
+                                    </div>
+                                    <div class="module-item-compact" style="margin-bottom: 10px; justify-content: space-between;">
+                                        <span style="color: #fff; font-weight: 600;">Psikomotor Koordinasyon</span>
+                                        <span style="color: rgba(255, 255, 255, 0.6); font-weight: 600;">Psychomotor Coordination and Multitasking (P)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-intro-text">
+                            <h4 style="color: #fff; margin-bottom: 15px; font-weight: 800; text-transform: uppercase; font-size: 0.9rem;">Kod Açıklamaları</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+                                <p style="margin: 0; font-size: 0.95rem;"><strong>M:</strong> Matematik</p>
+                                <p style="margin: 0; font-size: 0.95rem;"><strong>F:</strong> Fizik</p>
+                                <p style="margin: 0; font-size: 0.95rem;"><strong>B:</strong> Bellek</p>
+                                <p style="margin: 0; font-size: 0.95rem;"><strong>U:</strong> Uzamsal Algı</p>
+                                <p style="margin: 0; font-size: 0.95rem;"><strong>D:</strong> Dikkat</p>
+                                <p style="margin: 0; font-size: 0.95rem;"><strong>P:</strong> Psikomotor Koordinasyon</p>
+                            </div>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 62, 62, 0.2); border-left: 4px solid #ff3e3e;">
+                            <p style="font-size: 1rem; font-style: italic;">Tabloda yer alan bazı modüller, aynı yetkinliği ölçmek üzere birlikte değerlendirilir. Bu alanda başarılı sayılabilmek için ilgili modüllerde <strong>dengeli bir performans</strong> sergilenmesi beklenir. Yeterli denge sağlanamadığında ise ilgili değerlendirme sonucunun olumsuz olması mümkündür.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Target Scores -->
+                <div class="discovery-toggle-card" id="scores-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                GOAL
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Hedef Skorlar</h3>
+                                <p>Performans hedefleri ve başarı kriterleri hakkında bilgilendirme.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Hedef Skorlar</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Uygulama üzerinden pratik yapılabilmekte ve çalışma sırasında anlık geri bildirimler alınabilmektedir. </p>
+                        </div>
+            
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 62, 62, 0.2); border-left: 4px solid #ff3e3e;">
+                            <p>Bu nedenle hazırlık sürecinde, tüm aşamalarda performansın <strong>dengeli ve yeterli seviyeye</strong> getirilmesi hedeflenmelidir. Her modülde üst seviyelerde <strong>tutarlı bir başarı</strong> sağlanması, değerlendirme süreci açısından önem taşır.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CRM Info -->
+                <div class="discovery-toggle-card" id="crm-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                CRM
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Yetkinlik Değerlendirmesi (CRM)</h3>
+                                <p>Sosyal ve davranışsal becerilerin ölçüldüğü değerlendirme aşaması.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Yetkinlik Değerlendirmesi (CRM)</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>PACE testini başarıyla geçen adaylar, <strong>Yetkinlik Değerlendirmesi (CRM)</strong> aşamasına katılmak üzere davet edilmektedir. İki aşama arasındaki planlama genellikle en az iki haftalık bir aralık gözetilerek yapılır.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Yetkinlik Değerlendirmesi, belirlenen tarihte <strong>THY Uçuş Eğitim Başkanlığı</strong> tesislerinde gerçekleştirilmekte ve ortalama <strong>üç saat</strong> sürmektedir. Bu aşamayı başarıyla tamamlayan adaylar, sürece İK ve İş Birimi Teknik Mülakatı ile devam eder.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h4 style="color: #fff; margin-bottom: 12px; font-weight: 800; font-size: 0.95rem;">Dil Belgesi Hakkında</h4>
+                            <p>Bu aşamaya kadar geçerli bir dil belgesi sunmamış olan adaylara, belgelerini sunmak üzere <strong>1 aylık ek süre</strong> tanınmaktadır. Dil belgesinin, başvuru sisteminde belirtilen alana yüklenmesi ile birlikte mülakat planlaması yapılmaktadır.</p>
+                            <p style="margin-top: 12px; font-size: 0.9rem; color: rgba(255,255,255,0.6);">Belirtilen 1 aylık süre içinde dil belgesini ibraz etmeyen adayların başvuruları sonlandırılmaktadır. Bu durum bir hak kaybına yol açmaz; adaylar belgelerini temin ettikten sonra yeni ilanlara başvurabilir ve CRM sonucunu belirterek yeniden planlamaya dâhil olabilirler.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 62, 62, 0.03); border: 1px solid rgba(255, 62, 62, 0.1); margin-top: 20px;">
+                            <p>Yetkinlik Değerlendirmesinde başarılı olamayan adaylar için belirlenmiş <strong>re-test bekleme süresi 3 aydır</strong>. Tüm başvuru şartlarının sağlanması hâlinde yeni ilana tekrar başvuru yapılabilmektedir.</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- İçerik ve Ölçüm -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
+                                    <h4>Neyi Ölçüyor?</h4>
+                                </div>
+                                <p class="pane-subtext"><strong>CRM (Crew Resource Management)</strong>, emniyetli bir uçuş için ekipteki tüm insani ve operasyonel kaynakların doğru kullanılmasını ifade eder. Bu aşamada adayların aşağıdaki temel bileşenlerdeki potansiyeli değerlendirilir:</p>
+                                <div class="module-list-compact" style="gap: 8px;">
+                                    <div class="module-item-compact" style="font-size: 0.88rem;">• Durumsal farkındalık</div>
+                                    <div class="module-item-compact" style="font-size: 0.88rem;">• Etkili iletişim</div>
+                                    <div class="module-item-compact" style="font-size: 0.88rem;">• Takım çalışması ve Liderlik</div>
+                                    <div class="module-item-compact" style="font-size: 0.88rem;">• Stres yönetimi</div>
+                                    <div class="module-item-compact" style="font-size: 0.88rem;">• İş yükü ve yorgunluk yönetimi</div>
+                                    <div class="module-item-compact" style="font-size: 0.88rem;">• Karar verme</div>
+                                </div>
+                            </div>
+
+                            <!-- Uygulama -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    <h4>Nasıl Uygulanıyor?</h4>
+                                </div>
+                                <div style="margin-bottom: 20px;">
+                                    <h5 style="color: #fff; font-size: 0.95rem; margin-bottom: 8px;">1) Grup Çalışmaları</h5>
+                                    <p class="pane-subtext" style="font-size: 0.85rem;">Altı aday, uzman akademisyenler eşliğinde verilen yönergelerle çeşitli görevleri yerine getirir. İletişim, ekip çalışması, duygu kontrolü ve problem çözme becerileri gözlemlenir.</p>
+                                </div>
+                                <div>
+                                    <h5 style="color: #fff; font-size: 0.95rem; margin-bottom: 8px;">2) Bire Bir Mülakat</h5>
+                                    <p class="pane-subtext" style="font-size: 0.85rem;">Grup çalışması sonrası adaylar tek tek mülakata alınır. Özgeçmiş, pilotluk motivasyonu, grup çalışması performansı ve geçmiş deneyimlerden yetkinlik örnekleri ele alınır.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HR & Technical Interview Info -->
+                <div class="discovery-toggle-card" id="hr-interview-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                BOARD
+                            </div>
+                            <div class="discovery-text">
+                                <h3>İK ve İş Birimi Teknik Mülakatı</h3>
+                                <p>Mülakat içeriği, evrak kontrolü ve boy-kilo ölçümü detayları.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>İK ve İş Birimi Teknik Mülakatı</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>Yetkinlik Değerlendirmesinde başarılı olan adaylar sürece <strong>İK ve İş Birimi Teknik Mülakatı, evrak kontrolü ve boy–kilo ölçümü</strong> aşamalarıyla devam etmektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Yetkinlik Değerlendirmesine katıldığı tarihte geçerli bir dil belgesi bulunmayan adaylara, belgeyi sunmaları için <strong>1 aylık süre</strong> tanınr. Dil belgesinin Türk Hava Yolları’nın belirttiği adreslere gönderilmesiyle mülakat planlaması yapılır. Başvuru aşamasında belgesi bulunan adaylar için ise Yetkinlik Değerlendirmesi ile mülakat arasında en az <strong>2 haftalık</strong> bir planlama süresi öngörülür.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <p>Mülakat yaklaşık <strong>30 dakika</strong> sürmekle birlikte; evrak kontrolü, boy–kilo ölçümü ve bekleme süreleriyle birlikte toplam süreç yaklaşık <strong>3 saati</strong> bulabilmektedir. This aşamada başarılı olan adaylar <strong>Sağlık Kontrolü</strong> sürecine yönlendirilir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 62, 62, 0.03); border: 1px solid rgba(255, 62, 62, 0.1);">
+                            <p>Başarılı olamayan adaylar için yeniden başvuru bekleme süresi <strong>3 aydır</strong>. Tüm başvuru koşullarını sağlayan adaylar yeni ilana başvuruda bulunabilir.</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- Evrak ve Boy-Kilo -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    <h4>Kontrol Aşamaları</h4>
+                                </div>
+                                <div style="margin-bottom: 24px;">
+                                    <h5 style="color: #fff; font-size: 0.95rem; margin-bottom: 8px;">Evrak Kontrolü</h5>
+                                    <p class="pane-subtext" style="font-size: 0.85rem;">Mülakat davet e-postasında talep edilen belgeler, İnsan Kaynakları tarafından teslim alınarak uygunluk açısından kontrol edilir.</p>
+                                </div>
+                                <div>
+                                    <h5 style="color: #fff; font-size: 0.95rem; margin-bottom: 8px;">Boy–Kilo Ölçümü</h5>
+                                    <p class="pane-subtext" style="font-size: 0.85rem; margin-bottom: 12px;">Dijital cihazlarla yapılan ölçümlerde Beden Kitle Endeksinin (BKİ) <strong>20–30 aralığında</strong> olması beklenir.</p>
+                                    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; font-size: 0.82rem; border: 1px dashed rgba(255,255,255,0.1);">
+                                        <p style="color: #ff3e3e; font-weight: 700; margin-bottom: 4px;">BKİ = Kilo / Boy²</p>
+                                        <p style="color: rgba(255,255,255,0.6);">Örnek: 76 kg / 1,78m² ≈ 24.0</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mülakat İçeriği -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    <h4>Mülakatın İçeriği</h4>
+                                </div>
+                                <p class="pane-subtext" style="font-size: 0.88rem;">İki İK yetkilisi ve bir Kaptan Pilot tarafından, <strong>Türkçe ve İngilizce karma</strong> şekilde gerçekleştirilir. Şu alanlara odaklanılır:</p>
+                                <div class="module-list-compact" style="gap: 8px;">
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Teknik ve sosyal becerilerin yeniden değerlendirilmesi</div>
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Mesleğe yönelik ilgi, vizyon ve motivasyon</div>
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Şirket kültürüne ve pilotluğa uygunluk</div>
+                                    <div class="module-item-compact" style="font-size: 0.85rem;">• Öğrenmeye ve gelişime açıklık</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-pane" style="width: 100%; margin-top: 32px;">
+                            <div class="pane-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <h4>Adaylardan Beklentiler ve Geri Bildirimler</h4>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px;">
+                                <div class="module-item-compact" style="font-size: 0.85rem;">Beden dili ve ses tonunu etkili kullanma</div>
+                                <div class="module-item-compact" style="font-size: 0.85rem;">Kurumsal ve profesyonel temsil</div>
+                                <div class="module-item-compact" style="font-size: 0.85rem;">Problem analiz edebilme ve çözüm üretme</div>
+                                <div class="module-item-compact" style="font-size: 0.85rem;">Durumsal farkındalık</div>
+                                <div class="module-item-compact" style="font-size: 0.85rem;">Uzun vadeli kariyer hedefi</div>
+                                <div class="module-item-compact" style="font-size: 0.85rem;">Mesleki bilgiyi güncel tutma arzusu</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Retest Process -->
+                <div class="discovery-toggle-card" id="retest-info">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                RETRY
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Retest Süreci</h3>
+                                <p>Başarısızlık durumunda bekleme süreleri, modül bazlı kurallar ve yeniden başvuru detayları.</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Retest Süreci</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>PACE aşamasında yeterli başarı sağlanamaması durumunda, adaylar ilgili ilan kapsamında yürütülen sürece devam edememekte ve sonraki ilan dönemlerini beklemek durumunda kalmaktadır. Tüm başvuru şartlarının karşılanması hâlinde, adaylar yeni ilanlara yeniden başvuru yapabilmektedir.</p>
+                        </div>
+            
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Adaylar, re-test için belirlenen bekleme süresi tamamlanmadan da yeni bir ilana başvurarak sürece tekrar katılım sağlayabilmektedir. Re-test süresi sona erdiğinde ise, adayın elendiği değerlendirme aşaması Türk Hava Yolları tarafından yeniden planlanmaktadır.</p>
+                            <p style="margin-top: 15px; color: #ff3e3e;"><strong>Önemli:</strong> Aynı değerlendirme aşamasında iki kez başarısız olunması durumunda, yetiştirilmek üzere pilot aday adayı sürecine yeniden başvuru hakkı tanınmamaktadır.</p>
+                        </div>
+
+                        <div class="category-pane" style="width: 100%; margin-bottom: 32px;">
+                            <div class="pane-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                                <h4>Alan, Modül ve Kod Eşleşmeleri</h4>
+                            </div>
+                            <div class="module-list-compact">
+                                <div class="module-item-compact" style="background: rgba(255, 62, 62, 0.05); border-color: rgba(255, 62, 62, 0.1);">
+                                    <div style="flex: 1; font-weight: 800; color: #ff3e3e; font-size: 0.8rem;">ALAN</div>
+                                    <div style="flex: 2; font-weight: 800; color: #ff3e3e; font-size: 0.8rem;">MODÜL / İÇERİK</div>
+                                    <div style="flex: 0.5; font-weight: 800; color: #ff3e3e; font-size: 0.8rem; text-align: right;">KOD</div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div style="flex: 1; font-weight: 700;">Matematik</div>
+                                    <div style="flex: 2; color: rgba(255,255,255,0.7);">Mathematics</div>
+                                    <div style="flex: 0.5; text-align: right; color: #ff3e3e; font-weight: 800;">M</div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div style="flex: 1; font-weight: 700;">Fizik</div>
+                                    <div style="flex: 2; color: rgba(255,255,255,0.7);">Physics</div>
+                                    <div style="flex: 0.5; text-align: right; color: #ff3e3e; font-weight: 800;">F</div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div style="flex: 1; font-weight: 700;">Bellek</div>
+                                    <div style="flex: 2; color: rgba(255,255,255,0.7);">Audio Visual Memory / Verbal Memory: Digit Span</div>
+                                    <div style="flex: 0.5; text-align: right; color: #ff3e3e; font-weight: 800;">B</div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div style="flex: 1; font-weight: 700;">Uzamsal algı</div>
+                                    <div style="flex: 2; color: rgba(255,255,255,0.7);">3D Spatial Perception / Spatial Orientation</div>
+                                    <div style="flex: 0.5; text-align: right; color: #ff3e3e; font-weight: 800;">U</div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div style="flex: 1; font-weight: 700;">Dikkat</div>
+                                    <div style="flex: 2; color: rgba(255,255,255,0.7);">Sustained Attention / Cognitive Agility</div>
+                                    <div style="flex: 0.5; text-align: right; color: #ff3e3e; font-weight: 800;">D</div>
+                                </div>
+                                <div class="module-item-compact">
+                                    <div style="flex: 1; font-weight: 700;">Psikomotor</div>
+                                    <div style="flex: 2; color: rgba(255,255,255,0.7);">Psychomotor Coordination and Multitasking</div>
+                                    <div style="flex: 0.5; text-align: right; color: #ff3e3e; font-weight: 800;">P</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 62, 62, 0.05); border: 1px solid rgba(255, 62, 62, 0.2);">
+                            <p>PACE değerlendirmesi kapsamında uygulanan re-test bekleme süresi, başarısız olunan modüllere göre değişiklik göstermekte olup, sınav tarihinden itibaren <strong>3 ya da 6 ay</strong> olarak belirlenmektedir. Başarısız olunan modüller, adaylara harf kodları aracılığıyla bildirilmektedir.</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff3e3e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                    <h4 style="font-size: 1rem;">3 Ay Bekleme Süresi</h4>
+                                </div>
+                                <p class="pane-subtext">Eğer yalnızca <strong>bilgi modüllerinde</strong> (M, F) başarısızlık yaşanırsa, en az 3 ay sonra sadece başarısız olunan modül(ler) için tekrar sınava girilir.</p>
+                                <p class="pane-subtext" style="font-style: italic; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; margin-top: 10px;">Not: Dikkat (D) modülünde başarısız olunması, Sustained Attention ile Cognitive Agility sonuçlarının birbirini telafi edecek düzeyde olmadığını gösterir.</p>
+                            </div>
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff3e3e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                    <h4 style="font-size: 1rem;">6 Ay Bekleme Süresi</h4>
+                                </div>
+                                <p class="pane-subtext">Herhangi bir <strong>yetenek modülünden</strong> (B, U, D, P) kalınması durumunda, en az 6 ay sonra hem bilgi hem de yetenek modüllerinin tamamını kapsayan sınava baştan girilmesi gerekir.</p>
+                            </div>
+                        </div>
+
+                        <div class="category-pane" style="width: 100%; margin-top: 32px;">
+                            <div class="pane-header">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #ff3e3e; margin-right: 12px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                <h4>Örnek Senaryolar</h4>
+                            </div>
+                            <div class="module-list-compact" style="gap: 15px;">
+                                <div class="module-item-compact" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                                    <span style="color: #fff; font-weight: 800; font-size: 0.9rem;">Senaryo 1: Dikkat (D) modülünde başarısız olunması</span>
+                                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Aday yalnızca Sustained Attention / Cognitive Agility (D) modülleri için yeniden değerlendirmeye alınır. <br><strong>Bekleme süresi: 3 ay</strong></p>
+                                </div>
+                                <div class="module-item-compact" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                                    <span style="color: #fff; font-weight: 800; font-size: 0.9rem;">Senaryo 2: Bellek (B) ve Dikkat (D) modüllerinin ikisinde de yetersizlik</span>
+                                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Tekrar süreci sadece Audio Visual Memory / Verbal Memory: Digit Span (B) ile Sustained Attention / Cognitive Agility (D) modüllerini kapsar. <br><strong>Bekleme süresi: 3 ay</strong></p>
+                                </div>
+                                <div class="module-item-compact" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                                    <span style="color: #fff; font-weight: 800; font-size: 0.9rem;">Senaryo 3: Bellek (B) modülünde başarısız olunması</span>
+                                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin: 0;">Adayın tüm psikometrik değerlendirme süreci (bilgi ve yetenek modüllerinin tamamı) yeniden uygulanır. <br><strong>Bekleme süresi: 6 ay</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more discovery-toggle-cards here as needed -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
