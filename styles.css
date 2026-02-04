@@ -97,6 +97,13 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     padding: 0 20px;
 }
 
+.container-fluid {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
 /* Header */
 .header {
     background-color: #191919;
@@ -863,13 +870,13 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .carousel-3d-container {
     position: relative;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     height: 500px;
     margin: 0 auto;
-    perspective: 1200px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .carousel-3d {
@@ -911,7 +918,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     opacity: 1;
     pointer-events: auto;
     z-index: 10;
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translateX(0) scale(1);
 }
 
 .carousel-item.active img {
@@ -920,33 +927,29 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .carousel-item.prev {
-    opacity: 0.7;
+    opacity: 0.8;
     pointer-events: auto;
     z-index: 5;
-    transform: translate3d(-35%, 0, -250px) scale(0.85);
-    filter: grayscale(0.3);
+    transform: translateX(-85%) scale(0.85);
 }
 
 .carousel-item.next {
-    opacity: 0.7;
+    opacity: 0.8;
     pointer-events: auto;
     z-index: 5;
-    transform: translate3d(35%, 0, -250px) scale(0.85);
-    filter: grayscale(0.3);
+    transform: translateX(85%) scale(0.85);
 }
 
 .carousel-item.far-prev {
-    opacity: 0.3;
+    opacity: 0;
     z-index: 1;
-    transform: translate3d(-60%, 0, -500px) scale(0.7);
-    filter: grayscale(0.5);
+    transform: translateX(-150%) scale(0.75);
 }
 
 .carousel-item.far-next {
-    opacity: 0.3;
+    opacity: 0;
     z-index: 1;
-    transform: translate3d(60%, 0, -500px) scale(0.7);
-    filter: grayscale(0.5);
+    transform: translateX(150%) scale(0.75);
 }
 
 .carousel-item:not(.active):hover {
@@ -984,8 +987,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     height: 24px;
 }
 
-.carousel-nav.prev { left: -80px; }
-.carousel-nav.next { right: -80px; }
+.carousel-nav.prev { left: 20px; }
+.carousel-nav.next { right: 20px; }
 
 .carousel-dots {
     position: absolute;
@@ -1047,8 +1050,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         height: 340px;
     }
     .carousel-item img { height: 280px; }
-    .carousel-item.prev { transform: translate3d(-30%, 0, -200px) scale(0.8); }
-    .carousel-item.next { transform: translate3d(30%, 0, -200px) scale(0.8); }
+    .carousel-item.prev { transform: translateX(-40%) scale(0.75); }
+    .carousel-item.next { transform: translateX(40%) scale(0.75); }
 }
 
 @media (max-width: 768px) {
