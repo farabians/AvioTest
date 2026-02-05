@@ -10,21 +10,49 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .thy-info-hub {
-            padding: 80px 0;
+            padding: 50px 0;
             background: transparent;
+        }
+
+        .thy-hero {
+            padding: 60px 0;
+        }
+
+        .thy-hero .hero-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .thy-hero .hero-description {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .module-card {
+            padding: 16px;
+            border-radius: 16px;
+        }
+
+        .module-card h3 {
+            font-size: 1rem;
+        }
+
+        .module-image {
+            height: 120px;
+            margin-bottom: 12px;
         }
 
         .discovery-toggle-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
+            border-radius: 16px;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             backdrop-filter: blur(10px);
             text-decoration: none;
             display: block;
             cursor: pointer;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .discovery-toggle-card:hover {
@@ -40,7 +68,7 @@
         }
 
         .discovery-header {
-            padding: 32px 40px;
+            padding: 20px 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -50,22 +78,22 @@
         .discovery-title-group {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 20px;
         }
 
         .discovery-icon-box {
-            min-width: 56px;
+            min-width: 48px;
             width: auto;
-            padding: 0 10px;
-            height: 56px;
+            padding: 0 8px;
+            height: 48px;
             background: transparent;
             border: 2px solid #ff3e3e;
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ff3e3e;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 900;
             letter-spacing: 0.5px;
             box-shadow: inset 0 0 15px rgba(255, 62, 62, 0.1), 0 0 20px rgba(255, 62, 62, 0.1);
@@ -73,22 +101,22 @@
         }
 
         .discovery-text h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: #fff;
             letter-spacing: -0.3px;
         }
 
         .discovery-text p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.6);
             font-weight: 400;
         }
 
         .toggle-arrow {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
@@ -115,36 +143,36 @@
             max-height: 0;
             overflow: hidden;
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 0 40px;
+            padding: 0 28px;
             opacity: 0;
         }
 
         .discovery-toggle-card.active .discovery-content {
             max-height: 5000px;
-            padding: 0 40px 48px;
+            padding: 0 28px 32px;
             opacity: 1;
         }
 
         .details-header h1 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
             font-weight: 900;
-            margin-top: 20px;
-            margin-bottom: 24px;
+            margin-top: 16px;
+            margin-bottom: 20px;
             color: #fff;
         }
 
         .info-intro-text {
             background: rgba(255, 62, 62, 0.03);
             border: 1px solid rgba(255, 62, 62, 0.1);
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 40px;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
 
         .info-intro-text p {
             color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-            font-size: 1.05rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         .info-intro-text strong {
@@ -155,27 +183,27 @@
         .info-grid-modern {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            gap: 24px;
         }
 
         .category-pane {
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 24px;
-            padding: 32px;
+            border-radius: 16px;
+            padding: 24px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .pane-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .pane-header h4 {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 800;
             color: #fff;
             text-transform: uppercase;
@@ -184,25 +212,25 @@
 
         .pane-subtext {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-            line-height: 1.7;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .module-list-compact {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 24px;
+            gap: 10px;
+            margin-top: 16px;
         }
 
         .module-item-compact {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 16px;
+            gap: 12px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
+            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: background 0.3s ease;
         }
@@ -212,10 +240,10 @@
         }
 
         .m-image {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -677,205 +705,93 @@
         <section class="hero thy-hero">
             <div class="container">
                 <div class="hero-content">
-                    <img src="images/Turkish_Airlines_logo.png" alt="Turkish Airlines Logo" class="hero-logo pace-logo" style="max-width: 280px; margin-bottom: 2rem;">
+                    <img src="images/Turkish_Airlines_logo.png" alt="Turkish Airlines Logo" class="hero-logo pace-logo" style="max-width: 220px; margin-bottom: 1.5rem;">
                     <h1 class="hero-title">Türk Hava Yolları Pilot Recruitment</h1>
                     <p class="hero-description">THY pilot alım süreçleri, sınavlar ve tüm bilgilendirici detaylar.</p>
                 </div>
             </div>
         </section>
 
-        <!-- PACE Tutorial Section - Standard Components copied from pace.html -->
-        <section class="tutorial-section">
+        <!-- Tutorials Section -->
+        <section id="tutorials" class="tutorials-overview" style="padding: 40px 0;">
             <div class="container">
-                <div class="tutorial-card">
-                    <div class="tutorial-content">
-                        <h2 class="content-title">PACE Exam Structure</h2>
-                        <p class="diagram-note">The PACE Exam is made up of 9 modules. The exam is completed in three sections, with 10 minute breaks in between.</p>
-                    </div>
-
-                    <!-- Linear PACE Timeline Visualization -->
-                    <div class="pace-exam-timeline">
-                        <div class="timeline-container">
-                            <!-- Section Headers -->
-                            <div class="timeline-sections-header">
-                                <div class="section-group-label s1">
-                                    <span class="section-id">SECTION 1</span>
-                                    <div class="section-line-span"></div>
-                                </div>
-                                <div class="section-group-label s2">
-                                    <span class="section-id">SECTION 2</span>
-                                    <div class="section-line-span"></div>
-                                </div>
-                                <div class="section-group-label s3">
-                                    <span class="section-id">SECTION 3</span>
-                                    <div class="section-line-span"></div>
-                                </div>
-                            </div>
-
-                            <!-- Main Timeline Row -->
-                            <div class="timeline-main-row">
-                                <!-- Module 1 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">1</div>
-                                    <span class="node-label">SUSTAINED ATTENTION</span>
-                                </div>
-                                <!-- Module 2 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">2</div>
-                                    <span class="node-label">AUDIO-VISUAL MEMORY</span>
-                                </div>
-                                <!-- Module 3 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">3</div>
-                                    <span class="node-label">DIGIT SPAN</span>
-                                </div>
-
-                                <!-- Break 1 -->
-                                <div class="break-node">
-                                    <div class="break-circle-dashed">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="clock-icon">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
-                                        </svg>
-                                    </div>
-                                    <span class="break-label-text">10M BREAK</span>
-                                </div>
-
-                                <!-- Module 4 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">4</div>
-                                    <span class="node-label">AGILITY</span>
-                                </div>
-                                <!-- Module 5 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">5</div>
-                                    <span class="node-label">3D SPATIAL PERCEPTION</span>
-                                </div>
-                                <!-- Module 6 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">6</div>
-                                    <span class="node-label">SPATIAL ORIENTATION</span>
-                                </div>
-
-                                <!-- Break 2 -->
-                                <div class="break-node">
-                                    <div class="break-circle-dashed">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="clock-icon">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
-                                        </svg>
-                                    </div>
-                                    <span class="break-label-text">10M BREAK</span>
-                                </div>
-
-                                <!-- Module 7 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">7</div>
-                                    <span class="node-label">PHYSICS</span>
-                                </div>
-                                <!-- Module 8 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">8</div>
-                                    <span class="node-label">MATHEMATICS</span>
-                                </div>
-                                <!-- Module 9 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">9</div>
-                                    <span class="node-label">MIC (JOYSTICK)</span>
-                                </div>
-
-                                <!-- Finish -->
-                                <div class="finish-node">
-                                    <div class="finish-circle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    </div>
-                                    <span class="finish-label-text">FINISH</span>
-                                </div>
-                            </div>
+                <div class="tutorials-header" style="text-align: center; margin-bottom: 30px;">
+                    <h2 class="content-title" style="font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 8px;">Tutorials</h2>
+                    <p class="diagram-note" style="color: rgba(255, 255, 255, 0.6); font-size: 1rem;">Tutorials for PACE Modules</p>
+                </div>
+                <div class="modules-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+                    <a href="modules/pace/sustained-attention.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/Sustained_attention.png" alt="Sustained Attention">
                         </div>
-                    </div>
-
-                    <!-- Tutorials Section -->
-                    <section id="tutorials" class="tutorials-overview" style="padding-bottom: 0;">
-                        <div class="tutorials-header">
-                            <h2 class="content-title">Tutorials</h2>
-                            <p class="diagram-note">Tutorials for PACE Modules</p>
+                        <div class="module-info">
+                            <h3>Sustained Attention</h3>
                         </div>
-                        <div class="modules-grid">
-                            <a href="modules/pace/sustained-attention.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Sustained_attention.png" alt="Sustained Attention">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Sustained Attention</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pace/audio-visual-memory.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Audio_visual_memory.png" alt="Audio-Visual Memory">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Audio-Visual Memory</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pace/digit-span.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Digit_span.png" alt="Digit Span">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Digit Span</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pace/agility.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Agility.png" alt="Agility">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Agility</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pace/three-dimensional-spatial-perception.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/3Dimesional_spatial_perception.png" alt="Three-Dimensional Spatial Perception">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Three-Dimensional Spatial Perception</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pace/spatial-orientation.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Spatial_orientation.png" alt="Spatial Orientation">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Spatial Orientation</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pace/physics.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Physics.png" alt="Physics">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Physics</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pace/mathematics.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/mathematics.png" alt="Mathematics">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Mathematics</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pace/mic.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Joystick_flight_test.png" alt="MIC (Joystick)">
-                                </div>
-                                <div class="module-info">
-                                    <h3>MIC (Joystick)</h3>
-                                </div>
-                            </a>
+                    </a>
+                    <a href="modules/pace/audio-visual-memory.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/Audio_visual_memory.png" alt="Audio-Visual Memory">
                         </div>
-                    </section>
+                        <div class="module-info">
+                            <h3>Audio-Visual Memory</h3>
+                        </div>
+                    </a>
+                    <a href="modules/pace/digit-span.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/Digit_span.png" alt="Digit Span">
+                        </div>
+                        <div class="module-info">
+                            <h3>Digit Span</h3>
+                        </div>
+                    </a>
+                    <a href="modules/pace/agility.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/Agility.png" alt="Agility">
+                        </div>
+                        <div class="module-info">
+                            <h3>Agility</h3>
+                        </div>
+                    </a>
+                    <a href="modules/pace/three-dimensional-spatial-perception.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/3Dimesional_spatial_perception.png" alt="Three-Dimensional Spatial Perception">
+                        </div>
+                        <div class="module-info">
+                            <h3>Three-Dimensional Spatial Perception</h3>
+                        </div>
+                    </a>
+                    <a href="modules/pace/spatial-orientation.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/Spatial_orientation.png" alt="Spatial Orientation">
+                        </div>
+                        <div class="module-info">
+                            <h3>Spatial Orientation</h3>
+                        </div>
+                    </a>
+                    <a href="modules/pace/physics.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/Physics.png" alt="Physics">
+                        </div>
+                        <div class="module-info">
+                            <h3>Physics</h3>
+                        </div>
+                    </a>
+                    <a href="modules/pace/mathematics.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/mathematics.png" alt="Mathematics">
+                        </div>
+                        <div class="module-info">
+                            <h3>Mathematics</h3>
+                        </div>
+                    </a>
+                    <a href="modules/pace/mic.html" class="module-card">
+                        <div class="module-image">
+                            <img src="images/modules_img/Joystick_flight_test.png" alt="MIC (Joystick)">
+                        </div>
+                        <div class="module-info">
+                            <h3>MIC (Joystick)</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1148,7 +1064,7 @@
                                 PACE
                             </div>
                             <div class="discovery-text">
-                                <h3>Pace | Yeni Psikometrik Sınav</h3>
+                                <h3>Pace | Psikometrik Sınav</h3>
                                 <p>Hazırlık süreci, sınav bağlantısı ve değerlendirme sonuçları hakkında genel bilgiler.</p>
                             </div>
                         </div>
@@ -1158,7 +1074,7 @@
                     </div>
                     <div class="discovery-content">
                         <div class="details-header">
-                            <h1>Pace | Yeni Psikometrik Sınav</h1>
+                            <h1>Pace | Psikometrik Sınav</h1>
                         </div>
                         
                         <div class="info-intro-text">
@@ -1171,6 +1087,117 @@
 
                         <div class="info-intro-text" style="background: rgba(255, 62, 62, 0.03); border: 1px solid rgba(255, 62, 62, 0.1);">
                             <p>Testten yeterli başarıyı sağlayamayan adaylar ise ilgili ilan kapsamındaki sürece devam edemez ve bir sonraki başvuru dönemini beklemek durumunda kalır. Başarısız olunan modüllere göre adaylar <strong>3 veya 6 ay</strong> arasında değişen re-test sürecini beklemelidirler. Tüm başvuru şartlarının sağlanması hâlinde, adayların yeni ilan döneminde <strong>tekrar başvuru yapma hakkı</strong> bulunmaktadır.</p>
+                        </div>
+
+                        <!-- PACE Exam Structure and Tutorials -->
+                        <div class="tutorial-card" style="margin-top: 40px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="tutorial-content">
+                                <h2 class="content-title">PACE Exam Structure</h2>
+                                <p class="diagram-note">The PACE Exam is made up of 9 modules. The exam is completed in three sections, with 10 minute breaks in between.</p>
+                            </div>
+
+                            <!-- Linear PACE Timeline Visualization -->
+                            <div class="pace-exam-timeline">
+                                <div class="timeline-container">
+                                    <!-- Section Headers -->
+                                    <div class="timeline-sections-header">
+                                        <div class="section-group-label s1">
+                                            <span class="section-id">SECTION 1</span>
+                                            <div class="section-line-span"></div>
+                                        </div>
+                                        <div class="section-group-label s2">
+                                            <span class="section-id">SECTION 2</span>
+                                            <div class="section-line-span"></div>
+                                        </div>
+                                        <div class="section-group-label s3">
+                                            <span class="section-id">SECTION 3</span>
+                                            <div class="section-line-span"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Main Timeline Row -->
+                                    <div class="timeline-main-row">
+                                        <!-- Module 1 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">1</div>
+                                            <span class="node-label">SUSTAINED ATTENTION</span>
+                                        </div>
+                                        <!-- Module 2 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">2</div>
+                                            <span class="node-label">AUDIO-VISUAL MEMORY</span>
+                                        </div>
+                                        <!-- Module 3 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">3</div>
+                                            <span class="node-label">DIGIT SPAN</span>
+                                        </div>
+
+                                        <!-- Break 1 -->
+                                        <div class="break-node">
+                                            <div class="break-circle-dashed">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="clock-icon">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
+                                                </svg>
+                                            </div>
+                                            <span class="break-label-text">10M BREAK</span>
+                                        </div>
+
+                                        <!-- Module 4 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">4</div>
+                                            <span class="node-label">AGILITY</span>
+                                        </div>
+                                        <!-- Module 5 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">5</div>
+                                            <span class="node-label">3D SPATIAL PERCEPTION</span>
+                                        </div>
+                                        <!-- Module 6 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">6</div>
+                                            <span class="node-label">SPATIAL ORIENTATION</span>
+                                        </div>
+
+                                        <!-- Break 2 -->
+                                        <div class="break-node">
+                                            <div class="break-circle-dashed">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="clock-icon">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
+                                                </svg>
+                                            </div>
+                                            <span class="break-label-text">10M BREAK</span>
+                                        </div>
+
+                                        <!-- Module 7 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">7</div>
+                                            <span class="node-label">PHYSICS</span>
+                                        </div>
+                                        <!-- Module 8 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">8</div>
+                                            <span class="node-label">MATHEMATICS</span>
+                                        </div>
+                                        <!-- Module 9 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">9</div>
+                                            <span class="node-label">MIC (JOYSTICK)</span>
+                                        </div>
+
+                                        <!-- Finish -->
+                                        <div class="finish-node">
+                                            <div class="finish-circle">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            </div>
+                                            <span class="finish-label-text">FINISH</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

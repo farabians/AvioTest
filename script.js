@@ -274,13 +274,6 @@ function initializeDiscoveryToggle() {
                 
                 // Toggle active class on the card
                 card.classList.toggle('active');
-                
-                // Optional: Close others when one opens
-                discoveryCards.forEach(otherCard => {
-                    if (otherCard !== card) {
-                        otherCard.classList.remove('active');
-                    }
-                });
             });
         }
     });
