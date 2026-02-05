@@ -354,6 +354,257 @@
             }
         }
 
+        /* New Hero Section Styles */
+        .pace-new-hero {
+            padding: 100px 0 80px;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text-side {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero-main-title {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .hero-main-title span {
+            display: block;
+            color: #ff3e3e;
+        }
+
+        .hero-subline {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 45px;
+            line-height: 1.7;
+            max-width: 550px;
+            font-weight: 400;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .btn-trial {
+            background: #ff0000;
+            color: #fff;
+            padding: 18px 38px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .btn-trial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.5);
+            background: #ff1a1a;
+        }
+
+        .btn-demo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .demo-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .btn-demo:hover .demo-icon {
+            background: #fff;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .hero-image-side {
+            flex: 1.5;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mockup-wrapper {
+            position: relative;
+            width: 135%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+        }
+
+        .hero-mockup {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.6));
+            position: relative;
+            z-index: 2;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .pace-new-hero {
+                padding: 60px 0;
+            }
+            .hero-flex {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            .hero-text-side {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-subline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            .btn-trial {
+                width: 100%;
+                text-align: center;
+            }
+            .mockup-wrapper {
+                width: 100%;
+            }
+        }
+
+        /* Trust Factors Bar (Güven Unsuru) */
+        .trust-factors-bar {
+            padding: 40px 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.03) 50%, rgba(0,0,0,0) 100%);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            align-items: center;
+        }
+
+        .trust-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0 20px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: trustReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        .trust-item:nth-child(1) { animation-delay: 0.2s; }
+        .trust-item:nth-child(2) { animation-delay: 0.4s; }
+        .trust-item:nth-child(3) { animation-delay: 0.6s; }
+        .trust-item:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes trustReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .trust-item:last-child {
+            border-right: none;
+        }
+
+        .trust-item:hover .trust-number {
+            transform: scale(1.1);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 62, 62, 0.6);
+        }
+
+        .trust-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff3e3e;
+            line-height: 1;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .trust-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px 0;
+            }
+            .trust-item:nth-child(even) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+            .trust-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                padding-bottom: 20px;
+            }
+            .trust-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+        }
+
         /* Pace Creative Knowledge Hub Styles - Refined & Modernized */
         .pace-discovery-hub {
             padding: 40px 0;
@@ -665,12 +916,51 @@
     <div id="header-placeholder"></div>
 
     <!-- 1. Hero Section -->
-    <section class="hero pace-hero">
+    <section class="pace-new-hero">
         <div class="container">
-            <div class="hero-content">
-                <img src="images/Turkish_Airlines_logo.png" alt="Turkish Airlines Logo" class="hero-logo pace-logo">
-                <h1 class="hero-title">PACE Pilot Assessment Preparation</h1>
-                <p class="hero-description">Comprehensive training modules designed specifically for the PACE pilot selection process.</p>
+            <div class="hero-flex">
+                <div class="hero-text-side">
+                    <h1 class="hero-main-title">THY PACE TEST <span>ALL-IN-ONE</span></h1>
+                    <p class="hero-subline">The most comprehensive and realistic PACE exam preparation platform. Sharpen your skills with 9 specialized modules designed for Turkish Airlines pilot candidates.</p>
+                    <div class="hero-btns">
+                        <a href="pricing.html" class="btn-trial">Start Free Trial</a>
+                        <a href="#" class="btn-demo">
+                            <span class="demo-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-side">
+                    <div class="mockup-wrapper">
+                        <img src="images/pace_landingpage_heroimage.png" alt="THY PACE Test All-in-One Preparation" class="hero-mockup">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Factors Bar (Güven Unsuru) -->
+    <section class="trust-factors-bar">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <span class="trust-number">500+</span>
+                    <span class="trust-label">Aday Çalıştı</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">PACE</span>
+                    <span class="trust-label">Özel Hazırlık</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">THY</span>
+                    <span class="trust-label">Adayları İçin</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">%98</span>
+                    <span class="trust-label">Başarı Oranı</span>
+                </div>
             </div>
         </div>
     </section>
