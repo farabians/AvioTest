@@ -321,6 +321,351 @@
             color: rgba(255, 255, 255, 0.4);
             font-weight: 500;
         }
+
+        /* PACE Exam Timeline Styles - Embedded for consistency */
+        .pace-exam-timeline {
+            margin: 30px 0;
+            padding: clamp(30px, 5vw, 50px) clamp(10px, 2vw, 20px);
+            position: relative;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            width: 100%;
+            overflow: hidden; /* Prevent horizontal scroll, force content to fit */
+        }
+
+        .timeline-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timeline-sections-header {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr); /* 12 equal columns to match the 12 nodes below */
+            margin-bottom: clamp(15px, 3vw, 30px);
+            padding: 0;
+            width: 100%;
+        }
+
+        .section-group-label.s1 { grid-column: span 3; }
+        .section-group-label.s2 { grid-column: 5 / span 3; }
+        .section-group-label.s3 { grid-column: 9 / span 3; }
+
+        .section-group-label {
+            text-align: center;
+            position: relative;
+        }
+
+        .section-id {
+            display: block;
+            color: #ff3e3e;
+            font-weight: 800;
+            font-size: clamp(0.55rem, 1.25vw, 0.85rem);
+            letter-spacing: clamp(1px, 0.2vw, 3px);
+            margin-bottom: 8px;
+        }
+
+        .section-line-span {
+            height: 1px;
+            background: rgba(255, 62, 62, 0.4);
+            position: relative;
+            width: 100%;
+        }
+
+        .section-line-span::before,
+        .section-line-span::after {
+            content: "";
+            position: absolute;
+            top: -4px;
+            width: 1px;
+            height: 9px;
+            background: rgba(255, 62, 62, 0.4);
+        }
+
+        .section-line-span::before { left: 0; }
+        .section-line-span::after { right: 0; }
+
+        .timeline-main-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 10px;
+            z-index: 5;
+            width: 100%;
+        }
+
+        .timeline-main-row::before {
+            content: "";
+            position: absolute;
+            top: clamp(18px, 4vw, 32px); /* Responsive vertical position for the connecting line */
+            left: 10px;
+            right: 10px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .timeline-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            padding: 0 2px;
+            transition: all 0.3s ease;
+        }
+
+        .node-circle {
+            width: clamp(24px, 5vw, 44px);
+            height: clamp(24px, 5vw, 44px);
+            background: #0a0a0a;
+            border: 2px solid #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            font-size: clamp(0.7rem, 1.5vw, 1.1rem);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            margin-bottom: 10px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .timeline-node:hover .node-circle {
+            transform: scale(1.1);
+            background: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+        }
+
+        .node-label {
+            color: #888;
+            font-size: clamp(0.45rem, 1vw, 0.65rem);
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 1.2;
+            width: 100%;
+            letter-spacing: 0.2px;
+            transition: color 0.3s ease;
+        }
+
+        .timeline-node:hover .node-label {
+            color: #fff;
+        }
+
+        .break-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1; /* Match module size for perfect grid alignment */
+            margin-top: clamp(2px, 0.5vw, 8px);
+        }
+
+        .break-circle-dashed {
+            width: clamp(22px, 4vw, 36px); /* Middle ground between small and large */
+            height: clamp(22px, 4vw, 36px);
+            border: 2px dashed #ffcc00;
+            border-radius: 50%;
+            background: #0a0a0a;
+            margin-bottom: 10px;
+            box-shadow: 0 0 12px rgba(255, 204, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .clock-icon {
+            width: 75%;
+            height: 75%;
+            color: #ffcc00;
+            transition: all 0.3s ease;
+        }
+
+        .break-node:hover .clock-icon {
+            transform: scale(1.1);
+        }
+
+        .break-node:hover .clock-hands {
+            animation: clockSpin 2s linear infinite;
+            transform-origin: 12px 12px;
+        }
+
+        @keyframes clockSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .break-label-text {
+            color: #ffcc00;
+            font-size: clamp(0.45rem, 0.9vw, 0.7rem);
+            font-weight: 800;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Finish Node Styles */
+        .finish-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            flex: 1;
+            padding: 0 2px;
+            transition: all 0.3s ease;
+        }
+
+        .finish-circle {
+            width: clamp(24px, 5vw, 32px);
+            height: clamp(24px, 5vw, 32px);
+            background: #0a0a0a;
+            border: 2px solid #00ff88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff88;
+            margin-bottom: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .finish-circle svg {
+            width: 60%;
+            height: 60%;
+        }
+
+        .finish-node:hover .finish-circle {
+            transform: scale(1.1);
+            background: #00ff88;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+        }
+
+        .finish-label-text {
+            color: #00ff88;
+            font-size: clamp(0.45rem, 1vw, 0.7rem);
+            font-weight: 800;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 1100px) {
+            .pace-exam-timeline {
+                border-radius: 16px;
+                padding: 20px 10px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .pace-exam-timeline {
+                overflow-y: visible;
+                padding: 30px 25px;
+            }
+
+            .timeline-sections-header {
+                display: none; /* Hide horizontal section headers on mobile/tablet */
+            }
+
+            .timeline-main-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px; /* Increased gap for vertical layout */
+                padding-left: 15px;
+            }
+
+            .timeline-main-row::before {
+                top: 10px;
+                bottom: 10px;
+                left: 27px; /* Centered with 24px node-circles (15px padding + 12px radius) */
+                width: 1px;
+                height: auto;
+                right: auto;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .timeline-node, .break-node, .finish-node {
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 15px;
+                width: 100%;
+                padding: 0;
+            }
+
+            .break-node {
+                margin-top: 0;
+            }
+
+            .node-circle {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 0;
+                font-size: 0.75rem;
+                flex-shrink: 0;
+            }
+
+            .break-circle-dashed {
+                width: 20px; /* Slightly larger on mobile */
+                height: 20px;
+                margin-bottom: 0;
+                margin-left: 2px; /* Slight offset to keep clock hands centered on the line */
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .finish-circle {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .node-label, .break-label-text, .finish-label-text {
+                font-size: 0.75rem;
+                text-align: left;
+                width: auto;
+                max-width: none;
+            }
+
+            /* Add section indicator for vertical layout */
+            .timeline-node:nth-child(1)::before { content: "SECTION 1"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
+            .timeline-node:nth-child(5)::before { content: "SECTION 2"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
+            .timeline-node:nth-child(9)::before { content: "SECTION 3"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
+            
+            .timeline-node:nth-child(1), .timeline-node:nth-child(5), .timeline-node:nth-child(9) {
+                margin-top: 30px;
+            }
+        }
+
+        @media (min-width: 901px) and (max-width: 1200px) {
+            .node-label {
+                font-size: 0.55rem;
+                letter-spacing: 0;
+            }
+            .timeline-sections-header {
+                gap: 10px;
+            }
+            .node-circle {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            .timeline-main-row::before {
+                top: 26px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -335,6 +680,202 @@
                     <img src="images/Turkish_Airlines_logo.png" alt="Turkish Airlines Logo" class="hero-logo pace-logo" style="max-width: 280px; margin-bottom: 2rem;">
                     <h1 class="hero-title">Türk Hava Yolları Pilot Recruitment</h1>
                     <p class="hero-description">THY pilot alım süreçleri, sınavlar ve tüm bilgilendirici detaylar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PACE Tutorial Section - Standard Components copied from pace.html -->
+        <section class="tutorial-section">
+            <div class="container">
+                <div class="tutorial-card">
+                    <div class="tutorial-content">
+                        <h2 class="content-title">PACE Exam Structure</h2>
+                        <p class="diagram-note">The PACE Exam is made up of 9 modules. The exam is completed in three sections, with 10 minute breaks in between.</p>
+                    </div>
+
+                    <!-- Linear PACE Timeline Visualization -->
+                    <div class="pace-exam-timeline">
+                        <div class="timeline-container">
+                            <!-- Section Headers -->
+                            <div class="timeline-sections-header">
+                                <div class="section-group-label s1">
+                                    <span class="section-id">SECTION 1</span>
+                                    <div class="section-line-span"></div>
+                                </div>
+                                <div class="section-group-label s2">
+                                    <span class="section-id">SECTION 2</span>
+                                    <div class="section-line-span"></div>
+                                </div>
+                                <div class="section-group-label s3">
+                                    <span class="section-id">SECTION 3</span>
+                                    <div class="section-line-span"></div>
+                                </div>
+                            </div>
+
+                            <!-- Main Timeline Row -->
+                            <div class="timeline-main-row">
+                                <!-- Module 1 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">1</div>
+                                    <span class="node-label">SUSTAINED ATTENTION</span>
+                                </div>
+                                <!-- Module 2 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">2</div>
+                                    <span class="node-label">AUDIO-VISUAL MEMORY</span>
+                                </div>
+                                <!-- Module 3 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">3</div>
+                                    <span class="node-label">DIGIT SPAN</span>
+                                </div>
+
+                                <!-- Break 1 -->
+                                <div class="break-node">
+                                    <div class="break-circle-dashed">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="clock-icon">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
+                                        </svg>
+                                    </div>
+                                    <span class="break-label-text">10M BREAK</span>
+                                </div>
+
+                                <!-- Module 4 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">4</div>
+                                    <span class="node-label">AGILITY</span>
+                                </div>
+                                <!-- Module 5 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">5</div>
+                                    <span class="node-label">3D SPATIAL PERCEPTION</span>
+                                </div>
+                                <!-- Module 6 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">6</div>
+                                    <span class="node-label">SPATIAL ORIENTATION</span>
+                                </div>
+
+                                <!-- Break 2 -->
+                                <div class="break-node">
+                                    <div class="break-circle-dashed">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="clock-icon">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
+                                        </svg>
+                                    </div>
+                                    <span class="break-label-text">10M BREAK</span>
+                                </div>
+
+                                <!-- Module 7 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">7</div>
+                                    <span class="node-label">PHYSICS</span>
+                                </div>
+                                <!-- Module 8 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">8</div>
+                                    <span class="node-label">MATHEMATICS</span>
+                                </div>
+                                <!-- Module 9 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">9</div>
+                                    <span class="node-label">MIC (JOYSTICK)</span>
+                                </div>
+
+                                <!-- Finish -->
+                                <div class="finish-node">
+                                    <div class="finish-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    </div>
+                                    <span class="finish-label-text">FINISH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tutorials Section -->
+                    <section id="tutorials" class="tutorials-overview" style="padding-bottom: 0;">
+                        <div class="tutorials-header">
+                            <h2 class="content-title">Tutorials</h2>
+                            <p class="diagram-note">Tutorials for PACE Modules</p>
+                        </div>
+                        <div class="modules-grid">
+                            <a href="modules/pace/sustained-attention.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Sustained_attention.png" alt="Sustained Attention">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Sustained Attention</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pace/audio-visual-memory.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Audio_visual_memory.png" alt="Audio-Visual Memory">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Audio-Visual Memory</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pace/digit-span.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Digit_span.png" alt="Digit Span">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Digit Span</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pace/agility.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Agility.png" alt="Agility">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Agility</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pace/three-dimensional-spatial-perception.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/3Dimesional_spatial_perception.png" alt="Three-Dimensional Spatial Perception">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Three-Dimensional Spatial Perception</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pace/spatial-orientation.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Spatial_orientation.png" alt="Spatial Orientation">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Spatial Orientation</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pace/physics.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Physics.png" alt="Physics">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Physics</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pace/mathematics.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/mathematics.png" alt="Mathematics">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Mathematics</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pace/mic.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Joystick_flight_test.png" alt="MIC (Joystick)">
+                                </div>
+                                <div class="module-info">
+                                    <h3>MIC (Joystick)</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section>
