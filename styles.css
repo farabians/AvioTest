@@ -132,11 +132,32 @@ body {
 .mobile-notice-banner {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 100%);
     border-bottom: 2px solid var(--primary-red);
-    padding: 20px 15px;
+    padding: 25px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
     animation: bannerGlow 4s infinite alternate ease-in-out;
+}
+
+.mobile-notice-banner .banner-content {
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mobile-notice-banner .banner-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.mobile-notice-banner .banner-link {
+    display: inline-block;
+    background: white;
+    color: black;
+    padding: 8px 18px;
+    border-radius: 30px;
+    margin-left: 0;
+    margin-top: 5px;
+    font-size: 0.9rem;
 }
 
 @keyframes bannerGlow {
@@ -156,72 +177,6 @@ body {
     height: 100%;
     z-index: 1;
     pointer-events: none;
-}
-
-.mobile-banner-content {
-    position: relative;
-    z-index: 2;
-}
-
-.mobile-notice-banner::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 0, 0, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.mobile-banner-badge {
-    display: inline-block;
-    background: var(--primary-red);
-    color: white;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
-}
-
-.mobile-banner-title {
-    font-size: 1.4rem;
-    font-weight: 900;
-    margin-bottom: 6px;
-    color: white;
-    line-height: 1.2;
-}
-
-.mobile-banner-title span {
-    color: #ffc107;
-}
-
-.mobile-banner-text {
-    font-size: 0.9rem;
-    color: var(--text-gray);
-    margin-bottom: 12px;
-    font-weight: 500;
-}
-
-.mobile-banner-link {
-    display: inline-block;
-    background: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-weight: 800;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-.mobile-banner-link:active {
-    transform: scale(0.95);
 }
 
 #footer-placeholder {
@@ -1295,37 +1250,39 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 @media (max-width: 992px) {
     .carousel-3d-container {
-        height: 500px;
+        height: 55vw;
+        min-height: 400px;
     }
     .carousel-item {
-        width: 85%;
-        height: 400px;
-        margin-left: -42.5%;
-        margin-top: -200px;
+        width: 80%;
+        height: calc(80vw * 0.6);
+        margin-left: -40%;
+        margin-top: calc(80vw * 0.3 * -1);
     }
-    .carousel-item.prev { transform: translate3d(-25%, 0, -250px); }
-    .carousel-item.next { transform: translate3d(25%, 0, -250px); }
+    .carousel-item.prev { transform: translate3d(-20%, 0, -250px); }
+    .carousel-item.next { transform: translate3d(20%, 0, -250px); }
     .carousel-nav { width: 45px; height: 45px; }
 }
 
 @media (max-width: 768px) {
     .carousel-3d-container {
-        height: 450px;
+        height: 65vw;
+        min-height: 350px;
     }
     .carousel-item {
-        width: 90%;
-        height: 320px;
-        margin-left: -45%;
-        margin-top: -160px;
+        width: 85%;
+        height: calc(85vw * 0.6);
+        margin-left: -42.5%;
+        margin-top: calc(85vw * 0.3 * -1);
     }
     /* Hide side cards on mobile to reduce clutter, or scale them down significantly */
     .carousel-item.prev { 
-        transform: translate3d(-15%, 0, -300px) scale(0.85); 
-        opacity: 0.2;
+        transform: translate3d(-10%, 0, -300px) scale(0.8); 
+        opacity: 0.1;
     }
     .carousel-item.next { 
-        transform: translate3d(15%, 0, -300px) scale(0.85); 
-        opacity: 0.2;
+        transform: translate3d(10%, 0, -300px) scale(0.8); 
+        opacity: 0.1;
     }
     
     .carousel-overlay {
@@ -1356,13 +1313,14 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 @media (max-width: 480px) {
     .carousel-3d-container {
-        height: 380px;
+        height: 70vw;
+        min-height: 300px;
     }
     .carousel-item {
-        width: 95%;
-        height: 280px;
-        margin-left: -47.5%;
-        margin-top: -140px;
+        width: 90%;
+        height: calc(90vw * 0.6);
+        margin-left: -45%;
+        margin-top: calc(90vw * 0.3 * -1);
     }
     .carousel-item.prev, .carousel-item.next {
         opacity: 0; /* Hide completely on very small screens */
