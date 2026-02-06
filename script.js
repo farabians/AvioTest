@@ -48,6 +48,7 @@ async function loadComponents() {
     setActiveNavLink();
     initializeTimeline();
     initializePaceCarousel();
+    initializeBannerParticles();
 }
 
 // Set active class on nav links based on current page
@@ -853,4 +854,65 @@ function initializePaceCarousel() {
     // Initial setup
     updateCarousel();
     startAutoRotate();
+}
+
+// Mobile/Desktop Banner Particles Animation
+function initializeBannerParticles() {
+    const banners = [
+        document.getElementById('desktop-banner-particles'),
+        document.getElementById('mobile-banner-particles')
+    ];
+
+    banners.forEach(canvas => {
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        let animationFrame;
+        let time = 0;
+
+        function resize() {
+            const container = canvas.parentElement;
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 1. Static-like subtle grain/noise or scanlines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < canvas.height; i += 4) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(canvas.width, i);
+                ctx.stroke();
+            }
+
+            // 2. Extremely subtle ambient glow that shifts very slowly
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const gradient = ctx.createRadialGradient(
+                centerX + Math.cos(time * 0.5) * 50, 
+                centerY + Math.sin(time * 0.5) * 20, 
+                0,
+                centerX, 
+                centerY, 
+                canvas.width * 0.8
+            );
+            
+            gradient.addColorStop(0, 'rgba(255, 0, 0, 0.04)');
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            time += 0.005;
+            animationFrame = requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        draw();
+    });
 }
