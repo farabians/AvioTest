@@ -2571,6 +2571,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .status-badge-premium {
     display: inline-flex;
     align-items: center;
+    justify-content: center; /* Ensure contents are centered */
     gap: 8px;
     background: rgba(0, 255, 0, 0.1);
     color: #00ff00;
@@ -2583,6 +2584,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     margin-bottom: 12px;
     border: 1px solid rgba(0, 255, 0, 0.3);
     box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+    width: fit-content;
 }
 
 .pulse-dot {

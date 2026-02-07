@@ -682,9 +682,8 @@ function initializeTimeline() {
             if (item.isActive) {
                 const badge = document.createElement("div");
                 badge.className = "status-badge-premium";
-                badge.style.transform = "scale(0.85)";
-                badge.style.transformOrigin = "left center";
-                badge.style.marginBottom = "5px";
+                badge.style.marginBottom = "10px";
+                badge.style.alignSelf = "center"; // Center the badge specifically
                 
                 const dot = document.createElement("span");
                 dot.className = "pulse-dot";
