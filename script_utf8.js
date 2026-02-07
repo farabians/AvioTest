@@ -625,19 +625,21 @@ function initializeTimeline() {
 
     const timelineData = {
         "2024": [
-            { airline: "THY", class: "thy", start: "2024-06-13", end: "2024-09-09", label: "13 Jun - 9 Sep", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Standard mid-year intake (airlinehaber.com)" },
-            { airline: "THY", class: "thy", start: "2024-10-07", end: "2024-10-25", label: "7 Oct - 25 Oct", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Fall intake (airlinehaber.com)" },
-            { airline: "Pegasus", class: "pegasus", start: "2024-05-10", end: "2024-06-24", label: "10 May - 24 Jun", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program / Cadet-style", notes: "Official listing for 2024. (ATPL TV Careers)" },
-            { airline: "SunExpress", class: "sun", start: "2024-01-01", end: "2024-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training / Cadet-style", notes: "No official open/close dates available - must monitor live postings. (LinkedIn)" }
+            { airline: "THY", class: "thy", start: "2024-06-13", end: "2024-09-09", label: "13 Jun - 9 Sep", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Standard mid-year intake" },
+            { airline: "THY", class: "thy", start: "2024-10-07", end: "2024-10-25", label: "7 Oct - 25 Oct", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Fall intake" },
+            { airline: "Pegasus", class: "pegasus", start: "2024-05-10", end: "2024-06-24", label: "10 May - 24 Jun", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program", notes: "Official listing for 2024" },
+            { airline: "SunExpress", class: "sun", start: "2024-01-01", end: "2024-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training", notes: "Continuous recruitment" }
         ],
         "2025": [
             { airline: "THY", class: "thy", start: "2025-01-02", end: "2025-04-04", label: "2 Jan - 4 Apr", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Winter/Spring intake" },
             { airline: "THY", class: "thy", start: "2025-05-27", end: "2025-07-11", label: "27 May - 11 Jul", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Early Summer intake" },
+            { airline: "THY", class: "thy", start: "2025-09-01", end: "2025-10-17", label: "Sep - 17 Oct", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Fall intake" },
             { airline: "Pegasus", class: "pegasus", start: "2025-03-17", end: "2025-04-01", label: "17 Mar - 1 Apr", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program", notes: "Early 2025 intake" },
+            { airline: "Pegasus", class: "pegasus", start: "2025-07-15", end: "2025-09-01", label: "Jul - 1 Sep", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "PC-2026 Pilot Program", notes: "Summer intake" },
             { airline: "SunExpress", class: "sun", start: "2025-01-01", end: "2025-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training", notes: "Continuous recruitment" }
         ],
         "2026": [
-            { airline: "THY", class: "thy", start: "2026-02-03", end: "2026-03-27", label: "3 Feb - 27 Mar", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Winter/Spring intake", isActive: true },
+            { airline: "Pegasus", class: "pegasus", start: "2026-01-02", end: "2026-03-15", label: "2 Jan - 15 Mar", link: "pegasus.html", conditionsLink: "pegasus-conditions.html", program: "Pilot Training Program", notes: "Active recruitment", isActive: true },
             { airline: "SunExpress", class: "sun", start: "2026-01-01", end: "2026-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training", notes: "Continuous recruitment" }
         ]
     };
@@ -658,45 +660,18 @@ function initializeTimeline() {
             if (!container) return;
 
             const startPos = calculatePosition(item.start);
-            // Positions are now accurately relative to the 100px month grid
-            const adjustedStart = startPos;
+            const endPos = calculatePosition(item.end);
+            let height = endPos - startPos;
+            if (height < 60) height = 120;
 
-            // 1. Create Dot
-            const dot = document.createElement("div");
-            dot.className = "timeline-dot";
-            dot.style.top = `${adjustedStart}px`;
-            container.appendChild(dot);
-
-            // 2. Create Date Box
-            const dateBox = document.createElement("div");
-            dateBox.className = `date-label-box ${item.isActive ? 'active-date' : ''}`;
-            dateBox.style.top = `${adjustedStart}px`;
-            dateBox.textContent = item.label;
-            container.appendChild(dateBox);
-
-            // 3. Create Card
             const card = document.createElement("div");
             card.className = `timeline-event-card ${item.isActive ? 'active-recruitment' : ''}`;
-            card.style.top = `${adjustedStart + 35}px`; /* Increased offset to not cover the dot */
+            card.style.top = `${startPos + 20}px`;
+            card.style.minHeight = `${height}px`;
 
-            if (item.isActive) {
-                const badge = document.createElement("div");
-                badge.className = "status-badge-premium";
-                badge.style.transform = "scale(0.85)";
-                badge.style.transformOrigin = "left center";
-                badge.style.marginBottom = "5px";
-                
-                const dot = document.createElement("span");
-                dot.className = "pulse-dot";
-                
-                badge.appendChild(dot);
-                badge.appendChild(document.createTextNode(" Applications Open"));
-                card.appendChild(badge);
-            }
-
-            const airlineName = document.createElement("div");
-            airlineName.className = "event-airline-name";
-            airlineName.textContent = item.airline;
+            const label = document.createElement("div");
+            label.className = "event-label";
+            label.textContent = item.label;
             
             const program = document.createElement("div");
             program.className = "event-program";
@@ -711,18 +686,18 @@ function initializeTimeline() {
 
             const prepLink = document.createElement("a");
             prepLink.href = item.link;
-            prepLink.className = "event-link prep-btn";
-            prepLink.textContent = "Preparation Page";
+            prepLink.className = "event-link";
+            prepLink.textContent = "Prep";
 
             const condLink = document.createElement("a");
             condLink.href = item.conditionsLink;
-            condLink.className = "event-link cond-btn";
-            condLink.textContent = "Application Conditions";
+            condLink.className = "event-link";
+            condLink.textContent = "Cond";
 
             actions.appendChild(prepLink);
             actions.appendChild(condLink);
 
-            card.appendChild(airlineName);
+            card.appendChild(label);
             card.appendChild(program);
             card.appendChild(notes);
             card.appendChild(actions);
@@ -741,7 +716,7 @@ function initializeTimeline() {
         });
     });
 
-    renderYear("2026");
+    renderYear("2024");
 }
 
 function initializePaceCarousel() {

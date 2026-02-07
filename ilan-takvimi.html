@@ -24,14 +24,54 @@
         <section class="timeline-section">
             <div class="container">
                 <div class="timeline-controls">
-                    <button class="year-btn active" data-year="2024">2024</button>
+                    <button class="year-btn" data-year="2024">2024</button>
                     <button class="year-btn" data-year="2025">2025</button>
-                    <button class="year-btn" data-year="2026">2026</button>
+                    <button class="year-btn active" data-year="2026">2026</button>
                 </div>
 
-                <div class="vertical-timeline-wrapper">
-                    <div id="timeline-content" class="vertical-timeline">
-                        <!-- Injected by JS -->
+                <div class="mobile-scroll-hint">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15 12h-3V9h-2v3H7v2h3v3h2v-3h3v-2zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H4V4h16v16z"/></svg>
+                    Swipe horizontally to see all timelines
+                </div>
+
+                <div class="calendar-wrapper">
+                    <div class="timeline-header-grid">
+                        <div class="header-empty"></div>
+                        <div class="header-airline thy">
+                            <span class="dot thy"></span>
+                            Turkish Airlines
+                        </div>
+                        <div class="header-airline pegasus">
+                            <span class="dot pegasus"></span>
+                            Pegasus
+                        </div>
+                        <div class="header-airline sun">
+                            <span class="dot sun"></span>
+                            SunExpress
+                        </div>
+                    </div>
+
+                    <div class="multi-timeline-container">
+                        <div class="months-sidebar">
+                            <div class="month-label">Jan</div>
+                            <div class="month-label">Feb</div>
+                            <div class="month-label">Mar</div>
+                            <div class="month-label">Apr</div>
+                            <div class="month-label">May</div>
+                            <div class="month-label">Jun</div>
+                            <div class="month-label">Jul</div>
+                            <div class="month-label">Aug</div>
+                            <div class="month-label">Sep</div>
+                            <div class="month-label">Oct</div>
+                            <div class="month-label">Nov</div>
+                            <div class="month-label">Dec</div>
+                        </div>
+                        
+                        <div class="timelines-grid">
+                            <div id="timeline-thy" class="airline-timeline thy"></div>
+                            <div id="timeline-pegasus" class="airline-timeline pegasus"></div>
+                            <div id="timeline-sun" class="airline-timeline sun"></div>
+                        </div>
                     </div>
                 </div>
 
