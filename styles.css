@@ -5291,10 +5291,96 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .timeline-controls {
         width: 100%;
         display: flex;
+        margin-bottom: 20px;
+    }
+
+    /* Adjusted for perfect centering and larger cards on mobile */
+    .timeline-section .container {
+        padding: 0;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .calendar-wrapper {
+        /* Total width: Sidebar(120) + 3 Columns + Symmetric Right Space(120) = 1100px */
+        min-width: 1100px !important;
+        width: 1100px !important;
+        overflow: visible !important;
+        transform-origin: top center;
+        /* Balanced zoom for ideal readability and centering */
+        zoom: 0.35; 
+        margin: 0 auto;
+        display: block !important;
+    }
+
+    /* Progressive zoom steps for various mobile screen widths */
+    @media (min-width: 360px) { .calendar-wrapper { zoom: 0.35; } }
+    @media (min-width: 375px) { .calendar-wrapper { zoom: 0.37; } }
+    @media (min-width: 390px) { .calendar-wrapper { zoom: 0.38; } }
+    @media (min-width: 414px) { .calendar-wrapper { zoom: 0.41; } }
+    @media (min-width: 430px) { .calendar-wrapper { zoom: 0.43; } }
+    @media (min-width: 480px) { .calendar-wrapper { zoom: 0.48; } }
+    @media (min-width: 600px) { .calendar-wrapper { zoom: 0.60; } }
+    @media (min-width: 700px) { .calendar-wrapper { zoom: 0.70; } }
+
+    .timeline-header-grid {
+        min-width: 1100px;
+        padding-right: 120px; /* Symmetrical space for items on the right of SunExpress line */
+        gap: 20px;
+    }
+
+    .header-empty {
+        width: 120px; /* Balanced with the right padding for centering */
+    }
+
+    .months-sidebar {
+        width: 120px; /* Balanced with the right padding for centering */
+    }
+
+    .multi-timeline-container {
+        min-width: 1100px;
+        gap: 20px;
+    }
+
+    .timelines-grid {
+        padding-right: 120px; /* Symmetrical space for items on the right of SunExpress line */
+        gap: 20px;
     }
 
     .mobile-scroll-hint {
+        display: none !important;
+    }
+
+    .timeline-legend {
+        margin-top: 20px;
         display: flex;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+        padding-bottom: 20px;
+    }
+
+    .legend-item {
+        font-size: 0.8rem;
+    }
+
+    .legend-item .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Card adjustments for mobile readability */
+    .timeline-event-card {
+        padding: 15px; 
+    }
+    .event-program {
+        font-size: 1.1rem;
+    }
+    .event-airline-name {
+        font-size: 0.9rem;
     }
 }
 
@@ -5484,7 +5570,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         padding-right: 0;
     }
     
-    .timeline-dot {
+    .vertical-timeline .timeline-dot {
         left: 50%;
         top: 15px;
         width: 10px;
