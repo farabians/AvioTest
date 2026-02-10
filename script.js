@@ -654,7 +654,7 @@ function initializeTimeline() {
         const data = timelineData[year] || [];
         Object.values(timelines).forEach(tl => tl.innerHTML = "");
 
-        data.forEach(item => {
+        data.forEach((item, index) => {
             const container = timelines[item.class];
             if (!container) return;
 
@@ -667,18 +667,21 @@ function initializeTimeline() {
             durationLine.className = "timeline-duration-line";
             durationLine.style.top = `${startPos}px`;
             durationLine.style.height = `${durationHeight}px`;
+            durationLine.style.animationDelay = `${index * 0.1}s`; // Staggered delay
             container.appendChild(durationLine);
 
             // 2. Create Dot
             const dot = document.createElement("div");
             dot.className = "timeline-dot";
             dot.style.top = `${startPos}px`;
+            dot.style.animationDelay = `${index * 0.1}s`; // Staggered delay
             container.appendChild(dot);
 
             // 3. Create Date Box
             const dateBox = document.createElement("div");
             dateBox.className = `date-label-box ${item.isActive ? 'active-date' : ''}`;
             dateBox.style.top = `${startPos}px`;
+            dateBox.style.animationDelay = `${index * 0.1}s`; // Staggered delay
             dateBox.textContent = item.label;
             container.appendChild(dateBox);
 
@@ -686,6 +689,7 @@ function initializeTimeline() {
             const card = document.createElement("div");
             card.className = `timeline-event-card ${item.isActive ? 'active-recruitment' : ''}`;
             card.style.top = `${startPos + 25}px`; /* Slightly adjusted offset */
+            card.style.animationDelay = `${index * 0.1}s`; // Staggered delay
 
             if (item.isActive) {
                 const badge = document.createElement("div");
