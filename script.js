@@ -672,12 +672,19 @@ function initializeTimeline() {
             durationLine.style.animationDelay = `${index * 0.1}s`; // Staggered delay
             container.appendChild(durationLine);
 
-            // 2. Create Dot
-            const dot = document.createElement("div");
-            dot.className = "timeline-dot";
-            dot.style.top = `${startPos}px`;
-            dot.style.animationDelay = `${index * 0.1}s`; // Staggered delay
-            container.appendChild(dot);
+            // 2. Create Dots (Start & End)
+            const startDot = document.createElement("div");
+            startDot.className = "timeline-dot";
+            startDot.style.top = `${startPos}px`;
+            startDot.style.animationDelay = `${index * 0.1}s`;
+            container.appendChild(startDot);
+
+            const endDot = document.createElement("div");
+            endDot.className = "timeline-dot";
+            endDot.style.top = `${startPos + durationHeight}px`;
+            // Appear after the line has grown (0.6s)
+            endDot.style.animationDelay = `${(index * 0.1) + 0.5}s`; 
+            container.appendChild(endDot);
 
             // 3. Create Date Box
             const dateBox = document.createElement("div");
