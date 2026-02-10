@@ -638,14 +638,15 @@ function initializeTimeline() {
         ],
         "2026": [
             { airline: "THY", class: "thy", start: "2026-02-03", end: "2026-03-27", label: "3 Feb - 27 Mar", link: "pace.html", conditionsLink: "pace-conditions.html", program: "Cadet Pilot Program", notes: "Winter/Spring intake", isActive: true },
-            { airline: "SunExpress", class: "sun", start: "2026-01-01", end: "2026-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training", notes: "Continuous recruitment" }
+            { airline: "SunExpress", class: "sun", start: "2026-01-01", end: "2026-12-31", label: "All Year", link: "mollymawk.html", conditionsLink: "mollymawk-conditions.html", program: "MPL Pilot Training", notes: "Continuous recruitment", isActive: true, isActive: true }
         ]
     };
 
-    function calculatePosition(dateString) {
+    function calculatePosition(dateString, isEnd = false) {
         const date = new Date(dateString);
         const month = date.getMonth();
-        const day = date.getDate();
+        let day = date.getDate();
+        if (isEnd) day += 1; // Include the full day for the end position
         return (month * 100) + ((day - 1) / 31 * 100);
     }
 
@@ -658,26 +659,33 @@ function initializeTimeline() {
             if (!container) return;
 
             const startPos = calculatePosition(item.start);
-            // Positions are now accurately relative to the 100px month grid
-            const adjustedStart = startPos;
+            const endPos = calculatePosition(item.end, true);
+            const durationHeight = Math.max(endPos - startPos, 2); // Minimum 2px height
 
-            // 1. Create Dot
+            // 1. Create Duration Line
+            const durationLine = document.createElement("div");
+            durationLine.className = "timeline-duration-line";
+            durationLine.style.top = `${startPos}px`;
+            durationLine.style.height = `${durationHeight}px`;
+            container.appendChild(durationLine);
+
+            // 2. Create Dot
             const dot = document.createElement("div");
             dot.className = "timeline-dot";
-            dot.style.top = `${adjustedStart}px`;
+            dot.style.top = `${startPos}px`;
             container.appendChild(dot);
 
-            // 2. Create Date Box
+            // 3. Create Date Box
             const dateBox = document.createElement("div");
             dateBox.className = `date-label-box ${item.isActive ? 'active-date' : ''}`;
-            dateBox.style.top = `${adjustedStart}px`;
+            dateBox.style.top = `${startPos}px`;
             dateBox.textContent = item.label;
             container.appendChild(dateBox);
 
-            // 3. Create Card
+            // 4. Create Card
             const card = document.createElement("div");
             card.className = `timeline-event-card ${item.isActive ? 'active-recruitment' : ''}`;
-            card.style.top = `${adjustedStart + 35}px`; /* Increased offset to not cover the dot */
+            card.style.top = `${startPos + 25}px`; /* Slightly adjusted offset */
 
             if (item.isActive) {
                 const badge = document.createElement("div");
