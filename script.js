@@ -59,6 +59,7 @@ function setActiveNavLink() {
     const isPegasusSection = currentPage.startsWith('pegasus') || path.includes('/modules/pegasus/');
     const isPaceSection = currentPage.startsWith('pace') || path.includes('/modules/pace/');
     const isMollymawkSection = currentPage.startsWith('mollymawk') || path.includes('/modules/mollymawk/');
+    const isSunExpressSection = currentPage.startsWith('sunexpress');
 
     // Helper to check if a link matches the current section
     const isMatch = (href) => {
@@ -67,6 +68,7 @@ function setActiveNavLink() {
         if (linkPage === 'pegasus.html' && isPegasusSection) return true;
         if (linkPage === 'pace.html' && isPaceSection) return true;
         if (linkPage === 'mollymawk.html' && isMollymawkSection) return true;
+        if (linkPage === 'sunexpress.html' && isSunExpressSection) return true;
         if (linkPage === currentPage && currentPage !== 'index.html') return true;
         return false;
     };
