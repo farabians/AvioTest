@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pegasus Exam Structure - AvioTest®</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific Pegasus Exam Timeline Styles */
+        .pegasus-exam-timeline {
+            margin: 30px 0;
+            padding: clamp(30px, 5vw, 50px) clamp(10px, 2vw, 20px);
+            position: relative;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .timeline-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timeline-main-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 10px;
+            z-index: 5;
+            width: 100%;
+        }
+
+        .timeline-main-row::before {
+            content: "";
+            position: absolute;
+            top: clamp(18px, 4vw, 32px);
+            left: 10px;
+            right: 10px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .timeline-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            padding: 0 2px;
+            transition: all 0.3s ease;
+        }
+
+        .node-circle {
+            width: clamp(24px, 5vw, 44px);
+            height: clamp(24px, 5vw, 44px);
+            background: #0a0a0a;
+            border: 2px solid #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            font-size: clamp(0.7rem, 1.5vw, 1.1rem);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            margin-bottom: 10px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .timeline-node:hover .node-circle {
+            transform: scale(1.1);
+            background: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+        }
+
+        .node-label {
+            color: #888;
+            font-size: clamp(0.45rem, 1vw, 0.65rem);
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 1.2;
+            width: 100%;
+            letter-spacing: 0.2px;
+            transition: color 0.3s ease;
+        }
+
+        .timeline-node:hover .node-label {
+            color: #fff;
+        }
+
+        .finish-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            flex: 1;
+            padding: 0 2px;
+            transition: all 0.3s ease;
+        }
+
+        .finish-circle {
+            width: clamp(24px, 5vw, 32px);
+            height: clamp(24px, 5vw, 32px);
+            background: #0a0a0a;
+            border: 2px solid #00ff88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff88;
+            margin-bottom: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .finish-circle svg {
+            width: 60%;
+            height: 60%;
+        }
+
+        .finish-node:hover .finish-circle {
+            transform: scale(1.1);
+            background: #00ff88;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+        }
+
+        .finish-label-text {
+            color: #00ff88;
+            font-size: clamp(0.45rem, 1vw, 0.7rem);
+            font-weight: 800;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .diagram-note strong {
+            color: #ffb400;
+        }
+
+        .kariyer-page-padding {
+            padding: 120px 0 80px;
+        }
+
+        @media (max-width: 1100px) {
+            .pegasus-exam-timeline {
+                border-radius: 16px;
+                padding: 20px 10px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .pegasus-exam-timeline {
+                overflow-x: hidden;
+                padding: 30px 15px;
+            }
+
+            .timeline-main-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+                padding-left: 10px;
+                width: 100%;
+            }
+
+            .timeline-main-row::before {
+                top: 10px;
+                bottom: 10px;
+                left: 21px;
+                width: 1px;
+                height: auto;
+                right: auto;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .timeline-node, .finish-node {
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 15px;
+                width: 100%;
+                padding: 0;
+            }
+
+            .node-circle, .finish-circle {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 0;
+                font-size: 0.75rem;
+                flex-shrink: 0;
+            }
+
+            .node-label, .finish-label-text {
+                font-size: 0.75rem;
+                text-align: left;
+                width: auto;
+                max-width: none;
+            }
+        }
+
+        @media (min-width: 901px) and (max-width: 1200px) {
+            .node-label {
+                font-size: 0.55rem;
+                letter-spacing: 0;
+            }
+            .node-circle {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            .timeline-main-row::before {
+                top: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main class="kariyer-page-padding">
+        <section class="tutorial-section">
+            <div class="container">
+                <div class="tutorial-card">
+                    <div class="tutorial-content">
+                        <h2 class="content-title">Pegasus Exam Structure</h2>
+                        <p class="diagram-note">The exam has <strong>9 modules</strong>. Each module has <strong>3 phases</strong>. There is <strong>NO BREAK</strong> between modules. <strong>90-120 minutes</strong> total.</p>
+                    </div>
+
+                    <!-- Linear Pegasus Timeline Visualization -->
+                    <div class="pegasus-exam-timeline">
+                        <div class="timeline-container">
+                            <!-- Main Timeline Row -->
+                            <div class="timeline-main-row">
+                                <!-- Module 1 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">1</div>
+                                    <span class="node-label">SPATIAL ORIENTATION 2D</span>
+                                </div>
+                                <!-- Module 2 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">2</div>
+                                    <span class="node-label">SPATIAL ORIENTATION 3D</span>
+                                </div>
+                                <!-- Module 3 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">3</div>
+                                    <span class="node-label">VIGILANCE 1</span>
+                                </div>
+
+                                <!-- Module 4 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">4</div>
+                                    <span class="node-label">VIGILANCE 2</span>
+                                </div>
+                                <!-- Module 5 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">5</div>
+                                    <span class="node-label">IPP</span>
+                                </div>
+                                <!-- Module 6 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">6</div>
+                                    <span class="node-label">MATHS</span>
+                                </div>
+
+                                <!-- Module 7 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">7</div>
+                                    <span class="node-label">TECHNICAL COMPREHENSION</span>
+                                </div>
+                                <!-- Module 8 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">8</div>
+                                    <span class="node-label">CAPACITY TEST</span>
+                                </div>
+                                <!-- Module 9 -->
+                                <div class="timeline-node">
+                                    <div class="node-circle">9</div>
+                                    <span class="node-label">FLIGHT CAPACITY</span>
+                                </div>
+
+                                <!-- Finish -->
+                                <div class="finish-node">
+                                    <div class="finish-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    </div>
+                                    <span class="finish-label-text">FINISH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tutorials Section -->
+                    <section id="tutorials" class="tutorials-overview">
+                        <div class="tutorials-header">
+                            <h2 class="content-title">Tutorials</h2>
+                            <p class="diagram-note">Tutorials for Pegasus Modules</p>
+                        </div>
+                        <div class="modules-grid">
+                            <a href="modules/pegasus/spatial-orientation-2d.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Spatial_orientation_2D.png" alt="Spatial Orientation 2D">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Spatial Orientation 2D</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pegasus/spatial-orientation-3d.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Spatial_orientation_3D.png" alt="Spatial Orientation 3D">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Spatial Orientation 3D</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pegasus/vigilance-1.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Vigilance1.png" alt="Vigilance 1">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Vigilance 1</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pegasus/vigilance-2.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Vigilance2.png" alt="Vigilance 2">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Vigilance 2</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pegasus/ipp.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Ipp_test.png" alt="IPP">
+                                </div>
+                                <div class="module-info">
+                                    <h3>IPP</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pegasus/capacity.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Capacity_test.png" alt="Capacity">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Capacity</h3>
+                                </div>
+                            </a>
+                            <a href="modules/pegasus/flight-capacity.html" class="module-card">
+                                <div class="module-image">
+                                    <img src="images/modules_img/Flight_capacity_test.png" alt="Flight Capacity">
+                                </div>
+                                <div class="module-info">
+                                    <h3>Flight Capacity</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
