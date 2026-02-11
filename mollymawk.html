@@ -8,18 +8,1249 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* New Hero Section Styles */
+        .mollymawk-new-hero {
+            padding: 100px 0 80px;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text-side {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero-main-title {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: heroTitleFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero-main-title span {
+            display: block;
+            color: #0066cc;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroSpanFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes heroTitleFade {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes heroSpanFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subline {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 45px;
+            line-height: 1.7;
+            max-width: 550px;
+            font-weight: 400;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .btn-trial {
+            background: #0066cc;
+            color: #fff;
+            padding: 18px 38px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .btn-trial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 204, 0.5);
+            background: #0056b3;
+        }
+
+        .btn-demo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .demo-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .btn-demo:hover .demo-icon {
+            background: #fff;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .hero-image-side {
+            flex: 1.5;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mockup-wrapper {
+            position: relative;
+            width: 135%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+        }
+
+        .hero-mockup {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.6));
+            position: relative;
+            z-index: 2;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .mollymawk-new-hero {
+                padding: 60px 0;
+            }
+            .hero-flex {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            .hero-text-side {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-subline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            .btn-trial {
+                width: 100%;
+                text-align: center;
+            }
+            .mockup-wrapper {
+                width: 100%;
+            }
+        }
+
+        /* Trust Factors Bar */
+        .trust-factors-bar {
+            padding: 40px 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.03) 50%, rgba(0,0,0,0) 100%);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            align-items: center;
+        }
+
+        .trust-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0 20px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: trustReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        .trust-item:nth-child(1) { animation-delay: 0.2s; }
+        .trust-item:nth-child(2) { animation-delay: 0.4s; }
+        .trust-item:nth-child(3) { animation-delay: 0.6s; }
+        .trust-item:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes trustReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .trust-item:last-child {
+            border-right: none;
+        }
+
+        .trust-item:hover .trust-number {
+            transform: scale(1.1);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 102, 204, 0.6);
+        }
+
+        .trust-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #0066cc;
+            line-height: 1;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .trust-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px 0;
+            }
+            .trust-item:nth-child(even) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+            .trust-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                padding-bottom: 20px;
+            }
+            .trust-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+        }
+
+        /* Value Propositions Bar */
+        .value-props-bar {
+            padding: 25px 0 20px;
+            margin-top: -20px;
+        }
+
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .prop-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .prop-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 102, 204, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .prop-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0066cc;
+            flex-shrink: 0;
+        }
+
+        .prop-text h4 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .prop-text p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media (max-width: 950px) {
+            .props-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        /* Discovery Hub Styles */
+        .mollymawk-discovery-hub {
+            padding: 40px 0;
+            margin-bottom: -20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .discovery-toggle-card {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+
+        .discovery-toggle-card:hover {
+            border-color: rgba(0, 102, 204, 0.25);
+            background: rgba(22, 22, 22, 0.9);
+            box-shadow: 0 40px 80px -15px rgba(0, 102, 204, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .discovery-toggle-card.active {
+            border-color: rgba(0, 102, 204, 0.3);
+            background: rgba(20, 20, 20, 0.95);
+            transform: translateY(0);
+        }
+
+        .discovery-header {
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, rgba(0, 102, 204, 0.03) 0%, transparent 100%);
+            transition: background 0.3s ease;
+        }
+
+        .discovery-header:hover {
+            background: linear-gradient(90deg, rgba(0, 102, 204, 0.08) 0%, transparent 100%);
+        }
+
+        .discovery-title-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .discovery-icon-box {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.2) 0%, rgba(0, 102, 204, 0.05) 100%);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0066cc;
+            font-size: 0.85rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 16px rgba(0, 102, 204, 0.1);
+        }
+
+        .discovery-header:hover .discovery-icon-box {
+            transform: scale(1.08) rotate(8deg);
+            background: rgba(0, 102, 204, 0.25);
+            border-color: rgba(0, 102, 204, 0.4);
+            color: #0080ff;
+        }
+
+        .discovery-text h3 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+            color: #fff;
+            letter-spacing: -0.2px;
+        }
+
+        .discovery-text p {
+            font-size: 0.8rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .toggle-arrow {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .discovery-toggle-card:hover .toggle-arrow {
+            background: #0066cc;
+            color: #fff;
+            border-color: #0066cc;
+            box-shadow: 0 0 15px rgba(0, 102, 204, 0.4);
+        }
+
+        .discovery-toggle-card.active .toggle-arrow {
+            transform: rotate(180deg);
+            background: #0066cc;
+            color: #fff;
+        }
+
+        .discovery-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 32px;
+            opacity: 0;
+        }
+
+        .discovery-toggle-card.active .discovery-content {
+            max-height: 5000px;
+            padding: 0 32px 40px;
+            opacity: 1;
+        }
+
+        .details-header {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .details-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .info-grid-modern {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .category-pane {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 28px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pane-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pane-header svg {
+            color: #0066cc;
+        }
+
+        .pane-header h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .pane-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pane-list li {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .pane-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .pane-subtext {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 950px) {
+            .info-grid-modern {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Module Slider Themed Overrides */
+        .module-slider-section .carousel-item.active .carousel-card-inner {
+            border-color: rgba(0, 102, 204, 0.8);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 10px 40px rgba(0, 102, 204, 0.2);
+        }
+
+        .module-slider-section .carousel-cta:hover {
+            background: #0066cc;
+            border-color: #0066cc;
+        }
+
+        .module-slider-section .carousel-nav:hover {
+            background: #0066cc;
+            border-color: #0066cc;
+            box-shadow: 0 0 20px rgba(0, 102, 204, 0.4);
+        }
+
+        .module-slider-section .dot.active {
+            background: #0066cc;
+            box-shadow: 0 0 15px rgba(0, 102, 204, 0.4);
+        }
+
+        .module-slider-section .module-tag {
+            background: #0066cc;
+        }
+
+        /* Themed overrides */
+        .bell-icon {
+            stroke: #ff0000 !important;
+        }
+
+        .notify-pill {
+            background-color: #ff0000 !important;
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2) !important;
+        }
+
+        .notify-pill:hover {
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.3) !important;
+            background-color: #cc0000 !important;
+        }
+
+        #notification-form .cta-button {
+            background-color: #ff0000 !important;
+        }
+
+        .note-box.highlight {
+            border-left-color: #0066cc !important;
+        }
+
+        /* Module Detail Card Styles */
+        .tutorial-modules-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .module-detail-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .module-detail-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 102, 204, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .module-detail-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #0066cc;
+            opacity: 0.3;
+            transition: opacity 0.4s ease;
+        }
+
+        .module-detail-card:hover::before {
+            opacity: 1;
+        }
+
+        .m-detail-image-box {
+            flex: 1;
+            max-width: 280px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .m-detail-image-box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+        }
+
+        .m-detail-info {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .m-detail-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+
+        .m-detail-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .m-detail-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .btn-m-action {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-m-action:hover {
+            background: #0066cc;
+            border-color: #0066cc;
+            transform: translateX(5px);
+        }
+
+        .btn-m-action svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-m-action:hover svg {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 900px) {
+            .module-detail-card {
+                flex-direction: column;
+                padding: 30px;
+                gap: 30px;
+                text-align: center;
+            }
+            .m-detail-image-box {
+                max-width: 100%;
+                width: 100%;
+            }
+            .m-detail-action {
+                justify-content: center;
+            }
+        }
+
+        /* Testimonials & Expert Insights Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.01);
+            position: relative;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .testimonials-header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 102, 204, 0.3);
+        }
+
+        .quote-icon {
+            color: #0066cc;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .stars-row {
+            display: flex;
+            gap: 4px;
+            color: #ffc107;
+        }
+
+        .rating-number {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            background: rgba(255, 193, 7, 0.15);
+            padding: 2px 8px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .testimonial-text {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 102, 204, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #0066cc;
+            border: 2px solid rgba(0, 102, 204, 0.2);
+        }
+
+        .user-details h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .user-details span {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .expert-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff3e3e;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1000px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
     <!-- 1. Hero Section -->
-    <section class="hero mollymawk-hero">
+    <section class="mollymawk-new-hero">
         <div class="container">
-            <div class="hero-content">
-                <img src="images/SunExpress_Logo.png" alt="SunExpress Logo" class="hero-logo mollymawk-logo">
-                <h1 class="hero-title">Mollymawk Pilot Assessment Preparation</h1>
-                <p class="hero-description">Comprehensive training modules designed specifically for the SunExpress Mollymawk selection process.</p>
+            <div class="hero-flex">
+                <div class="hero-text-side">
+                    <h1 class="hero-main-title">SUNEXPRESS <br> MOLLYMAWK TEST <span>ALL-IN-ONE</span></h1>
+                    <p class="hero-subline">The most comprehensive and realistic Mollymawk exam preparation platform. Sharpen your skills with specialized modules designed for SunExpress pilot candidates.</p>
+                    <div class="hero-btns">
+                        <a href="download.html" class="btn-trial">Start Free Trial</a>
+                        <a href="#" class="btn-demo">
+                            <span class="demo-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-side">
+                    <div class="mockup-wrapper">
+                        <img src="images/pace_landingpage_heroimage.png" alt="Mollymawk Test All-in-One Preparation" class="hero-mockup">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Factors Bar -->
+    <section class="trust-factors-bar">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <span class="trust-number">500+</span>
+                    <span class="trust-label">Candidates Trained</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">MOLLYMAWK</span>
+                    <span class="trust-label">Special Preparation</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">SUNEXPRESS</span>
+                    <span class="trust-label">For Candidates</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">HIGH</span>
+                    <span class="trust-label">Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions Bar -->
+    <section class="value-props-bar">
+        <div class="container">
+            <div class="props-grid">
+                <div class="prop-item">
+                    <div class="prop-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="prop-text">
+                        <h4>One Membership</h4>
+                        <p>Unlimited access to all Mollymawk modules in a single package.</p>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    </div>
+                    <div class="prop-text">
+                        <h4>Smart Analytics</h4>
+                        <p>Detailed performance tracking and statistical insights for every module.</p>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path></svg>
+                    </div>
+                    <div class="prop-text">
+                        <h4>Unbeatable Price </h4> 
+                        <p>Top-tier pilot assessment preparation at the most competitive price.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module Screenshots Slider -->
+    <section class="module-slider-section">
+        <div class="slider-background-glow"></div>
+        <div class="container-fluid">
+            <div class="section-header text-center mb-5">
+                <h2 class="modern-slider-title">Master the Mollymawk Test </h2>
+                <p class="modern-slider-subtitle">Gain the competitive edge with the industry's most advanced and realistic module simulations</p>
+            </div>
+            
+            <div class="carousel-3d-container">
+                <div class="carousel-3d" id="mollymawkCarousel">
+                    <!-- Working Memory -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/mollymawk_modules_screenshot/working_memory.png" alt="Working Memory">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Cognitive</span>
+                                <h3>Working Memory</h3>
+                                <p>Master short-term information storage and retrieval.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Time Sharing -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/mollymawk_modules_screenshot/time_sharing.png" alt="Time Sharing">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Multitasking</span>
+                                <h3>Time Sharing</h3>
+                                <p>Perform multiple tasks simultaneously with high precision.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Spatial Orientation -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/mollymawk_modules_screenshot/spatial_orientation.png" alt="Spatial Orientation">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Orientation</span>
+                                <h3>Spatial Orientation</h3>
+                                <p>Visualize aircraft position and attitude in 3D space.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Controls -->
+                <button class="carousel-nav prev" id="mollyPrevBtn" aria-label="Previous">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="carousel-nav next" id="mollyNextBtn" aria-label="Next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+            <!-- Dots Moved Outside 3D Container to avoid perspective skew -->
+            <div class="carousel-dots" id="mollyCarouselDots"></div>
+        </div>
+    </section>
+
+    <!-- Mollymawk Discovery Hub -->
+    <section class="mollymawk-discovery-hub">
+        <div class="container px-0">
+            <div class="discovery-toggle-card">
+                <div class="discovery-header">
+                    <div class="discovery-title-group">
+                        <div class="discovery-icon-box">INFO</div>
+                        <div class="discovery-text">
+                            <h3>Mollymawk Requirements</h3>
+                            <p>Discover Mollymawk requirements & details</p>
+                        </div>
+                    </div>
+                    <div class="toggle-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="discovery-content">
+                    <div class="details-header">
+                        <h1>Mollymawk Assessment Details</h1>
+                    </div>
+
+                    <div class="info-grid-modern">
+                        <!-- Education & Health -->
+                        <div class="category-pane">
+                            <div class="pane-header">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12.5V16a6.3 6.3 0 0 0 12 0v-3.5"></path>
+                                </svg>
+                                <h4>Education & Medical</h4>
+                            </div>
+                            <ul class="pane-list">
+                                <li><strong>Bachelor's Degree:</strong> Applicants must have at least an undergraduate (Associate/Bachelor's) degree.</li>
+                                <li><strong>Medical Certificate:</strong> Possession of a valid Class 1 Medical Certificate is required.</li>
+                            </ul>
+                        </div>
+
+                        <!-- English Requirements -->
+                        <div class="category-pane">
+                            <div class="pane-header">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20"></path>
+                                </svg>
+                                <h4>English Proficency</h4>
+                            </div>
+                            <p class="pane-subtext">One of the following scores must be provided for the application:</p>
+                            <ul class="pane-list">
+                                <li><strong>TOEIC:</strong> Listening (400), Reading (385)</li>
+                                <li><strong>TOEFL iBT:</strong> 75 (L: 20, R: 18, S: 20, W: 18)</li>
+                                <li><strong>IELTS:</strong> 6.0 (Each module min. 5.5)</li>
+                                <li><strong>ITEP Academic Plus:</strong> 3.5 (Each section min. 3.5)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- mollymawk Tutorial Section -->
+    <section class="tutorial-section">
+        <div class="container">
+            <div class="tutorial-card">
+                <!-- Tutorials Section -->
+                <section id="tutorials" class="tutorials-overview">
+                    <div class="tutorials-header">
+                        <h2 class="content-title">Mollymawk Module Details</h2>
+                        <p class="diagram-note">Examine each module in the Mollymawk assessment in detail.</p>
+                    </div>
+                    
+                    <div class="tutorial-modules-container">
+                        <!-- Module 1: Time Sharing -->
+                        <div class="module-detail-card">
+                            <div class="m-detail-image-box">
+                                <img src="images/modules_img/time_sharing.png" alt="Time Sharing">
+                            </div>
+                            <div class="m-detail-info">
+                                <h3 class="m-detail-title">Time Sharing</h3>
+                                <p class="m-detail-desc">Simultaneously performing multiple tasks such as tracking, monitoring, and information processing. It measures the candidate's multitasking ability under high workload conditions.</p>
+                                <div class="m-detail-action">
+                                    <a href="javascript:void(0)" class="btn-m-action">
+                                        Go to Module Page
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 2: Working Memory -->
+                        <div class="module-detail-card">
+                            <div class="m-detail-image-box">
+                                <img src="images/modules_img/working_memory.png" alt="Working Memory">
+                            </div>
+                            <div class="m-detail-info">
+                                <h3 class="m-detail-title">Working Memory</h3>
+                                <p class="m-detail-desc">Measures the capacity to store and manipulate information over short periods. Essential for accurately remembering ATC instructions and dynamic aircraft status information.</p>
+                                <div class="m-detail-action">
+                                    <a href="javascript:void(0)" class="btn-m-action">
+                                        Go to Module Page
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 3: Spatial Orientation -->
+                        <div class="module-detail-card">
+                            <div class="m-detail-image-box">
+                                <img src="images/modules_img/Spatial_orientation_sun.png" alt="Spatial Orientation">
+                            </div>
+                            <div class="m-detail-info">
+                                <h3 class="m-detail-title">Spatial Orientation</h3>
+                                <p class="m-detail-desc">Evaluates the ability to visualize the aircraft's position and attitude in three-dimensional space based on instrument readings and complex mental rotation tasks.</p>
+                                <div class="m-detail-action">
+                                    <a href="javascript:void(0)" class="btn-m-action">
+                                        Go to Module Page
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="testimonials-header">
+                <h2>User Success & Expert Insights</h2>
+                <p>Join hundreds of candidates who have aced the Mollymawk test with AvioTest.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- User 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <span class="rating-number">5/5</span>
+                        <div class="stars-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The Working Memory and Spatial Orientation modules are incredibly realistic. Thanks to AvioTest, I felt zero stress during the actual exam at SunExpress. Highly recommended for every candidate."</p>
+                    <div class="user-info">
+                        <div class="user-avatar">MK</div>
+                        <div class="user-details">
+                            <h4>Mert K.</h4>
+                            <span>SunExpress Pilot Candidate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expert Insight -->
+                <div class="testimonial-card">
+                    <span class="expert-badge">Expert Insight</span>
+                    <div class="quote-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <span class="rating-number">5/5</span>
+                        <div class="stars-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Success in Mollymawk depends on cognitive speed and accuracy under pressure. AvioTest provides the exact environment needed to build that muscle memory before the evaluation."</p>
+                    <div class="user-info">
+                        <div class="user-avatar">Capt.</div>
+                        <div class="user-details">
+                            <h4>Capt. Ahmet Y.</h4>
+                            <span>Senior Flight Instructor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    </div>
+                    <div class="testimonial-stars">
+                        <span class="rating-number">5/5 </span>
+                        <div class="stars-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The statistical tracking helped me identify my weak points. I went from 60% accuracy to 95% in just two weeks of practice."</p>
+                    <div class="user-info">
+                        <div class="user-avatar">SE</div>
+                        <div class="user-details">
+                            <h4>Selin E.</h4>
+                            <span>SunExpress Academy Student</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -41,53 +1272,6 @@
                     <a href="mollymawk-conditions.html" class="requirements-btn-premium">Application Requirements</a>
                     <button class="apply-btn-premium">Apply Now</button>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- mollymawk Tutorial Section -->
-    <section class="tutorial-section">
-        <div class="container">
-            <div class="tutorial-card">
-                <div class="tutorial-content">
-                    <h2 class="content-title">mollymawk Exam Structure</h2>
-                    <p class="diagram-note">The mollymawk exam structure is currently being updated. Please check back soon for detailed information.</p>
-                </div>
-
-                <!-- Placeholder for Exam Structure -->
-                <section class="phases-explanation">
-                    <div class="note-box highlight">
-                        <p><strong>Note:</strong> Detailed module information and exam patterns will be available shortly.</p>
-                    </div>
-                </section>
-
-                <!-- Tutorials Section -->
-                <section id="tutorials" class="tutorials-overview">
-                    <div class="tutorials-header">
-                        <h2 class="content-title">Tutorials</h2>
-                        <p class="diagram-note">Tutorials for mollymawk Modules</p>
-                    </div>
-                    <div class="modules-grid">
-                        <div class="module-card">
-                            <div class="module-image"><img src="images/modules_img/time_sharing.png" alt="Time Sharing"></div>
-                            <div class="module-info">
-                                <h3>Time Sharing</h3>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="module-image"><img src="images/modules_img/working_memory.png" alt="Working Memory"></div>
-                            <div class="module-info">
-                                <h3>Working Memory</h3>
-                            </div>
-                        </div>
-                        <div class="module-card">
-                            <div class="module-image"><img src="images/modules_img/Spatial_orientation_sun.png" alt="Spatial Orientation"></div>
-                            <div class="module-info">
-                                <h3>Spatial Orientation</h3>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
         </div>
     </section>
@@ -123,30 +1307,6 @@
                     <p id="notify-error" class="error-text hidden">Please enter a valid email address.</p>
                     <p id="notify-success" class="success-text hidden">You will be notified!</p>
                 </div>
-            </div>
-
-            <h2 class="section-title">Previous Application Periods</h2>
-            <div class="table-responsive">
-                <table class="periods-table">
-                    <thead>
-                        <tr>
-                            <th>Airline</th>
-                            <th>Program</th>
-                            <th>Application Open</th>
-                            <th>Application Close</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>SunExpress</td>
-                            <td>MPL Pilot Training / Cadet-style</td>
-                            <td>Not publicly standardized</td>
-                            <td>Not publicly standardized</td>
-                            <td>No official open/close dates available — must monitor live postings. (LinkedIn)</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </section>
