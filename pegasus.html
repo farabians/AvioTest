@@ -14,6 +14,348 @@
             box-sizing: border-box;
         }
 
+        /* New Hero Section Styles - Replicated from PACE */
+        .pegasus-new-hero {
+            padding: 100px 0 80px;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text-side {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero-main-title {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: heroTitleFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero-main-title span {
+            display: block;
+            color: #ffb400; /* Pegasus Yellow */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroSpanFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes heroTitleFade {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes heroSpanFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subline {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 45px;
+            line-height: 1.7;
+            max-width: 550px;
+            font-weight: 400;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .btn-trial {
+            background: #ffb400; /* Pegasus Yellow */
+            color: #000;
+            padding: 18px 38px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 25px rgba(255, 180, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .btn-trial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 180, 0, 0.5);
+            background: #ffcc00;
+        }
+
+        .btn-demo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .demo-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .btn-demo:hover .demo-icon {
+            background: #ffb400;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .hero-image-side {
+            flex: 1.5;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mockup-wrapper {
+            position: relative;
+            width: 135%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+        }
+
+        .hero-mockup {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.6));
+            position: relative;
+            z-index: 2;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .pegasus-new-hero {
+                padding: 60px 0;
+            }
+            .hero-flex {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            .hero-text-side {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-subline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            .btn-trial {
+                width: 100%;
+                text-align: center;
+            }
+            .mockup-wrapper {
+                width: 100%;
+            }
+        }
+
+        /* Trust Factors Bar */
+        .trust-factors-bar {
+            padding: 40px 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.03) 50%, rgba(0,0,0,0) 100%);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            align-items: center;
+        }
+
+        .trust-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0 20px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: trustReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        .trust-item:nth-child(1) { animation-delay: 0.2s; }
+        .trust-item:nth-child(2) { animation-delay: 0.4s; }
+        .trust-item:nth-child(3) { animation-delay: 0.6s; }
+        .trust-item:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes trustReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .trust-item:last-child {
+            border-right: none;
+        }
+
+        .trust-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ffb400;
+            line-height: 1;
+        }
+
+        .trust-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Value Propositions Bar */
+        .value-props-bar {
+            padding: 25px 0 20px;
+            margin-top: -20px;
+        }
+
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .prop-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .prop-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 180, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .prop-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 180, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffb400;
+            flex-shrink: 0;
+        }
+
+        .prop-text h4 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .prop-text p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media (max-width: 950px) {
+            .props-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .trust-item {
+                border-right: none;
+            }
+        }
+
+        /* 3D Slider Theme Overrides for Pegasus */
+        .module-slider-section .module-tag {
+            background: #ffb400;
+            color: #000;
+        }
+
+        .module-slider-section .carousel-item.active .carousel-card-inner {
+            border-color: rgba(255, 180, 0, 0.8);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 10px 40px rgba(255, 180, 0, 0.2);
+        }
+
+        .module-slider-section .carousel-cta:hover {
+            background: #ffb400;
+            border-color: #ffb400;
+            color: #000;
+        }
+
+        .module-slider-section .carousel-nav:hover {
+            background: #ffb400;
+            border-color: #ffb400;
+            color: #000;
+        }
+
+        .module-slider-section .dot.active {
+            background: #ffb400;
+            box-shadow: 0 0 15px rgba(255, 180, 0, 0.4);
+        }
+
         /* Pegasus Exam Timeline Styles - Replicated from PACE */
         .pegasus-exam-timeline {
             margin: 30px 0;
@@ -522,13 +864,203 @@
     <div id="header-placeholder"></div>
 
     <!-- 1. Hero Section -->
-    <section class="hero pegasus-hero">
+    <section class="pegasus-new-hero">
         <div class="container">
-            <div class="hero-content">
-                <img src="images/Pegasus-Airlines-Logo.png" alt="Pegasus Logo" class="hero-logo pegasus-logo">
-                <h1 class="hero-title">Pegasus SkyTest and CASE Exam</h1>   
-                <p class="hero-description">Most comprehensive preparation for Pegasus cadet pilot program, Pegasus Academy and Pegasus pilot recruitment. Practice for Pegasus MPL pilot training and CASE exam modules (similar to SkyTest).</p>
+            <div class="hero-flex">
+                <div class="hero-text-side">
+                    <h1 class="hero-main-title">Pegasus SkyTest <span>CASE EXAM</span></h1>
+                    <p class="hero-subline">Most comprehensive preparation for Pegasus cadet pilot program, Pegasus Academy and pilot recruitment. Practice for Pegasus MPL pilot training and CASE exam modules.</p>
+                    <div class="hero-btns">
+                        <a href="download.html" class="btn-trial">Start Free Trial</a>
+                        <a href="#" class="btn-demo">
+                            <span class="demo-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-side">
+                    <div class="mockup-wrapper">
+                        <!-- Replaced with Pegasus specific mockup if available, otherwise pace landingpage as requested -->
+                        <img src="images/pace_landingpage_heroimage.png" alt="Pegasus SkyTest and CASE Exam Preparation" class="hero-mockup">
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Trust Factors Bar -->
+    <section class="trust-factors-bar">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <span class="trust-number">500+</span>
+                    <span class="trust-label">Candidates Trained</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">CASE</span>
+                    <span class="trust-label">Special Preparation</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">PGT</span>
+                    <span class="trust-label">For Candidates</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">HIGH</span>
+                    <span class="trust-label">Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions Bar -->
+    <section class="value-props-bar">
+        <div class="container">
+            <div class="props-grid">
+                <div class="prop-item">
+                    <div class="prop-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="prop-text">
+                        <h4>One Membership</h4>
+                        <p>Unlimited access to all Pegasus/CASE modules in a single package.</p>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    </div>
+                    <div class="prop-text">
+                        <h4>Smart Analytics</h4>
+                        <p>Detailed performance tracking and statistical insights for every module.</p>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <div class="prop-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path></svg>
+                    </div>
+                    <div class="prop-text">
+                        <h4>Unbeatable Price </h4> 
+                        <p>Top-tier pilot assessment preparation at the most competitive price.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Module Screenshots Slider -->
+    <section class="module-slider-section">
+        <div class="slider-background-glow"></div>
+        <div class="container-fluid">
+            <div class="section-header text-center mb-5">
+                <h2 class="modern-slider-title">Master the Pegasus Test </h2>
+                <p class="modern-slider-subtitle">Gain the competitive edge with the industry's most advanced and realistic module simulations</p>
+            </div>
+            
+            <div class="carousel-3d-container">
+                <div class="carousel-3d" id="pegasusCarousel">
+                    <!-- Capacity -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/pegasus_modules_screenshot/capacity.png" alt="Capacity">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Cognitive</span>
+                                <h3>Capacity</h3>
+                                <p>Enhance your processing power and cognitive load management.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Flight Capacity -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/pegasus_modules_screenshot/flight_capacity.png" alt="Flight Capacity">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Cognitive</span>
+                                <h3>Flight Capacity</h3>
+                                <p>Master multitasking and decision making under flight conditions.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- IPP -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/pegasus_modules_screenshot/IPP.png" alt="IPP">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Cognitive</span>
+                                <h3>IPP</h3>
+                                <p>Information Processing Performance and pattern recognition.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Spatial 2D -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/pegasus_modules_screenshot/spatial_orientation2d.png" alt="Spatial Orientation 2D">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Orientation</span>
+                                <h3>Spatial Orientation 2D</h3>
+                                <p>Maintain situational awareness in two-dimensional space.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Spatial 3D -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/pegasus_modules_screenshot/spatial_orientation3d.png" alt="Spatial Orientation 3D">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Orientation</span>
+                                <h3>Spatial Orientation 3D</h3>
+                                <p>Master complex spatial tasks in a three-dimensional environment.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vigilance 1 -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/pegasus_modules_screenshot/vigilance_1.png" alt="Vigilance 1">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Attention</span>
+                                <h3>Vigilance 1</h3>
+                                <p>Train your sustained attention and monitoring skills.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vigilance 2 -->
+                    <div class="carousel-item">
+                        <div class="carousel-card-inner">
+                            <img src="images/pegasus_modules_screenshot/vigilance_2.png" alt="Vigilance 2">
+                            <div class="carousel-overlay">
+                                <span class="module-tag">Attention</span>
+                                <h3>Vigilance 2</h3>
+                                <p>Advance your focused attention capabilities during long operations.</p>
+                                <a href="download.html" class="carousel-cta">Start Training <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nav Controls -->
+                <div class="carousel-nav prev" id="pegasusPrevBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </div>
+                <div class="carousel-nav next" id="pegasusNextBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="carousel-dots" id="pegasusCarouselDots"></div>
         </div>
     </section>
 
