@@ -240,12 +240,19 @@
             border-right: none;
         }
 
+        .trust-item:hover .trust-number {
+            transform: scale(1.1);
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 180, 0, 0.6);
+        }
+
         .trust-number {
             display: block;
             font-size: 1.8rem;
             font-weight: 900;
             color: #ffb400;
             line-height: 1;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .trust-label {
@@ -1158,7 +1165,7 @@
                 <div class="hero-image-side">
                     <div class="mockup-wrapper">
                         <!-- Replaced with Pegasus specific mockup if available, otherwise pace landingpage as requested -->
-                        <img src="images/pace_landingpage_heroimage.png" alt="Pegasus SkyTest and CASE Exam Preparation" class="hero-mockup">
+                        <img src="images/case_landingpage_heroimage.png" alt="Pegasus SkyTest and CASE Exam Preparation" class="hero-mockup">
                     </div>
                 </div>
             </div>

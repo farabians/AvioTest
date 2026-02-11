@@ -400,8 +400,10 @@
         }
 
         .discovery-icon-box {
-            width: 52px;
+            width: auto;
+            min-width: 52px;
             height: 52px;
+            padding: 0 12px;
             background: linear-gradient(135deg, rgba(0, 102, 204, 0.2) 0%, rgba(0, 102, 204, 0.05) 100%);
             border: 1px solid rgba(0, 102, 204, 0.2);
             border-radius: 16px;
@@ -409,11 +411,12 @@
             align-items: center;
             justify-content: center;
             color: #0066cc;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             font-weight: 900;
             letter-spacing: 0.5px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 8px 16px rgba(0, 102, 204, 0.1);
+            white-space: nowrap;
         }
 
         .discovery-header:hover .discovery-icon-box {
@@ -908,7 +911,7 @@
                 </div>
                 <div class="hero-image-side">
                     <div class="mockup-wrapper">
-                        <img src="images/pace_landingpage_heroimage.png" alt="Mollymawk Test All-in-One Preparation" class="hero-mockup">
+                        <img src="images/mollymawk_landingpage_heroimage.png" alt="Mollymawk Test All-in-One Preparation" class="hero-mockup">
                     </div>
                 </div>
             </div>
@@ -1042,7 +1045,7 @@
             <div class="discovery-toggle-card">
                 <div class="discovery-header">
                     <div class="discovery-title-group">
-                        <div class="discovery-icon-box">INFO</div>
+                        <div class="discovery-icon-box">MOLLYMAWK</div>
                         <div class="discovery-text">
                             <h3>Mollymawk Requirements</h3>
                             <p>Discover Mollymawk requirements & details</p>
