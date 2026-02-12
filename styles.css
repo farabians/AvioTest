@@ -6953,6 +6953,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .pricing-container {
         transform: none;
         padding: 0 20px;
+        overflow: visible;
     }
 
     .pricing-title {
@@ -6963,13 +6964,14 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
     .pricing-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
-        max-width: 450px;
+        gap: 20px;
+        max-width: 320px; /* Reduced from 380px */
         margin: 0 auto;
+        display: grid !important;
     }
 
     .pricing-card {
-        padding: 25px;
+        padding: 20px; /* Reduced from 25px */
         transform: none !important;
     }
 
@@ -6978,11 +6980,16 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     }
 
     .price .amount {
-        font-size: 3rem;
+        font-size: 2.5rem; /* Reduced from 3rem */
     }
 
     .features-list li {
-        font-size: 0.95rem;
+        font-size: 0.85rem; /* Reduced from 0.95rem */
+        margin-bottom: 10px;
+    }
+
+    .plan-title {
+        font-size: 1.2rem !important; /* Slightly smaller title */
     }
 }
 
