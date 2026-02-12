@@ -9,6 +9,217 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Pegasus Discovery Hub Styles */
+        .pegasus-discovery-hub {
+            padding: 40px 0;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .discovery-toggle-card {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+
+        .discovery-toggle-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(22, 22, 22, 0.9);
+            box-shadow: 0 40px 80px -15px rgba(255, 180, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .discovery-toggle-card.active {
+            border-color: rgba(255, 180, 0, 0.3);
+            background: rgba(20, 20, 20, 0.95);
+            transform: translateY(0);
+        }
+
+        .discovery-header {
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0%, transparent 100%);
+            transition: background 0.3s ease;
+        }
+
+        .discovery-header:hover {
+            background: linear-gradient(90deg, rgba(255, 180, 0, 0.08) 0%, transparent 100%);
+        }
+
+        .discovery-title-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .discovery-icon-box {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(255, 180, 0, 0.2) 0%, rgba(255, 180, 0, 0.05) 100%);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffb400;
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 16px rgba(255, 180, 0, 0.1);
+        }
+
+        .discovery-header:hover .discovery-icon-box {
+            transform: scale(1.08) rotate(8deg);
+            background: rgba(255, 180, 0, 0.25);
+            border-color: rgba(255, 180, 0, 0.4);
+            color: #ffcc00;
+        }
+
+        .discovery-text h3 {
+            font-size: 1.15rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+            color: #fff;
+            letter-spacing: -0.2px;
+        }
+
+        .discovery-text p {
+            font-size: 0.85rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .toggle-arrow {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .discovery-toggle-card:hover .toggle-arrow {
+            background: #ffb400;
+            color: #000;
+            border-color: #ffb400;
+            box-shadow: 0 0 15px rgba(255, 180, 0, 0.4);
+        }
+
+        .discovery-toggle-card.active .toggle-arrow {
+            transform: rotate(180deg);
+            background: #ffb400;
+            color: #000;
+        }
+
+        .discovery-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 32px;
+            opacity: 0;
+        }
+
+        .discovery-toggle-card.active .discovery-content {
+            max-height: 5000px;
+            padding: 0 32px 40px;
+            opacity: 1;
+        }
+
+        .details-header {
+            margin-top: 20px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .details-header h1 {
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .info-intro-text {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 4px solid #ffb400;
+        }
+
+        .info-intro-text p {
+            color: #fff;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .pegasus-discovery-hub strong {
+            color: #ffb400; /* Pegasus Yellow */
+            font-weight: 800;
+        }
+
+        .info-grid-modern {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .info-grid-modern {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .category-pane {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 28px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pane-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pane-header svg {
+            color: #ffb400;
+        }
+
+        .pane-header h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .pane-subtext {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
         /* Specific Pegasus Exam Timeline Styles */
         .pegasus-exam-timeline {
             margin: 30px 0;
@@ -230,143 +441,904 @@
     <div id="header-placeholder"></div>
 
     <main class="kariyer-page-padding">
-        <section class="tutorial-section">
+        <!-- Pegasus Discovery Hub (Toggle Section) -->
+        <section class="pegasus-discovery-hub">
             <div class="container">
-                <div class="tutorial-card">
-                    <div class="tutorial-content">
-                        <h2 class="content-title">Pegasus Exam Structure</h2>
-                        <p class="diagram-note">The exam has <strong>9 modules</strong>. Each module has <strong>3 phases</strong>. There is <strong>NO BREAK</strong> between modules. <strong>90-120 minutes</strong> total.</p>
+                <div class="discovery-toggle-card" id="pegasus-handbook">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                CASE
+                            </div>
+                            <div class="discovery-text">
+                                <h3>CASE Genel Tanıtım</h3>
+                                <p>Program detayları, MPL eğitimi ve maliyetler için rehberi inceleyin</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
                     </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>CASE Genel Tanıtım</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Pegasus Hava Yolları, belirli dönemlerde <strong>Yetiştirilmek Üzere II. Pilot Aday Adayı</strong> ilanı yayımlamakta ve seçim sürecini başarıyla tamamlayan adayları <strong>MPL Cadet Pilot Programı</strong> kapsamına almaktadır. </p>
+                            <p>Pegasus Hava Yolları’nın kendi bünyesinde faaliyet gösteren bir uçuş okulu bulunmamaktadır. Programa kabul edilen adaylar, pilotaj eğitimlerini almak üzere şirketin anlaşmalı olduğu <strong>AYJET</strong> ve <strong>AFA</strong> gibi yetkili uçuş okullarına yönlendirilmektedir.</p>
+                        </div>
+            
+                        <div class="info-grid-modern">
+                            <!-- MPL Nedir? -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>
+                                    <h4>MPL Sistemi Nedir?</h4>
+                                </div>
+                                <p class="pane-subtext"><strong>MPL</strong>, Multi-Crew Pilot License ifadesinin kısaltmasıdır. Bu lisans türü, Uluslararası Sivil Havacılık Örgütü (ICAO) tarafından geliştirilmiş olup, hava yolu işletmelerinin operasyonel ihtiyaçlarını esas alan ve kokpitte ekip çalışmasına odaklanan bir eğitim anlayışına dayanır.</p>
+                                <p class="pane-subtext">Eğitim süreci büyük ölçüde simülatörler üzerinden yürütülür ve bu sayede kontrollü, standartlaştırılmış ve emniyet seviyesi yüksek bir eğitim ortamı sağlanır.</p>
+                            </div>
+            
+                            <!-- Eğitim ve Maliyet -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                                    <h4>Eğitim Süreci ve Maliyet</h4>
+                                </div>
+                                <p class="pane-subtext">Teorik eğitimler ile uçuş uygulamalarını kapsayan bu dönem ortalama <strong>15 ay</strong> sürmektedir. Tip eğitimi safhası ise yaklaşık <strong>6 aydır.</strong></p>
+                                <p class="pane-subtext">Toplam maliyet <strong>110.000 Euro</strong>’dur. Bu bedel, II. Pilot olarak göreve başladıktan sonra maaşlardan yapılan kesintilerle geri ödenir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <!-- Linear Pegasus Timeline Visualization -->
-                    <div class="pegasus-exam-timeline">
-                        <div class="timeline-container">
-                            <!-- Main Timeline Row -->
-                            <div class="timeline-main-row">
-                                <!-- Module 1 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">1</div>
-                                    <span class="node-label">SPATIAL ORIENTATION 2D</span>
-                                </div>
-                                <!-- Module 2 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">2</div>
-                                    <span class="node-label">SPATIAL ORIENTATION 3D</span>
-                                </div>
-                                <!-- Module 3 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">3</div>
-                                    <span class="node-label">VIGILANCE 1</span>
-                                </div>
+                <!-- İşe Alım Süreci -->
+                <div class="discovery-toggle-card" id="recruitment-process" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                SÜREÇ
+                            </div>
+                            <div class="discovery-text">
+                                <h3>İşe Alım Süreci</h3>
+                                <p>Sınav aşamaları, mülakatlar ve sağlık kontrolü süreci</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>İşe Alım Süreci</h1>
+                        </div>
+                        <div class="info-intro-text">
+                            <p>Değerlendirme süreci aşağıdaki aşamalardan oluşmaktadır:</p>
+                        </div>
 
-                                <!-- Module 4 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">4</div>
-                                    <span class="node-label">VIGILANCE 2</span>
-                                </div>
-                                <!-- Module 5 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">5</div>
-                                    <span class="node-label">IPP</span>
-                                </div>
-                                <!-- Module 6 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">6</div>
-                                    <span class="node-label">MATHS</span>
-                                </div>
-
-                                <!-- Module 7 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">7</div>
-                                    <span class="node-label">TECHNICAL COMPREHENSION</span>
-                                </div>
-                                <!-- Module 8 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">8</div>
-                                    <span class="node-label">CAPACITY TEST</span>
-                                </div>
-                                <!-- Module 9 -->
-                                <div class="timeline-node">
-                                    <div class="node-circle">9</div>
-                                    <span class="node-label">FLIGHT CAPACITY</span>
-                                </div>
-
-                                <!-- Finish -->
-                                <div class="finish-node">
-                                    <div class="finish-circle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <div class="category-pane" style="width: 100%; margin-bottom: 32px;">
+                            <div class="module-list-compact" style="display: flex; flex-direction: column; gap: 12px;">
+                                <div class="module-item-compact" style="display: flex; align-items: flex-start; gap: 15px; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <div class="m-info">
+                                        <strong style="color: #ffb400; display: block; margin-bottom: 5px;">İngilizce Sınavları</strong>
+                                        <span style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.5;">Başvuru sırasında geçerli bir dil belgesi sunmayan adaylar bu aşamaya dahil edilir.</span>
                                     </div>
-                                    <span class="finish-label-text">FINISH</span>
+                                </div>
+                                <div class="module-item-compact" style="display: flex; align-items: flex-start; gap: 15px; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <div class="m-info">
+                                        <strong style="color: #ffb400; display: block; margin-bottom: 5px;">SkyTest CASE</strong>
+                                        <span style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.5;">Adayların bilişsel yetkinliklerini ve temel becerilerini ölçmeye yönelik değerlendirme aşamasıdır.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact" style="display: flex; align-items: flex-start; gap: 15px; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <div class="m-info">
+                                        <strong style="color: #ffb400; display: block; margin-bottom: 5px;">Kurul Mülakatı, Evrak Kontrolü ve Boy–Kilo Ölçümü</strong>
+                                        <span style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.5;">Adayların yetkinliklerinin kurul tarafından değerlendirilmesi ile birlikte resmi belge kontrolleri ve fiziki ölçümlerin yapılmasıdır.</span>
+                                    </div>
+                                </div>
+                                <div class="module-item-compact" style="display: flex; align-items: flex-start; gap: 15px; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <div class="m-info">
+                                        <strong style="color: #ffb400; display: block; margin-bottom: 5px;">Sağlık Kontrolü</strong>
+                                        <span style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; line-height: 1.5;">Uçuşa elverişlilik durumunun tespiti amacıyla gerçekleştirilen kapsamlı sağlık muayenesidir.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 180, 0, 0.1);">
+                            <p style="margin-bottom: 15px;">Bu dört aşama, bir pilottan beklenen temel niteliklere dair net bir çerçeve sunmakta:</p>
+                            <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px;">
+                                <li style="padding: 12px; background: rgba(255, 255, 255, 0.02); border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.9rem; color: #fff;">
+                                    <strong style="color: #ffb400;">•</strong> İngilizce yeterliliği
+                                </li>
+                                <li style="padding: 12px; background: rgba(255, 255, 255, 0.02); border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.9rem; color: #fff;">
+                                    <strong style="color: #ffb400;">•</strong> Teknik yetkinlikler (SkyTest CASE)
+                                </li>
+                                <li style="padding: 12px; background: rgba(255, 255, 255, 0.02); border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.9rem; color: #fff;">
+                                    <strong style="color: #ffb400;">•</strong> Teknik dışı beceriler (Kurul Mülakatı)
+                                </li>
+                                <li style="padding: 12px; background: rgba(255, 255, 255, 0.02); border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.9rem; color: #fff;">
+                                    <strong style="color: #ffb400;">•</strong> Mesleki motivasyon ve uygunluk (Kurul Mülakatı)
+                                </li>
+                                <li style="padding: 12px; background: rgba(255, 255, 255, 0.02); border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.9rem; color: #fff;">
+                                    <strong style="color: #ffb400;">•</strong> Uçuşa elverişlilik durumu (Sağlık)
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: 20px;">
+                            <p>Aşamalar arasındaki zaman aralıkları, aday sayısına ve yeni filonun ne zaman açılacağına bağlı olarak değişkenlik gösterebilmektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 180, 0, 0.03); border: 1px solid rgba(255, 180, 0, 0.1); margin-top: 20px;">
+                            <p>Genel olarak bu sürecin, koşullara bağlı şekilde birkaç hafta ile birkaç ay arasında tamamlanması mümkündür.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Exam Info -->
+                <div class="discovery-toggle-card" id="english-exam-info" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                ENGLISH
+                            </div>
+                            <div class="discovery-text">
+                                <h3>İngilizce Sınavı</h3>
+                                <p>Sınav detayları, iTEP süreci ve dil belgesi muafiyeti</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>İngilizce Sınavı</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>Başvuru esnasında geçerli bir dil belgesi ibraz eden adaylar, İngilizce sınav aşamasını atlayarak sürece doğrudan <strong>SkyTest CASE</strong> değerlendirmesiyle devam eder.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Başvuru sırasında ya da başvurudan sonra geçerli bir dil belgesi sunamayan adaylar, <strong>iki aşamalı</strong> olarak yapılan İngilizce sınavlarına davet edilir:</p>
+                            <ul style="list-style: none; padding: 15px 0 0; display: flex; flex-direction: column; gap: 8px;">
+                                <li style="color: #fff; font-size: 0.95rem;"><strong style="color: #ffb400;">1.</strong> Pegasus İngilizce Sınavı (Reading)</li>
+                                <li style="color: #fff; font-size: 0.95rem;"><strong style="color: #ffb400;">2.</strong> iTEP Intern (Listening & Speaking)</li>
+                            </ul>
+                            <p style="margin-top: 15px;">Sınavı geçen adaylar 2. sınava davet edilirken, iki sınavı da olumlu olan adaylar sürece <strong>SkyTest CASE</strong> aşamasından devam etmektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 180, 0, 0.03); border: 1px solid rgba(255, 180, 0, 0.1);">
+                            <p>1. ya da 2. sınavdan başarısız olan adaylara, dil belgesi sunabilmeleri için ek bir süre tanınır. Bu sürenin ne kadar olduğu Pegasus tarafından gönderilen olumsuz sonuç e-postasında belirtilir. Belgeyi sunan adaylar sürece SkyTest aşamasından devam ederken, belgeyi sunamayan adayların başvurusu sonlandırılır.</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- Pegasus English Exam -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-0.5-5z"></path></svg>
+                                    <h4>1) Pegasus İngilizce Sınavı</h4>
+                                </div>
+                                <p class="pane-subtext">Pegasus tarafından uygulanan İngilizce seviye belirleme sınavı; <strong>Grammar, Vocabulary ve Reading</strong> alanlarını kapsar.</p>
+                                <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.6;">
+                                    <li>• 50 soru için 60 dakika verilir.</li>
+                                    <li>• 3 yanlış cevap 1 doğru cevabı götürür.</li>
+                                </ul>
+                            </div>
+
+                            <!-- iTEP Intern -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                                    <h4>2) iTEP Intern (Listening & Speaking)</h4>
+                                </div>
+                                <p class="pane-subtext">Pegasus tarafından uygulanan İngilizce seviye belirleme sınavını başarıyla geçen adaylar, bir sonraki aşama olarak <strong>iTEP Intern</strong> sınavına çağrılır.</p>
+                                <p class="pane-subtext">Bu sınav, iTEP test merkezinde yapılır ve <strong>Listening ile Speaking</strong> bölümlerinden oluşur.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SkyTest CASE Info -->
+                <div class="discovery-toggle-card" id="skytest-case-info" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                CASE
+                            </div>
+                            <div class="discovery-text">
+                                <h3>SkyTest CASE</h3>
+                                <p>Psikometrik değerlendirme, retest süreci ve bekleyiş süreleri</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>SkyTest CASE</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>İngilizce sınavlarını başarıyla tamamlayan veya geçerli bir dil belgesi sunan adaylara, <strong>SkyTest CASE</strong> isimli psikometrik değerlendirme için davet gönderilmektedir.</p>
+                        </div>
+
+                        <!-- Pegasus Exam Structure Moved Here -->
+                        <div class="tutorial-card" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; margin-bottom: 30px;">
+                            <div class="tutorial-content" style="padding: 25px 25px 0;">
+                                <h2 class="content-title" style="font-size: 1.3rem; margin-bottom: 10px;">Pegasus Exam Structure</h2>
+                                <p class="diagram-note">The exam has <strong>9 modules</strong>. Each module has <strong>3 phases</strong>. There is <strong>NO BREAK</strong> between modules. <strong>90-120 minutes</strong> total.</p>
+                            </div>
+
+                            <!-- Linear Pegasus Timeline Visualization -->
+                            <div class="pegasus-exam-timeline" style="margin: 20px 0; background: transparent; border: none;">
+                                <div class="timeline-container">
+                                    <!-- Main Timeline Row -->
+                                    <div class="timeline-main-row">
+                                        <!-- Module 1 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">1</div>
+                                            <span class="node-label">SPATIAL ORIENTATION 2D</span>
+                                        </div>
+                                        <!-- Module 2 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">2</div>
+                                            <span class="node-label">SPATIAL ORIENTATION 3D</span>
+                                        </div>
+                                        <!-- Module 3 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">3</div>
+                                            <span class="node-label">VIGILANCE 1</span>
+                                        </div>
+
+                                        <!-- Module 4 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">4</div>
+                                            <span class="node-label">VIGILANCE 2</span>
+                                        </div>
+                                        <!-- Module 5 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">5</div>
+                                            <span class="node-label">IPP</span>
+                                        </div>
+                                        <!-- Module 6 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">6</div>
+                                            <span class="node-label">MATHS</span>
+                                        </div>
+
+                                        <!-- Module 7 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">7</div>
+                                            <span class="node-label">TECHNICAL COMPREHENSION</span>
+                                        </div>
+                                        <!-- Module 8 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">8</div>
+                                            <span class="node-label">CAPACITY TEST</span>
+                                        </div>
+                                        <!-- Module 9 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">9</div>
+                                            <span class="node-label">FLIGHT CAPACITY</span>
+                                        </div>
+
+                                        <!-- Finish -->
+                                        <div class="finish-node">
+                                            <div class="finish-circle">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            </div>
+                                            <span class="finish-label-text">FINISH</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tutorials Section (Included as part of Exam Structure) -->
+                            <section id="tutorials" class="tutorials-overview" style="padding: 0 25px 25px;">
+                                <div class="tutorials-header" style="margin-bottom: 20px;">
+                                    <h2 class="content-title" style="font-size: 1.1rem;">Tutorials</h2>
+                                    <p class="diagram-note">Tutorials for Pegasus Modules</p>
+                                </div>
+                                <div class="modules-grid" style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px;">
+                                    <a href="modules/pegasus/spatial-orientation-2d.html" class="module-card" style="padding: 10px;">
+                                        <div class="module-image" style="height: 100px;">
+                                            <img src="images/modules_img/Spatial_orientation_2D.png" alt="Spatial Orientation 2D">
+                                        </div>
+                                        <div class="module-info">
+                                            <h3 style="font-size: 0.85rem;">Spatial Orientation 2D</h3>
+                                        </div>
+                                    </a>
+                                    <a href="modules/pegasus/spatial-orientation-3d.html" class="module-card" style="padding: 10px;">
+                                        <div class="module-image" style="height: 100px;">
+                                            <img src="images/modules_img/Spatial_orientation_3D.png" alt="Spatial Orientation 3D">
+                                        </div>
+                                        <div class="module-info">
+                                            <h3 style="font-size: 0.85rem;">Spatial Orientation 3D</h3>
+                                        </div>
+                                    </a>
+                                    <a href="modules/pegasus/vigilance-1.html" class="module-card" style="padding: 10px;">
+                                        <div class="module-image" style="height: 100px;">
+                                            <img src="images/modules_img/Vigilance1.png" alt="Vigilance 1">
+                                        </div>
+                                        <div class="module-info">
+                                            <h3 style="font-size: 0.85rem;">Vigilance 1</h3>
+                                        </div>
+                                    </a>
+                                    <a href="modules/pegasus/vigilance-2.html" class="module-card" style="padding: 10px;">
+                                        <div class="module-image" style="height: 100px;">
+                                            <img src="images/modules_img/Vigilance2.png" alt="Vigilance 2">
+                                        </div>
+                                        <div class="module-info">
+                                            <h3 style="font-size: 0.85rem;">Vigilance 2</h3>
+                                        </div>
+                                    </a>
+                                    <a href="modules/pegasus/ipp.html" class="module-card" style="padding: 10px;">
+                                        <div class="module-image" style="height: 100px;">
+                                            <img src="images/modules_img/Ipp_test.png" alt="IPP">
+                                        </div>
+                                        <div class="module-info">
+                                            <h3 style="font-size: 0.85rem;">IPP</h3>
+                                        </div>
+                                    </a>
+                                    <a href="modules/pegasus/capacity.html" class="module-card" style="padding: 10px;">
+                                        <div class="module-image" style="height: 100px;">
+                                            <img src="images/modules_img/Capacity_test.png" alt="Capacity">
+                                        </div>
+                                        <div class="module-info">
+                                            <h3 style="font-size: 0.85rem;">Capacity</h3>
+                                        </div>
+                                    </a>
+                                    <a href="modules/pegasus/flight-capacity.html" class="module-card" style="padding: 10px;">
+                                        <div class="module-image" style="height: 100px;">
+                                            <img src="images/modules_img/Flight_capacity_test.png" alt="Flight Capacity">
+                                        </div>
+                                        <div class="module-info">
+                                            <h3 style="font-size: 0.85rem;">Flight Capacity</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>İngilizce sınavları ile SkyTest CASE arasındaki süre; aday yoğunluğu ve planlanan yeni filonun zamanlamasına göre değişiklik gösterebilir.</p>
+                            <p style="margin-top: 15px;">SkyTest CASE sınavını başarıyla geçen adaylar, sürece <strong>Kurul Mülakatı</strong> aşamasıyla devam etmektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 180, 0, 0.03); border: 1px solid rgba(255, 180, 0, 0.1);">
+                            <p>Başarısız olan adayların izlemesi gereken yol, Pegasus tarafından gönderilen olumsuz sonuç e-postasında belirtilir. Bu e-postada genellikle en az <strong>3 ay sonra</strong> yeniden planlama talep edilebileceği ya da bir sonraki ilana başvuru yapılması gerektiği ifade edilir.</p>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- Committee Interview Info -->
+                <div class="discovery-toggle-card" id="committee-interview-info" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                BOARD
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Kurul Mülakatı</h3>
+                                <p>Mülakat içeriği, evrak kontrolü ve boy-kilo ölçümü</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Kurul Mülakatı</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>SkyTest CASE aşamasını geçen adaylar, prosedüre <strong>Kurul Mülakatı, Evrak Kontrolü ve Boy-Kilo ölçümü</strong> adımlarıyla devam etmektedir. Adayların ne zaman davet edileceği belirsizdir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Kurul Mülakatı, belirlenen tarihte <strong>Pegasus Genel Müdürlük</strong> binasında yapılır. Mülakatın kendisi ortalama <strong>30 dakika</strong> sürmektedir. Kurul mülakatını başarıyla geçen adaylar, sürece <strong>Sağlık Kontrolü</strong> aşamasıyla devam etmektedir.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 180, 0, 0.03); border: 1px solid rgba(255, 180, 0, 0.1);">
+                            <p>Mülakatta olumsuz sonuç alan adayların izlemesi gereken yol, Pegasus tarafından gönderilen olumsuz sonuç e-postasında belirtilir. Bu e-postada bir süre sonra yeniden planlama talep edilebileceği ya da bir sonraki ilana başvuru yapılması gerektiği ifade edilir.</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- Document & Physical -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    <h4>Evrak Kontrolü</h4>
+                                </div>
+                                <p class="pane-subtext">Kurul mülakatı davet e-postasında talep edilen belgeler, <strong>İnsan Kaynakları</strong> ekibi tarafından teslim alınarak incelenir ve kontrol edilir.</p>
+                            </div>
+
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    <h4>Boy Kilo Ölçümü</h4>
+                                </div>
+                                <p class="pane-subtext">Boy ve kilo ölçümü Pegasus yetkilisi tarafından yapılır. Beden kitle indeksinin (BMI) <strong>20 ve 30</strong> arasında olması beklenir.</p>
+                                
+                                <!-- BMI Calculator Tool -->
+                                <div class="bmi-calculator-tool" style="background: rgba(255, 180, 0, 0.05); padding: 20px; border-radius: 20px; border: 1px solid rgba(255, 180, 0, 0.15); margin-top: 15px;">
+                                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                            <div class="input-group">
+                                                <label style="display: block; font-size: 0.75rem; color: #ffb400; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">BOY (cm)</label>
+                                                <input type="number" id="bmi-height" placeholder="Örn: 178" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px; color: #fff; outline: none; transition: border-color 0.3s ease;">
+                                            </div>
+                                            <div class="input-group">
+                                                <label style="display: block; font-size: 0.75rem; color: #ffb400; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">KİLO (kg)</label>
+                                                <input type="number" id="bmi-weight" placeholder="Örn: 78" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px; color: #fff; outline: none; transition: border-color 0.3s ease;">
+                                            </div>
+                                        </div>
+                                        <button onclick="calculateBMI()" style="width: 100%; background: #ffb400; color: #000; border: none; border-radius: 10px; padding: 12px; font-weight: 900; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; font-size: 0.85rem;">HESAPLA</button>
+                                        
+                                        <div id="bmi-result-box" style="display: none; padding-top: 15px; border-top: 1px dashed rgba(255,180,0,0.2); text-align: center;">
+                                            <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 5px;">Vücut Kitle Endeksiniz (BMI)</div>
+                                            <div id="bmi-value" style="font-size: 2rem; font-weight: 900; color: #ffb400;">0.0</div>
+                                            <div id="bmi-category" style="font-size: 0.9rem; font-weight: 700; padding: 4px 12px; border-radius: 6px; display: inline-block; margin-top: 8px;">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            function calculateBMI() {
+                                const heightInput = document.getElementById('bmi-height');
+                                const weightInput = document.getElementById('bmi-weight');
+                                const resultBox = document.getElementById('bmi-result-box');
+                                const bmiValueDisplay = document.getElementById('bmi-value');
+                                const bmiCategoryDisplay = document.getElementById('bmi-category');
+
+                                const height = parseFloat(heightInput.value) / 100;
+                                const weight = parseFloat(weightInput.value);
+
+                                if (height > 0 && weight > 0) {
+                                    const bmi = (weight / (height * height)).toFixed(1);
+                                    bmiValueDisplay.innerText = bmi;
+                                    
+                                    let category = '';
+                                    let color = '';
+                                    let bgColor = '';
+
+                                    if (bmi < 18.5) {
+                                        category = 'Zayıf';
+                                        color = '#5bc0de';
+                                        bgColor = 'rgba(91, 192, 222, 0.1)';
+                                    } else if (bmi >= 18.5 && bmi < 24.9) {
+                                        category = 'Normal';
+                                        color = '#2ecc71';
+                                        bgColor = 'rgba(46, 204, 113, 0.1)';
+                                    } else if (bmi >= 25 && bmi < 29.9) {
+                                        category = 'Fazla Kilolu';
+                                        color = '#f1c40f';
+                                        bgColor = 'rgba(241, 196, 15, 0.1)';
+                                    } else {
+                                        category = 'Obez';
+                                        color = '#e74c3c';
+                                        bgColor = 'rgba(231, 76, 60, 0.1)';
+                                    }
+
+                                    // Special logic for Pegasus range (20-30)
+                                    if (bmi >= 20 && bmi <= 30) {
+                                        bmiCategoryDisplay.style.border = '1px solid ' + color;
+                                    } else {
+                                        bmiCategoryDisplay.style.border = '1px solid #ff3e3e';
+                                        category += ' (Standart Dışı)';
+                                    }
+
+                                    bmiCategoryDisplay.innerText = category;
+                                    bmiCategoryDisplay.style.color = color;
+                                    bmiCategoryDisplay.style.backgroundColor = bgColor;
+                                    
+                                    resultBox.style.display = 'block';
+                                } else {
+                                    alert('Lütfen geçerli boy ve kilo değerleri giriniz.');
+                                }
+                            }
+                        </script>
+
+                        <div class="info-intro-text" style="margin-top: 32px; border-left-color: #ffb400;">
+                            <h4 style="color: #fff; margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 10px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                Mülakatın İçeriği
+                            </h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 20px;">Adayın dil yeterliliği ve teknik becerilerinin yanı sıra sosyal becerileri, mesleğe olan ilgisi ve motivasyonu değerlendirilir:</p>
+                            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
+                                <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                    <span style="color: #ffb400; font-weight: 800;">1)</span> İngilizce yeterliliğinizin ve teknik becerilerinizin yeniden değerlendirilmesi
+                                </li>
+                                <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                    <span style="color: #ffb400; font-weight: 800;">2)</span> Teknik dışı yetkinliklerinizin (CRM) ölçülmesi
+                                </li>
+                                <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                    <span style="color: #ffb400; font-weight: 800;">3)</span> Mesleğe olan ilginiz ve motivasyon düzeyiniz
+                                </li>
+                                <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                    <span style="color: #ffb400; font-weight: 800;">4)</span> Pegasus bünyesinde çalışma isteğiniz ve şirkete yönelik motivasyonunuz
+                                </li>
+                                <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                    <span style="color: #ffb400; font-weight: 800;">5)</span> Gelişime ve öğrenmeye açık bir profil sergileyip sergileyemediğiniz
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <p style="font-size: 0.9rem;">Mülakat genellikle <strong>bir İK temsilcisi ve iki Kaptan Pilot</strong> ile yapılır. Görüşme <strong>Türkçe ve İngilizce</strong> olarak gerçekleşir. Adaydan dürüstlük, özfarkındalık ve Pegasus'un kurumsal yapısına uyum beklenir.</p>
+                            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+                                <strong style="color: #ffb400;">Teknik Bilgi:</strong>
+                                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 5px;">Mülakatlarda temel düzeyde <strong>Matematik, Fizik ve Coğrafya</strong> bilgileri de değerlendirilmektedir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medical Check Info -->
+                <div class="discovery-toggle-card" id="medical-check-info" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                MEDICAL
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Sağlık Kontrolü</h3>
+                                <p>MMPI Kişilik Envanteri, hastane süreci ve iş yeri hekimi muayenesi</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Sağlık Kontrolü</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>Kurul mülakatını geçen adaylara e-posta aracılığıyla <strong>MMPI Kişilik Envanteri</strong> gönderilir ve belirlenen süre içerisinde tamamlamaları beklenir.</p>
+                            <p style="margin-top: 15px;">Bu uygulamanın tamamlanmasının ardından adaylar, sürece <strong>Sağlık Kontrolü (Uçuşa Elverişlilik)</strong> aşamasıyla devam eder.</p>
+                        </div>
+
+                        <div class="info-intro-text" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: -20px;">
+                            <p>Sağlık kontrolü iki bölümden oluşur:</p>
+                            <ul style="list-style: none; padding: 15px 0 0; display: flex; flex-direction: column; gap: 8px;">
+                                <li style="color: #fff; font-size: 0.95rem;"><strong style="color: #ffb400;">1.</strong> SHGM tarafından yetkilendirilmiş bir Havacılık Tıp Merkezi üzerinden sağlık raporunun alınması</li>
+                                <li style="color: #fff; font-size: 0.95rem;"><strong style="color: #ffb400;">2.</strong> Pegasus Genel Müdürlük bünyesinde iş yeri hekimi tarafından işe giriş muayenesinin yapılması</li>
+                            </ul>
+                            <p style="margin-top: 15px;">Bu aşamaların sonunda sağlık süreci olumlu tamamlanan adaylar filo ataması için bekleme sürecine alınırken, olumsuz sonuçlanan adayların başvurusu sonlandırılır.</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- SHGM Authorized Hospital -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                    <h4>SHGM Yetkili Hastane</h4>
+                                </div>
+                                <p class="pane-subtext">Pegasus, bu aşamaya kadar gelen adayları <strong>1. Sınıf Sağlık Sertifikası</strong> alabilmeleri için SHGM tarafından yetkilendirilmiş bir Havacılık Tıp Merkezi’ne yönlendirir ve bu muayene için gerekli masrafları üstlenir.</p>
+                                <p class="pane-subtext">Çeşitli birimlerde gerçekleştirilen muayene ve tetkikler tamamlandıktan sonra adayın sağlık raporu hazırlanır ve ilgili sağlık kuruluşu tarafından Pegasus’un iş yeri hekimine iletilir.</p>
+                                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+                                    <p class="pane-subtext" style="font-size: 0.85rem; opacity: 0.8;">Daha önce kendi olanaklarıyla Class 1 Sağlık Sertifikası almış adaylar, bu sertifika sonuçlarını e-posta aracılığıyla Pegasus’a ulaştırabilmektedirler. Sertifikanın güncelliği korunduğu takdirde, iş yeri hekimi tarafından kabul edilir.</p>
+                                </div>
+                                <div style="margin-top: 15px; background: rgba(255, 180, 0, 0.05); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 180, 0, 0.1);">
+                                    <p style="font-size: 0.8rem; color: #ffb400; font-weight: 700;">Not:</p>
+                                    <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Sağlık raporunun kapsamıyla ilgili detaylı bilgi edinmek için “SHGM pilot sağlık sertifikası” şeklinde arama yaparak 1. Sınıf Sağlık Sertifikası ile ilgili gereklilikler incelenebilir.</p>
+                                </div>
+                            </div>
+
+                            <!-- Pegasus Workplace Doctor -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                                    <h4>Pegasus İş Yeri Hekimi</h4>
+                                </div>
+                                <p class="pane-subtext">Katılımcılardan talep edilen evrakların, Pegasus’un bildirdiği randevu gününde <strong>Pegasus Genel Müdürlük</strong> binasına teslim edilmesi gerekmektedir.</p>
+                                <p class="pane-subtext">Burada iş yeri hekimi sağlık raporunu değerlendirmekte ve genel bir muayene gerçekleştirmektedir. Ayrıca <strong>e-Nabız</strong> üzerinden alınmış İlaçlarım ve Hastane Ziyaretlerim sayfalarının çıktıları da ayrıntılı şekilde kontrol edilmektedir.</p>
+                                
+                                <div style="margin-top: 20px;">
+                                    <strong style="color: #ffb400; font-size: 0.9rem;">Değerlendirme Sonuçları:</strong>
+                                    <ul style="list-style: none; padding: 10px 0 0; display: flex; flex-direction: column; gap: 12px;">
+                                        <li style="font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; gap: 8px;">
+                                            <span style="color: #2ecc71;">●</span> <span><strong>1. Durum:</strong> Katılımcı uygun bulunur. Bu durumda filo ataması için firmadan e-posta beklenir.</span>
+                                        </li>
+                                        <li style="font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; gap: 8px;">
+                                            <span style="color: #f1c40f;">●</span> <span><strong>2. Durum:</strong> Gerekli görülürse ek tetkik veya ek belge talep edilebilir. İstenilen ek tetkiklerin tamamlanıp firmaya teslim edilmesi gerekmektedir; sonuca göre nihai karar verilir.</span>
+                                        </li>
+                                        <li style="font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; gap: 8px;">
+                                            <span style="color: #e74c3c;">●</span> <span><strong>3. Durum:</strong> Onay verilmeyerek sürecin olumsuz ilerlediği belirtilir. Bu durumda sağlık aşaması başarısız olarak sonuçlanmaktadır.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(255, 180, 0, 0.03); border: 1px solid rgba(255, 180, 0, 0.1); margin-top: 32px;">
+                            <p>Her durumun sonucu e-posta ile tarafınıza iletilmektedir. Olumlu sonuçlanan adaylar için sürece filo ataması ve eğitim planlaması ile devam edilir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contract Conditions Info -->
+                <div class="discovery-toggle-card" id="contract-conditions-info" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                TERMS
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Sözleşme Şartları</h3>
+                                <p>Eğitim maliyeti, geri ödeme süreci ve yan haklar</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Sözleşme Şartları</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>Sözleşme sürecine ilişkin öne çıkan bazı noktalar şu şekildedir:</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- Financial Terms -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                                    <h4>Maliyet ve Geri Ödeme</h4>
+                                </div>
+                                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">
+                                    <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                        <span style="color: #ffb400;">•</span> 
+                                        <span>Eğitim programının toplam bedeli <strong>KDV dâhil 130.000 Euro</strong> olarak belirlenmiştir.</span>
+                                    </li>
+                                    <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                        <span style="color: #ffb400;">•</span> 
+                                        <span>Bu tutar, II. Pilot olarak göreve başlamanın ardından yaklaşık <strong>10 yıl boyunca</strong> maaştan yapılan kesintilerle geri ödenir.</span>
+                                    </li>
+                                    <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                        <span style="color: #ffb400;">•</span> 
+                                        <span>Kesinti oranı, pilotların maaşlarını zorlamayacak şekilde makul düzeylerde düzenlenir.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Benefits and Logistics -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                                    <h4>Destek ve Yan Haklar</h4>
+                                </div>
+                                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">
+                                    <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                        <span style="color: #ffb400;">•</span> 
+                                        <span>Eğitim döneminde (yaklaşık 15 ay) adaylara <strong>aylık net ücret desteği ve yemek kartı</strong> sağlanır.</span>
+                                    </li>
+                                    <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                        <span style="color: #ffb400;">•</span> 
+                                        <span>Adaylar, çalışan statüsünde oldukları için <strong>uçak bileti</strong> gibi şirket yan haklarından yararlanabilir.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="info-intro-text" style="margin-top: 32px; border-left-color: #ffb400;">
+                            <h4 style="color: #fff; margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 10px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                Lokasyon ve Konaklama
+                            </h4>
+                            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                                <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                    <span style="color: #ffb400;">•</span> İstanbul’daki (AYJET veya AFA) eğitim sürecinde konaklama firma tarafından karşılanmamaktadır.
+                                </li>
+                                <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                    <span style="color: #ffb400;">•</span> Uçuşların farklı şehirlerde planlandığı dönemlerde ücretsiz konaklama imkânı sağlanabilir.
+                                </li>
+                                <li style="font-size: 0.9rem; color: rgba(255,255,255,0.9); display: flex; gap: 10px;">
+                                    <span style="color: #ffb400;">•</span> Lokasyonlar, uçuş okulunun operasyonel planlamasına göre değişiklik gösterebilir.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signature Day Info -->
+                <div class="discovery-toggle-card" id="signature-day-info" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                SIGN
+                            </div>
+                            <div class="discovery-text">
+                                <h3>İmza Günü</h3>
+                                <p>Sözleşme imza süreci, evrak kontrolü ve eğitim bilgilendirmesi</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>İmza Günü</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>Pegasus Genel Müdürlüğü’nde yapılan imza günü, genel olarak aşağıdaki adımlardan oluşur:</p>
+                        </div>
+
+                        <div class="category-pane" style="width: 100%;">
+                            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 18px;">
+                                <li style="font-size: 0.95rem; color: rgba(255,255,255,0.9); display: flex; gap: 15px; align-items: flex-start; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <div style="width: 28px; height: 28px; background: rgba(255, 180, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffb400; flex-shrink: 0; font-weight: 800; font-size: 0.8rem;">1</div>
+                                    <span>Evrakların kontrol edilmesi</span>
+                                </li>
+                                <li style="font-size: 0.95rem; color: rgba(255,255,255,0.9); display: flex; gap: 15px; align-items: flex-start; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <div style="width: 28px; height: 28px; background: rgba(255, 180, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffb400; flex-shrink: 0; font-weight: 800; font-size: 0.8rem;">2</div>
+                                    <span>Sözleşme içeriklerinin açıklanması ve imza sürecinin tamamlanması</span>
+                                </li>
+                                <li style="font-size: 0.95rem; color: rgba(255,255,255,0.9); display: flex; gap: 15px; align-items: flex-start; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <div style="width: 28px; height: 28px; background: rgba(255, 180, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffb400; flex-shrink: 0; font-weight: 800; font-size: 0.8rem;">3</div>
+                                    <span>İşe alım sürecine ilişkin kısa bir değerlendirme ve bilgilendirme yapılması</span>
+                                </li>
+                                <li style="font-size: 0.95rem; color: rgba(255,255,255,0.9); display: flex; gap: 15px; align-items: flex-start; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <div style="width: 28px; height: 28px; background: rgba(255, 180, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffb400; flex-shrink: 0; font-weight: 800; font-size: 0.8rem;">4</div>
+                                    <span>Eğitim sürecinin işleyişi hakkında adaylara bilgi verilmesi</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Process Info -->
+                <div class="discovery-toggle-card" id="training-process-info" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                CADET
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Eğitim Süreci</h3>
+                                <p>Temel eğitim, tip eğitimi ve line eğitimi aşamaları</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Eğitim Süreci</h1>
+                        </div>
+                        
+                        <div class="info-intro-text">
+                            <p>Adaylar, sözleşmeleri imzaladıktan sonra genellikle birkaç gün içinde eğitim sürecine başlar. Eğitim süreci şu aşamalardan oluşur:</p>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- Basic Training -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                    <h4>Temel Eğitim (AYJET / AFA)</h4>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #ffb400; margin-bottom: 10px; font-weight: 700;">Yaklaşık 15 Ay</p>
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #fff; font-size: 0.9rem; display: block; margin-bottom: 8px;">Teorik Eğitim (7 Ay):</strong>
+                                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+                                        <li style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">• 14 ATPL dersi kapsamında 750+ saat yüz yüze eğitim.</li>
+                                        <li style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">• SHGM sınavlarından en az %75 başarı şartı.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong style="color: #fff; font-size: 0.9rem; display: block; margin-bottom: 8px;">Uçuş Eğitimi (8 Ay):</strong>
+                                    <p class="pane-subtext">Solo ve eğitmen eşliğinde yapılan uçuşlar ile simülatör uçuşlarını kapsar.</p>
+                                </div>
+                            </div>
+
+                            <!-- Type Rating -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>
+                                    <h4>Tip Eğitimi (Kurtköy)</h4>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #ffb400; margin-bottom: 10px; font-weight: 700;">Yaklaşık 4 Ay</p>
+                                <p class="pane-subtext">Şirket ihtiyacına göre <strong>Airbus A320</strong> veya <strong>Boeing 737</strong> tipi üzerinden yürütülür.</p>
+                                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
+                                    <li style="font-size: 0.85rem; color: rgba(255,255,255,0.8); display: flex; gap: 8px;">
+                                        <span style="color: #ffb400;">•</span> Yer dersleri ve simülatör uçuşları gerçekleştirilir.
+                                    </li>
+                                    <li style="font-size: 0.85rem; color: rgba(255,255,255,0.8); display: flex; gap: 8px;">
+                                        <span style="color: #ffb400;">•</span> Süreç, gerçek uçuşla yapılan <strong>Base Check</strong> ile tamamlanır.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Line Training -->
+                        <div class="info-intro-text" style="margin-top: 32px; border-left-color: #ffb400;">
+                            <h4 style="color: #fff; margin-bottom: 15px; font-weight: 800; display: flex; align-items: center; gap: 10px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                                Line Eğitimi (Yaklaşık 2 Ay)
+                            </h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 15px;">Bu safhada <strong>LIFUS (Line Flying Under Supervision)</strong> dönemi başlar:</p>
+                            <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <li style="padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.85rem; color: #fff;">
+                                    Gözetmen pilot eşliğinde sağ koltukta operasyonel uçuşlar yapılır.
+                                </li>
+                                <li style="padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.85rem; color: #fff;">
+                                    Program genellikle <strong>100 saat veya 40 sektör</strong> uçuşu kapsar.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="info-intro-text" style="background: rgba(46, 204, 113, 0.05); border: 1px solid rgba(46, 204, 113, 0.1); margin-top: 20px;">
+                            <p style="text-align: center; color: #2ecc71; font-weight: 700;">Tüm aşamalar başarıyla tamamlandığında adaylar II. Pilot olarak uçuş görevlerine başlayabilir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Retest Process Info -->
+                <div class="discovery-toggle-card" id="retest-process-info" style="margin-top: 20px;">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">
+                                RETEST
+                            </div>
+                            <div class="discovery-text">
+                                <h3>Retest Süreci</h3>
+                                <p>Sınavların ve mülakatların yeniden planlanma şartları</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>Retest Süreci</h1>
+                        </div>
+                        
+                        <div class="info-grid-modern">
+                            <!-- English Retest -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                    <h4>İngilizce Sınavları</h4>
+                                </div>
+                                <p class="pane-subtext">İlk veya ikinci İngilizce sınavından olumsuz sonuç alan adaylara, geçerli bir dil belgesi sunabilmeleri için <strong>ek bir süre</strong> tanınır.</p>
+                                <p class="pane-subtext">Adayın belirtilen süre içinde dil belgesini iletmesi durumunda değerlendirme süreci <strong>SkyTest</strong> aşamasından devam eder. Belgenin sunulamaması halinde ise başvurusu sonlandırılır ve bir sonraki ilan döneminde yeniden başvuru yapması gerekir.</p>
+                                <div style="margin-top: 15px; background: rgba(255, 180, 0, 0.05); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 180, 0, 0.1);">
+                                    <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Adaylar sınav sonuçlarını Pegasus tarafından gönderilecek olan bilgilendirme e-postası ile öğrenebilirler.</p>
+                                </div>
+                            </div>
+
+                            <!-- SkyTest & Interview Retest -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <h4>SkyTest & Kurul Mülakatı</h4>
+                                </div>
+                                <p class="pane-subtext">Bu aşamalardan herhangi birinde olumsuz sonuç alan adayların, bilgilendirme e-postasında belirtilen yönlendirmelere göre hareket etmesi beklenir.</p>
+                                <p class="pane-subtext">E-postada, adayın <strong>en erken belirli bir süre sonra</strong> aynı ileti üzerinden yeniden planlama talebinde bulunabileceği ya da bir sonraki ilanda tekrar başvuru yapması gerektiği ifade edilir.</p>
+                                <div style="margin-top: 15px; background: rgba(255, 180, 0, 0.05); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 180, 0, 0.1);">
+                                    <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Gerekli şartlar sağlandığı sürece yeni ilana tekrar başvuru yapılabilmektedir.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Tutorials Section -->
-                    <section id="tutorials" class="tutorials-overview">
-                        <div class="tutorials-header">
-                            <h2 class="content-title">Tutorials</h2>
-                            <p class="diagram-note">Tutorials for Pegasus Modules</p>
-                        </div>
-                        <div class="modules-grid">
-                            <a href="modules/pegasus/spatial-orientation-2d.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Spatial_orientation_2D.png" alt="Spatial Orientation 2D">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Spatial Orientation 2D</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pegasus/spatial-orientation-3d.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Spatial_orientation_3D.png" alt="Spatial Orientation 3D">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Spatial Orientation 3D</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pegasus/vigilance-1.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Vigilance1.png" alt="Vigilance 1">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Vigilance 1</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pegasus/vigilance-2.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Vigilance2.png" alt="Vigilance 2">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Vigilance 2</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pegasus/ipp.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Ipp_test.png" alt="IPP">
-                                </div>
-                                <div class="module-info">
-                                    <h3>IPP</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pegasus/capacity.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Capacity_test.png" alt="Capacity">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Capacity</h3>
-                                </div>
-                            </a>
-                            <a href="modules/pegasus/flight-capacity.html" class="module-card">
-                                <div class="module-image">
-                                    <img src="images/modules_img/Flight_capacity_test.png" alt="Flight Capacity">
-                                </div>
-                                <div class="module-info">
-                                    <h3>Flight Capacity</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </section>
                 </div>
             </div>
         </section>
