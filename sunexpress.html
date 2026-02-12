@@ -8,33 +8,528 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .sun-hero {
+            padding: 80px 0 100px;
+            background: radial-gradient(circle at top right, rgba(0, 93, 164, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(0, 53, 103, 0.08) 0%, transparent 40%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text-content {
+            flex: 1.2;
+            text-align: left;
+            z-index: 2;
+        }
+
+        .hero-badge-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 93, 164, 0.15);
+            border: 1px solid rgba(0, 93, 164, 0.3);
+            padding: 8px 16px;
+            border-radius: 100px;
+            color: #0099ff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+        }
+
+        .pulsing-dot {
+            width: 8px;
+            height: 8px;
+            background: #0099ff;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(0, 153, 255, 0.4);
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes dotPulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 153, 255, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 153, 255, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 153, 255, 0); }
+        }
+
+        .sun-hero .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1.5px;
+        }
+
+        .sun-hero .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 40px;
+            max-width: 580px;
+            line-height: 1.7;
+            margin-left: 0;
+            text-align: left;
+        }
+
+        .hero-visual {
+            flex: 0.8;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .visual-glow {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(0, 153, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: -1;
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-logo-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .hero-logo-card:hover {
+            transform: translateY(-12px) rotateX(4deg) rotateY(-4deg);
+            border-color: rgba(0, 153, 255, 0.3);
+            box-shadow: 0 50px 100px rgba(0, 153, 255, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-logo-card img {
+            max-width: 260px;
+            height: auto;
+            filter: drop-shadow(0 0 30px rgba(0,0,0,0.3));
+            transition: all 0.6s ease;
+        }
+
+        .hero-logo-card:hover img {
+            transform: translateZ(30px);
+            filter: drop-shadow(0 0 40px rgba(0, 153, 255, 0.2));
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary-sun {
+            background: #007bff;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary-sun:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 123, 255, 0.45);
+            background: #3399ff;
+        }
+
+        /* SunExpress Discovery Hub Styles */
+        .sun-discovery-hub {
+            padding: 40px 0;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .discovery-toggle-card {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+
+        .discovery-toggle-card:hover {
+            border-color: rgba(0, 123, 255, 0.25);
+            background: rgba(22, 22, 22, 0.9);
+            box-shadow: 0 40px 80px -15px rgba(0, 123, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .discovery-toggle-card.active {
+            border-color: rgba(0, 123, 255, 0.3);
+            background: rgba(20, 20, 20, 0.95);
+            transform: translateY(0);
+        }
+
+        .discovery-header {
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, rgba(0, 123, 255, 0.03) 0%, transparent 100%);
+            transition: background 0.3s ease;
+        }
+
+        .discovery-header:hover {
+            background: linear-gradient(90deg, rgba(0, 123, 255, 0.08) 0%, transparent 100%);
+        }
+
+        .discovery-title-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .discovery-icon-box {
+            width: auto;
+            min-width: 52px;
+            height: 52px;
+            padding: 0 16px;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.2) 0%, rgba(0, 123, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 123, 255, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #007bff;
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.1);
+            white-space: nowrap;
+        }
+
+        .discovery-header:hover .discovery-icon-box {
+            transform: scale(1.08) rotate(8deg);
+            background: rgba(0, 123, 255, 0.25);
+            border-color: rgba(0, 123, 255, 0.4);
+            color: #3399ff;
+        }
+
+        .discovery-text h3 {
+            font-size: 1.15rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+            color: #fff;
+            letter-spacing: -0.2px;
+        }
+
+        .discovery-text p {
+            font-size: 0.85rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .toggle-arrow {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .discovery-toggle-card:hover .toggle-arrow {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .discovery-toggle-card.active .toggle-arrow {
+            transform: rotate(180deg);
+            background: #007bff;
+            color: #fff;
+        }
+
+        .discovery-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0 32px;
+            opacity: 0;
+        }
+
+        .discovery-toggle-card.active .discovery-content {
+            max-height: 5000px;
+            padding: 0 32px 40px;
+            opacity: 1;
+        }
+
+        .details-header {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .details-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .info-grid-modern {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .category-pane {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 28px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pane-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pane-header svg {
+            color: #007bff;
+        }
+
+        .pane-header h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .pane-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pane-list li {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .pane-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .pane-subtext {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 950px) {
+            .info-grid-modern {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 60px;
+                padding-top: 40px;
+            }
+            .hero-text-content {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 1;
+            }
+            .sun-hero .hero-title, .sun-hero .hero-description {
+                text-align: center;
+            }
+            .hero-logo-card {
+                padding: 40px;
+            }
+            .hero-logo-card img {
+                max-width: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
     <main>
-        <!-- SunExpress Tutorial Section (Copied from Mollymawk) -->
-        <section class="tutorial-section" style="padding-top: 100px;">
+        <!-- Hero Section -->
+        <section class="hero sun-hero">
+            <div class="container">
+                <div class="hero-container">
+                    <div class="hero-text-content">
+                        <div class="hero-badge-top">
+                            <span class="pulsing-dot"></span>
+                            MPL Program 2026
+                        </div>
+                        <h1 class="hero-title">SunExpress <br>Pilot Recruitment</h1>
+                        <p class="hero-description">The ultimate preparation guide for SunExpress Mollymawk® exams and Pilot Candidate selection process. Master the cognitive tests and psychometric evaluations.</p>
+                        <div class="hero-actions">
+                            <a href="#tutorials" class="btn-primary-sun">
+                                View Modules
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="visual-glow"></div>
+                        <div class="hero-logo-card">
+                            <img src="images/SunExpress_Logo.png" alt="SunExpress Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SunExpress Discovery Hub -->
+        <section class="sun-discovery-hub">
+            <div class="container px-0">
+                <div class="discovery-toggle-card">
+                    <div class="discovery-header">
+                        <div class="discovery-title-group">
+                            <div class="discovery-icon-box">SUNEXPRESS</div>
+                            <div class="discovery-text">
+                                <h3>SunExpress Requirements</h3>
+                                <p>Discover SunExpress requirements & details</p>
+                            </div>
+                        </div>
+                        <div class="toggle-arrow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="discovery-content">
+                        <div class="details-header">
+                            <h1>SunExpress Assessment Details</h1>
+                        </div>
+
+                        <div class="info-grid-modern">
+                            <!-- Education & Health -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                        <path d="M6 12.5V16a6.3 6.3 0 0 0 12 0v-3.5"></path>
+                                    </svg>
+                                    <h4>Education & Medical</h4>
+                                </div>
+                                <ul class="pane-list">
+                                    <li><strong>Bachelor's Degree:</strong> Applicants must have at least an undergraduate degree.</li>
+                                    <li><strong>Medical Certificate:</strong> Possession of a valid Class 1 Medical Certificate is required.</li>
+                                    <li><strong>Age Performance:</strong> Maximum age requirements usually apply for the MPL program.</li>
+                                </ul>
+                            </div>
+
+                            <!-- English Requirements -->
+                            <div class="category-pane">
+                                <div class="pane-header">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20"></path>
+                                    </svg>
+                                    <h4>English Proficiency</h4>
+                                </div>
+                                <p class="pane-subtext">One of the following scores must be provided for the application:</p>
+                                <ul class="pane-list">
+                                    <li><strong>TOEIC:</strong> Listening (400), Reading (385)</li>
+                                    <li><strong>TOEFL iBT:</strong> 75 (L: 20, R: 18, S: 20, W: 18)</li>
+                                    <li><strong>IELTS:</strong> 6.0 (Each module min. 5.5)</li>
+                                    <li><strong>ITEP Academic Plus:</strong> 3.5 (Each section min. 3.5)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SunExpress Tutorial Section -->
+        <section class="tutorial-section" style="padding: 80px 0;">
             <div class="container">
                 <div class="tutorial-card">
                     <div class="tutorial-content">
-                        <h2 class="content-title">mollymawk Exam Structure</h2>
-                        <p class="diagram-note">The mollymawk exam structure is currently being updated. Please check back soon for detailed information.</p>
+                        <h2 class="content-title">SunExpress Mollymawk Exam Structure</h2>
+                        <p class="diagram-note">The SunExpress Mollymawk® exam structure is currently being updated. Please check back soon for detailed information.</p>
                     </div>
 
                     <!-- Placeholder for Exam Structure -->
                     <section class="phases-explanation">
-                        <div class="note-box highlight">
-                            <p><strong>Note:</strong> Detailed module information and exam patterns will be available shortly.</p>
+                        <div class="note-box highlight" style="background: rgba(0, 153, 255, 0.05); border: 1px solid rgba(0, 153, 255, 0.1); padding: 25px; border-radius: 20px; color: #fff;">
+                            <p><strong style="color: #0099ff;">Note:</strong> Detailed module information and exam patterns will be available shortly.</p>
                         </div>
                     </section>
 
                     <!-- Tutorials Section -->
-                    <section id="tutorials" class="tutorials-overview">
+                    <section id="tutorials" class="tutorials-overview" style="margin-top: 60px;">
                         <div class="tutorials-header">
-                            <h2 class="content-title">Tutorials</h2>
-                            <p class="diagram-note">Tutorials for mollymawk Modules</p>
+                            <h2 class="content-title">Preparation Modules</h2>
+                            <p class="diagram-note">Tutorials for SunExpress Mollymawk Modules</p>
                         </div>
                         <div class="modules-grid">
                             <div class="module-card">

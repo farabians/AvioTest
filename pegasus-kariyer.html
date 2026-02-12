@@ -361,7 +361,191 @@
         }
 
         .kariyer-page-padding {
-            padding: 120px 0 80px;
+            padding: 0;
+        }
+
+        .pegasus-hero {
+            padding: 80px 0 100px;
+            background: radial-gradient(circle at top right, rgba(255, 180, 0, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(255, 180, 0, 0.05) 0%, transparent 40%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text-content {
+            flex: 1.2;
+            text-align: left;
+            z-index: 2;
+        }
+
+        .hero-badge-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 8px 16px;
+            border-radius: 100px;
+            color: #ffb400;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+        }
+
+        .pulsing-dot {
+            width: 8px;
+            height: 8px;
+            background: #ffb400;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(255, 180, 0, 0.4);
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes dotPulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 180, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 180, 0, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 180, 0, 0); }
+        }
+
+        .pegasus-hero .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1.5px;
+        }
+
+        .pegasus-hero .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 40px;
+            max-width: 580px;
+            line-height: 1.7;
+            margin-left: 0;
+            text-align: left;
+        }
+
+        .hero-visual {
+            flex: 0.8;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .visual-glow {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255, 180, 0, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: -1;
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-logo-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .hero-logo-card:hover {
+            transform: translateY(-12px) rotateX(4deg) rotateY(-4deg);
+            border-color: rgba(255, 180, 0, 0.2);
+            box-shadow: 0 50px 100px rgba(255, 180, 0, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-logo-card img {
+            max-width: 260px;
+            height: auto;
+            filter: drop-shadow(0 0 30px rgba(0,0,0,0.3));
+            transition: all 0.6s ease;
+        }
+
+        .hero-logo-card:hover img {
+            transform: translateZ(30px);
+            filter: drop-shadow(0 0 40px rgba(255,180,0,0.2));
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary-pegasus {
+            background: #ffb400;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(255, 180, 0, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary-pegasus:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 180, 0, 0.45);
+            background: #ffcc00;
+        }
+
+        @media (max-width: 991px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 60px;
+                padding-top: 40px;
+            }
+            .hero-text-content {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 1;
+            }
+            .pegasus-hero .hero-title, .pegasus-hero .hero-description {
+                text-align: center;
+            }
+            .hero-logo-card {
+                padding: 40px;
+            }
+            .hero-logo-card img {
+                max-width: 200px;
+            }
         }
 
         @media (max-width: 1100px) {
@@ -441,6 +625,34 @@
     <div id="header-placeholder"></div>
 
     <main class="kariyer-page-padding">
+        <!-- Hero Section -->
+        <section class="hero pegasus-hero">
+            <div class="container">
+                <div class="hero-container">
+                    <div class="hero-text-content">
+                        <div class="hero-badge-top">
+                            <span class="pulsing-dot"></span>
+                            Career Opportunities 2026
+                        </div>
+                        <h1 class="hero-title">Pegasus Airlines <br>Pilot Recruitment</h1>
+                        <p class="hero-description">Join the Pegasus MPL Cadet Program and start your journey to the cockpit. Prepare for SkyTest CASE, English assessments, and Board interviews with the most advanced training system.</p>
+                        <div class="hero-actions">
+                            <a href="#pegasus-handbook" class="btn-primary-pegasus">
+                                Explore Program
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="visual-glow"></div>
+                        <div class="hero-logo-card">
+                            <img src="images/Pegasus-Airlines-Logo.png" alt="Pegasus Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Pegasus Discovery Hub (Toggle Section) -->
         <section class="pegasus-discovery-hub">
             <div class="container">
@@ -448,10 +660,10 @@
                     <div class="discovery-header">
                         <div class="discovery-title-group">
                             <div class="discovery-icon-box">
-                                CASE
+                                INFO
                             </div>
                             <div class="discovery-text">
-                                <h3>CASE Genel Tanıtım</h3>
+                                <h3>Genel Tanıtım</h3>
                                 <p>Program detayları, MPL eğitimi ve maliyetler için rehberi inceleyin</p>
                             </div>
                         </div>
@@ -461,7 +673,7 @@
                     </div>
                     <div class="discovery-content">
                         <div class="details-header">
-                            <h1>CASE Genel Tanıtım</h1>
+                            <h1>Genel Tanıtım</h1>
                         </div>
                         <div class="info-intro-text">
                             <p>Pegasus Hava Yolları, belirli dönemlerde <strong>Yetiştirilmek Üzere II. Pilot Aday Adayı</strong> ilanı yayımlamakta ve seçim sürecini başarıyla tamamlayan adayları <strong>MPL Cadet Pilot Programı</strong> kapsamına almaktadır. </p>
