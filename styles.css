@@ -1667,14 +1667,20 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .platforms-groups {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
     width: 100%;
     align-items: flex-start;
 }
 
 .mobile-grid, .desktop-grid {
     display: flex;
-    gap: 30px;
+    gap: 15px;
+}
+
+.store-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .qr-item {
@@ -1910,7 +1916,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .mobile-grid, .desktop-grid {
         flex-direction: column;
         width: 100%;
-        gap: 20px;
+        gap: 15px;
     }
 
     .store-btn {
