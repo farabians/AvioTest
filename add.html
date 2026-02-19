@@ -1,0 +1,515 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvioTest - PACE, CASE & MOLLYMAWK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --bg-color: #050505;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif !important;
+            background-color: #050505 !important;
+            color: white !important;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(0, 74, 255, 0.08) 0%, transparent 40%),
+                #050505 !important;
+            /* Padding and margin removed to allow global styles to apply 140px space */
+            margin: 0 !important;
+        }
+
+        #header-placeholder {
+            width: 100%;
+        }
+
+        #footer-placeholder {
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Overriding styles cleared */
+
+        .add-page-container {
+            width: 100%;
+            max-width: 1300px;
+            padding: 40px 20px; /* Adjusted to sit nicely at the top */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            flex-grow: 1;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            margin-top: 20px;
+            margin-bottom: 80px;
+            z-index: 20;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+        }
+
+        .hero-logo {
+            height: 70px;
+            width: auto;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 1100px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .text-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left; /* Keeping it left aligned as per image, but centralizing the group */
+            flex: 0 1 auto;
+            position: relative;
+            z-index: 25;
+        }
+
+        .pill-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            width: fit-content;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 5px rgba(255, 0, 0, 0.1);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+            50% { 
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+                border-color: rgba(255, 0, 0, 0.5);
+                color: #fff;
+            }
+        }
+
+        .text-line {
+            font-weight: 900;
+            font-size: 3.2rem; 
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-red {
+            background: linear-gradient(180deg, #ff4141 0%, #8b0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price-group {
+            display: flex;
+            align-items: baseline;
+            line-height: 0.8;
+            margin-top: 30px;
+            position: relative;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-red);
+        }
+
+        .price-number {
+            font-size: 7.5rem; 
+            font-weight: 950;
+            letter-spacing: -4px;
+            line-height: 0.9;
+            color: white;
+            filter: drop-shadow(0 0 30px rgba(255,255,255,0.1));
+        }
+
+        .price-unit {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-left: 2px;
+            letter-spacing: -0.5px;
+        }
+
+        .price-period {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 500;
+        }
+
+        .mockup-container {
+            flex: 0 1 auto;
+            width: 100%;
+            max-width: 550px;
+            position: relative;
+            z-index: 10;
+            margin-left: -20px; /* Boşluk dengelendi */
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.6));
+        }
+
+        .mockup-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+
+        .mockup-container:hover .mockup-img {
+            transform: scale(1.05);
+        }
+
+        /* Bottom Content Styles Refined */
+        .bottom-content {
+            text-align: center;
+            margin: 45px auto 100px;
+            width: 100%;
+            max-width: 1000px;
+            z-index: 20;
+            padding: 0; /* Arkaplan kartı kaldırıldı, padding sıfırlandı */
+            background: none; /* Arkaplan kaldırıldı */
+            border: none; /* Kenarlık kaldırıldı */
+        }
+
+        .bottom-title {
+            font-size: 2.2rem;
+            font-weight: 950;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            line-height: 1;
+            background: linear-gradient(180deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 100%;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #bbb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            flex: 0 1 auto;
+            min-width: 150px;
+        }
+
+        .feature-item::before {
+            display: none; /* Standart tık ikonu kaldırıldı */
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+            min-width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0%, rgba(139, 0, 0, 0.4) 100%);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #ff4141;
+            border-radius: 12px;
+            margin-bottom: 5px;
+            padding: 0 10px;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            gap: 8px;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: translateY(-5px) scale(1.05);
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.4) 0%, rgba(139, 0, 0, 0.6) 100%);
+            box-shadow: 0 12px 25px rgba(255, 0, 0, 0.3);
+            color: white;
+        }
+
+        .feature-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Feature-specific hover animations */
+        .feature-item:hover .feature-icon svg:nth-child(1) { transform: translateY(-3px) scale(1.1); }
+        .feature-item:hover .feature-icon svg:nth-child(2) { transform: translateY(-5px) scale(1.15) rotate(-90deg); transition-delay: 0.1s; }
+        .feature-item:hover .feature-icon svg:nth-child(3) { transform: translateY(-3px) scale(1.1); transition-delay: 0.2s; }
+
+        /* Histogram Anim */
+        .feature-item:hover .bar-1 { animation: grow-bar 0.6s ease-out forwards; }
+        .feature-item:hover .bar-2 { animation: grow-bar 0.8s ease-out forwards 0.1s; }
+        .feature-item:hover .bar-3 { animation: grow-bar 0.7s ease-out forwards 0.2s; }
+
+        @keyframes grow-bar {
+            from { transform: scaleY(0); transform-origin: bottom; }
+            to { transform: scaleY(1); transform-origin: bottom; }
+        }
+
+        .cta-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .store-btn-custom {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            color: white;
+            padding: 10px 20px; /* Reduced from 14px 28px */
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+        }
+
+        .store-btn-custom:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .store-btn-custom img {
+            height: 22px; /* Reduced from 28px */
+        }
+
+        .store-btn-text span {
+            display: block;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 0.5px;
+        }
+
+        .store-btn-text strong {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .get-now-btn {
+            background: linear-gradient(135deg, #ff0000 0%, #b30000 100%);
+            color: white;
+            text-decoration: none;
+            padding: 16px 45px; /* Reduced from 22px 60px */
+            border-radius: 14px;
+            font-weight: 950;
+            font-size: 1.3rem; /* Reduced from 1.6rem */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.25);
+        }
+
+        .get-now-btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 25px 50px rgba(255, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #999;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .social-btn svg {
+            fill: currentColor;
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 992px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            .text-group { align-items: center; }
+            .price-group { 
+                justify-content: center;
+                border: none;
+                padding-left: 0;
+            }
+            .bottom-content { padding: 40px 20px; }
+            .feature-list { gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .text-line { font-size: 3rem; }
+            .price-number { font-size: 8rem; }
+            .bottom-title { font-size: 2.2rem; }
+            .get-now-btn { padding: 18px 40px; font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="add-page-container">
+        <div class="hero-section">
+            <div class="text-group">
+                <div class="pill-badge">Limited Time Offer</div>
+                <div class="text-line">PACE, CASE &</div>
+                <div class="text-line">MOLLYMAWK</div>
+                <div class="text-line text-red">ALL-IN-ONE</div>
+                
+                <div class="price-group">
+                    <span class="price-number">99</span>
+                    <span class="price-unit">₺<span class="price-period">/hafta</span></span>
+                </div>
+            </div>
+
+            <div class="mockup-container">
+                <img src="images/add_page_mockup.png" alt="AvioTest Mockup" class="mockup-img">
+            </div>
+        </div>
+
+        <div class="bottom-content">
+            <h2 class="bottom-title">CADET PSİKOMETRİK SINAVLARINA HAZIRLANIN</h2>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <strong>Tüm Sınav Modülleri</strong>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path class="bar-2" d="M4 20h4v-8H4v8z"/>
+                            <path class="bar-1" d="M10 20h4V4h-4v16z"/>
+                            <path class="bar-3" d="M16 20h4V9h-4v11z"/>
+                        </svg>
+                    </div>
+                    <strong>Detaylı Performans Analizi</strong>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <!-- Phone -->
+                        <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                        <!-- Tablet (Horizontal) -->
+                        <svg viewBox="0 0 24 24" style="transform: rotate(-90deg);"><path d="M18.5 0h-13C4.12 0 3 1.12 3 2.5v19C3 22.88 4.12 24 5.5 24h13c1.38 0 2.5-1.12 2.5-2.5v-19C21 1.12 19.88 0 18.5 0zm-6.5 23c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7.5-4h-15V2.5h15V19z"/></svg>
+                        <!-- Monitor (PC) -->
+                        <svg viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/></svg>
+                    </div>
+                    <strong>Mobil, Tablet & PC Erişim</strong>
+                </li>
+            </ul>
+
+            <div class="cta-buttons">
+                <a href="#" class="store-btn-custom">
+                    <img src="images/buttons_icon/googleplay.png" alt="Google Play">
+                    <div class="store-btn-text">
+                        <span>GET IT ON</span>
+                        <strong>Google Play</strong>
+                    </div>
+                </a>
+
+                <a href="pricing.html" class="get-now-btn">GET NOW</a>
+
+                <a href="#" class="store-btn-custom">
+                    <img src="images/buttons_icon/windows.png" alt="Windows">
+                    <div class="store-btn-text">
+                        <span>DOWNLOAD FOR</span>
+                        <strong>Windows</strong>
+                    </div>
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://wa.me/numara" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="https://instagram.com/aviotest" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
