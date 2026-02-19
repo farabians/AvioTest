@@ -45,6 +45,12 @@
             margin-top: auto;
         }
 
+        /* Bannerları bu sayfaya özel gizle */
+        .top-notice-banner, 
+        .mobile-notice-banner {
+            display: none !important;
+        }
+
         /* Overriding styles cleared */
 
         .add-page-container {
@@ -589,6 +595,10 @@
             }
         }
 
+        @media (max-width: 992px) {
+            /* Styles already integrated into 992px for "no scroll" consistency */
+        }
+
         @media (max-width: 768px) {
             /* Styles already integrated into 992px for "no scroll" consistency */
         }
@@ -759,13 +769,6 @@
                 </a>
             </div>
         </div>
-    </div>
-
-    <!-- Exclusive Offer Banner (Sadece bu sayfaya özel) -->
-    <div class="exclusive-banner">
-        <div class="exclusive-badge">EXCLUSIVE</div>
-        <h3>Start your pilot journey today with a <span class="highlight">1-Week FREE Trial</span> on all modules!</h3>
-        <a href="pricing.html" class="claim-btn">Claim Now &rarr;</a>
     </div>
 
     <div id="footer-placeholder"></div>
