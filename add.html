@@ -193,13 +193,10 @@
         /* Bottom Content Styles Refined */
         .bottom-content {
             text-align: center;
-            margin: 45px auto 100px;
+            margin: 25px auto 100px;
             width: 100%;
             max-width: 1000px;
             z-index: 20;
-            padding: 0; /* Arkaplan kartı kaldırıldı, padding sıfırlandı */
-            background: none; /* Arkaplan kaldırıldı */
-            border: none; /* Kenarlık kaldırıldı */
         }
 
         .bottom-title {
@@ -358,7 +355,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 40px;
+            margin-top: 20px;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             width: 100%;
@@ -400,27 +397,119 @@
             .hero-section {
                 flex-direction: column;
                 text-align: center;
-                gap: 50px;
+                gap: 60px;
+                padding: 0 10px;
             }
-            .text-group { align-items: center; }
+            .text-group { 
+                align-items: center; 
+                text-align: center;
+            }
             .price-group { 
                 justify-content: center;
-                border: none;
-                padding-left: 0;
+                border-left: none;
+                border-top: 3px solid var(--primary-red);
+                padding: 20px 0 0 0;
+                margin-top: 25px;
+            }
+            .mockup-container { 
+                margin-left: 0; 
+                max-width: 90%;
             }
             .bottom-content { padding: 40px 20px; }
             .feature-list { gap: 40px; }
         }
 
         @media (max-width: 768px) {
-            .text-line { font-size: 3rem; }
-            .price-number { font-size: 8rem; }
-            .bottom-title { font-size: 2.2rem; }
-            .get-now-btn { padding: 18px 40px; font-size: 1.3rem; }
+            .text-line { font-size: 2.8rem; }
+            .price-number { font-size: 6.5rem; }
+            .bottom-title { font-size: 1.8rem; }
+            .get-now-btn { padding: 18px 40px; font-size: 1.2rem; width: 100%; max-width: 350px; }
+        }
+
+        @media (max-width: 480px) {
+            .text-line { font-size: 2.2rem; }
+            .price-number { font-size: 5.5rem; }
+            .price-unit { font-size: 0.9rem; }
+            .pill-badge { font-size: 0.6rem; padding: 4px 12px; }
+        }
+
+        /* Airplane Animation Styles */
+        .airplane-animation-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .airplane-entity {
+            position: absolute;
+            width: 48px;
+            height: auto;
+            opacity: 0; /* Managed by animation */
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+            animation: plane-flight linear infinite;
+            pointer-events: none;
+        }
+
+        .airplane-entity img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.12; /* Subtle visibility */
+        }
+
+        .airplane-trail {
+            position: absolute;
+            bottom: 20%;
+            right: 80%; 
+            width: 300px;
+            height: 1px;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0.08), transparent);
+            opacity: 0.4;
+            filter: blur(1px);
+            transform: rotate(-35deg); /* Align trail with diagonal movement if plane points up-right */
+            transform-origin: right center;
+        }
+
+        .airplane-trail.alt {
+            bottom: 40%;
+            width: 200px;
+            opacity: 0.2;
+        }
+
+        @keyframes plane-flight {
+            0% {
+                left: -200px;
+                top: 110%;
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                left: 110%;
+                top: -200px;
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="airplane-animation-layer">
+        <div class="airplane-entity" style="animation-duration: 45s; animation-delay: 0s;">
+            <img src="images/plane_white.png" alt="Airplane">
+            <div class="airplane-trail"></div>
+            <div class="airplane-trail alt"></div>
+        </div>
+        <div class="airplane-entity" style="animation-duration: 65s; animation-delay: -30s; width: 32px;">
+            <img src="images/plane_white.png" alt="Airplane">
+            <div class="airplane-trail"></div>
+            <div class="airplane-trail alt"></div>
+        </div>
+    </div>
     <div id="header-placeholder"></div>
 
     <div class="add-page-container">
