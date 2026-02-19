@@ -45,10 +45,27 @@
             margin-top: auto;
         }
 
-        /* Bannerları bu sayfaya özel gizle */
+        /* Bannerları gizle ve Header'ı en tepeye yapıştır */
         .top-notice-banner, 
         .mobile-notice-banner {
             display: none !important;
+        }
+
+        .header {
+            top: 0 !important;
+        }
+
+        body {
+            padding-top: 100px !important;
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                top: 0 !important;
+            }
+            body {
+                padding-top: 80px !important;
+            }
         }
 
         /* Overriding styles cleared */
@@ -107,8 +124,8 @@
             font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 1.5px;
-            text-transform: uppercase;
             width: fit-content;
+            white-space: nowrap; /* Yazının aşağı düşmesini engeller */
             margin-bottom: 20px;
             backdrop-filter: blur(10px);
             animation: pulse-glow 2s infinite ease-in-out;
@@ -293,9 +310,18 @@
 
         .cta-buttons {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .cta-row {
+            display: flex;
+            justify-content: center;
             gap: 20px;
+            width: 100%;
             flex-wrap: wrap;
         }
 
@@ -357,46 +383,53 @@
             filter: brightness(1.1);
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .social-btn {
+        .social-btn-custom {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 8px 18px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #999;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             color: white;
-            transform: translateY(-2px);
+            padding: 10px 20px; /* Store butonlarıyla eşitlendi */
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            min-width: 170px; /* Genişlik dengelendi */
         }
 
-        .social-btn svg {
+        .social-btn-custom svg {
+            width: 22px; /* Store ikonlarıyla eşitlendi */
+            height: 22px;
             fill: currentColor;
-            width: 18px;
-            height: 18px;
+        }
+
+        /* WhatsApp Style & Color */
+        .wa-custom {
+            border-color: rgba(37, 211, 102, 0.3);
+            background: rgba(37, 211, 102, 0.05);
+        }
+        .wa-custom strong { color: #25D366; }
+        .wa-custom svg { color: #25D366; }
+        .wa-custom:hover {
+            background: rgba(37, 211, 102, 0.15);
+            border-color: #25D366;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2);
+        }
+
+        /* Instagram Style & Color */
+        .ig-custom {
+            border-color: rgba(225, 48, 108, 0.3);
+            background: rgba(225, 48, 108, 0.05);
+        }
+        .ig-custom strong { color: #E1306C; }
+        .ig-custom svg { color: #E1306C; }
+        .ig-custom:hover {
+            background: rgba(225, 48, 108, 0.15);
+            border-color: #E1306C;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(225, 48, 108, 0.2);
         }
 
         @media (max-width: 992px) {
@@ -408,51 +441,57 @@
                 flex-direction: column;
             }
             .add-page-container {
-                padding: 10px; /* Padding azaltıldı */
-                min-height: unset; /* Gereksiz dikey boşluğu önler */
+                padding: 0 7% 80px 5%; 
+                min-height: unset;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
                 flex: none;
-                margin-top: 60px; /* Header boşluğu */
+                margin-top: 10px;
             }
             .hero-section {
-                flex-direction: row; 
+                flex-direction: column; 
                 align-items: center;
-                justify-content: center;
-                gap: 15px;
+                justify-content: center; 
+                gap: 15px; 
                 padding: 0;
                 width: 100%;
-                margin-bottom: 30px; /* Hero altı boşluk azaltıldı */
+                margin-bottom: 25px;
             }
             .text-group { 
                 flex: 0 1 auto;
-                text-align: left;
-                align-items: flex-start;
+                text-align: center;
+                align-items: center;
+                min-width: 0; 
+                width: 100%;
             }
             .text-line {
-                font-size: 1.6rem !important; /* Daha okunaklı ama kompakt */
+                font-size: clamp(1.3rem, 6.5vw, 1.8rem) !important; 
                 letter-spacing: -0.5px;
-                line-height: 0.95;
+                line-height: 1.1;
             }
             .pill-badge {
-                font-size: 0.55rem;
-                padding: 3px 10px;
+                font-size: 0.6rem;
+                padding: 4px 10px;
                 margin-bottom: 12px;
+                margin-left: auto;
+                margin-right: auto;
             }
             .price-group { 
-                justify-content: flex-start;
+                justify-content: center;
                 border: none;
-                border-left: 2px solid var(--primary-red);
-                padding: 2px 0 2px 10px;
-                margin-top: 15px;
+                border-bottom: 2px solid var(--primary-red);
+                padding: 0 0 5px 0;
+                margin: 12px auto 0;
+                width: fit-content;
             }
-            .price-number { font-size: 3.8rem !important; }
-            .price-unit { font-size: 0.8rem; }
+            .price-number { font-size: clamp(3.5rem, 13vw, 5rem) !important; }
+            .price-unit { font-size: 0.9rem; }
             .mockup-container { 
-                flex: 0 1 45%;
-                margin: 0; 
-                max-width: 180px; /* Tablet/Telefonda çok büyümesini engeller */
+                flex: 0 1 auto; 
+                margin: 0 auto; 
+                max-width: 80%;
+                z-index: 5;
             }
             .bottom-content { 
                 margin: 0 auto;
@@ -460,60 +499,78 @@
                 width: 100%;
             }
             .bottom-title { 
-                font-size: 1.2rem !important; 
-                margin-bottom: 20px; 
+                font-size: clamp(1rem, 4vw, 1.4rem) !important; 
+                margin-bottom: 15px; 
             }
             .feature-list { 
                 display: flex;
                 flex-direction: row; 
                 justify-content: center;
-                gap: 10px; 
-                margin-bottom: 30px;
-                flex-wrap: nowrap;
+                gap: 5px; 
+                margin-bottom: 25px;
+                flex-wrap: wrap; /* İkonların kaybolmasını önlemek için sarmala izin verildi */
             }
             .feature-item {
-                font-size: 0.65rem;
-                min-width: unset;
-                flex: 1;
-                gap: 5px;
+                font-size: 0.7rem;
+                min-width: 100px; /* Minimum genişlik verilerek ikonların ezilmesi önlendi */
+                flex: 1 1 30%;
+                gap: 8px;
             }
             .feature-icon {
-                width: 32px;
-                height: 32px;
-                border-radius: 8px;
+                width: auto; 
+                min-width: 42px; 
+                height: 38px; 
+                border-radius: 10px;
+                padding: 0 10px; 
+                gap: 5px; 
             }
             .feature-icon svg {
-                width: 16px;
+                width: 16px; 
                 height: 16px;
             }
             .cta-buttons {
-                flex-direction: row; 
-                gap: 8px;
+                flex-direction: column; 
+                gap: 15px;
                 justify-content: center;
+            }
+            .cta-row {
+                display: flex;
+                flex-direction: row;
                 flex-wrap: nowrap;
+                gap: 10px;
+                width: 100%;
+                justify-content: center;
             }
-            .store-btn-custom {
-                padding: 6px 10px;
-                border-radius: 8px;
-            }
-            .store-btn-custom img {
-                height: 14px;
-            }
-            .store-btn-text span { font-size: 0.45rem; }
-            .store-btn-text strong { font-size: 0.7rem; }
-            .get-now-btn { 
-                padding: 10px 20px; 
-                font-size: 0.9rem; 
+            .store-btn-custom, .social-btn-custom {
+                padding: 8px 12px;
                 border-radius: 10px;
+                flex: 1 1 50%;
+                min-width: 140px;
+                max-width: 180px;
+                justify-content: flex-start;
+            }
+            .store-btn-custom img, .social-btn-custom svg {
+                height: 18px;
+                width: 18px;
+            }
+            .store-btn-text span { font-size: 0.5rem; }
+            .store-btn-text strong { font-size: 0.85rem; }
+            .get-now-btn { 
+                padding: 12px 25px; 
+                font-size: 1rem; 
+                border-radius: 12px;
+                flex: 1 1 100%; /* Mobil ekranda "Get Now" butonu tam genişlik veya orta vurgu */
+                order: -1; /* Görsel hiyerarşide yukarı taşındı */
+                margin-bottom: 5px;
             }
             .social-links {
-                margin-top: 20px;
+                margin-top: 25px;
                 padding-top: 20px;
-                gap: 10px;
+                gap: 12px;
             }
             .social-btn {
-                padding: 5px 12px;
-                font-size: 0.7rem;
+                padding: 8px 15px;
+                font-size: 0.75rem;
             }
         }
 
@@ -669,9 +726,70 @@
                 opacity: 0;
             }
         }
+
+        /* Modal Styles */
+        .img-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            cursor: zoom-out;
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-modal.active {
+            display: flex;
+        }
+
+        .img-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .img-modal.active img {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.2);
+        }
     </style>
 </head>
 <body>
+    <div id="imageModal" class="img-modal" onclick="this.classList.remove('active')">
+        <span class="close-modal">&times;</span>
+        <img src="images/add_page_mockup.png" alt="Full Mockup">
+    </div>
     <div class="airplane-animation-layer">
         <div class="airplane-entity" style="animation-duration: 45s; animation-delay: 0s;">
             <img src="images/plane_white.png" alt="Airplane">
@@ -689,7 +807,7 @@
     <div class="add-page-container">
         <div class="hero-section">
             <div class="text-group">
-                <div class="pill-badge">Limited Time Offer</div>
+                <div class="pill-badge">LIMITED TIME OFFER </div> 
                 <div class="text-line">PACE, CASE &</div>
                 <div class="text-line">MOLLYMAWK</div>
                 <div class="text-line text-red">ALL-IN-ONE</div>
@@ -701,7 +819,9 @@
             </div>
 
             <div class="mockup-container">
-                <img src="images/add_page_mockup.png" alt="AvioTest Mockup" class="mockup-img">
+                <a href="javascript:void(0)" onclick="document.getElementById('imageModal').classList.add('active')" style="display: block; cursor: zoom-in;">
+                    <img src="images/add_page_mockup.png" alt="AvioTest Mockup" class="mockup-img">
+                </a>
             </div>
         </div>
 
@@ -739,34 +859,39 @@
             </ul>
 
             <div class="cta-buttons">
-                <a href="#" class="store-btn-custom">
-                    <img src="images/buttons_icon/googleplay.png" alt="Google Play">
-                    <div class="store-btn-text">
-                        <span>GET IT ON</span>
-                        <strong>Google Play</strong>
-                    </div>
-                </a>
+                <div class="cta-row">
+                    <a href="#" class="store-btn-custom">
+                        <img src="images/buttons_icon/googleplay.png" alt="Google Play">
+                        <div class="store-btn-text">
+                            <span>GET IT ON</span>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="store-btn-custom">
+                        <img src="images/buttons_icon/windows.png" alt="Windows">
+                        <div class="store-btn-text">
+                            <span>DOWNLOAD FOR</span>
+                            <strong>Windows</strong>
+                        </div>
+                    </a>
+                </div>
 
-                <a href="pricing.html" class="get-now-btn">GET NOW</a>
-
-                <a href="#" class="store-btn-custom">
-                    <img src="images/buttons_icon/windows.png" alt="Windows">
-                    <div class="store-btn-text">
-                        <span>DOWNLOAD FOR</span>
-                        <strong>Windows</strong>
-                    </div>
-                </a>
-            </div>
-
-            <div class="social-links">
-                <a href="https://wa.me/numara" target="_blank" class="social-btn">
-                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    WhatsApp
-                </a>
-                <a href="https://instagram.com/aviotest" target="_blank" class="social-btn">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    Instagram
-                </a>
+                <div class="cta-row">
+                    <a href="https://wa.me/numara" target="_blank" class="social-btn-custom wa-custom">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        <div class="store-btn-text">
+                            <span>CONTACT US ON</span>
+                            <strong>WhatsApp</strong>
+                        </div>
+                    </a>
+                    <a href="https://instagram.com/aviotest" target="_blank" class="social-btn-custom ig-custom">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        <div class="store-btn-text">
+                            <span>FOLLOW US ON</span>
+                            <strong>Instagram</strong>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
