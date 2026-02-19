@@ -310,10 +310,11 @@
 
         .cta-buttons {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             width: 100%;
         }
 
@@ -321,8 +322,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            width: 100%;
-            flex-wrap: wrap;
+            width: auto;
         }
 
         .store-btn-custom {
@@ -726,70 +726,9 @@
                 opacity: 0;
             }
         }
-
-        /* Modal Styles */
-        .img-modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            cursor: zoom-out;
-            backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .img-modal.active {
-            display: flex;
-        }
-
-        .img-modal img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .img-modal.active img {
-            transform: scale(1);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10001;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-
-        .close-modal:hover {
-            background: rgba(255,255,255,0.2);
-        }
     </style>
 </head>
 <body>
-    <div id="imageModal" class="img-modal" onclick="this.classList.remove('active')">
-        <span class="close-modal">&times;</span>
-        <img src="images/add_page_mockup.png" alt="Full Mockup">
-    </div>
     <div class="airplane-animation-layer">
         <div class="airplane-entity" style="animation-duration: 45s; animation-delay: 0s;">
             <img src="images/plane_white.png" alt="Airplane">
@@ -819,9 +758,7 @@
             </div>
 
             <div class="mockup-container">
-                <a href="javascript:void(0)" onclick="document.getElementById('imageModal').classList.add('active')" style="display: block; cursor: zoom-in;">
-                    <img src="images/add_page_mockup.png" alt="AvioTest Mockup" class="mockup-img">
-                </a>
+                <img src="images/add_page_mockup.png" alt="AvioTest Mockup" class="mockup-img">
             </div>
         </div>
 
