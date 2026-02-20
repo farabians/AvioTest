@@ -199,7 +199,7 @@
 
         .bottom-content {
             text-align: center;
-            margin: 25px auto 100px;
+            margin: 10px auto 100px;
             width: 100%;
             max-width: 1000px;
             z-index: 20;
@@ -209,7 +209,7 @@
             font-size: 2.2rem;
             font-weight: 950;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             letter-spacing: -1px;
             line-height: 1;
             background: linear-gradient(180deg, #fff 0%, #888 100%);
@@ -221,7 +221,7 @@
         .feature-list {
             list-style: none;
             padding: 0;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
             gap: 40px;
@@ -270,6 +270,62 @@
             height: 22px;
             fill: currentColor;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .device-badge-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .device-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            gap: 6px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            min-width: 85px;
+        }
+
+        .device-box:hover {
+            background: rgba(255, 0, 0, 0.05);
+            border-color: rgba(255, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .device-box svg {
+            width: 20px;
+            height: 20px;
+            fill: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .device-box:hover svg {
+            fill: #ff0000;
+        }
+
+        .device-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .device-box:hover .device-label {
+            color: #fff;
         }
 
         /* Feature-specific hover animations */
@@ -412,7 +468,7 @@
                 gap: 15px; 
                 padding: 0;
                 width: 100%;
-                margin-bottom: 25px;
+                margin-bottom: 10px;
             }
             .text-group { 
                 flex: 0 1 auto;
@@ -442,7 +498,12 @@
                 width: fit-content;
             }
             .price-number { font-size: clamp(3.5rem, 13vw, 5rem) !important; }
-            .price-unit { font-size: 0.9rem; }
+            .price-unit { 
+                font-size: 0.9rem;
+                width: 0;
+                white-space: nowrap;
+                margin-left: 5px;
+            }
             .mockup-container { 
                 flex: 0 1 auto; 
                 margin: 0 auto; 
@@ -456,14 +517,14 @@
             }
             .bottom-title { 
                 font-size: clamp(1rem, 4vw, 1.4rem) !important; 
-                margin-bottom: 15px; 
+                margin-bottom: 10px; 
             }
             .feature-list { 
                 display: flex;
                 flex-direction: row; 
                 justify-content: center;
                 gap: 5px; 
-                margin-bottom: 25px;
+                margin-bottom: 15px;
                 flex-wrap: wrap;
             }
             .feature-item {
@@ -483,6 +544,25 @@
             .feature-icon svg {
                 width: 16px; 
                 height: 16px;
+            }
+            .device-badge-group {
+                gap: 6px;
+                margin-bottom: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            .device-box {
+                padding: 8px 10px;
+                min-width: 65px;
+                border-radius: 8px;
+                gap: 4px;
+            }
+            .device-box svg {
+                width: 14px;
+                height: 14px;
+            }
+            .device-label {
+                font-size: 0.5rem;
             }
             .cta-buttons {
                 flex-direction: column; 
@@ -601,8 +681,8 @@
                 <div class="text-line text-red">ALL-IN-ONE</div>
                 
                 <div class="price-group">
-                    <span class="price-number">99</span>
-                    <span class="price-unit">₺<span class="price-period">/hafta</span></span>
+                    <span class="price-number">99<span style="font-size: 0.7em; margin-left: 2px;">₺</span></span>
+                    <span class="price-unit"><span class="price-period">/hafta</span></span>
                 </div>
             </div>
 
@@ -612,7 +692,21 @@
         </div>
 
         <div class="bottom-content">
-            <h2 class="bottom-title">CADET PSİKOMETRİK SINAVLARINA HAZIRLANIN</h2>
+            <div class="device-badge-group">
+                <div class="device-box">
+                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span class="device-label">Telefon</span>
+                </div>
+                <div class="device-box">
+                    <svg viewBox="0 0 24 24" style="transform: rotate(-90deg);"><path d="M18.5 0h-13C4.12 0 3 1.12 3 2.5v19C3 22.88 4.12 24 5.5 24h13c1.38 0 2.5-1.12 2.5-2.5v-19C21 1.12 19.88 0 18.5 0zm-6.5 23c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7.5-4h-15V2.5h15V19z"/></svg>
+                    <span class="device-label">Tablet</span>
+                </div>
+                <div class="device-box">
+                    <svg viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/></svg>
+                    <span class="device-label">Bilgisayar</span>
+                </div>
+            </div>
+            <h2 class="bottom-title">Tüm cihazlardan<br>Cadet Psikometrik Sınavlarına Hazırlanın</h2>
             
             <ul class="feature-list">
                 <li class="feature-item">
@@ -630,17 +724,6 @@
                         </svg>
                     </div>
                     <strong>Detaylı Performans Analizi</strong>
-                </li>
-                <li class="feature-item">
-                    <div class="feature-icon">
-                        <!-- Phone -->
-                        <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                        <!-- Tablet (Horizontal) -->
-                        <svg viewBox="0 0 24 24" style="transform: rotate(-90deg);"><path d="M18.5 0h-13C4.12 0 3 1.12 3 2.5v19C3 22.88 4.12 24 5.5 24h13c1.38 0 2.5-1.12 2.5-2.5v-19C21 1.12 19.88 0 18.5 0zm-6.5 23c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7.5-4h-15V2.5h15V19z"/></svg>
-                        <!-- Monitor (PC) -->
-                        <svg viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/></svg>
-                    </div>
-                    <strong>Tüm Apple Cihazları</strong>
                 </li>
             </ul>
 
