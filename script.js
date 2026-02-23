@@ -51,6 +51,7 @@ async function loadComponents() {
     initializePegasusCarousel();
     initializeMollymawkCarousel();
     initializeBannerParticles();
+    initializeSearch();
 }
 
 // Set active class on nav links based on current page
@@ -1180,5 +1181,125 @@ function initializeBannerParticles() {
         window.addEventListener('resize', resize);
         resize();
         draw();
+    });
+}
+
+// Initialize search functionality
+function initializeSearch() {
+    const searchInput = document.getElementById('site-search');
+    const searchResults = document.getElementById('search-results');
+    
+    if (!searchInput || !searchResults) return;
+
+    // Define searchable data
+    const searchData = [
+        // Exams
+        { title: 'PACE', category: 'Exam', url: 'pace.html' },
+        { title: 'Pegasus CASE', category: 'Exam', url: 'pegasus.html' },
+        { title: 'Mollymawk', category: 'Exam', url: 'mollymawk.html' },
+        
+        // Careers
+        { title: 'Türk Hava Yolları', category: 'Career', url: 'thy.html' },
+        { title: 'Pegasus', category: 'Career', url: 'pegasus-kariyer.html' },
+        { title: 'SunExpress', category: 'Career', url: 'sunexpress.html' },
+        { title: 'Application Calendar', category: 'Career', url: 'ilan-takvimi.html' },
+        
+        // Other
+        { title: 'Pricing', category: 'Service', url: 'pricing.html' },
+        { title: 'Download App', category: 'Service', url: 'download.html' },
+        { title: 'Home', category: 'General', url: 'index.html' },
+
+        // PACE Modules
+        { title: 'Mathematics', category: 'PACE Module', url: 'modules/pace/mathematics.html' },
+        { title: 'Physics', category: 'PACE Module', url: 'modules/pace/physics.html' },
+        { title: 'Audio Visual Memory', category: 'PACE Module', url: 'modules/pace/audio-visual-memory.html' },
+        { title: 'Digit Span', category: 'PACE Module', url: 'modules/pace/digit-span.html' },
+        { title: 'Agility', category: 'PACE Module', url: 'modules/pace/agility.html' },
+        { title: 'Sustained Attention', category: 'PACE Module', url: 'modules/pace/sustained-attention.html' },
+        { title: 'Spatial Orientation', category: 'PACE Module', url: 'modules/pace/spatial-orientation.html' },
+        { title: 'Joystick Flight Test (MIC)', category: 'PACE Module', url: 'modules/pace/mic.html' },
+        { title: '3D Spatial Perception', category: 'PACE Module', url: 'modules/pace/three-dimensional-spatial-perception.html' },
+
+        // Pegasus Modules
+        { title: 'Spatial Orientation 2D', category: 'Pegasus Module', url: 'modules/pegasus/spatial-orientation-2d.html' },
+        { title: 'Spatial Orientation 3D', category: 'Pegasus Module', url: 'modules/pegasus/spatial-orientation-3d.html' },
+        { title: 'Vigilance 1', category: 'Pegasus Module', url: 'modules/pegasus/vigilance-1.html' },
+        { title: 'Vigilance 2', category: 'Pegasus Module', url: 'modules/pegasus/vigilance-2.html' },
+        { title: 'IPP Test', category: 'Pegasus Module', url: 'modules/pegasus/ipp.html' },
+        { title: 'Capacity Test', category: 'Pegasus Module', url: 'modules/pegasus/capacity.html' },
+        { title: 'Flight Capacity', category: 'Pegasus Module', url: 'modules/pegasus/flight-capacity.html' }
+    ];
+
+    // Calculate prefix to handle relative paths
+    const path = window.location.pathname;
+    const isSubPage = path.includes('/modules/') || path.includes('/blog/');
+    let prefix = '';
+    if (isSubPage) {
+        const subPathStart = path.includes('/modules/') ? '/modules/' : '/blog/';
+        const modulesIndex = path.indexOf(subPathStart);
+        const subPath = path.substring(modulesIndex + subPathStart.length);
+        const slashCount = (subPath.match(/\//g) || []).length;
+        prefix = '../'.repeat(slashCount + 1);
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (query.length < 2) {
+            searchResults.classList.remove('active');
+            return;
+        }
+
+        const filteredResults = searchData.filter(item => 
+            item.title.toLowerCase().includes(query) || 
+            item.category.toLowerCase().includes(query)
+        );
+
+        displayResults(filteredResults, prefix);
+    });
+
+    function displayResults(results, prefix) {
+        searchResults.innerHTML = '';
+        
+        if (results.length === 0) {
+            searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+        } else {
+            results.forEach(result => {
+                const item = document.createElement('a');
+                item.href = prefix + result.url;
+                item.className = 'search-result-item';
+                item.innerHTML = `
+                    <span class="result-category">${result.category}</span>
+                    <span class="result-title">${result.title}</span>
+                `;
+                searchResults.appendChild(item);
+            });
+        }
+        
+        searchResults.classList.add('active');
+    }
+
+    // Close results when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.remove('active');
+        }
+    });
+
+    // Open results on focus if there is a query
+    searchInput.addEventListener('focus', () => {
+        if (searchInput.value.trim().length >= 2) {
+            searchResults.classList.add('active');
+        }
+    });
+
+    // Handle Enter key
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const firstResult = searchResults.querySelector('.search-result-item');
+            if (firstResult) {
+                window.location.href = firstResult.href;
+            }
+        }
     });
 }

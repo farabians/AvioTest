@@ -238,6 +238,131 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     padding: 0 40px;
 }
 
+/* Search Styles */
+.search-container {
+    position: relative;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+}
+
+.search-wrapper:focus-within {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-red);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+#site-search {
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 14px;
+    width: 150px;
+    outline: none;
+}
+
+#site-search::placeholder {
+    color: var(--text-gray);
+}
+
+.search-icon {
+    color: var(--text-gray);
+    margin-left: 8px;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    min-width: 250px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-top: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-result-item {
+    padding: 12px 15px;
+    display: block;
+    text-decoration: none;
+    color: var(--text-white);
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.2s ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.search-result-item .result-title {
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+}
+
+.search-result-item .result-category {
+    font-size: 11px;
+    color: var(--primary-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+    display: block;
+}
+
+.search-no-results {
+    padding: 15px;
+    color: var(--text-gray);
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Header Adjustments for Search */
+@media (max-width: 1100px) {
+    #site-search {
+        width: 100px;
+    }
+}
+
+@media (max-width: 991px) {
+    .search-container {
+        margin: 15px 0;
+        width: 100%;
+    }
+    
+    .search-wrapper {
+        width: 100%;
+    }
+    
+    #site-search {
+        width: 100%;
+    }
+}
+
 /* Header */
 .header {
     background-color: #191919;
