@@ -555,15 +555,16 @@
 
         .timeline-sections-header {
             display: grid;
-            grid-template-columns: repeat(12, 1fr); /* 12 equal columns to match the 12 nodes below */
+            grid-template-columns: repeat(13, 1fr); /* 13 equal columns to match the 13 nodes below */
             margin-bottom: clamp(15px, 3vw, 30px);
             padding: 0;
             width: 100%;
         }
 
         .section-group-label.s1 { grid-column: span 3; }
-        .section-group-label.s2 { grid-column: 5 / span 3; }
-        .section-group-label.s3 { grid-column: 9 / span 3; }
+        .section-group-label.s2 { grid-column: 5 / span 2; }
+        .section-group-label.s3 { grid-column: 8 / span 3; }
+        .section-group-label.s4 { grid-column: 12 / span 1; }
 
         .section-group-label {
             text-align: center;
@@ -577,6 +578,7 @@
             font-size: clamp(0.55rem, 1.25vw, 0.85rem);
             letter-spacing: clamp(1px, 0.2vw, 3px);
             margin-bottom: 8px;
+            white-space: nowrap;
         }
 
         .section-line-span {
@@ -853,11 +855,12 @@
             }
 
             /* Add section indicator for vertical layout */
-            .timeline-node:nth-child(1)::before { content: "SECTION 1"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
-            .timeline-node:nth-child(5)::before { content: "SECTION 2"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
-            .timeline-node:nth-child(9)::before { content: "SECTION 3"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
+            .timeline-node:nth-child(1)::before { content: "1. BÖLÜM"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
+            .timeline-node:nth-child(5)::before { content: "2. BÖLÜM"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
+            .timeline-node:nth-child(8)::before { content: "3. BÖLÜM"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
+            .timeline-node:nth-child(12)::before { content: "4. BÖLÜM"; position: absolute; left: -15px; top: -22px; color: #ff3e3e; font-size: 0.65rem; font-weight: 800; }
             
-            .timeline-node:nth-child(1), .timeline-node:nth-child(5), .timeline-node:nth-child(9) {
+            .timeline-node:nth-child(1), .timeline-node:nth-child(5), .timeline-node:nth-child(8), .timeline-node:nth-child(12) {
                 margin-top: 30px;
             }
         }
@@ -1211,7 +1214,7 @@
                         <div class="tutorial-card" style="margin-top: 40px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05);">
                             <div class="tutorial-content">
                                 <h2 class="content-title">PACE Exam Structure</h2>
-                                <p class="diagram-note">The PACE Exam is made up of 9 modules. The exam is completed in three sections, with 10 minute breaks in between.</p>
+                                <p class="diagram-note">The PACE Exam is made up of 9 modules. The exam is completed in four sections, with 10 minute breaks in between.</p>
                             </div>
 
                             <!-- Linear PACE Timeline Visualization -->
@@ -1220,15 +1223,19 @@
                                     <!-- Section Headers -->
                                     <div class="timeline-sections-header">
                                         <div class="section-group-label s1">
-                                            <span class="section-id">SECTION 1</span>
+                                            <span class="section-id">1. BÖLÜM</span>
                                             <div class="section-line-span"></div>
                                         </div>
                                         <div class="section-group-label s2">
-                                            <span class="section-id">SECTION 2</span>
+                                            <span class="section-id">2. BÖLÜM</span>
                                             <div class="section-line-span"></div>
                                         </div>
                                         <div class="section-group-label s3">
-                                            <span class="section-id">SECTION 3</span>
+                                            <span class="section-id">3. BÖLÜM</span>
+                                            <div class="section-line-span"></div>
+                                        </div>
+                                        <div class="section-group-label s4">
+                                            <span class="section-id">4. BÖLÜM</span>
                                             <div class="section-line-span"></div>
                                         </div>
                                     </div>
@@ -1238,17 +1245,17 @@
                                         <!-- Module 1 -->
                                         <div class="timeline-node">
                                             <div class="node-circle">1</div>
-                                            <span class="node-label">SUSTAINED ATTENTION</span>
+                                            <span class="node-label">SUSTAINED ATTENTION (D1)</span>
                                         </div>
                                         <!-- Module 2 -->
                                         <div class="timeline-node">
                                             <div class="node-circle">2</div>
-                                            <span class="node-label">AUDIO-VISUAL MEMORY</span>
+                                            <span class="node-label">AUDIO VISUAL MEMORY (B1)</span>
                                         </div>
                                         <!-- Module 3 -->
                                         <div class="timeline-node">
                                             <div class="node-circle">3</div>
-                                            <span class="node-label">DIGIT SPAN</span>
+                                            <span class="node-label">3D SPATIAL PERCEPTION (U1)</span>
                                         </div>
 
                                         <!-- Break 1 -->
@@ -1259,23 +1266,18 @@
                                                     <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
                                                 </svg>
                                             </div>
-                                            <span class="break-label-text">10M BREAK</span>
+                                            <span class="break-label-text">10 dk Ara</span>
                                         </div>
 
                                         <!-- Module 4 -->
                                         <div class="timeline-node">
                                             <div class="node-circle">4</div>
-                                            <span class="node-label">AGILITY</span>
+                                            <span class="node-label">PHYSICS (F)</span>
                                         </div>
                                         <!-- Module 5 -->
                                         <div class="timeline-node">
                                             <div class="node-circle">5</div>
-                                            <span class="node-label">3D SPATIAL PERCEPTION</span>
-                                        </div>
-                                        <!-- Module 6 -->
-                                        <div class="timeline-node">
-                                            <div class="node-circle">6</div>
-                                            <span class="node-label">SPATIAL ORIENTATION</span>
+                                            <span class="node-label">MATHEMATICS (M)</span>
                                         </div>
 
                                         <!-- Break 2 -->
@@ -1286,23 +1288,40 @@
                                                     <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
                                                 </svg>
                                             </div>
-                                            <span class="break-label-text">10M BREAK</span>
+                                            <span class="break-label-text">10 dk Ara</span>
                                         </div>
 
+                                        <!-- Module 6 -->
+                                        <div class="timeline-node">
+                                            <div class="node-circle">6</div>
+                                            <span class="node-label">COGNITIVE AGILITY (D2)</span>
+                                        </div>
                                         <!-- Module 7 -->
                                         <div class="timeline-node">
                                             <div class="node-circle">7</div>
-                                            <span class="node-label">PHYSICS</span>
+                                            <span class="node-label">VERBAL MEMORY (B2)</span>
                                         </div>
                                         <!-- Module 8 -->
                                         <div class="timeline-node">
                                             <div class="node-circle">8</div>
-                                            <span class="node-label">MATHEMATICS</span>
+                                            <span class="node-label">SPATIAL ORIENTATION (U2)</span>
                                         </div>
+
+                                        <!-- Break 3 -->
+                                        <div class="break-node">
+                                            <div class="break-circle-dashed">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="clock-icon">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polyline points="12 6 12 12 16 14" class="clock-hands"></polyline>
+                                                </svg>
+                                            </div>
+                                            <span class="break-label-text">10 dk Ara</span>
+                                        </div>
+
                                         <!-- Module 9 -->
                                         <div class="timeline-node">
                                             <div class="node-circle">9</div>
-                                            <span class="node-label">MIC (JOYSTICK)</span>
+                                            <span class="node-label">PSYCHOMOTOR COORDINATION AND MULTITASKING (P)</span>
                                         </div>
 
                                         <!-- Finish -->
@@ -1680,7 +1699,7 @@
                                     <div class="flow-module-item">3D Spatial Perception (U1)</div>
                                     <div class="flow-break">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff3e3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                        <span>5 dk Ara</span>
+                                        <span>10 dk Ara</span>
                                     </div>
                                 </div>
 
@@ -1691,7 +1710,7 @@
                                     <div class="flow-module-item">Mathematics (M)</div>
                                     <div class="flow-break">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff3e3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                        <span>5 dk Ara</span>
+                                        <span>10 dk Ara</span>
                                     </div>
                                 </div>
 
@@ -1703,7 +1722,7 @@
                                     <div class="flow-module-item">Spatial Orientation (U2)</div>
                                     <div class="flow-break">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff3e3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                        <span>15 dk Ara</span>
+                                        <span>10  dk Ara</span>
                                     </div>
                                 </div>
 
