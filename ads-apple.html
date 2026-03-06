@@ -363,8 +363,8 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(30, 144, 255, 0.08);
+            border: 1px solid rgba(30, 144, 255, 0.4);
             color: white;
             padding: 10px 20px;
             border-radius: 12px;
@@ -374,10 +374,21 @@
         }
 
         .store-btn-custom:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(30, 144, 255, 0.2);
+            border-color: #1e90ff;
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 30px rgba(30, 144, 255, 0.4), 0 0 20px rgba(30, 144, 255, 0.2);
+        }
+
+        .store-btn-custom strong {
+            color: #1e90ff;
+            transition: all 0.4s ease;
+            text-shadow: 0 0 10px rgba(30, 144, 255, 0.4);
+        }
+
+        .store-btn-custom:hover strong {
+            color: #1e90ff;
+            text-shadow: 0 0 20px rgba(30, 144, 255, 0.8);
         }
 
         .store-btn-custom img {
