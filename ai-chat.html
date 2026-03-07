@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sesli Sohbet | Aviotest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== BACKGROUND PAGE CONTENT (Modules Grid) ===== */
+        .page-background {
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+
+        .modules-header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+
+        .modules-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .modules-header p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 30px 40px 120px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .module-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-4px);
+            border-color: #444;
+        }
+
+        .module-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .module-card-title {
+            padding: 16px 20px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 20px 16px 120px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== FLOATING AI BUTTON ===== */
+        .ai-fab {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: #2a2a2a;
+            border: 2px solid #444;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(255, 0, 0, 0.3);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, opacity 0.3s, border-color 0.3s;
+            animation: fab-pulse 2.5s infinite;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .ai-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border-color: #ff0000;
+        }
+
+        .ai-fab:active {
+            transform: scale(0.95);
+        }
+
+        .ai-fab.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.5);
+        }
+
+        .ai-fab-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+        }
+
+        .ai-fab-badge {
+            position: fixed;
+            bottom: 30px;
+            right: 28px;
+            background: linear-gradient(135deg, #ff0000, #ff3e3e);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            box-shadow: 0 2px 8px rgba(255, 0, 0, 0.5);
+            border: 2px solid #fff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @keyframes fab-pulse {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(255, 0, 0, 0.35); }
+            50% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 14px rgba(255, 0, 0, 0); }
+        }
+
+        /* Tooltip */
+        .ai-fab-tooltip {
+            position: fixed;
+            bottom: 110px;
+            right: 32px;
+            background: #1e1b1b;
+            color: #e2e8f0;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .ai-fab-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 26px;
+            width: 12px;
+            height: 12px;
+            background: #1e1b1b;
+            transform: rotate(45deg);
+            border-right: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .ai-fab:hover + .ai-fab-tooltip,
+        .ai-fab-tooltip.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== OVERLAY ===== */
+        .ai-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .ai-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ===== FRAGMENT MODAL ===== */
+        .ai-fragment {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 420px;
+            height: 620px;
+            max-height: calc(100vh - 64px);
+            max-width: calc(100vw - 32px);
+            background: linear-gradient(180deg, #1e1b1b 0%, #141212 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            z-index: 1002;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(255, 0, 0, 0.301);
+
+            /* Start state - collapsed to FAB position */
+            transform: scale(0) translateY(0);
+            transform-origin: bottom right;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, border-radius 0.4s ease;
+        }
+
+        .ai-fragment.active {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .ai-fragment.closing {
+            transform: scale(0) translateY(0);
+            opacity: 0;
+            transition: transform 0.35s cubic-bezier(0.55, 0, 1, 0.45), opacity 0.25s ease;
+        }
+
+        @media (max-width: 500px) {
+            .ai-fragment {
+                width: calc(100vw - 16px);
+                height: calc(100vh - 16px);
+                bottom: 8px;
+                right: 8px;
+                border-radius: 24px;
+            }
+        }
+
+        /* Fragment Header */
+        .frag-header {
+            padding: 24px 28px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .frag-header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .frag-header-icon {
+            width: 46px;
+            height: 46px;
+            background: #2a2a2a;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+
+        .frag-header-icon i {
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .frag-header-icon img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .frag-header-info h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .frag-header-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 3px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: status-blink 2s infinite;
+        }
+
+        @keyframes status-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .status-text {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .frag-close-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.06);
+            color: #a1a1aa;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .frag-close-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .frag-close-btn i {
+            font-size: 16px;
+        }
+
+        /* Fragment Main Area */
+        .frag-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 30px;
+        }
+
+        /* Radial pulse rings */
+        .frag-rings {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .frag-ring {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+            animation: ring-pulse 4s ease-in-out infinite;
+        }
+
+        .frag-ring:nth-child(1) { width: 200px; height: 200px; }
+        .frag-ring:nth-child(2) { width: 300px; height: 300px; animation-delay: 1s; }
+        .frag-ring:nth-child(3) { width: 400px; height: 400px; animation-delay: 2s; }
+
+        @keyframes ring-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.08; }
+        }
+
+        /* AI Status Text */
+        .frag-status-text {
+            font-size: 1rem;
+            color: rgba(226, 232, 240, 0.6);
+            font-weight: 500;
+            margin-bottom: 32px;
+            z-index: 2;
+            transition: opacity 0.3s;
+        }
+
+        /* Connecting state */
+        .voice-avatar-circle.connecting {
+            animation: connecting-pulse 1.2s ease-in-out infinite;
+            cursor: default;
+        }
+
+        @keyframes connecting-pulse {
+            0%, 100% {
+                box-shadow: 0 0 50px rgba(255, 0, 0, 0.4), inset 0 -8px 20px rgba(0, 0, 0, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(255, 0, 0, 0.7), 0 0 120px rgba(255, 62, 62, 0.3), inset 0 -8px 20px rgba(0, 0, 0, 0.2);
+                transform: scale(1.04);
+            }
+        }
+
+        .frag-status-text.connecting-text::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+        }
+
+        /* Voice Avatar */
+        .voice-avatar {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 36px;
+            z-index: 2;
+            overflow: visible;
+        }
+
+        .voice-avatar-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 35%, #ff3e3e, #ff0000 40%, #cc0000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.4), inset 0 -8px 20px rgba(0, 0, 0, 0.2);
+            border: 5px solid #0d0505;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.4s;
+        }
+
+        .voice-avatar-circle.speaking {
+            box-shadow: 0 0 70px rgba(255, 0, 0, 0.6), 0 0 120px rgba(255, 62, 62, 0.2), inset 0 -8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .voice-avatar-circle i {
+            font-size: 52px;
+            color: rgba(255, 255, 255, 0.9);
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .voice-avatar-circle.paused i::before {
+            content: "\f04c";
+        }
+
+        .voice-avatar-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+            border-radius: 50%;
+        }
+
+        /* Outer glow ring animation */
+        .voice-avatar-glow {
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 0, 0, 0.25);
+            animation: glow-rotate 6s linear infinite;
+        }
+
+        @keyframes glow-rotate {
+            0% { transform: rotate(0deg); border-color: rgba(255, 0, 0, 0.25); }
+            50% { border-color: rgba(255, 62, 62, 0.35); }
+            100% { transform: rotate(360deg); border-color: rgba(255, 0, 0, 0.25); }
+        }
+
+        /* Sound wave ripple animation */
+        .voice-ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 180px;
+            height: 180px;
+            margin-top: -90px;
+            margin-left: -90px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 0, 0, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .voice-avatar-circle.speaking ~ .voice-ripple {
+            animation: ripple-wave 2.4s ease-out infinite;
+        }
+
+        .voice-avatar-circle.speaking ~ .voice-ripple:nth-child(3) {
+            animation-delay: 0s;
+        }
+        .voice-avatar-circle.speaking ~ .voice-ripple:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        .voice-avatar-circle.speaking ~ .voice-ripple:nth-child(5) {
+            animation-delay: 1.6s;
+        }
+
+        @keyframes ripple-wave {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
+        }
+
+
+
+        /* Timer */
+        .frag-timer {
+            margin-top: 16px;
+            font-size: 1.3rem;
+            color: #948b8b;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            z-index: 2;
+        }
+
+        /* Fragment Footer Controls */
+        .frag-footer {
+            padding: 20px 28px 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        .ctrl-btn {
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+
+        .ctrl-btn-sm {
+            width: 52px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #a1a1aa;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .ctrl-btn-sm:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            transform: scale(1.08);
+        }
+
+        .ctrl-btn-sm.active {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .ctrl-btn-sm i {
+            font-size: 18px;
+        }
+
+        .ctrl-btn-main {
+            width: 66px;
+            height: 66px;
+            background: linear-gradient(135deg, #ff0000, #ff3e3e);
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(255, 0, 0, 0.4);
+        }
+
+        .ctrl-btn-main:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.55);
+        }
+
+        .ctrl-btn-main:active {
+            transform: scale(0.95);
+        }
+
+        .ctrl-btn-main i {
+            font-size: 24px;
+        }
+
+        .ctrl-btn-end {
+            width: 52px;
+            height: 52px;
+            background: rgba(239, 68, 68, 0.12);
+            color: #f87171;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .ctrl-btn-end:hover {
+            background: #ef4444;
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .ctrl-btn-end i {
+            font-size: 18px;
+        }
+
+        /* Speaking Animation for Voice Avatar */
+        .voice-avatar-circle.speaking .speaking-anim {
+            display: flex;
+        }
+
+        .speaking-anim {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            z-index: 1;
+        }
+
+        .speaking-anim .bar {
+            width: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.9);
+            animation: speak-bar 0.8s ease-in-out infinite;
+        }
+
+        .speaking-anim .bar:nth-child(1) { height: 18px; animation-delay: 0.0s; }
+        .speaking-anim .bar:nth-child(2) { height: 30px; animation-delay: 0.15s; }
+        .speaking-anim .bar:nth-child(3) { height: 42px; animation-delay: 0.05s; }
+        .speaking-anim .bar:nth-child(4) { height: 30px; animation-delay: 0.2s; }
+        .speaking-anim .bar:nth-child(5) { height: 18px; animation-delay: 0.1s; }
+
+        @keyframes speak-bar {
+            0%, 100% { transform: scaleY(0.4); }
+            50% { transform: scaleY(1); }
+        }
+
+        .voice-avatar-circle:not(.speaking) .speaking-anim .bar {
+            animation: none;
+            transform: scaleY(0.3);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Idle state - mic icon visible, clickable */
+        .voice-avatar-circle .mic-icon {
+            font-size: 52px;
+            color: rgba(255, 255, 255, 0.9);
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .voice-avatar-circle.idle {
+            cursor: pointer;
+            transition: box-shadow 0.4s, transform 0.3s;
+        }
+
+        .voice-avatar-circle.idle:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.55), inset 0 -8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .voice-avatar-circle.idle .speaking-anim {
+            display: none !important;
+        }
+
+        .voice-avatar-circle.idle .mic-icon {
+            display: block;
+        }
+
+        .voice-avatar-circle.speaking .mic-icon {
+            display: none;
+        }
+
+        .voice-avatar-circle:not(.idle):not(.speaking) .mic-icon {
+            display: block;
+        }
+
+        .voice-avatar-circle.connecting .mic-icon {
+            display: block;
+        }
+
+        .voice-avatar-circle.connecting .speaking-anim {
+            display: none !important;
+        }
+
+        /* Custom Dropdown */
+        .custom-dropdown {
+            position: relative;
+            min-width: 140px;
+        }
+
+        .custom-dropdown-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 0 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.2s, border-color 0.2s;
+            height: 48px;
+            width: 100%;
+            user-select: none;
+        }
+
+        .custom-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .custom-dropdown-btn.open {
+            border-color: #ff0000;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .custom-dropdown-btn i {
+            font-size: 12px;
+            color: #a1a1aa;
+            transition: transform 0.25s;
+        }
+
+        .custom-dropdown-btn.open i {
+            transform: rotate(180deg);
+        }
+
+        .custom-dropdown-menu {
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: #1e1b1b;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(8px) scale(0.96);
+            pointer-events: none;
+            transition: opacity 0.2s, transform 0.2s;
+            z-index: 10;
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .custom-dropdown-menu.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .custom-dropdown-item {
+            padding: 12px 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            color: #a1a1aa;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .custom-dropdown-item:hover {
+            background: rgba(255, 0, 0, 0.12);
+            color: #e2e8f0;
+        }
+
+        .custom-dropdown-item.selected {
+            color: #ff3e3e;
+            background: rgba(255, 0, 0, 0.158);
+        }
+
+        /* End Call button wider style */
+        .ctrl-btn-end-wide {
+            width: auto;
+            padding: 0 24px;
+            height: 48px;
+            border-radius: 24px;
+            background: rgba(239, 68, 68, 0.12);
+            color: #f87171;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .ctrl-btn-end-wide:hover {
+            background: #ef4444;
+            color: #fff;
+            transform: scale(1.04);
+        }
+
+        .ctrl-btn-end-wide i {
+            font-size: 16px;
+        }
+
+        .frag-footer {
+            flex-direction: row;
+            gap: 12px;
+            padding: 14px 28px 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== PAGE BACKGROUND CONTENT ===== -->
+    <div class="page-background">
+
+        <!-- Header include -->
+        <div id="header-placeholder"></div>
+
+        <div class="modules-header">
+            <h1>CASE Exam Modules</h1>
+            <p>Explore all test modules and start practicing</p>
+        </div>
+
+        <div class="modules-grid">
+            <div class="module-card">
+                <img src="images/modules_img/mathematics.png" alt="Mathematics" class="module-card-img">
+                <div class="module-card-title">Mathematics</div>
+            </div>
+            <div class="module-card">
+                <img src="images/modules_img/Physics.png" alt="Physics" class="module-card-img">
+                <div class="module-card-title">Physics</div>
+            </div>
+            <div class="module-card">
+                <img src="images/modules_img/Ipp_test.png" alt="IPP" class="module-card-img">
+                <div class="module-card-title">IPP</div>
+            </div>
+            <div class="module-card">
+                <img src="images/modules_img/Spatial_orientation_2D.png" alt="Spatial Orientation 2D" class="module-card-img">
+                <div class="module-card-title">Spatial Orientation 2D</div>
+            </div>
+            <div class="module-card">
+                <img src="images/modules_img/Spatial_orientation_3D.png" alt="Spatial Orientation 3D" class="module-card-img">
+                <div class="module-card-title">Spatial Orientation 3D</div>
+            </div>
+            <div class="module-card">
+                <img src="images/modules_img/Vigilance1.png" alt="Vigilance 1" class="module-card-img">
+                <div class="module-card-title">Vigilance 1</div>
+            </div>
+            <div class="module-card">
+                <img src="images/modules_img/Vigilance2.png" alt="Vigilance 2" class="module-card-img">
+                <div class="module-card-title">Vigilance 2</div>
+            </div>
+            <div class="module-card">
+                <img src="images/modules_img/Capacity_test.png" alt="Capacity Test" class="module-card-img">
+                <div class="module-card-title">Capacity Test</div>
+            </div>
+            <div class="module-card">
+                <img src="images/modules_img/Flight_capacity_test.png" alt="Flight Capacity Test" class="module-card-img">
+                <div class="module-card-title">Flight Capacity Test</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===== FLOATING AI BUTTON ===== -->
+    <button class="ai-fab" id="aiFab" aria-label="AI Sesli Sohbet">
+        <img src="images/Logo_chatbot.png" alt="Aviotest" class="ai-fab-logo">
+        <span class="ai-fab-badge">AI</span>
+    </button>
+    <div class="ai-fab-tooltip" id="aiFabTooltip">AI Sesli Asistan</div>
+
+
+    <!-- ===== OVERLAY ===== -->
+    <div class="ai-overlay" id="aiOverlay"></div>
+
+
+    <!-- ===== FRAGMENT MODAL ===== -->
+    <div class="ai-fragment" id="aiFragment">
+
+        <!-- Header -->
+        <div class="frag-header">
+            <div class="frag-header-left">
+                <div class="frag-header-icon">
+                    <img src="images/Logo_chatbot.png" alt="Aviotest">
+                </div>
+                <div class="frag-header-info">
+                    <h2>Aviotest AI</h2>
+                    <div class="frag-header-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Çevrimiçi</span>
+                    </div>
+                </div>
+            </div>
+            <button class="frag-close-btn" id="fragClose" aria-label="Kapat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Main -->
+        <div class="frag-main">
+            <div class="frag-rings">
+                <div class="frag-ring"></div>
+                <div class="frag-ring"></div>
+                <div class="frag-ring"></div>
+            </div>
+
+            <p class="frag-status-text" id="fragStatusText">Sizi dinliyorum...</p>
+
+            <div class="voice-avatar">
+                <div class="voice-avatar-glow"></div>
+                <div class="voice-avatar-circle idle" id="voiceAvatar">
+                    <i class="fas fa-microphone mic-icon"></i>
+                    <div class="speaking-anim">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="voice-avatar-overlay"></div>
+                </div>
+                <div class="voice-ripple"></div>
+                <div class="voice-ripple"></div>
+                <div class="voice-ripple"></div>
+            </div>
+
+
+
+            <div class="frag-timer" id="fragTimer">00:00</div>
+        </div>
+
+        <!-- Footer Controls -->
+        <div class="frag-footer">
+            <div class="custom-dropdown" id="customDropdown">
+                <div class="custom-dropdown-btn" id="dropdownBtn">
+                    <span id="dropdownLabel">Interview</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="custom-dropdown-menu" id="dropdownMenu">
+                    <div class="custom-dropdown-item selected" data-value="interview">Interview</div>
+                    <div class="custom-dropdown-item" data-value="feedback">Feedback</div>
+                </div>
+                <input type="hidden" id="modeSelect" value="interview">
+            </div>
+            <button class="ctrl-btn ctrl-btn-end-wide" id="btnEndCall" title="Görüşmeyi Bitir">
+                <i class="fas fa-phone-slash"></i>
+                End Call
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ---- Elements ----
+        const aiFab = document.getElementById('aiFab');
+        const aiFabTooltip = document.getElementById('aiFabTooltip');
+        const aiOverlay = document.getElementById('aiOverlay');
+        const aiFragment = document.getElementById('aiFragment');
+        const fragClose = document.getElementById('fragClose');
+        const btnEndCall = document.getElementById('btnEndCall');
+        const voiceAvatar = document.getElementById('voiceAvatar');
+
+        const fragStatusText = document.getElementById('fragStatusText');
+        const fragTimer = document.getElementById('fragTimer');
+        const modeSelect = document.getElementById('modeSelect');
+
+        let isOpen = false;
+        let isConnected = false;
+        let timerInterval = null;
+        let seconds = 0;
+
+        // ---- YouTube Music System ----
+        // Sadece video ID yazın! URL'den v= sonrasındaki kısım (& işaretine kadar)
+        // Örnek: https://www.youtube.com/watch?v=GrLhGKBmR8o&list=... → sadece 'GrLhGKBmR8o'
+        const youtubeIDs = {
+            interview: 'GrLhGKBmR8o',
+            feedback: '6H3MS58KTV8'
+        };
+
+        let ytPlayer = null;
+        let ytReady = false;
+        let ytPendingPlay = false;
+
+        // YouTube IFrame API yükle
+        const ytScript = document.createElement('script');
+        ytScript.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(ytScript);
+
+        // YouTube player container - görünmez ama çalışabilir boyutta
+        const ytContainer = document.createElement('div');
+        ytContainer.id = 'yt-player';
+        ytContainer.style.cssText = 'position:fixed;width:200px;height:200px;bottom:-300px;left:-300px;pointer-events:none;z-index:-1;';
+        document.body.appendChild(ytContainer);
+
+        window.onYouTubeIframeAPIReady = function() {
+            const firstId = youtubeIDs.interview;
+            ytPlayer = new YT.Player('yt-player', {
+                height: '200',
+                width: '200',
+                videoId: firstId,
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    loop: 1,
+                    playlist: firstId,
+                    modestbranding: 1,
+                    rel: 0,
+                    fs: 0,
+                    iv_load_policy: 3,
+                    disablekb: 1,
+                    origin: window.location.origin
+                },
+                events: {
+                    onReady: function() {
+                        ytReady = true;
+                        ytPlayer.setVolume(50);
+                        if (ytPendingPlay) {
+                            ytPendingPlay = false;
+                            startMusic();
+                        }
+                    },
+                    onStateChange: function(e) {
+                        if (e.data === YT.PlayerState.ENDED && isConnected) {
+                            ytPlayer.playVideo();
+                        }
+                    },
+                    onError: function(e) {
+                        console.warn('YouTube Player Error:', e.data);
+                    }
+                }
+            });
+        };
+
+        function getVideoId() {
+            return youtubeIDs[modeSelect.value] || youtubeIDs.interview;
+        }
+
+        function startMusic() {
+            if (!ytReady) {
+                ytPendingPlay = true;
+                return;
+            }
+            const vid = getVideoId();
+            ytPlayer.loadVideoById(vid);
+            ytPlayer.setVolume(50);
+        }
+
+        function stopMusic() {
+            if (ytReady && ytPlayer) {
+                try { ytPlayer.pauseVideo(); } catch(e) {}
+            }
+            ytPendingPlay = false;
+        }
+
+        // Mod değişince müziği değiştir
+        function onModeChange() {
+            if (isConnected) {
+                stopMusic();
+                startMusic();
+            }
+        }
+
+        // ---- Custom Dropdown Logic ----
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropdownLabel = document.getElementById('dropdownLabel');
+        const dropdownItems = document.querySelectorAll('.custom-dropdown-item');
+
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isMenuOpen = dropdownMenu.classList.contains('open');
+            if (isMenuOpen) {
+                dropdownMenu.classList.remove('open');
+                dropdownBtn.classList.remove('open');
+            } else {
+                dropdownMenu.classList.add('open');
+                dropdownBtn.classList.add('open');
+            }
+        });
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const val = item.dataset.value;
+                const label = item.textContent;
+
+                modeSelect.value = val;
+                dropdownLabel.textContent = label;
+
+                dropdownItems.forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+
+                dropdownMenu.classList.remove('open');
+                dropdownBtn.classList.remove('open');
+
+                onModeChange();
+            });
+        });
+
+        // Dışarı tıklanınca kapat
+        document.addEventListener('click', () => {
+            dropdownMenu.classList.remove('open');
+            dropdownBtn.classList.remove('open');
+        });
+
+        // ---- Timer ----
+        function startTimer() {
+            seconds = 0;
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                seconds++;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            seconds = 0;
+            updateTimerDisplay();
+        }
+
+        function updateTimerDisplay() {
+            const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const s = String(seconds % 60).padStart(2, '0');
+            fragTimer.textContent = m + ':' + s;
+        }
+
+        // ---- Set Idle State (waiting for mic click) ----
+        function setIdleState() {
+            isConnected = false;
+            voiceAvatar.classList.remove('speaking', 'connecting');
+            voiceAvatar.classList.add('idle');
+            fragStatusText.classList.remove('connecting-text');
+            fragStatusText.textContent = 'Bağlanmak için mikrofona tıklayın';
+
+            document.querySelectorAll('.wave-bar').forEach(bar => {
+                bar.classList.remove('animated');
+                bar.classList.add('paused');
+            });
+
+            stopTimer();
+            stopMusic();
+        }
+
+        // ---- Activate Chat (after mic click) ----
+        function activateChat() {
+            // Show connecting state first
+            voiceAvatar.classList.remove('idle');
+            voiceAvatar.classList.add('connecting');
+            fragStatusText.textContent = 'Bağlanıyor';
+            fragStatusText.classList.add('connecting-text');
+
+            setTimeout(() => {
+                if (!isOpen) return; // cancelled during connecting
+                voiceAvatar.classList.remove('connecting');
+                voiceAvatar.classList.add('speaking');
+                fragStatusText.classList.remove('connecting-text');
+                fragStatusText.textContent = 'Sizi dinliyorum...';
+                isConnected = true;
+
+                startTimer();
+                startMusic();
+            }, 2000);
+        }
+
+        // ---- Open Fragment (idle state) ----
+        function openFragment() {
+            if (isOpen) return;
+            isOpen = true;
+
+            aiFab.classList.add('hidden');
+            aiOverlay.classList.add('active');
+            aiFragment.classList.remove('closing');
+            aiFragment.classList.add('active');
+
+            setIdleState();
+
+            aiFabTooltip.style.opacity = '0';
+        }
+
+        // ---- Close Fragment ----
+        function closeFragment() {
+            if (!isOpen) return;
+            isOpen = false;
+            isConnected = false;
+
+            aiFragment.classList.add('closing');
+            aiFragment.classList.remove('active');
+            aiOverlay.classList.remove('active');
+
+            stopTimer();
+            stopMusic();
+
+            setTimeout(() => {
+                aiFragment.classList.remove('closing');
+                aiFab.classList.remove('hidden');
+                // Reset avatar to idle for next open
+                voiceAvatar.classList.remove('speaking', 'connecting');
+                voiceAvatar.classList.add('idle');
+                fragStatusText.classList.remove('connecting-text');
+            }, 400);
+        }
+
+        // ---- End Call (stop session, go back to idle) ----
+        function endCall() {
+            if (!isConnected) {
+                closeFragment();
+                return;
+            }
+            setIdleState();
+        }
+
+        // ---- Voice Avatar Click (connect) ----
+        voiceAvatar.addEventListener('click', () => {
+            if (isOpen && !isConnected && !voiceAvatar.classList.contains('connecting')) {
+                activateChat();
+            }
+        });
+
+        // ---- Event Listeners ----
+        aiFab.addEventListener('click', openFragment);
+        aiOverlay.addEventListener('click', closeFragment);
+        fragClose.addEventListener('click', closeFragment);
+        btnEndCall.addEventListener('click', endCall);
+
+        // Keyboard: Escape to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isOpen) {
+                closeFragment();
+            }
+        });
+
+        // Show tooltip on first load briefly
+        setTimeout(() => {
+            aiFabTooltip.classList.add('show');
+            setTimeout(() => aiFabTooltip.classList.remove('show'), 3000);
+        }, 1500);
+    </script>
+
+    <script>
+        // Load header
+        fetch('components/header.html')
+            .then(r => r.text())
+            .then(html => {
+                document.getElementById('header-placeholder').innerHTML = html;
+            });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
