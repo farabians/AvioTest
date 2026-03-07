@@ -997,97 +997,6 @@
         let timerInterval = null;
         let seconds = 0;
 
-        // ---- YouTube Music System ----
-        // Sadece video ID yazın! URL'den v= sonrasındaki kısım (& işaretine kadar)
-        // Örnek: https://www.youtube.com/watch?v=GrLhGKBmR8o&list=... → sadece 'GrLhGKBmR8o'
-        const youtubeIDs = {
-            interview: 'GrLhGKBmR8o',
-            feedback: '6H3MS58KTV8'
-        };
-
-        let ytPlayer = null;
-        let ytReady = false;
-        let ytPendingPlay = false;
-
-        // YouTube IFrame API yükle
-        const ytScript = document.createElement('script');
-        ytScript.src = 'https://www.youtube.com/iframe_api';
-        document.head.appendChild(ytScript);
-
-        // YouTube player container - görünmez ama çalışabilir boyutta
-        const ytContainer = document.createElement('div');
-        ytContainer.id = 'yt-player';
-        ytContainer.style.cssText = 'position:fixed;width:200px;height:200px;bottom:-300px;left:-300px;pointer-events:none;z-index:-1;';
-        document.body.appendChild(ytContainer);
-
-        window.onYouTubeIframeAPIReady = function() {
-            const firstId = youtubeIDs.interview;
-            ytPlayer = new YT.Player('yt-player', {
-                height: '200',
-                width: '200',
-                videoId: firstId,
-                playerVars: {
-                    autoplay: 0,
-                    controls: 0,
-                    loop: 1,
-                    playlist: firstId,
-                    modestbranding: 1,
-                    rel: 0,
-                    fs: 0,
-                    iv_load_policy: 3,
-                    disablekb: 1,
-                    origin: window.location.origin
-                },
-                events: {
-                    onReady: function() {
-                        ytReady = true;
-                        ytPlayer.setVolume(50);
-                        if (ytPendingPlay) {
-                            ytPendingPlay = false;
-                            startMusic();
-                        }
-                    },
-                    onStateChange: function(e) {
-                        if (e.data === YT.PlayerState.ENDED && isConnected) {
-                            ytPlayer.playVideo();
-                        }
-                    },
-                    onError: function(e) {
-                        console.warn('YouTube Player Error:', e.data);
-                    }
-                }
-            });
-        };
-
-        function getVideoId() {
-            return youtubeIDs[modeSelect.value] || youtubeIDs.interview;
-        }
-
-        function startMusic() {
-            if (!ytReady) {
-                ytPendingPlay = true;
-                return;
-            }
-            const vid = getVideoId();
-            ytPlayer.loadVideoById(vid);
-            ytPlayer.setVolume(50);
-        }
-
-        function stopMusic() {
-            if (ytReady && ytPlayer) {
-                try { ytPlayer.pauseVideo(); } catch(e) {}
-            }
-            ytPendingPlay = false;
-        }
-
-        // Mod değişince müziği değiştir
-        function onModeChange() {
-            if (isConnected) {
-                stopMusic();
-                startMusic();
-            }
-        }
-
         // ---- Custom Dropdown Logic ----
         const dropdownBtn = document.getElementById('dropdownBtn');
         const dropdownMenu = document.getElementById('dropdownMenu');
@@ -1120,8 +1029,6 @@
 
                 dropdownMenu.classList.remove('open');
                 dropdownBtn.classList.remove('open');
-
-                onModeChange();
             });
         });
 
@@ -1168,7 +1075,6 @@
             });
 
             stopTimer();
-            stopMusic();
         }
 
         // ---- Activate Chat (after mic click) ----
@@ -1188,7 +1094,6 @@
                 isConnected = true;
 
                 startTimer();
-                startMusic();
             }, 2000);
         }
 
@@ -1218,7 +1123,6 @@
             aiOverlay.classList.remove('active');
 
             stopTimer();
-            stopMusic();
 
             setTimeout(() => {
                 aiFragment.classList.remove('closing');
