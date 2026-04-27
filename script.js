@@ -1313,21 +1313,10 @@ function initializeTrialPopup() {
 
     if (!popup) return;
 
-    // Array of background images to choose from randomly
-    const backgroundImages = [
-        'images/pop-up1.png',           // Runway image
-        'images/cockpit-bg.png'         // Cockpit image
-    ];
-
-    // Select a random background image
-    const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
-    if (popupContainer) {
-        popupContainer.style.backgroundImage = `url('${randomImage}')`;
-    }
-
     // Show popup when page loads (with a small delay for better UX)
     setTimeout(() => {
         popup.classList.add('active');
+        createExplosionEffect(popupContainer);
     }, 500);
 
     // Close popup when X button is clicked
@@ -1347,4 +1336,46 @@ function initializeTrialPopup() {
     document.querySelector('.trial-popup-container').addEventListener('click', (e) => {
         e.stopPropagation();
     });
+}
+
+// Create explosion effect particles
+function createExplosionEffect(container) {
+    const particleCount = 45;
+    const colors = [
+        '#ff0000', '#ff1111', '#ff2222', '#ff3333', '#ff4444', '#ff5555',
+        '#ff6666', '#ff7700', '#ff8800', '#ff9900', '#ffaa00', '#ffbb00',
+        '#ffcc00', '#ffdd00', '#ffee00', '#ff00ff', '#ff1188', '#ff2266'
+    ];
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'explosion-particle';
+        
+        // Random angle for more chaotic distribution
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = 2 + Math.random() * 5;
+        const size = 2 + Math.random() * 12;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const delay = Math.random() * 0.15;
+        const duration = 0.8 + Math.random() * 0.8; // Variable animation duration
+        
+        // Calculate final position using trigonometry
+        const distance = 250 * velocity;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        
+        particle.style.setProperty('--size', size + 'px');
+        particle.style.setProperty('--color', color);
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        particle.style.animationDelay = delay + 's';
+        particle.style.animationDuration = duration + 's';
+        
+        container.appendChild(particle);
+        
+        // Remove particle after animation completes
+        setTimeout(() => {
+            particle.remove();
+        }, (duration + delay) * 1000 + 200);
+    }
 }
