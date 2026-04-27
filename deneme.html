@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvioTest® Ücretsiz Deneme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 20% 80%, rgba(0, 74, 255, 0.05) 0%, transparent 25%),
+                #050505 !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .deneme-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .deneme-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .deneme-header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .deneme-header p {
+            font-size: 1rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .deneme-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .deneme-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .deneme-card-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .deneme-logo {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+        }
+
+        .deneme-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .deneme-qr-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .deneme-qr-code {
+            width: 180px;
+            height: 180px;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 0;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .deneme-qr-code canvas {
+            border-radius: 10px;
+        }
+
+        .deneme-steps {
+            list-style: none;
+        }
+
+        .deneme-step {
+            background: rgba(17, 17, 17, 0.733);
+            border-left: 4px solid #ff0000;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+        }
+
+        .deneme-step-title {
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .deneme-step-description {
+            font-size: 0.95rem;
+            color: #c0c0c0;
+            line-height: 1.5;
+        }
+
+        .deneme-code-highlight {
+            color: #ff0000;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: block;
+            margin-top: 15px;
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff0000;
+            border-left: 6px solid #ff0000;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .deneme-footer {
+            text-align: center;
+            color: #808080;
+            font-size: 0.95rem;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .deneme-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .deneme-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <div class="deneme-container">
+        <!-- Header -->
+        <div class="deneme-header">
+            <h1>AvioTest® Ücretsiz Deneme</h1>
+            <p>AvioTest® deneyimini yaşamak için aşağıdaki adımları izleyerek ücretsiz deneme sürümünüzü başlatabilirsiniz.</p>
+        </div>
+
+        <!-- Grid Section -->
+        <div class="deneme-grid">
+            <!-- iOS Section -->
+            <div class="deneme-card">
+                <div class="deneme-card-header">
+                    <img src="images/buttons_icon/apple.png" alt="Apple Logo" class="deneme-logo">
+                    <h2>iOS için Ücretsiz Deneme</h2>
+                </div>
+
+                <div class="deneme-qr-container">
+                    <div class="deneme-qr-code" id="qrcode-ios"></div>
+                </div>
+
+                <ul class="deneme-steps">
+                    <li class="deneme-step">
+                        <div class="deneme-step-title">Adım 1: Kodu Kullanın</div>
+                        <div class="deneme-step-description">
+                            Kameranızı kullanarak QR kodu okutun. Bu sizi doğrudan App Store üzerindeki teklif kodunu kullanma sayfasına yönlendirecektir.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Android Section -->
+            <div class="deneme-card">
+                <div class="deneme-card-header">
+                    <img src="images/buttons_icon/googleplay.png" alt="Google Play Logo" class="deneme-logo">
+                    <h2>Android için Ücretsiz Deneme</h2>
+                </div>
+
+                <div class="deneme-qr-container">
+                    <div class="deneme-qr-code" id="qrcode-android"></div>
+                </div>
+
+                <ul class="deneme-steps">
+                    <li class="deneme-step">
+                        <div class="deneme-step-title">1. Uygulamayı indirin</div>
+                        <div class="deneme-step-description">
+                            Kameranızı kullanarak QR kodu okutun ve Google Play üzerinden uygulamayı indirin.
+                        </div>
+                    </li>
+                    <li class="deneme-step">
+                        <div class="deneme-step-title">2. Pro Ekranına Girin</div>
+                        <div class="deneme-step-description">
+                            Uygulama içinde Pro (veya GoPro) butonuna basın.
+                        </div>
+                    </li>
+                    <li class="deneme-step">
+                        <div class="deneme-step-title">3. Paket Seçin</div>
+                        <div class="deneme-step-description">
+                            Açılan ekranda 1 haftalık paket seçeneğini seçin ve satın alıyormuş gibi ilerleyin.
+                        </div>
+                    </li>
+                    <li class="deneme-step">
+                        <div class="deneme-step-title">4. Ödeme Yöntemi Olarak Kod Kullanın</div>
+                        <div class="deneme-step-description">
+                            Ödeme Yöntemi ekranında Kodu Kullan (Redeem Code) seçeneğini seçin.
+                        </div>
+                    </li>
+                    <li class="deneme-step">
+                        <div class="deneme-step-title">5. Kodu Yapıştırın</div>
+                        <div class="deneme-step-description">
+                            Aşağıdaki kodu ilgili alana yapıştırarak işlemi tamamlayın.
+                            <span class="deneme-code-highlight">AVIO2026</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="deneme-footer">
+            Satın alımınızı mobil cihazınız üzerinden tamamladıktan sonra, hesabınıza giriş yaparak uygulamayı Windows ve macOS işletim sistemine sahip bilgisayarlarınızda da kullanabilirsiniz.
+        </div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Generate QR Codes for free trial page
+        document.addEventListener('DOMContentLoaded', function() {
+            // iOS QR Code - Links to App Store redemption
+            if (document.getElementById('qrcode-ios')) {
+                new QRCode(document.getElementById('qrcode-ios'), {
+                    text: 'https://apps.apple.com/redeem',
+                    width: 180,
+                    height: 180,
+                    colorDark: '#000000',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
+
+            // Android QR Code - Links to Google Play redemption
+            if (document.getElementById('qrcode-android')) {
+                new QRCode(document.getElementById('qrcode-android'), {
+                    text: 'https://play.google.com/redeem',
+                    width: 180,
+                    height: 180,
+                    colorDark: '#000000',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

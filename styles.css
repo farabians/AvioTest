@@ -21,7 +21,8 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Adjust based on header height */
+    scroll-padding-top: 100px;
+    /* Adjust based on header height */
 }
 
 * {
@@ -37,7 +38,8 @@ body {
     color: var(--text-white);
     line-height: 1.6;
     overflow-x: hidden;
-    padding-top: 140px; /* Banner (40px) + Header (100px) */
+    padding-top: 140px;
+    /* Banner (40px) + Header (100px) */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -52,6 +54,7 @@ body {
     .mobile-only {
         display: block !important;
     }
+
     .desktop-only {
         display: none !important;
     }
@@ -113,7 +116,8 @@ body {
 }
 
 .banner-text strong {
-    color: #ffc107; /* CASE/Pegasus Yellow */
+    color: #ffc107;
+    /* CASE/Pegasus Yellow */
 }
 
 .banner-link {
@@ -164,6 +168,7 @@ body {
     from {
         box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.1);
     }
+
     to {
         box-shadow: inset 0 0 40px rgba(255, 0, 0, 0.2);
     }
@@ -221,7 +226,14 @@ body {
     background-color: rgba(255, 186, 186, 0.2);
 }
 
-a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .subscribe-btn {
+a,
+button,
+.store-btn,
+.exam-card,
+.nav-link,
+.cta-button,
+.hero-cta-button,
+.subscribe-btn {
     cursor: none !important;
 }
 
@@ -353,11 +365,11 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         margin: 15px 0;
         width: 100%;
     }
-    
+
     .search-wrapper {
         width: 100%;
     }
-    
+
     #site-search {
         width: 100%;
     }
@@ -368,7 +380,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     background-color: #191919;
     padding: 15px 0;
     position: fixed;
-    top: 40px; /* Offset for top banner */
+    top: 40px;
+    /* Offset for top banner */
     left: 0;
     width: 100%;
     z-index: 1000;
@@ -452,7 +465,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     background-color: var(--primary-red);
 }
 
-.nav-link:hover::after, .nav-link.active::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
@@ -524,12 +538,31 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     letter-spacing: 1px;
 }
 
-.pegasus-item:hover { color: #ffc107 !important; }
-.pace-item:hover { color: #ff0000 !important; }
-.mollymawk-item:hover { color: #0066cc !important; }
-.thy-item:hover { color: #E81932 !important; } /* THY Red */
-.sunexpress-item:hover { color: #0066cc !important; } /* Same as Mollymawk Blue */
-.calendar-item:hover { color: #ffffff !important; }
+.pegasus-item:hover {
+    color: #ffc107 !important;
+}
+
+.pace-item:hover {
+    color: #ff0000 !important;
+}
+
+.mollymawk-item:hover {
+    color: #0066cc !important;
+}
+
+.thy-item:hover {
+    color: #E81932 !important;
+}
+
+/* THY Red */
+.sunexpress-item:hover {
+    color: #0066cc !important;
+}
+
+/* Same as Mollymawk Blue */
+.calendar-item:hover {
+    color: #ffffff !important;
+}
 
 .pricing-link:hover {
     color: var(--primary-red);
@@ -562,7 +595,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 /* Hero Section */
 .hero {
     text-align: center;
-    padding: 40px 0 0; /* Reduced top padding */
+    padding: 40px 0 0;
+    /* Reduced top padding */
     position: relative;
 }
 
@@ -590,12 +624,14 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .hero-title.has-typewriter {
-    min-height: 5.3rem; /* Height for 2 lines to prevent jumping */
+    min-height: 5.3rem;
+    /* Height for 2 lines to prevent jumping */
 }
 
 @media (max-width: 768px) {
     .hero-title.has-typewriter {
-        min-height: 4rem; /* Adjusted for mobile */
+        min-height: 4rem;
+        /* Adjusted for mobile */
     }
 }
 
@@ -606,8 +642,15 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .hero-cta-button {
@@ -636,7 +679,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     border-top: 2px solid var(--primary-red);
     border-radius: 24px;
     position: relative;
-    box-shadow: 
+    box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.6),
         inset 0 1px 1px rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
@@ -669,12 +712,12 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         margin: 40px 15px 0;
         border-radius: 20px;
     }
-    
+
     .hero-text-banner::before,
     .hero-text-banner::after {
         display: none;
     }
-    
+
     .hero-text-banner p {
         font-size: 0.85rem;
     }
@@ -708,7 +751,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     height: 1000px;
     background: linear-gradient(to bottom, #222, #111);
     transform: translateX(-50%) rotateX(85deg) translateZ(-50px);
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
     border-left: 5px solid #333;
     border-right: 5px solid #333;
 }
@@ -724,8 +767,13 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 @keyframes runway-move {
-    from { background-position: 0 0; }
-    to { background-position: 0 200px; }
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 200px;
+    }
 }
 
 .plane-wrapper {
@@ -738,10 +786,23 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 @keyframes plane-float {
-    0%, 100% { transform: translate(-50%, 0) rotateX(0deg) rotateZ(0deg); }
-    25% { transform: translate(-50%, -15px) rotateX(-2deg) rotateZ(2deg); }
-    50% { transform: translate(-50%, -30px) rotateX(-5deg) rotateZ(0deg); }
-    75% { transform: translate(-50%, -15px) rotateX(-2deg) rotateZ(-2deg); }
+
+    0%,
+    100% {
+        transform: translate(-50%, 0) rotateX(0deg) rotateZ(0deg);
+    }
+
+    25% {
+        transform: translate(-50%, -15px) rotateX(-2deg) rotateZ(2deg);
+    }
+
+    50% {
+        transform: translate(-50%, -30px) rotateX(-5deg) rotateZ(0deg);
+    }
+
+    75% {
+        transform: translate(-50%, -15px) rotateX(-2deg) rotateZ(-2deg);
+    }
 }
 
 .plane-3d {
@@ -757,7 +818,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     height: 45px;
     background: #ffffff;
     border-radius: 60px 120px 120px 60px;
-    box-shadow: inset -15px -15px 30px rgba(0,0,0,0.1), 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.1), 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .plane-wings {
@@ -780,21 +841,30 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     height: 50px;
     background: #ffffff;
     clip-path: polygon(100% 0, 10% 100%, 100% 100%);
-    box-shadow: -5px 0 10px rgba(0,0,0,0.05);
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.plane-engines .engine-left, 
+.plane-engines .engine-left,
 .plane-engines .engine-right {
     position: absolute;
     width: 35px;
     height: 20px;
     background: #004AFF;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,74,255,0.4);
+    box-shadow: 0 0 15px rgba(0, 74, 255, 0.4);
 }
 
-.engine-left { top: 90px; left: 60px; transform: rotateX(90deg); }
-.engine-right { bottom: -20px; left: 60px; transform: rotateX(90deg); }
+.engine-left {
+    top: 90px;
+    left: 60px;
+    transform: rotateX(90deg);
+}
+
+.engine-right {
+    bottom: -20px;
+    left: 60px;
+    transform: rotateX(90deg);
+}
 
 .cloud-3d {
     position: absolute;
@@ -802,17 +872,30 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     left: 20%;
     width: 120px;
     height: 50px;
-    background: rgba(255,255,255,0.6);
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 100px;
     filter: blur(20px);
     animation: cloud-drift-fast 12s linear infinite;
 }
 
 @keyframes cloud-drift-fast {
-    from { transform: translateX(-300px) translateZ(-100px); opacity: 0; }
-    20% { opacity: 0.4; }
-    80% { opacity: 0.4; }
-    to { transform: translateX(600px) translateZ(-100px); opacity: 0; }
+    from {
+        transform: translateX(-300px) translateZ(-100px);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.4;
+    }
+
+    80% {
+        opacity: 0.4;
+    }
+
+    to {
+        transform: translateX(600px) translateZ(-100px);
+        opacity: 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -820,6 +903,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         height: 250px;
         margin-bottom: 20px;
     }
+
     .airplane-scene {
         transform: scale(0.6) rotateX(15deg);
         width: 100%;
@@ -874,26 +958,26 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .badge-premium {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.12) 0%, 
-        rgba(110, 110, 110, 0.08) 50%, 
-        rgba(0, 0, 0, 0.25) 100%);
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(110, 110, 110, 0.08) 50%,
+            rgba(0, 0, 0, 0.25) 100%);
     border: 1px solid rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    box-shadow: 
+    box-shadow:
         inset 0 1px 1px rgba(255, 255, 255, 0.1),
         0 0 10px rgba(255, 255, 255, 0.05),
         0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
 .badge-premium:hover {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.18) 0%, 
-        rgba(130, 130, 130, 0.12) 50%, 
-        rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(130, 130, 130, 0.12) 50%,
+            rgba(0, 0, 0, 0.3) 100%);
     border-color: rgba(255, 255, 255, 0.35);
-    box-shadow: 
+    box-shadow:
         inset 0 1px 1px rgba(255, 255, 255, 0.2),
         0 0 15px rgba(255, 255, 255, 0.15),
         0 10px 40px 0 rgba(0, 0, 0, 0.5);
@@ -956,6 +1040,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -967,10 +1052,12 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         padding: 6px 16px;
         font-size: 0.7rem;
     }
+
     .hero-badges {
         gap: 8px;
         margin-bottom: 20px;
     }
+
     .badge-tooltip {
         padding: 8px 12px;
         font-size: 0.75rem;
@@ -989,13 +1076,15 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .hero-img {
     width: 100%;
     height: auto;
-    display: block; /* Remove bottom gap */
+    display: block;
+    /* Remove bottom gap */
 }
 
 /* Logo Slider Section */
 .logo-slider {
     padding: 30px 0;
-    background: rgba(20, 20, 20, 0.8); /* Darker, more solid background */
+    background: rgba(20, 20, 20, 0.8);
+    /* Darker, more solid background */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
@@ -1003,8 +1092,10 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     backdrop-filter: blur(15px);
     width: 100%;
     z-index: 10;
-    margin-top: 40px; /* Added space between hero image and slider */
-    margin-bottom: 60px; /* Added space between slider and platforms section */
+    margin-top: 40px;
+    /* Added space between hero image and slider */
+    margin-bottom: 60px;
+    /* Added space between slider and platforms section */
 }
 
 .logo-slider::before,
@@ -1069,7 +1160,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .slide img[src*="mollymawk"] {
-    max-height: 50px; /* Enlarged Mollymawk logo */
+    max-height: 50px;
+    /* Enlarged Mollymawk logo */
 }
 
 .slide:hover img {
@@ -1081,6 +1173,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(calc(-250px * 6));
     }
@@ -1093,26 +1186,27 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         margin-top: 20px;
         margin-bottom: 40px;
     }
-    
+
     .slide {
         width: 180px;
         height: 60px;
         padding: 0 20px;
     }
-    
+
     .slide img {
         max-height: 35px;
     }
-    
+
     .slider-track {
         width: calc(180px * 18);
         animation: scroll-mobile 20s linear infinite;
     }
-    
+
     @keyframes scroll-mobile {
         0% {
             transform: translateX(0);
         }
+
         100% {
             transform: translateX(calc(-180px * 6));
         }
@@ -1201,7 +1295,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     overflow: hidden;
     background: #111;
     border: 2px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-item img {
@@ -1217,7 +1311,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     left: 0;
     right: 0;
     padding: 30px;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 70%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
     transform: translateY(20px);
     opacity: 0;
     transition: all 0.4s ease;
@@ -1286,7 +1380,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .carousel-item.active .carousel-card-inner {
     border-color: rgba(255, 62, 62, 0.8);
     border-width: 3px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 10px 40px rgba(255, 62, 62, 0.2);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 0 10px 40px rgba(255, 62, 62, 0.2);
 }
 
 .carousel-item.prev {
@@ -1340,8 +1434,13 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     box-shadow: 0 0 20px rgba(255, 62, 62, 0.4);
 }
 
-.carousel-nav.prev { left: 40px; }
-.carousel-nav.next { right: 40px; }
+.carousel-nav.prev {
+    left: 40px;
+}
+
+.carousel-nav.next {
+    right: 40px;
+}
 
 .carousel-nav svg {
     width: 24px;
@@ -1378,15 +1477,26 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         height: 55vw;
         min-height: 400px;
     }
+
     .carousel-item {
         width: 80%;
         height: calc(80vw * 0.6);
         margin-left: -40%;
         margin-top: calc(80vw * 0.3 * -1);
     }
-    .carousel-item.prev { transform: translate3d(-20%, 0, -250px); }
-    .carousel-item.next { transform: translate3d(20%, 0, -250px); }
-    .carousel-nav { width: 45px; height: 45px; }
+
+    .carousel-item.prev {
+        transform: translate3d(-20%, 0, -250px);
+    }
+
+    .carousel-item.next {
+        transform: translate3d(20%, 0, -250px);
+    }
+
+    .carousel-nav {
+        width: 45px;
+        height: 45px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1394,28 +1504,33 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         height: 65vw;
         min-height: 350px;
     }
+
     .carousel-item {
         width: 85%;
         height: calc(85vw * 0.6);
         margin-left: -42.5%;
         margin-top: calc(85vw * 0.3 * -1);
     }
+
     /* Hide side cards on mobile to reduce clutter, or scale them down significantly */
-    .carousel-item.prev { 
-        transform: translate3d(-10%, 0, -300px) scale(0.8); 
+    .carousel-item.prev {
+        transform: translate3d(-10%, 0, -300px) scale(0.8);
         opacity: 0.1;
     }
-    .carousel-item.next { 
-        transform: translate3d(10%, 0, -300px) scale(0.8); 
+
+    .carousel-item.next {
+        transform: translate3d(10%, 0, -300px) scale(0.8);
         opacity: 0.1;
     }
-    
+
     .carousel-overlay {
         padding: 20px;
     }
+
     .carousel-overlay h3 {
         font-size: 1.2rem;
     }
+
     .carousel-overlay p {
         font-size: 0.8rem;
         display: -webkit-box;
@@ -1423,13 +1538,20 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
     .carousel-nav {
         width: 40px;
         height: 40px;
         top: 40%;
     }
-    .carousel-nav.prev { left: 10px; }
-    .carousel-nav.next { right: 10px; }
+
+    .carousel-nav.prev {
+        left: 10px;
+    }
+
+    .carousel-nav.next {
+        right: 10px;
+    }
 
     .dot.active {
         width: 32px;
@@ -1441,18 +1563,24 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         height: 70vw;
         min-height: 300px;
     }
+
     .carousel-item {
         width: 90%;
         height: calc(90vw * 0.6);
         margin-left: -45%;
         margin-top: calc(90vw * 0.3 * -1);
     }
-    .carousel-item.prev, .carousel-item.next {
-        opacity: 0; /* Hide completely on very small screens */
+
+    .carousel-item.prev,
+    .carousel-item.next {
+        opacity: 0;
+        /* Hide completely on very small screens */
     }
+
     .carousel-overlay h3 {
         font-size: 1.1rem;
     }
+
     .carousel-cta {
         padding: 6px 14px;
         font-size: 0.75rem;
@@ -1497,29 +1625,40 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .module-slider-section {
         padding: 40px 0;
     }
+
     .modern-slider-title {
         font-size: 1.8rem;
     }
+
     .modern-slider-subtitle {
         font-size: 0.9rem;
         padding: 0 20px;
     }
+
     .module-slide {
         width: 280px;
         height: 180px;
     }
+
     .slider-track-premium {
         gap: 15px;
     }
+
     .module-name-box {
         font-size: 0.7rem;
         padding: 8px 14px;
         bottom: 12px;
         left: 12px;
     }
+
     @keyframes scrollModules {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-280px * 7 - 15px * 7)); }
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(calc(-280px * 7 - 15px * 7));
+        }
     }
 }
 
@@ -1579,8 +1718,15 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .features-grid {
@@ -1600,7 +1746,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    box-shadow: 
+    box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.3),
         inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
@@ -1620,7 +1766,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .feature-card:hover {
     transform: translateY(-12px) scale(1.02);
     border-color: rgba(255, 41, 0, 0.5);
-    box-shadow: 
+    box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.5),
         0 0 30px rgba(255, 41, 0, 0.15),
         inset 0 1px 1px rgba(255, 255, 255, 0.2);
@@ -1701,11 +1847,11 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     position: relative;
     z-index: 2;
     padding: 20px;
-    background: linear-gradient(to top, 
-        rgba(0, 0, 0, 0.95) 0%, 
-        rgba(0, 0, 0, 0.8) 30%, 
-        rgba(0, 0, 0, 0.4) 60%, 
-        transparent 100%);
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.8) 30%,
+            rgba(0, 0, 0, 0.4) 60%,
+            transparent 100%);
     width: 100%;
     text-align: left;
     transition: all 0.4s ease;
@@ -1744,7 +1890,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     display: flex;
     align-items: center;
     background: radial-gradient(circle at top right, rgba(255, 0, 0, 0.05), transparent 40%),
-                radial-gradient(circle at bottom left, rgba(0, 122, 255, 0.05), transparent 40%);
+        radial-gradient(circle at bottom left, rgba(0, 122, 255, 0.05), transparent 40%);
 }
 
 .platforms-container {
@@ -1797,7 +1943,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     align-items: flex-start;
 }
 
-.mobile-grid, .desktop-grid {
+.mobile-grid,
+.desktop-grid {
     display: flex;
     gap: 15px;
 }
@@ -1819,7 +1966,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     background: white;
     padding: 10px;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
 
@@ -1867,7 +2014,10 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-weight: 700;
 }
 
-.app-store, .mac-os, .google-play, .windows { 
+.app-store,
+.mac-os,
+.google-play,
+.windows {
     background: #000000;
     border: 1.5px solid #ffffff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -1893,7 +2043,10 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     filter: brightness(0);
 }
 
-.app-store:hover, .mac-os:hover, .google-play:hover, .windows:hover {
+.app-store:hover,
+.mac-os:hover,
+.google-play:hover,
+.windows:hover {
     border-color: #ffffff;
     box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
     filter: none;
@@ -1915,7 +2068,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     width: 240px;
     height: auto;
     border-radius: 40px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
     transition: transform 0.5s ease;
     position: relative;
     z-index: 2;
@@ -1960,8 +2113,15 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 @keyframes pulse {
-    from { transform: scale(1); opacity: 0.5; }
-    to { transform: scale(1.2); opacity: 0.8; }
+    from {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
 }
 
 /* Responsive Adjustments */
@@ -1970,15 +2130,15 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         gap: 50px;
         padding: 0 20px;
     }
-    
+
     .platforms-header h2 {
         font-size: 3rem;
     }
-    
+
     .main-app-icon {
         width: 280px;
     }
-    
+
     .app-reflection {
         font-size: 4rem;
     }
@@ -2012,7 +2172,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         align-items: center;
     }
 
-    .mobile-grid, .desktop-grid {
+    .mobile-grid,
+    .desktop-grid {
         justify-content: center;
         flex-wrap: wrap;
     }
@@ -2038,7 +2199,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         margin-top: 20px;
     }
 
-    .mobile-grid, .desktop-grid {
+    .mobile-grid,
+    .desktop-grid {
         flex-direction: column;
         width: 100%;
         gap: 15px;
@@ -2086,7 +2248,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     flex-direction: column;
     height: 100%;
     position: relative;
-    box-shadow: 
+    box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.3),
         inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
@@ -2094,7 +2256,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .exam-card:hover {
     transform: translateY(-12px) scale(1.02);
     background: linear-gradient(145deg, rgba(55, 55, 55, 0.9) 0%, rgba(40, 40, 40, 0.95) 100%);
-    box-shadow: 
+    box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.4),
         inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
@@ -2126,9 +2288,17 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     transition: background 0.4s;
 }
 
-.exam-card.thy:hover .exam-header { background: #807a7a; }
-.exam-card.pegasus:hover .exam-header { background: #9c9a93; }
-.exam-card.sunexpress:hover .exam-header { background: #787c81; }
+.exam-card.thy:hover .exam-header {
+    background: #807a7a;
+}
+
+.exam-card.pegasus:hover .exam-header {
+    background: #9c9a93;
+}
+
+.exam-card.sunexpress:hover .exam-header {
+    background: #787c81;
+}
 
 .exam-logo {
     max-width: 80%;
@@ -2171,34 +2341,42 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .exams {
         padding: 30px 0;
     }
+
     .exams h2 {
         font-size: 1.5rem;
         margin-bottom: 20px;
     }
+
     .exams-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
         padding: 0 5px;
     }
+
     .exam-header {
         height: 50px;
         padding: 8px;
     }
+
     .exam-logo {
         max-height: 25px;
     }
+
     .exam-card.sunexpress .exam-logo {
         max-height: 35px;
     }
+
     .exam-body {
         padding: 8px;
         text-align: center;
     }
+
     .exam-body h3 {
         font-size: 0.7rem;
         margin-bottom: 6px;
         line-height: 1.2;
     }
+
     .exam-body p {
         display: block;
         font-size: 0.55rem;
@@ -2206,6 +2384,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         margin-bottom: 10px;
         color: #888;
     }
+
     .learn-more {
         font-size: 0.6rem;
         margin-top: 0;
@@ -2227,9 +2406,17 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     gap: 12px;
 }
 
-.exam-card.thy .learn-more { color: #E30613; }
-.exam-card.pegasus .learn-more { color: #FFBE00; }
-.exam-card.sunexpress .learn-more { color: #005da4; }
+.exam-card.thy .learn-more {
+    color: #E30613;
+}
+
+.exam-card.pegasus .learn-more {
+    color: #FFBE00;
+}
+
+.exam-card.sunexpress .learn-more {
+    color: #005da4;
+}
 
 /* Newsletter Section */
 .newsletter {
@@ -2262,7 +2449,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     padding: 15px 25px;
     border-radius: 30px;
     border: 1px solid var(--border-color);
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
     outline: none;
 }
@@ -2288,12 +2475,31 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 @keyframes ring {
-    0%, 100% { transform: rotate(0); }
-    5% { transform: rotate(15deg); }
-    10% { transform: rotate(-15deg); }
-    15% { transform: rotate(10deg); }
-    20% { transform: rotate(-10deg); }
-    25% { transform: rotate(0); }
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    5% {
+        transform: rotate(15deg);
+    }
+
+    10% {
+        transform: rotate(-15deg);
+    }
+
+    15% {
+        transform: rotate(10deg);
+    }
+
+    20% {
+        transform: rotate(-10deg);
+    }
+
+    25% {
+        transform: rotate(0);
+    }
 }
 
 /* Footer */
@@ -2358,23 +2564,33 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         cursor: auto !important;
     }
 
-    .custom-cursor, .cursor-trail {
+    .custom-cursor,
+    .cursor-trail {
         display: none !important;
     }
 
-    a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .subscribe-btn {
+    a,
+    button,
+    .store-btn,
+    .exam-card,
+    .nav-link,
+    .cta-button,
+    .hero-cta-button,
+    .subscribe-btn {
         cursor: pointer !important;
     }
 }
 
 @media (max-width: 768px) {
     body {
-        padding-top: 60px; /* Reduced for smaller mobile header */
+        padding-top: 60px;
+        /* Reduced for smaller mobile header */
     }
 
     /* Header & Hamburger Menu */
     .header {
-        top: 0; /* Move to top since desktop banner is hidden */
+        top: 0;
+        /* Move to top since desktop banner is hidden */
         padding: 12px 0;
         z-index: 2000;
     }
@@ -2421,7 +2637,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         justify-content: center !important;
         gap: 10px !important;
         width: 100% !important;
-        font-size: 1.5rem !important; /* Fixed large font size */
+        font-size: 1.5rem !important;
+        /* Fixed large font size */
         padding: 5px 0 !important;
         text-align: center !important;
         border: none !important;
@@ -2436,7 +2653,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         text-align: center !important;
         width: 100% !important;
         padding: 5px 0 !important;
-        font-size: 1.5rem !important; /* Fixed large font size for Pricing and others */
+        font-size: 1.5rem !important;
+        /* Fixed large font size for Pricing and others */
         color: #ffffff !important;
     }
 
@@ -2461,7 +2679,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         border: none !important;
         box-shadow: none !important;
         width: 100% !important;
-        max-width: 250px !important; /* Slightly narrower to prevent edge-touching */
+        max-width: 250px !important;
+        /* Slightly narrower to prevent edge-touching */
         margin: 15px 0 !important;
         padding: 5px 0 !important;
         border-radius: 12px !important;
@@ -2557,10 +2776,10 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
     .feature-card.full-image .feature-content {
         padding: 12px 10px 8px;
-        background: linear-gradient(to top, 
-            rgba(0, 0, 0, 0.9) 0%, 
-            rgba(0, 0, 0, 0.7) 50%, 
-            transparent 100%);
+        background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.9) 0%,
+                rgba(0, 0, 0, 0.7) 50%,
+                transparent 100%);
     }
 
     .feature-card h3 {
@@ -2600,7 +2819,9 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 /* Pegasus Page Styles */
-.pegasus-hero, .pace-hero, .mollymawk-hero {
+.pegasus-hero,
+.pace-hero,
+.mollymawk-hero {
     padding-bottom: 30px;
 }
 
@@ -2674,7 +2895,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     top: -40px;
 }
 
-.status-info-side, .status-action-side {
+.status-info-side,
+.status-action-side {
     position: relative;
     z-index: 1;
 }
@@ -2702,7 +2924,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .status-badge-premium {
     display: inline-flex;
     align-items: center;
-    justify-content: center; /* Ensure contents are centered */
+    justify-content: center;
+    /* Ensure contents are centered */
     gap: 8px;
     background: rgba(0, 255, 0, 0.1);
     color: #00ff00;
@@ -2729,9 +2952,17 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 @keyframes pulse-green {
-    0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
-    70% { box-shadow: 0 0 0 8px rgba(0, 255, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(0, 255, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+    }
 }
 
 .status-title-premium {
@@ -2891,20 +3122,21 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         padding: 30px;
         margin: 0 20px;
     }
-    
+
     .status-badge-premium {
         justify-content: center;
     }
-    
+
     .status-title-premium {
         font-size: 1.8rem;
     }
-    
+
     .status-action-side {
         width: 100%;
     }
 
-    .apply-btn-premium, .requirements-btn-premium {
+    .apply-btn-premium,
+    .requirements-btn-premium {
         width: 100%;
     }
 }
@@ -3016,7 +3248,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .module-info {
     padding: 15px;
     text-align: center;
-      background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.03);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -3063,7 +3295,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     color: white;
 }
 
-.periods-table th, .periods-table td {
+.periods-table th,
+.periods-table td {
     padding: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 0.85rem;
@@ -3162,12 +3395,13 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         padding: 20px 0;
     }
 
-    .periods-table th, .periods-table td {
+    .periods-table th,
+    .periods-table td {
         padding: 8px 6px;
         font-size: 0.65rem;
         line-height: 1.2;
     }
-    
+
     .periods-table th {
         font-size: 0.55rem;
         white-space: nowrap;
@@ -3178,7 +3412,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         margin: 0 5px 25px;
         border-color: rgba(255, 255, 255, 0.08);
     }
-    
+
     #notification-form form {
         flex-direction: column;
     }
@@ -3292,11 +3526,13 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .accordion-item.active .accordion-content {
-    max-height: 5000px; /* Increased to accommodate long scripts */
+    max-height: 5000px;
+    /* Increased to accommodate long scripts */
     padding: 0 25px 25px;
 }
 
-.accordion-content ul, .accordion-content ol {
+.accordion-content ul,
+.accordion-content ol {
     list-style: none;
 }
 
@@ -3347,7 +3583,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .conditions-header h1 {
         font-size: 1.8rem;
     }
-    
+
     .accordion-header {
         padding: 20px;
         font-size: 1.1rem;
@@ -3603,32 +3839,32 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .explanation-card {
         padding: 15px;
         border-radius: 16px;
     }
-    
+
     .explanation-card-header {
         margin-bottom: 12px;
         padding-bottom: 8px;
     }
-    
+
     .phase-title {
         font-size: 1.15rem !important;
         letter-spacing: 0.5px;
     }
-    
+
     .phase-subtitle {
         font-size: 0.75rem;
     }
-    
+
     .explanation-card li {
         font-size: 0.8rem;
         margin-bottom: 6px;
         padding-left: 18px;
     }
-    
+
     .explanation-card li::before {
         top: 7px;
         width: 5px;
@@ -3803,7 +4039,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     margin-bottom: 20px;
 }
 
-.content-card h2, .content-card h3 {
+.content-card h2,
+.content-card h3 {
     color: var(--text-white);
     margin-bottom: 15px;
     font-size: 1.4rem;
@@ -3901,7 +4138,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     object-fit: cover;
     border-radius: 10px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Split Layout for Module Content */
@@ -4032,7 +4269,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     max-height: 320px;
     object-fit: contain;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 1024px) {
@@ -4042,7 +4279,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         gap: 30px;
         padding: 25px;
     }
-    
+
     .step-media {
         width: 100%;
         max-width: 320px;
@@ -4054,7 +4291,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .instruction-step {
         padding: 15px;
     }
-    
+
     .step-header h3 {
         font-size: 1.1rem;
     }
@@ -4101,7 +4338,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     background: rgba(255, 255, 255, 0.02);
 }
 
-.module-phases-table th, 
+.module-phases-table th,
 .module-phases-table td {
     padding: 15px 20px;
     text-align: left;
@@ -4137,25 +4374,25 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .content-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .visual-demo {
         grid-template-columns: 1fr;
     }
-    
-    .module-phases-table th, 
+
+    .module-phases-table th,
     .module-phases-table td {
         padding: 10px 12px;
         font-size: 0.8rem;
     }
-    
+
     .module-phases-table td:first-child {
         font-size: 0.9rem;
     }
-    
+
     .phases-diagram {
         flex-direction: column;
     }
-    
+
     .phase-arrow {
         transform: rotate(90deg);
     }
@@ -4167,15 +4404,15 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
-    
+
     .module-image {
         height: 100px;
     }
-    
+
     .module-info {
         padding: 10px;
     }
-    
+
     .module-info h3 {
         font-size: 0.85rem;
     }
@@ -4188,7 +4425,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     z-index: 5;
 }
 
-.status-section + .tutorial-section {
+.status-section+.tutorial-section {
     margin-top: 30px;
 }
 
@@ -4203,7 +4440,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     overflow: hidden;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .tutorial-card .content-title {
@@ -4312,8 +4549,10 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 54px; /* Sufficient for 3 lines of text */
-    flex-grow: 1; /* Ensures all info boxes in a row have same height */
+    min-height: 54px;
+    /* Sufficient for 3 lines of text */
+    flex-grow: 1;
+    /* Ensures all info boxes in a row have same height */
 }
 
 .tutorial-card .module-info h3,
@@ -4371,23 +4610,23 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         justify-content: center;
         align-items: center;
     }
-    
+
     .tutorial-card .phase-box {
         padding: 8px 10px;
         min-width: 0;
         flex: 1;
         border-radius: 10px;
     }
-    
+
     .tutorial-card .phase-label {
         font-size: 0.8rem;
     }
-    
+
     .tutorial-card .module-name-placeholder {
         font-size: 0.55rem;
         margin-bottom: 4px;
     }
-    
+
     .tutorial-card .phase-arrow {
         font-size: 0.9rem;
         transform: none !important;
@@ -4397,25 +4636,25 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         grid-template-columns: 1fr;
         gap: 12px;
     }
-    
+
     .tutorial-card .explanation-card {
         padding: 15px;
         border-radius: 14px;
     }
-    
+
     .tutorial-card .explanation-card h3 {
         font-size: 0.95rem;
         margin-bottom: 10px;
         line-height: 1.4;
     }
-    
+
     .tutorial-card .explanation-card li {
         font-size: 0.85rem;
         padding-left: 20px;
         margin-bottom: 8px;
         line-height: 1.5;
     }
-    
+
     .tutorial-card .explanation-card li::before {
         width: 6px;
         height: 6px;
@@ -4509,7 +4748,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-weight: 700;
     font-size: 0.9rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .mini-arrow {
@@ -4535,8 +4774,9 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     margin: 0 auto 40px;
     background: #121212;
     border-radius: 24px;
-    overflow: visible; /* Changed from hidden to allow hover animations to pop out */
-    box-shadow: 
+    overflow: visible;
+    /* Changed from hidden to allow hover animations to pop out */
+    box-shadow:
         0 50px 100px -20px rgba(0, 0, 0, 0.7),
         0 30px 60px -30px rgba(0, 0, 0, 0.5);
     border: 8px solid #1a1a1a;
@@ -4552,7 +4792,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     color: white;
     border-bottom: 2px solid transparent;
     transition: border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 16px 16px 0 0; /* Maintain rounded corners after removing overflow:hidden */
+    border-radius: 16px 16px 0 0;
+    /* Maintain rounded corners after removing overflow:hidden */
 }
 
 .theme-pace .app-header {
@@ -4633,8 +4874,15 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .app-content {
@@ -4700,7 +4948,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     grid-area: stack;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    align-self: start; /* Prevents short grids from stretching to match the tallest grid's height */
+    align-self: start;
+    /* Prevents short grids from stretching to match the tallest grid's height */
     gap: 15px;
     padding: 15px 5px;
     opacity: 0;
@@ -4722,6 +4971,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -4822,14 +5072,14 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.2));
+    background: linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.2));
 }
 
 .app-module-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
 
 .app-module-footer {
@@ -4894,42 +5144,53 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .app-header {
         padding: 8px 15px;
     }
+
     .app-logo img {
         height: 16px;
     }
+
     .app-header-actions {
         gap: 15px;
     }
+
     .exam-selector {
         font-size: 0.7rem;
     }
+
     .app-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
     }
+
     .app-module-image {
         height: 70px;
         padding: 10px;
     }
+
     .app-module-footer {
         padding: 6px;
         font-size: 0.55rem;
     }
+
     .app-mockup {
         border-width: 4px;
         border-radius: 16px;
     }
+
     .app-content {
         padding: 12px;
     }
+
     .app-tabs {
         gap: 6px;
         margin-bottom: 15px;
     }
+
     .app-tab {
         padding: 4px 10px;
         font-size: 0.65rem;
     }
+
     .train-now-btn {
         padding: 10px 25px;
         font-size: 0.85rem;
@@ -4941,10 +5202,12 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         grid-template-columns: repeat(3, 1fr);
         gap: 6px;
     }
+
     .app-module-image {
         height: 60px;
         padding: 8px;
     }
+
     .app-module-footer {
         padding: 5px;
         font-size: 0.5rem;
@@ -5067,12 +5330,12 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .tutorial-modules-grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
-    
+
     .phases-mini-diagram {
         padding: 20px;
         gap: 10px;
     }
-    
+
     .mini-phase {
         padding: 10px 15px;
         font-size: 0.8rem;
@@ -5136,20 +5399,25 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     padding: 20px 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
 .calendar-wrapper::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+    display: none;
+    /* Chrome, Safari and Opera */
 }
 
 .timeline-header-grid {
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
-    min-width: 1200px; /* Preserve layout on small screens */
-    padding-right: 250px; /* Space for the rightmost cards */
+    min-width: 1200px;
+    /* Preserve layout on small screens */
+    padding-right: 250px;
+    /* Space for the rightmost cards */
 }
 
 .header-empty {
@@ -5180,16 +5448,29 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     display: none;
 }
 
-.header-airline.thy { border-bottom: 4px solid #ff0000; color: #ff0000; }
-.header-airline.pegasus { border-bottom: 4px solid #ffc107; color: #ffc107; }
-.header-airline.sun { border-bottom: 4px solid #0066cc; color: #0066cc; }
+.header-airline.thy {
+    border-bottom: 4px solid #ff0000;
+    color: #ff0000;
+}
+
+.header-airline.pegasus {
+    border-bottom: 4px solid #ffc107;
+    color: #ffc107;
+}
+
+.header-airline.sun {
+    border-bottom: 4px solid #0066cc;
+    color: #0066cc;
+}
 
 .multi-timeline-container {
     display: flex;
     gap: 20px;
     position: relative;
-    min-height: 1250px; /* Increased to accommodate wrap */
-    min-width: 1200px; /* Increased to ensure enough space for cards */
+    min-height: 1250px;
+    /* Increased to accommodate wrap */
+    min-width: 1200px;
+    /* Increased to ensure enough space for cards */
 }
 
 .months-sidebar {
@@ -5205,7 +5486,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .month-label {
     height: 100px;
     display: flex;
-    align-items: flex-start; /* Align text with the start/line of the month */
+    align-items: flex-start;
+    /* Align text with the start/line of the month */
     justify-content: center;
     font-weight: 700;
     color: var(--text-gray);
@@ -5222,7 +5504,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     position: relative;
     background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 100% 100px;
-    padding-right: 250px; /* Space for the last card to the right of the SunExpress line */
+    padding-right: 250px;
+    /* Space for the last card to the right of the SunExpress line */
 }
 
 .airline-timeline {
@@ -5243,9 +5526,17 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 /* Airline specific colors */
-.airline-timeline.thy { --airline-color: #ff0000; }
-.airline-timeline.pegasus { --airline-color: #ffc107; }
-.airline-timeline.sun { --airline-color: #0066cc; }
+.airline-timeline.thy {
+    --airline-color: #ff0000;
+}
+
+.airline-timeline.pegasus {
+    --airline-color: #ffc107;
+}
+
+.airline-timeline.sun {
+    --airline-color: #0066cc;
+}
 
 .timeline-duration-line {
     position: absolute;
@@ -5284,7 +5575,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .date-label-box {
     position: absolute;
-    left: 20px; /* To the right of the left-aligned line */
+    left: 20px;
+    /* To the right of the left-aligned line */
     padding: 2px 8px;
     border-radius: 4px;
     border: 1px solid var(--airline-color);
@@ -5304,6 +5596,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -5316,6 +5609,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         transform: translateX(-50%) scaleY(0);
         transform-origin: top;
     }
+
     to {
         opacity: 1;
         transform: translateX(-50%) scaleY(1);
@@ -5328,6 +5622,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);
     }
+
     to {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -5347,6 +5642,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -5355,7 +5651,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .timeline-event-card {
     position: absolute;
-    left: 20px; /* To the right of the left-aligned line */
+    left: 20px;
+    /* To the right of the left-aligned line */
     width: 220px;
     background: #161616;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -5376,7 +5673,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .timeline-event-card:hover {
-    transform: translateY(-2px); /* Maintain side placement on hover */
+    transform: translateY(-2px);
+    /* Maintain side placement on hover */
     border-color: var(--airline-color);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
 }
@@ -5407,7 +5705,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .event-actions {
     display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap to prevent card width explosion */
+    flex-wrap: wrap;
+    /* Allow buttons to wrap to prevent card width explosion */
     gap: 6px;
     margin-top: 8px;
 }
@@ -5427,11 +5726,25 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 /* Button Styles */
-.airline-timeline.thy .prep-btn { background: #ff0000; color: #fff; }
-.airline-timeline.pegasus .prep-btn { background: #ffc107; color: #000; }
-.airline-timeline.sun .prep-btn { background: #0066cc; color: #fff; }
+.airline-timeline.thy .prep-btn {
+    background: #ff0000;
+    color: #fff;
+}
 
-.prep-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.airline-timeline.pegasus .prep-btn {
+    background: #ffc107;
+    color: #000;
+}
+
+.airline-timeline.sun .prep-btn {
+    background: #0066cc;
+    color: #fff;
+}
+
+.prep-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
 
 .cond-btn {
     background: transparent;
@@ -5447,7 +5760,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 /* Vertical Timeline (Keeping for potential fallback or reference, but mostly replaced) */
 .vertical-timeline-wrapper {
-    display: none; /* Hide old version */
+    display: none;
+    /* Hide old version */
 }
 
 .mobile-scroll-hint {
@@ -5494,33 +5808,75 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         overflow: hidden !important;
         transform-origin: top center;
         /* Balanced zoom for ideal readability and centering */
-        zoom: 0.30; 
+        zoom: 0.30;
         margin: 0 auto;
         display: block !important;
     }
 
     /* Progressive zoom steps for various mobile screen widths to prevent horizontal scroll */
-    @media (min-width: 360px) { .calendar-wrapper { zoom: 0.32; } }
-    @media (min-width: 375px) { .calendar-wrapper { zoom: 0.33; } }
-    @media (min-width: 390px) { .calendar-wrapper { zoom: 0.35; } }
-    @media (min-width: 414px) { .calendar-wrapper { zoom: 0.37; } }
-    @media (min-width: 430px) { .calendar-wrapper { zoom: 0.38; } }
-    @media (min-width: 480px) { .calendar-wrapper { zoom: 0.42; } }
-    @media (min-width: 600px) { .calendar-wrapper { zoom: 0.53; } }
-    @media (min-width: 700px) { .calendar-wrapper { zoom: 0.62; } }
+    @media (min-width: 360px) {
+        .calendar-wrapper {
+            zoom: 0.32;
+        }
+    }
+
+    @media (min-width: 375px) {
+        .calendar-wrapper {
+            zoom: 0.33;
+        }
+    }
+
+    @media (min-width: 390px) {
+        .calendar-wrapper {
+            zoom: 0.35;
+        }
+    }
+
+    @media (min-width: 414px) {
+        .calendar-wrapper {
+            zoom: 0.37;
+        }
+    }
+
+    @media (min-width: 430px) {
+        .calendar-wrapper {
+            zoom: 0.38;
+        }
+    }
+
+    @media (min-width: 480px) {
+        .calendar-wrapper {
+            zoom: 0.42;
+        }
+    }
+
+    @media (min-width: 600px) {
+        .calendar-wrapper {
+            zoom: 0.53;
+        }
+    }
+
+    @media (min-width: 700px) {
+        .calendar-wrapper {
+            zoom: 0.62;
+        }
+    }
 
     .timeline-header-grid {
         min-width: 1100px;
-        padding-right: 120px; /* Symmetrical space for items on the right of SunExpress line */
+        padding-right: 120px;
+        /* Symmetrical space for items on the right of SunExpress line */
         gap: 20px;
     }
 
     .header-empty {
-        width: 120px; /* Balanced with the right padding for centering */
+        width: 120px;
+        /* Balanced with the right padding for centering */
     }
 
     .months-sidebar {
-        width: 120px; /* Balanced with the right padding for centering */
+        width: 120px;
+        /* Balanced with the right padding for centering */
     }
 
     .multi-timeline-container {
@@ -5529,7 +5885,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     }
 
     .timelines-grid {
-        padding-right: 120px; /* Symmetrical space for items on the right of SunExpress line */
+        padding-right: 120px;
+        /* Symmetrical space for items on the right of SunExpress line */
         gap: 20px;
     }
 
@@ -5557,20 +5914,33 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
     /* Card adjustments for mobile readability */
     .timeline-event-card {
-        padding: 15px; 
+        padding: 15px;
     }
+
     .event-program {
         font-size: 1.1rem;
     }
+
     .event-airline-name {
         font-size: 0.9rem;
     }
 }
 
 /* Airline specific colors for the date box */
-.timeline-item.thy .timeline-date-box { border-color: #ff0000; color: #ff0000; }
-.timeline-item.sun .timeline-date-box { border-color: #0066cc; color: #0066cc; }
-.timeline-item.pegasus .timeline-date-box { border-color: #ffc107; color: #ffc107; }
+.timeline-item.thy .timeline-date-box {
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.timeline-item.sun .timeline-date-box {
+    border-color: #0066cc;
+    color: #0066cc;
+}
+
+.timeline-item.pegasus .timeline-date-box {
+    border-color: #ffc107;
+    color: #ffc107;
+}
 
 /* Active Recruitment Styles */
 .active-recruitment .timeline-content-card {
@@ -5613,9 +5983,17 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     transform: translateY(-5px);
 }
 
-.timeline-item.thy .timeline-content-card:hover { border-color: #ff0000; }
-.timeline-item.sun .timeline-content-card:hover { border-color: #0066cc; }
-.timeline-item.pegasus .timeline-content-card:hover { border-color: #ffc107; }
+.timeline-item.thy .timeline-content-card:hover {
+    border-color: #ff0000;
+}
+
+.timeline-item.sun .timeline-content-card:hover {
+    border-color: #0066cc;
+}
+
+.timeline-item.pegasus .timeline-content-card:hover {
+    border-color: #ffc107;
+}
 
 /* Timeline Actions & Buttons */
 .timeline-actions {
@@ -5646,15 +6024,17 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.timeline-item.thy .prep-btn { 
-    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); 
+.timeline-item.thy .prep-btn {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
 }
-.timeline-item.sun .prep-btn { 
-    background: linear-gradient(135deg, #0066cc 0%, #004d99 100%); 
+
+.timeline-item.sun .prep-btn {
+    background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
 }
-.timeline-item.pegasus .prep-btn { 
-    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%); 
-    color: #000; 
+
+.timeline-item.pegasus .prep-btn {
+    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+    color: #000;
 }
 
 .prep-btn:hover {
@@ -5707,9 +6087,17 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.timeline-item.thy .timeline-airline { color: #ff0000; }
-.timeline-item.sun .timeline-airline { color: #0066cc; }
-.timeline-item.pegasus .timeline-airline { color: #ffc107; }
+.timeline-item.thy .timeline-airline {
+    color: #ff0000;
+}
+
+.timeline-item.sun .timeline-airline {
+    color: #0066cc;
+}
+
+.timeline-item.pegasus .timeline-airline {
+    color: #ffc107;
+}
 
 @media (max-width: 768px) {
     .calendar-hero {
@@ -5739,34 +6127,34 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .vertical-timeline::before {
         left: 50%;
     }
-    
+
     .timeline-item {
         justify-content: flex-end;
         padding-right: calc(50% + 10px);
         padding-left: 0;
         margin-bottom: 40px;
     }
-    
+
     .timeline-item:nth-child(even) {
         justify-content: flex-start;
         padding-left: calc(50% + 10px);
         padding-right: 0;
     }
-    
+
     .vertical-timeline .timeline-dot {
         left: 50%;
         top: 15px;
         width: 10px;
         height: 10px;
     }
-    
+
     .timeline-content-card {
         width: 100%;
         margin: 0;
         padding: 8px;
         border-radius: 8px;
     }
-    
+
     .timeline-date-box {
         position: absolute;
         top: 12px;
@@ -5844,9 +6232,17 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     border-radius: 50%;
 }
 
-.dot.thy { background-color: #ff0000; }
-.dot.pegasus { background-color: #ffc107; }
-.dot.sun { background-color: #0066cc; }
+.dot.thy {
+    background-color: #ff0000;
+}
+
+.dot.pegasus {
+    background-color: #ffc107;
+}
+
+.dot.sun {
+    background-color: #0066cc;
+}
 
 .info-section {
     padding: 30px 0;
@@ -6008,11 +6404,234 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         flex-direction: column;
         gap: 40px;
     }
+
     .flow-steps::before {
         display: none;
     }
 }
 
+/* Free Trial Popup Styles */
+.trial-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.trial-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.trial-popup-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 24px;
+    padding: 50px 45px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 0, 0, 0.15);
+    animation: popupSlideIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.trial-popup-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 0;
+    border-radius: 24px;
+}
+
+.trial-popup-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.5), transparent);
+    z-index: 2;
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.trial-popup-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.trial-popup-close:hover {
+    background: rgba(255, 0, 0, 0.2);
+    color: var(--primary-red);
+    transform: rotate(90deg);
+}
+
+.trial-popup-badge {
+    display: inline-block;
+    background: rgba(255, 0, 0, 0.15);
+    color: var(--primary-red);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.trial-popup-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-white);
+    margin-bottom: 12px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+}
+
+.pilot-journey-red {
+    color: var(--primary-red);
+}
+
+.trial-popup-subtitle {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.trial-popup-highlight {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1) 0%, rgba(255, 0, 0, 0.05) 100%);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.trial-popup-badge-red {
+    display: inline-block;
+    background: var(--primary-red);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.trial-popup-highlight .trial-popup-desc {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-top: 12px;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.trial-popup-btn {
+    display: block;
+    width: 100%;
+    background: var(--primary-red);
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.trial-popup-btn:hover {
+    background: #ff3333;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 0, 0, 0.4);
+}
+
+.trial-popup-btn:active {
+    transform: translateY(0);
+}
+
+.trial-popup-footer {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 0.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 600px) {
+    .trial-popup-container {
+        padding: 35px 25px;
+    }
+
+    .trial-popup-title {
+        font-size: 1.5rem;
+    }
+
+    .trial-popup-highlight {
+        padding: 20px;
+    }
+}
 
 /* Horizontal Icon Timeline Section */
 .pace-horizontal-timeline {
@@ -6152,12 +6771,14 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         align-items: flex-start;
         padding-left: 30px;
     }
+
     .pace-horizontal-timeline::before {
         width: 3px;
         height: 100%;
         left: 62px;
         top: 0;
     }
+
     .h-timeline-item {
         flex-direction: row;
         align-items: flex-start;
@@ -6165,20 +6786,25 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
         margin-bottom: 40px;
         width: 100%;
     }
+
     .h-timeline-icon-box {
         flex-shrink: 0;
     }
+
     .h-timeline-content {
         text-align: left;
     }
+
     .h-timeline-modules {
         margin: 0;
     }
+
     .h-timeline-break {
         flex-direction: row;
         gap: 42px;
         margin: 0 0 40px 0;
     }
+
     .h-break-icon {
         margin: 0;
     }
@@ -6258,7 +6884,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .flow-line::before {
     content: "";
     position: absolute;
-    top: 55px; /* Center of dots */
+    top: 55px;
+    /* Center of dots */
     left: 20px;
     right: 20px;
     height: 4px;
@@ -6321,7 +6948,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     height: 20px;
     background: #111;
     border: 2px dashed #ffc107;
-    margin-bottom: 26px; /* Adjust to stay centered with larger dots */
+    margin-bottom: 26px;
+    /* Adjust to stay centered with larger dots */
     box-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
 }
 
@@ -6345,7 +6973,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 .blog-hero {
     padding: 60px 0 30px;
     text-align: center;
-    background: linear-gradient(180deg, rgba(20,20,20,1) 0%, rgba(25,25,25,1) 100%);
+    background: linear-gradient(180deg, rgba(20, 20, 20, 1) 0%, rgba(25, 25, 25, 1) 100%);
     border-bottom: 1px solid var(--border-color);
     margin-top: -20px;
 }
@@ -6389,7 +7017,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 
 .blog-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
     border-color: rgba(255, 0, 0, 0.3);
 }
 
@@ -6410,7 +7038,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
 }
 
 .blog-card-content {
@@ -6463,7 +7091,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     justify-content: space-between;
     align-items: center;
     padding-top: 15px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .read-more-link {
@@ -6519,7 +7147,7 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     object-fit: cover;
     border-radius: 15px;
     margin-bottom: 40px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     filter: contrast(1.1) brightness(0.9);
 }
 
@@ -6540,7 +7168,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     margin-bottom: 20px;
 }
 
-.article-body ul, .article-body ol {
+.article-body ul,
+.article-body ol {
     margin-bottom: 20px;
     padding-left: 20px;
 }
@@ -6556,14 +7185,22 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-style: italic;
     font-size: 1.1rem;
     color: #fff;
-    background: rgba(255,0,0,0.05);
+    background: rgba(255, 0, 0, 0.05);
     border-radius: 0 10px 10px 0;
 }
 
 @media (max-width: 768px) {
-    .blog-hero h1 { font-size: 1.8rem; }
-    .blog-grid { grid-template-columns: 1fr; }
-    .article-title { font-size: 1.8rem; }
+    .blog-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .article-title {
+        font-size: 1.8rem;
+    }
 }
 
 /* Blog Page Refined Structure */
@@ -6682,10 +7319,12 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .blog-container {
         grid-template-columns: 1fr;
     }
+
     .featured-card {
         grid-template-columns: 1fr;
         height: auto;
     }
+
     .featured-image {
         height: 250px;
     }
@@ -6769,7 +7408,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 .pro-image {
-    max-width: 130%; /* Allow image to be slightly larger to show details */
+    max-width: 130%;
+    /* Allow image to be slightly larger to show details */
     max-height: 100%;
     object-fit: contain;
 }
@@ -6854,7 +7494,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     font-size: 0.75rem;
     font-weight: 800;
     position: relative;
-    overflow: hidden; /* For shine sweep */
+    overflow: hidden;
+    /* For shine sweep */
     box-shadow: 0 0 15px rgba(0, 74, 255, 0.4);
     animation: badge-glow-pulse 4s infinite ease-in-out;
 }
@@ -6867,31 +7508,40 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     left: -150%;
     width: 60%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.8),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.8),
+            transparent);
     transform: skewX(-25deg);
     animation: shine-sweep 3.5s infinite;
 }
 
 @keyframes badge-glow-pulse {
-    0%, 100% { 
+
+    0%,
+    100% {
         box-shadow: 0 0 10px rgba(0, 74, 255, 0.4);
         transform: scale(1);
     }
-    50% { 
+
+    50% {
         box-shadow: 0 0 25px rgba(0, 74, 255, 0.8), 0 0 45px rgba(0, 123, 255, 0.4);
         transform: scale(1.03);
     }
 }
 
 @keyframes shine-sweep {
-    0% { left: -150%; }
-    25% { left: 150%; }
-    100% { left: 150%; }
+    0% {
+        left: -150%;
+    }
+
+    25% {
+        left: 150%;
+    }
+
+    100% {
+        left: 150%;
+    }
 }
 
 .card-header {
@@ -7027,7 +7677,8 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 }
 
 /* Internal elements removed because they are now in the background image */
-.glow, .pricing-watermark {
+.glow,
+.pricing-watermark {
     display: none;
 }
 
@@ -7035,13 +7686,15 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
 /* Pricing Page Resizing & No-Scroll */
 @media (min-width: 1024px) {
     .pricing-page {
-        overflow: hidden; /* Prevent scrolling on desktop */
+        overflow: hidden;
+        /* Prevent scrolling on desktop */
         height: 100vh;
     }
 
     .pricing-main {
         padding: 0;
-        height: calc(100vh - 80px); /* Adjust for header height */
+        height: calc(100vh - 80px);
+        /* Adjust for header height */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -7096,31 +7749,36 @@ a, button, .store-btn, .exam-card, .nav-link, .cta-button, .hero-cta-button, .su
     .pricing-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-        max-width: 320px; /* Reduced from 380px */
+        max-width: 320px;
+        /* Reduced from 380px */
         margin: 0 auto;
         display: grid !important;
     }
 
     .pricing-card {
-        padding: 20px; /* Reduced from 25px */
+        padding: 20px;
+        /* Reduced from 25px */
         transform: none !important;
     }
 
     .pricing-card.featured {
-        order: -1; /* Recommended plan first on mobile */
+        order: -1;
+        /* Recommended plan first on mobile */
     }
 
     .price .amount {
-        font-size: 2.5rem; /* Reduced from 3rem */
+        font-size: 2.5rem;
+        /* Reduced from 3rem */
     }
 
     .features-list li {
-        font-size: 0.85rem; /* Reduced from 0.95rem */
+        font-size: 0.85rem;
+        /* Reduced from 0.95rem */
         margin-bottom: 10px;
     }
 
     .plan-title {
-        font-size: 1.2rem !important; /* Slightly smaller title */
+        font-size: 1.2rem !important;
+        /* Slightly smaller title */
     }
 }
-

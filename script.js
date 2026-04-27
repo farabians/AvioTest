@@ -1,8 +1,8 @@
-﻿// Function to load HTML components
+// Function to load HTML components
 async function loadComponents() {
     const path = window.location.pathname;
     const isSubPage = path.includes('/modules/') || path.includes('/blog/');
-    
+
     // Calculate prefix based on nesting level
     let prefix = '';
     if (isSubPage) {
@@ -12,7 +12,7 @@ async function loadComponents() {
         const slashCount = (subPath.match(/\//g) || []).length;
         prefix = '../'.repeat(slashCount + 1);
     }
-    
+
     const components = [
         { id: 'header-placeholder', url: `${prefix}components/header.html` },
         { id: 'footer-placeholder', url: `${prefix}components/footer.html` }
@@ -24,7 +24,7 @@ async function loadComponents() {
             try {
                 const response = await fetch(component.url);
                 const content = await response.text();
-                
+
                 // Adjust paths in the loaded content if we are in a subpage
                 let adjustedContent = content;
                 if (isSubPage) {
@@ -33,14 +33,14 @@ async function loadComponents() {
                     // Replace all image sources that point to the images folder
                     adjustedContent = adjustedContent.replace(/src="images\//g, `src="${prefix}images/`);
                 }
-                
+
                 placeholder.innerHTML = adjustedContent;
             } catch (error) {
                 console.error(`Error loading component ${component.url}:`, error);
             }
         }
     }
-    
+
     // Initialize components after they are loaded
     initializeMenu();
     initializeNavLinks();
@@ -52,6 +52,7 @@ async function loadComponents() {
     initializeMollymawkCarousel();
     initializeBannerParticles();
     initializeSearch();
+    initializeTrialPopup();
 }
 
 // Set active class on nav links based on current page
@@ -80,7 +81,7 @@ function setActiveNavLink() {
         link.classList.remove('active');
         if (isMatch(link.getAttribute('href'))) {
             link.classList.add('active');
-            
+
             // If it's a dropdown item, also highlight the parent toggle
             const dropdown = link.closest('.dropdown');
             if (dropdown) {
@@ -95,7 +96,7 @@ function setActiveNavLink() {
 function handleSubscribe(event) {
     event.preventDefault();
     const email = event.target.querySelector('input[type="email"]').value;
-    
+
     if (email) {
         // Show success message
         const form = event.target;
@@ -111,10 +112,10 @@ function handleSubscribe(event) {
             text-align: center;
             font-weight: 500;
         `;
-        
+
         form.appendChild(successMessage);
         form.reset();
-        
+
         // Remove message after 3 seconds
         setTimeout(() => {
             successMessage.remove();
@@ -125,7 +126,7 @@ function handleSubscribe(event) {
 // Add smooth scroll to sections when nav links are clicked
 function initializeNavLinks() {
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href && href.startsWith('#')) {
                 e.preventDefault();
@@ -177,13 +178,13 @@ function initializeAppTabs() {
 
     function updateAppExam(targetId, text) {
         const targetGrid = document.getElementById(targetId);
-        
+
         // Update tabs
         tabs.forEach(t => {
             t.classList.remove('active');
             if (t.textContent === text) t.classList.add('active');
         });
-        
+
         if (targetGrid) {
             // If the grid is already active, don't re-animate
             if (targetGrid.classList.contains('active')) return;
@@ -230,20 +231,20 @@ function initializeAppTabs() {
     if (mockup) {
         mockup.addEventListener('mouseenter', stopTimer);
         mockup.addEventListener('mouseleave', startTimer);
-        
+
         // Add event listeners for module cards to prevent switching while hovering them
         const moduleCards = mockup.querySelectorAll('.app-module-card');
         moduleCards.forEach(card => {
             card.addEventListener('mouseenter', stopTimer);
             card.addEventListener('mouseleave', startTimer);
         });
-        
+
         // Touch events for mobile
-        mockup.addEventListener('touchstart', stopTimer, {passive: true});
+        mockup.addEventListener('touchstart', stopTimer, { passive: true });
         mockup.addEventListener('touchend', () => {
             // Restart after a small delay on touch
             setTimeout(startTimer, 1000);
-        }, {passive: true});
+        }, { passive: true });
     }
 
     // Start initial timer
@@ -277,7 +278,7 @@ function initializeDiscoveryToggle() {
             header.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 // Toggle active class on the card
                 card.classList.toggle('active');
             });
@@ -293,7 +294,7 @@ function initializeBackLinks() {
         if (urlParams.get('from') === 'home') {
             const path = window.location.pathname;
             const isSubPage = path.includes('/modules/');
-            
+
             let prefix = '';
             if (isSubPage) {
                 const modulesIndex = path.indexOf('/modules/');
@@ -301,14 +302,14 @@ function initializeBackLinks() {
                 const slashCount = (subPath.match(/\//g) || []).length;
                 prefix = '../'.repeat(slashCount + 1);
             }
-            
+
             backLink.href = `${prefix}index.html`;
-            
+
             // Update text if it contains "PACE", "Pegasus", or "mollymawk"
-            if (backLink.textContent.includes('PACE') || 
-                backLink.textContent.includes('Pegasus') || 
+            if (backLink.textContent.includes('PACE') ||
+                backLink.textContent.includes('Pegasus') ||
                 backLink.textContent.includes('mollymawk')) {
-                
+
                 const svg = backLink.querySelector('svg');
                 backLink.innerHTML = '';
                 if (svg) backLink.appendChild(svg);
@@ -324,7 +325,7 @@ const observerOptions = {
     rootMargin: '0px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
+const observer = new IntersectionObserver(function (entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
@@ -358,7 +359,7 @@ function initializeTypewriter() {
 
     function type() {
         const currentPhrase = phrases[phraseIndex];
-        
+
         if (isDeleting) {
             charIndex--;
             speed = 50;
@@ -388,7 +389,7 @@ function initializeTypewriter() {
 function initializeFeaturesMore() {
     const moreBtn = document.getElementById('featuresMoreBtn');
     const moreContent = document.getElementById('featuresMoreContent');
-    
+
     if (moreBtn && moreContent) {
         moreBtn.addEventListener('click', () => {
             const isShowing = moreContent.classList.contains('show');
@@ -412,7 +413,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeBackLinks();
     initializeDiscoveryToggle();
     initializeFeaturesMore();
-    
+
     // Header scroll effect
     const handleScroll = () => {
         const header = document.querySelector('.header');
@@ -426,10 +427,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    
+
     const notifyBtn = document.getElementById('notify-btn');
     const notificationForm = document.getElementById('notification-form');
-    
+
     if (notifyBtn && notificationForm) {
         notifyBtn.addEventListener('click', () => {
             const wrapper = notifyBtn.closest('.notify-btn-wrapper');
@@ -448,12 +449,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         header.addEventListener('click', () => {
             const item = header.parentElement;
             const isActive = item.classList.contains('active');
-            
+
             // Close all other items
             document.querySelectorAll('.accordion-item').forEach(otherItem => {
                 otherItem.classList.remove('active');
             });
-            
+
             // Toggle current item
             if (!isActive) {
                 item.classList.add('active');
@@ -468,10 +469,10 @@ function handleNotify(event) {
     const errorText = document.getElementById('notify-error');
     const successText = document.getElementById('notify-success');
     const email = emailInput.value;
-    
+
     // Simple email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
+
     if (emailRegex.test(email)) {
         errorText.classList.add('hidden');
         successText.classList.remove('hidden');
@@ -509,7 +510,7 @@ let hasMoved = false;
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    
+
     if (!hasMoved) {
         hasMoved = true;
         cursor.style.opacity = '1';
@@ -562,12 +563,12 @@ function initializeMenu() {
                     e.preventDefault();
                     e.stopPropagation();
                     const parent = toggle.closest('.nav-item.dropdown');
-                    
+
                     // Close other dropdowns
                     document.querySelectorAll('.nav-item.dropdown').forEach(d => {
                         if (d !== parent) d.classList.remove('open');
                     });
-                    
+
                     parent.classList.toggle('open');
                 }
             });
@@ -596,14 +597,14 @@ function initializeInteractiveElements() {
             const trail = document.querySelector('.cursor-trail');
             const cursor = document.querySelector('.custom-cursor');
             if (trail) trail.classList.add('active');
-            
+
             // Check if the element or its parent has a red background or is a primary button
-            const isRedBackground = el.classList.contains('cta-button') || 
-                                   el.classList.contains('hero-cta-button') || 
-                                   el.classList.contains('subscribe-btn') ||
-                                   el.closest('.footer') ||
-                                   window.getComputedStyle(el).backgroundColor === 'rgb(255, 0, 0)';
-            
+            const isRedBackground = el.classList.contains('cta-button') ||
+                el.classList.contains('hero-cta-button') ||
+                el.classList.contains('subscribe-btn') ||
+                el.closest('.footer') ||
+                window.getComputedStyle(el).backgroundColor === 'rgb(255, 0, 0)';
+
             if (isRedBackground && cursor) {
                 cursor.classList.add('white');
             }
@@ -625,7 +626,7 @@ function initializeTimeline() {
         'sun': document.getElementById("timeline-sun")
     };
     const yearButtons = document.querySelectorAll(".year-btn");
-    
+
     if (!timelines.thy) return;
 
     const timelineData = {
@@ -688,7 +689,7 @@ function initializeTimeline() {
             endDot.className = "timeline-dot";
             endDot.style.top = `${startPos + durationHeight}px`;
             // Appear after the line has grown (0.6s)
-            endDot.style.animationDelay = `${(index * 0.1) + 0.5}s`; 
+            endDot.style.animationDelay = `${(index * 0.1) + 0.5}s`;
             container.appendChild(endDot);
 
             // 3. Create Date Box
@@ -710,10 +711,10 @@ function initializeTimeline() {
                 badge.className = "status-badge-premium";
                 badge.style.marginBottom = "10px";
                 badge.style.alignSelf = "center"; // Center the badge specifically
-                
+
                 const dot = document.createElement("span");
                 dot.className = "pulse-dot";
-                
+
                 badge.appendChild(dot);
                 badge.appendChild(document.createTextNode(" Applications Open"));
                 card.appendChild(badge);
@@ -722,7 +723,7 @@ function initializeTimeline() {
             const airlineName = document.createElement("div");
             airlineName.className = "event-airline-name";
             airlineName.textContent = item.airline;
-            
+
             const program = document.createElement("div");
             program.className = "event-program";
             program.textContent = item.program;
@@ -777,7 +778,7 @@ function initializePaceCarousel() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('carouselDots');
-    
+
     if (!items.length) return;
 
     let currentIndex = 0;
@@ -798,10 +799,10 @@ function initializePaceCarousel() {
     function updateCarousel() {
         items.forEach((item, index) => {
             item.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
-            
+
             // Calculate distance for cyclic array
             let diff = index - currentIndex;
-            
+
             // Handle wrap around for distance calculation
             if (diff > totalItems / 2) diff -= totalItems;
             if (diff < -totalItems / 2) diff += totalItems;
@@ -853,7 +854,7 @@ function initializePaceCarousel() {
         e.stopPropagation();
         prevSlide();
     });
-    
+
     if (nextBtn) nextBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         nextSlide();
@@ -895,7 +896,7 @@ function initializePegasusCarousel() {
     const prevBtn = document.getElementById('pegasusPrevBtn');
     const nextBtn = document.getElementById('pegasusNextBtn');
     const dotsContainer = document.getElementById('pegasusCarouselDots');
-    
+
     if (!items.length) return;
 
     let currentIndex = 0;
@@ -916,10 +917,10 @@ function initializePegasusCarousel() {
     function updateCarousel() {
         items.forEach((item, index) => {
             item.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
-            
+
             // Calculate distance for cyclic array
             let diff = index - currentIndex;
-            
+
             // Handle wrap around for distance calculation
             if (diff > totalItems / 2) diff -= totalItems;
             if (diff < -totalItems / 2) diff += totalItems;
@@ -971,7 +972,7 @@ function initializePegasusCarousel() {
         e.stopPropagation();
         prevSlide();
     });
-    
+
     if (nextBtn) nextBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         nextSlide();
@@ -1013,7 +1014,7 @@ function initializeMollymawkCarousel() {
     const prevBtn = document.getElementById('mollyPrevBtn');
     const nextBtn = document.getElementById('mollyNextBtn');
     const dotsContainer = document.getElementById('mollyCarouselDots');
-    
+
     if (!items.length) return;
 
     let currentIndex = 0;
@@ -1034,10 +1035,10 @@ function initializeMollymawkCarousel() {
     function updateCarousel() {
         items.forEach((item, index) => {
             item.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
-            
+
             // Calculate distance for cyclic array
             let diff = index - currentIndex;
-            
+
             // Handle wrap around for distance calculation
             if (diff > totalItems / 2) diff -= totalItems;
             if (diff < -totalItems / 2) diff += totalItems;
@@ -1089,7 +1090,7 @@ function initializeMollymawkCarousel() {
         e.stopPropagation();
         prevSlide();
     });
-    
+
     if (nextBtn) nextBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         nextSlide();
@@ -1145,7 +1146,7 @@ function initializeBannerParticles() {
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             // 1. Static-like subtle grain/noise or scanlines
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
             ctx.lineWidth = 1;
@@ -1160,17 +1161,17 @@ function initializeBannerParticles() {
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
             const gradient = ctx.createRadialGradient(
-                centerX + Math.cos(time * 0.5) * 50, 
-                centerY + Math.sin(time * 0.5) * 20, 
+                centerX + Math.cos(time * 0.5) * 50,
+                centerY + Math.sin(time * 0.5) * 20,
                 0,
-                centerX, 
-                centerY, 
+                centerX,
+                centerY,
                 canvas.width * 0.8
             );
-            
+
             gradient.addColorStop(0, 'rgba(255, 0, 0, 0.04)');
             gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            
+
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -1188,7 +1189,7 @@ function initializeBannerParticles() {
 function initializeSearch() {
     const searchInput = document.getElementById('site-search');
     const searchResults = document.getElementById('search-results');
-    
+
     if (!searchInput || !searchResults) return;
 
     // Define searchable data
@@ -1197,13 +1198,13 @@ function initializeSearch() {
         { title: 'PACE', category: 'Exam', url: 'pace.html' },
         { title: 'Pegasus CASE', category: 'Exam', url: 'pegasus.html' },
         { title: 'Mollymawk', category: 'Exam', url: 'mollymawk.html' },
-        
+
         // Careers
         { title: 'Türk Hava Yolları', category: 'Career', url: 'thy.html' },
         { title: 'Pegasus', category: 'Career', url: 'pegasus-kariyer.html' },
         { title: 'SunExpress', category: 'Career', url: 'sunexpress.html' },
         { title: 'Application Calendar', category: 'Career', url: 'ilan-takvimi.html' },
-        
+
         // Other
         { title: 'Pricing', category: 'Service', url: 'pricing.html' },
         { title: 'Download App', category: 'Service', url: 'download.html' },
@@ -1244,14 +1245,14 @@ function initializeSearch() {
 
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase().trim();
-        
+
         if (query.length < 2) {
             searchResults.classList.remove('active');
             return;
         }
 
-        const filteredResults = searchData.filter(item => 
-            item.title.toLowerCase().includes(query) || 
+        const filteredResults = searchData.filter(item =>
+            item.title.toLowerCase().includes(query) ||
             item.category.toLowerCase().includes(query)
         );
 
@@ -1260,7 +1261,7 @@ function initializeSearch() {
 
     function displayResults(results, prefix) {
         searchResults.innerHTML = '';
-        
+
         if (results.length === 0) {
             searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
         } else {
@@ -1275,7 +1276,7 @@ function initializeSearch() {
                 searchResults.appendChild(item);
             });
         }
-        
+
         searchResults.classList.add('active');
     }
 
@@ -1301,5 +1302,49 @@ function initializeSearch() {
                 window.location.href = firstResult.href;
             }
         }
+    });
+}
+
+// Initialize Free Trial Popup
+function initializeTrialPopup() {
+    const popup = document.getElementById('trialPopup');
+    const closeBtn = document.getElementById('closePopup');
+    const popupContainer = document.querySelector('.trial-popup-container');
+
+    if (!popup) return;
+
+    // Array of background images to choose from randomly
+    const backgroundImages = [
+        'images/pop-up1.png',           // Runway image
+        'images/cockpit-bg.png'         // Cockpit image
+    ];
+
+    // Select a random background image
+    const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+    if (popupContainer) {
+        popupContainer.style.backgroundImage = `url('${randomImage}')`;
+    }
+
+    // Show popup when page loads (with a small delay for better UX)
+    setTimeout(() => {
+        popup.classList.add('active');
+    }, 500);
+
+    // Close popup when X button is clicked
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        popup.classList.remove('active');
+    });
+
+    // Close popup when clicking outside of the container
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.classList.remove('active');
+        }
+    });
+
+    // Prevent closing when clicking inside the popup container
+    document.querySelector('.trial-popup-container').addEventListener('click', (e) => {
+        e.stopPropagation();
     });
 }

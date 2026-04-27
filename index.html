@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            background: 
+            background:
                 radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.08) 0%, transparent 25%),
                 radial-gradient(circle at 20% 80%, rgba(0, 74, 255, 0.05) 0%, transparent 25%),
                 #050505 !important;
@@ -50,7 +51,7 @@
         .airplane-trail {
             position: absolute;
             bottom: 20%;
-            right: 80%; 
+            right: 80%;
             width: 300px;
             height: 1px;
             background: linear-gradient(to left, rgba(255, 255, 255, 0.08), transparent);
@@ -72,8 +73,15 @@
                 top: 110%;
                 opacity: 0;
             }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
             100% {
                 left: 110%;
                 top: -200px;
@@ -116,7 +124,7 @@
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .exam-card {
@@ -132,7 +140,7 @@
         }
 
         .hero-img {
-            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
             transition: transform 0.5s ease;
         }
 
@@ -152,6 +160,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="airplane-animation-layer">
         <div class="airplane-entity" style="animation-duration: 45s; animation-delay: 0s;">
@@ -174,28 +183,51 @@
             <div class="hero-content">
                 <div class="hero-badges">
                     <div class="hero-badge badge-premium">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="badge-icon">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
                         Single Membership
                         <span class="badge-tooltip">One subscription for all your devices</span>
                     </div>
                     <div class="hero-badge badge-premium">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="badge-icon">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
                         All Exams
                         <span class="badge-tooltip">Access PACE, Pegasus, and Mollymawk</span>
                     </div>
                     <div class="hero-badge badge-premium">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="badge-icon">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
                         All Modules
                         <span class="badge-tooltip">Over 20+ interactive training modules</span>
                     </div>
                 </div>
-                <h1 class="hero-title has-typewriter"><span id="typewriter"></span><span class="typewriter-cursor">|</span></h1>
+                <h1 class="hero-title has-typewriter"><span id="typewriter"></span><span
+                        class="typewriter-cursor">|</span></h1>
                 <div class="hero-image">
                     <img src="images/hero-section.png" alt="Training Platform" class="hero-img">
                 </div>
                 <div class="hero-text-banner">
                     <p>
-                        This training software helps cadet candidates prepare for cadet programs in Türkiye, including programs run by <strong>Turkish Airlines Cadet Pilot Program</strong>, <strong>Take-Off Cadet</strong>, <strong>Sunexpress MPL Program</strong>, and <strong>Pegasus Cadet Pilot Yetiştirme Programı</strong>. It includes structured practice aligned with the <strong>SkyTest® CASE</strong> exam format, <strong>Turkish Airlines PACE</strong>, and <strong>SunExpress Mollymawk®</strong>.
+                        This training software helps cadet candidates prepare for cadet programs in Türkiye, including
+                        programs run by <strong>Turkish Airlines Cadet Pilot Program</strong>, <strong>Take-Off
+                            Cadet</strong>, <strong>Sunexpress MPL Program</strong>, and <strong>Pegasus Cadet Pilot
+                            Yetiştirme Programı</strong>. It includes structured practice aligned with the
+                        <strong>SkyTest® CASE</strong> exam format, <strong>Turkish Airlines PACE</strong>, and
+                        <strong>SunExpress Mollymawk®</strong>.
                     </p>
                 </div>
             </div>
@@ -207,7 +239,7 @@
     <section class="app-preview">
         <div class="container">
             <h2>Explore Our Training Modules</h2>
-            
+
             <div class="app-mockup theme-pace">
                 <div class="app-header">
                     <div class="app-logo">
@@ -216,8 +248,11 @@
                     <div class="app-header-actions">
                         <div class="exam-selector" id="app-exam-selector">
                             <span id="current-exam-label">PACE</span>
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                            
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+
                             <!-- Exam Dropdown -->
                             <div class="app-dropdown" id="app-exam-dropdown">
                                 <div class="app-dropdown-item" data-exam="pace-grid">PACE</div>
@@ -238,94 +273,115 @@
                     <div class="app-grids-container">
                         <!-- PACE Grid -->
                         <div id="pace-grid" class="app-grid active">
-                        <a href="modules/pace/mathematics.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/mathematics.png" alt="Mathematics"></div>
-                            <div class="app-module-footer">Mathematics</div>
-                        </a>
-                        <a href="modules/pace/physics.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Physics.png" alt="Physics"></div>
-                            <div class="app-module-footer">Physics</div>
-                        </a>
-                        <a href="modules/pace/audio-visual-memory.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Audio_visual_memory.png" alt="Audio Visual Memory"></div>
-                            <div class="app-module-footer">Audio Visual Memory</div>
-                        </a>
-                        <a href="modules/pace/digit-span.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Digit_span.png" alt="Digit Span"></div>
-                            <div class="app-module-footer">Digit Span</div>
-                        </a>
-                        <a href="modules/pace/agility.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Agility.png" alt="Agility"></div>
-                            <div class="app-module-footer">Agility</div>
-                        </a>
-                        <a href="modules/pace/sustained-attention.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Sustained_attention.png" alt="Sustained Attention"></div>
-                            <div class="app-module-footer">Sustained Attention</div>
-                        </a>
-                        <a href="modules/pace/spatial-orientation.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Spatial_orientation.png" alt="Spatial Orientation"></div>
-                            <div class="app-module-footer">Spatial Orientation</div>
-                        </a>
-                        <a href="modules/pace/mic.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Joystick_flight_test.png" alt="Joystick Flight Test"></div>
-                            <div class="app-module-footer">Joystick Flight Test</div>
-                        </a>
-                        <a href="modules/pace/three-dimensional-spatial-perception.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/3Dimesional_spatial_perception.png" alt="3D Spatial Perception"></div>
-                            <div class="app-module-footer">3D Spatial Perception</div>
-                        </a>
+                            <a href="modules/pace/mathematics.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/mathematics.png"
+                                        alt="Mathematics"></div>
+                                <div class="app-module-footer">Mathematics</div>
+                            </a>
+                            <a href="modules/pace/physics.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Physics.png" alt="Physics">
+                                </div>
+                                <div class="app-module-footer">Physics</div>
+                            </a>
+                            <a href="modules/pace/audio-visual-memory.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Audio_visual_memory.png"
+                                        alt="Audio Visual Memory"></div>
+                                <div class="app-module-footer">Audio Visual Memory</div>
+                            </a>
+                            <a href="modules/pace/digit-span.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Digit_span.png"
+                                        alt="Digit Span"></div>
+                                <div class="app-module-footer">Digit Span</div>
+                            </a>
+                            <a href="modules/pace/agility.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Agility.png" alt="Agility">
+                                </div>
+                                <div class="app-module-footer">Agility</div>
+                            </a>
+                            <a href="modules/pace/sustained-attention.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Sustained_attention.png"
+                                        alt="Sustained Attention"></div>
+                                <div class="app-module-footer">Sustained Attention</div>
+                            </a>
+                            <a href="modules/pace/spatial-orientation.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Spatial_orientation.png"
+                                        alt="Spatial Orientation"></div>
+                                <div class="app-module-footer">Spatial Orientation</div>
+                            </a>
+                            <a href="modules/pace/mic.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Joystick_flight_test.png"
+                                        alt="Joystick Flight Test"></div>
+                                <div class="app-module-footer">Joystick Flight Test</div>
+                            </a>
+                            <a href="modules/pace/three-dimensional-spatial-perception.html?from=home"
+                                class="app-module-card">
+                                <div class="app-module-image"><img
+                                        src="images/modules_img/3Dimesional_spatial_perception.png"
+                                        alt="3D Spatial Perception"></div>
+                                <div class="app-module-footer">3D Spatial Perception</div>
+                            </a>
+                        </div>
+
+                        <!-- Pegasus Grid -->
+                        <div id="pegasus-grid" class="app-grid">
+                            <a href="modules/pegasus/spatial-orientation-2d.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Spatial_orientation_2D.png"
+                                        alt="Spatial Orientation 2D"></div>
+                                <div class="app-module-footer">Spatial Orientation 2D</div>
+                            </a>
+                            <a href="modules/pegasus/spatial-orientation-3d.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Spatial_orientation_3D.png"
+                                        alt="Spatial Orientation 3D"></div>
+                                <div class="app-module-footer">Spatial Orientation 3D</div>
+                            </a>
+                            <a href="modules/pegasus/vigilance-1.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Vigilance1.png"
+                                        alt="Vigilance 1"></div>
+                                <div class="app-module-footer">Vigilance 1</div>
+                            </a>
+                            <a href="modules/pegasus/vigilance-2.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Vigilance2.png"
+                                        alt="Vigilance 2"></div>
+                                <div class="app-module-footer">Vigilance 2</div>
+                            </a>
+                            <a href="modules/pegasus/ipp.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Ipp_test.png" alt="IPP">
+                                </div>
+                                <div class="app-module-footer">IPP</div>
+                            </a>
+                            <a href="modules/pegasus/capacity.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Capacity_test.png"
+                                        alt="Capacity"></div>
+                                <div class="app-module-footer">Capacity</div>
+                            </a>
+                            <a href="modules/pegasus/flight-capacity.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Flight_capacity_test.png"
+                                        alt="Flight Capacity"></div>
+                                <div class="app-module-footer">Flight Capacity</div>
+                            </a>
+                        </div>
+
+                        <!-- Mollymawk Grid -->
+                        <div id="mollymawk-grid" class="app-grid">
+                            <a href="mollymawk.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/time_sharing.png"
+                                        alt="Time Sharing"></div>
+                                <div class="app-module-footer">Time Sharing</div>
+                            </a>
+                            <a href="mollymawk.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/working_memory.png"
+                                        alt="Working Memory"></div>
+                                <div class="app-module-footer">Working Memory</div>
+                            </a>
+                            <a href="mollymawk.html?from=home" class="app-module-card">
+                                <div class="app-module-image"><img src="images/modules_img/Spatial_orientation_sun.png"
+                                        alt="Spatial Orientation"></div>
+                                <div class="app-module-footer">Spatial Orientation</div>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Pegasus Grid -->
-                    <div id="pegasus-grid" class="app-grid">
-                        <a href="modules/pegasus/spatial-orientation-2d.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Spatial_orientation_2D.png" alt="Spatial Orientation 2D"></div>
-                            <div class="app-module-footer">Spatial Orientation 2D</div>
-                        </a>
-                        <a href="modules/pegasus/spatial-orientation-3d.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Spatial_orientation_3D.png" alt="Spatial Orientation 3D"></div>
-                            <div class="app-module-footer">Spatial Orientation 3D</div>
-                        </a>
-                        <a href="modules/pegasus/vigilance-1.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Vigilance1.png" alt="Vigilance 1"></div>
-                            <div class="app-module-footer">Vigilance 1</div>
-                        </a>
-                        <a href="modules/pegasus/vigilance-2.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Vigilance2.png" alt="Vigilance 2"></div>
-                            <div class="app-module-footer">Vigilance 2</div>
-                        </a>
-                        <a href="modules/pegasus/ipp.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Ipp_test.png" alt="IPP"></div>
-                            <div class="app-module-footer">IPP</div>
-                        </a>
-                        <a href="modules/pegasus/capacity.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Capacity_test.png" alt="Capacity"></div>
-                            <div class="app-module-footer">Capacity</div>
-                        </a>
-                        <a href="modules/pegasus/flight-capacity.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Flight_capacity_test.png" alt="Flight Capacity"></div>
-                            <div class="app-module-footer">Flight Capacity</div>
-                        </a>
-                    </div>
-
-                    <!-- Mollymawk Grid -->
-                    <div id="mollymawk-grid" class="app-grid">
-                        <a href="mollymawk.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/time_sharing.png" alt="Time Sharing"></div>
-                            <div class="app-module-footer">Time Sharing</div>
-                        </a>
-                        <a href="mollymawk.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/working_memory.png" alt="Working Memory"></div>
-                            <div class="app-module-footer">Working Memory</div>
-                        </a>
-                        <a href="mollymawk.html?from=home" class="app-module-card">
-                            <div class="app-module-image"><img src="images/modules_img/Spatial_orientation_sun.png" alt="Spatial Orientation"></div>
-                            <div class="app-module-footer">Spatial Orientation</div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="app-action">
+                    <div class="app-action">
                         <a href="download.html" class="train-now-btn">Train Now</a>
                     </div>
                 </div>
@@ -338,40 +394,58 @@
         <div class="container">
             <h2>Features of AvioTest®</h2>
             <div class="features-intro">
-                <p><strong>AvioTest is cross-platform</strong> and built for <strong>flexible study</strong>. Applicants can train <strong>anywhere, anytime, and offline</strong> without an internet connection. For PACE, the real exam is delivered on a <strong>touchscreen</strong>, so the software mirrors that experience and lets candidates practice on <strong>touch-enabled devices</strong> for a <strong>more realistic exam day feel</strong>.</p>
+                <p><strong>AvioTest is cross-platform</strong> and built for <strong>flexible study</strong>. Applicants
+                    can train <strong>anywhere, anytime, and offline</strong> without an internet connection. For PACE,
+                    the real exam is delivered on a <strong>touchscreen</strong>, so the software mirrors that
+                    experience and lets candidates practice on <strong>touch-enabled devices</strong> for a <strong>more
+                        realistic exam day feel</strong>.</p>
                 <div class="features-more-content" id="featuresMoreContent">
-                    <p>AvioTest supports <strong>joystick-operated tests</strong> on both <strong>macOS and Windows</strong> devices, allowing applicants to practice with <strong>flight-style controls</strong> when required. The training approach guides you through <strong>21 focused modules</strong> step by step for gradual performance improvements.
-                    To improve training quality, the software includes <strong>progression graphs</strong> and <strong>detailed score analysis</strong> so you can track your development over time. Each module provides performance breakdowns that highlight speed, accuracy, and consistency, helping you identify weak areas, focus your training, and build <strong>measurable progress</strong> for <strong>Turkish Airlines PACE</strong>, <strong>sunexpress pilot yetiştirme</strong>, <strong>sunexpress pilotluk eğitimi</strong>, and <strong>Pegasus pilot yetiştirme</strong> goals.</p>
+                    <p>AvioTest supports <strong>joystick-operated tests</strong> on both <strong>macOS and
+                            Windows</strong> devices, allowing applicants to practice with <strong>flight-style
+                            controls</strong> when required. The training approach guides you through <strong>21 focused
+                            modules</strong> step by step for gradual performance improvements.
+                        To improve training quality, the software includes <strong>progression graphs</strong> and
+                        <strong>detailed score analysis</strong> so you can track your development over time. Each
+                        module provides performance breakdowns that highlight speed, accuracy, and consistency, helping
+                        you identify weak areas, focus your training, and build <strong>measurable progress</strong> for
+                        <strong>Turkish Airlines PACE</strong>, <strong>sunexpress pilot yetiştirme</strong>,
+                        <strong>sunexpress pilotluk eğitimi</strong>, and <strong>Pegasus pilot yetiştirme</strong>
+                        goals.</p>
                 </div>
                 <button class="more-btn" id="featuresMoreBtn">More</button>
             </div>
             <div class="features-grid">
                 <div class="feature-card full-image">
-                    <div class="feature-icon"><img src="images/mobile_usage.png" alt="Mobile Usage" class="feature-img"></div>
+                    <div class="feature-icon"><img src="images/mobile_usage.png" alt="Mobile Usage" class="feature-img">
+                    </div>
                     <div class="feature-content">
                         <h3><strong>Mobile Usage</strong></h3>
                         <p>Prepare for exams anytime, anywhere with full mobile access.</p>
                     </div>
                 </div>
                 <div class="feature-card full-image">
-                    <div class="feature-icon"><img src="images/offline_usage.png" alt="Offline Access" class="feature-img"></div>
+                    <div class="feature-icon"><img src="images/offline_usage.png" alt="Offline Access"
+                            class="feature-img"></div>
                     <div class="feature-content">
                         <h3><strong>Offline Access</strong></h3>
-                        <p>Offline Usage – Download once and use on <strong>PC, Phone, and Tablet</strong> without internet.</p>
+                        <p>Offline Usage – Download once and use on <strong>PC, Phone, and Tablet</strong> without
+                            internet.</p>
                     </div>
                 </div>
                 <div class="feature-card full-image">
                     <div class="feature-icon"><img src="images/stats.png" alt="Stats" class="feature-img"></div>
                     <div class="feature-content">
                         <h3><strong>Stats</strong></h3>
-                        <p>Track your progress with clear <strong>statistical graphs</strong> and see your improvement over time.</p>
+                        <p>Track your progress with clear <strong>statistical graphs</strong> and see your improvement
+                            over time.</p>
                     </div>
                 </div>
                 <div class="feature-card full-image">
                     <div class="feature-icon"><img src="images/exam_mode.png" alt="Exam Mode" class="feature-img"></div>
                     <div class="feature-content">
                         <h3><strong>Exam Mode</strong></h3>
-                        <p><strong>EXAM MODE</strong> and <strong>Test Customization for Real Exam Conditions</strong></p>
+                        <p><strong>EXAM MODE</strong> and <strong>Test Customization for Real Exam Conditions</strong>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -399,7 +473,8 @@
                     </div>
                     <div class="exam-body">
                         <h3>Turkish Airlines — PACE</h3>
-                        <p>Prepare for the Turkish Airlines PACE psychometric assessment with comprehensive training modules.</p>
+                        <p>Prepare for the Turkish Airlines PACE psychometric assessment with comprehensive training
+                            modules.</p>
                         <span class="learn-more">Learn More →</span>
                     </div>
                 </a>
@@ -409,7 +484,8 @@
                     </div>
                     <div class="exam-body">
                         <h3>SunExpress — Mollymawk</h3>
-                        <p>Ace the SunExpress Mollymawk assessment with interactive simulations and performance analytics.</p>
+                        <p>Ace the SunExpress Mollymawk assessment with interactive simulations and performance
+                            analytics.</p>
                         <span class="learn-more">Learn More →</span>
                     </div>
                 </a>
@@ -421,7 +497,8 @@
     <section class="newsletter">
         <div class="container">
             <div class="newsletter-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bell-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                    stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bell-icon">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                 </svg>
@@ -435,15 +512,46 @@
         </div>
     </section>
 
-    <div class="container" style="padding-bottom: 20px; font-size: 13px; color: #777; line-height: 1.4; text-align: center;">
-        <p><strong>Disclaimer:</strong> References to the Ayjet, SkyTest CASE, Mollymawk, and PACE exams and airline names are used only to describe the exam format candidates may encounter and are not intended to imply any affiliation, endorsement, or ownership.</p>
+    <div class="container"
+        style="padding-bottom: 20px; font-size: 13px; color: #777; line-height: 1.4; text-align: center;">
+        <p><strong>Disclaimer:</strong> References to the Ayjet, SkyTest CASE, Mollymawk, and PACE exams and airline
+            names are used only to describe the exam format candidates may encounter and are not intended to imply any
+            affiliation, endorsement, or ownership.</p>
     </div>
 
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
+    <!-- Free Trial Popup Modal -->
+    <div id="trialPopup" class="trial-popup-overlay">
+        <div class="trial-popup-container">
+            <button class="trial-popup-close" id="closePopup">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div class="trial-popup-badge">EXCLUSIVE</div>
+            
+            <h2 class="trial-popup-title">Start Your <span class="pilot-journey-red">Pilot Journey</span> Today</h2>
+            
+            <p class="trial-popup-subtitle">Get access to all AvioTest® training modules</p>
+            
+            <div class="trial-popup-highlight">
+                <span class="trial-popup-badge-red">1-Week FREE Trial</span>
+                <p class="trial-popup-desc">on all modules</p>
+            </div>
+            
+            <a href="deneme.html" class="trial-popup-btn">Claim Now</a>
+            
+            <p class="trial-popup-footer">No credit card required. Cancel anytime.</p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-<elevenlabs-convai agent-id="agent_2101kgyyjmc9ewna2ycg7wjxnfdd"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    <elevenlabs-convai agent-id="agent_2101kgyyjmc9ewna2ycg7wjxnfdd"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
+
 </html>
